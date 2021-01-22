@@ -21,3 +21,15 @@ git-amend-commit() {
   git-stage-files "$files"
   git commit --amend -m "$commitMsg"
 }
+
+git-feature-branch() {
+  local name="$1"
+
+  git checkout -b "feature/$name"
+}
+
+git-push-feature-branch() {
+  local name="$1"
+
+  git push -u origin "feature/$name"
+}

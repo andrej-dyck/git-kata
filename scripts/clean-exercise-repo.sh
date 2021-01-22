@@ -1,27 +1,50 @@
 clean-exercise-repo() {
-  local initScriptDir="${PWD##*/}"
+  local readmePath="${PWD##*/}"
+
+  # init repo without origin
+  init-exercise-repo ""
+
+  # make initial commits
+  initial-commits "../$readmePath" # we are in exercise-dir now
+}
+
+init-exercise-repo() {
+  local origin="$1"
+
   local exerciseDir="../exercise"
 
-  # cleanup existing exercise repository
+  # cleanup existing exercise folder
   rm -rf "${exerciseDir:?}"
-  mkdir -p "$exerciseDir"
 
-  # go there
+  if [ -z "$origin" ]; then
+    # initialize a new repository
+    git init $exerciseDir
+  else
+    # otherwise clone origin
+    git clone "$origin" "$exerciseDir"
+  fi
+
+  # go to exercise dir
   cd "$exerciseDir" || exit
-
-  # initialize a new repository
-  git init
 
   # local git config
   git config --local commit.gpgsign false
   git config --local core.autocrlf false
 
-  # make initial commits
-  initial-commits "$initScriptDir"
+  # rename master branch if local repository
+  if [ -z "$origin" ]; then
+    rename-master-branch
+  fi
 
+  # configure simple gitflow
+  git config --local gitflow.branch.develop "main"
+  git config --local gitflow.prefix.feature "feature"
+}
+
+rename-master-branch() {
   # rename master to main
-  # see https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1
-  # for your global config: git config --global init.defaultBranch main
+  # cf. https://sfconservancy.org/news/2020/jun/23/gitbranchname/
+  # for your global config: "git config --global init.defaultBranch main"
   local branchName=$(git branch --show-current)
   if [ "$branchName" = "master" ]; then
     git branch -m master main
@@ -29,13 +52,11 @@ clean-exercise-repo() {
 }
 
 initial-commits() {
-  local initScriptDir="$1"
+  local readmePath="$1"
 
   cp ../.gitignore .
   git-commit "Add .gitignore" .gitignore
 
-  if [ -z "$toLine" ]; then
-    cp "../${initScriptDir}/Readme.md" .
-    git-commit "Add exercise readme" Readme.md
-  fi
+  cp "${readmePath}/Readme.md" .
+  git-commit "Add exercise readme" Readme.md
 }
