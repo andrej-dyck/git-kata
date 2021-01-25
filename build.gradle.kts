@@ -28,22 +28,21 @@ subprojects {
                 }
             }
 
-            /* ✔ Unit Tests with JUnit5 and AssertJ */
-//            dependencies {
-//                testImplementation(platform("org.junit:junit-bom:5.7.0"))
-//                testImplementation("org.junit.jupiter:junit-jupiter")
-//                testImplementation("org.assertj:assertj-core:3.18.1")
-//            }
-//
-//            sourceSets.getByName("test") {
-//                withConvention(KotlinSourceSet::class) {
-//                    kotlin.srcDirs("test/")
-//                }
-//            }
-//
-//            tasks.test {
-//                useJUnitPlatform()
-//            }
+            /* ✔ Unit Tests with JUnit5 */
+            dependencies {
+                testImplementation(platform("org.junit:junit-bom:5.7.0"))
+                testImplementation("org.junit.jupiter:junit-jupiter")
+            }
+
+            tasks.test {
+                useJUnitPlatform { excludeEngines("junit-vintage") }
+            }
+
+            sourceSets.getByName("test") {
+                withConvention(KotlinSourceSet::class) {
+                    kotlin.srcDirs("test/")
+                }
+            }
         }
         else -> /* 📜 Custom tasks */ tasks {
 
