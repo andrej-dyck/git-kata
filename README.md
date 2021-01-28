@@ -24,6 +24,33 @@ or even as linear as [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branc
 
 ---
 
+## Quick Start
+
+* Ensure the latest `Git` is installed and available in the shell
+* Navigate to the folder of an exercise; e.g., `<kata-root>/101-local-amend-commit`
+* Run the `./init.sh` in that folder
+  - On Windows, use _Git BASH_ or other Bash emulators (e.g., [cmder](https://cmder.net/))
+* Navigate to the created/updated folder `<kata-root>/exercise` with your favorite Git client
+* Consult the README.md in that folder for the description and task
+
+### With IntelliJ (optional)
+
+_This is optional_, if you want to have compiler support of IntelliJ and/or use its integrated Git client.
+
+* Open this Gradle project with [IntelliJ](https://www.jetbrains.com/idea/)
+  - You can use the free [Community Edition](https://www.jetbrains.com/idea/)
+  - On Windows, set `Settings > Tools > Terminal > Shell path` to `"<system-path-to-git>\bin\bash.exe" --login -i` (see _Note_)
+* In the project view, right-click the `init.sh` of an exercise and _run_ it with `Run 'init.sh'`
+* Select the created/updated folder `<kata-root>/exercise` and open the `Git` tool window (`ALT+9`)
+  - If you cloned this repository, in the Git Log window, chose the filter `Paths: exercise`
+* Consult the README.md in that folder for the description and task
+
+### Note
+The init scripts for this kata are _bash_ scripts, at the moment. Thus, you need a Bash to execute them.
+Fortunately for Windows, the _Git Bash_ is a shell that can execute those scripts.
+
+---
+
 ## Links and Resources
 
 The [Git version control system](https://git-scm.com/)
