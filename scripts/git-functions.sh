@@ -28,6 +28,12 @@ git-feature-branch() {
   git checkout -b "feature/$name"
 }
 
+git-push-changes() {
+  local name="$1"
+
+  git push origin
+}
+
 git-push-feature-branch() {
   local name="$1"
 
