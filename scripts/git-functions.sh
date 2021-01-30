@@ -33,3 +33,13 @@ git-push-feature-branch() {
 
   git push -u origin "feature/$name"
 }
+
+git-checkout-main() {
+  git checkout "main"
+}
+
+git-checkout-feature() {
+  local name="$1"
+
+  git checkout "feature/$name"
+}

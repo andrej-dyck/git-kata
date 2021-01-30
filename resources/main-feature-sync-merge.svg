@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="722.834px" height="155.906px" viewBox="-104.917 40.547 722.834 155.906"
+	 enable-background="new -104.917 40.547 722.834 155.906" xml:space="preserve">
+<link  type="text/css" rel="stylesheet" xmlns="" id="dark-mode-general-link"></link>
+<link  type="text/css" rel="stylesheet" xmlns="" id="dark-mode-custom-link"></link>
+<g transform="translate(0, 18)">
+	<line fill="none" stroke="#808080" stroke-dasharray="10" x1="-103.5" y1="100" x2="616.5" y2="100"/>
+	<g>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="-15" y1="50" x2="485" y2="50"/>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="185" y1="150" x2="585" y2="150"/>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="85" y1="50" x2="185" y2="150"/>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="485" y1="50" x2="585" y2="150"/>
+		<g>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="-15" cy="50" rx="17.5" ry="17.5"/>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="85" cy="50" rx="17.5" ry="17.5"/>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="385" cy="50" rx="17.5" ry="17.5"/>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="485" cy="50" rx="17.5" ry="17.5"/>
+		</g>
+		<g>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="185" cy="150" rx="17.5" ry="17.5"/>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="285" cy="150" rx="17.5" ry="17.5"/>
+		</g>
+		<ellipse fill="#E72D2E" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="585" cy="150" rx="17.5" ry="17.5"/>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 -99.5 76.5)" fill="#5A5A5A" font-family="'Consolas'" font-size="18">main</text>
+<text transform="matrix(1 0 0 1 -101.5 172)" fill="#5A5A5A" font-family="'Consolas'" font-size="18">feature</text>
+</svg>

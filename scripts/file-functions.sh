@@ -1,11 +1,27 @@
+copy-rsc() {
+  local resourcePath="$1" path="$2" subDir="$3"
+
+  local rscPath="../resources"
+  local localDir="./"
+
+  if [ -z "$subDir" ]; then
+    cp -rf "$rscPath/$resourcePath" "$localDir/$path"
+  else
+    mkdir -p "$subDir"
+    cp -rf "$rscPath/$resourcePath" "$localDir/$subDir/$path"
+  fi
+}
+
 copy-to-src() {
   local resourcePath="$1" path="$2"
 
-  local rscPath="../resources"
-  local srcPath="./src"
+  copy-rsc "$resourcePath" "$path" "src"
+}
 
-  mkdir -p "$srcPath"
-  cp -rf "$rscPath/$resourcePath" "$srcPath/$path"
+copy-to-test() {
+  local resourcePath="$1" path="$2"
+
+  copy-rsc "$resourcePath" "$path" "test"
 }
 
 in-src() {
