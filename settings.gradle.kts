@@ -10,6 +10,7 @@ include(
     ":108-local-interactive-rebase-reword-commits",
     ":109-local-interactive-rebase-edit-commits",
     ":110-local-interactive-rebase-split-commits",
+    ":111-local-interactive-rebase-delete-commits",
     ":201-remote-amend-commit",
     ":202-remote-undo-last-commit",
     ":203-remote-rebase-onto-main",
