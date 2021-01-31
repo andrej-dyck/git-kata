@@ -30,6 +30,10 @@ commit-mass-and-fuel-draft() {
 commit-conflicting-changes-on-main() {
   #  git-checkout-main
 
+  commit-fix-mass-fuel-terminology
+}
+
+commit-fix-mass-fuel-terminology() {
   in-src replace-in-file Mass.kt "amount" "inKg"
   in-src replace-in-file Fuel.kt "amount" "inKg"
 
@@ -39,10 +43,7 @@ commit-conflicting-changes-on-main() {
 work-on-estimation() {
   git-checkout-feature "$1"
 
-  in-src replace-in-file Mass.kt ": Int" ": Double"
-  in-src replace-in-file Fuel.kt ": Int" ": Double"
-
-  git-commit "Amend mass and fuel value to be double"
+  commit-fix-mass-and-fuel-to-be-double
 
   copy-rsc RocketFuelPart0/src
   copy-rsc RocketFuelPart0/test
@@ -51,4 +52,11 @@ work-on-estimation() {
   in-src replace-in-file Fuel.kt "inKg" "amount"
 
   git-commit "Estimate fuel based on mass"
+}
+
+commit-fix-mass-and-fuel-to-be-double() {
+  in-src replace-in-file Mass.kt ": Int" ": Double"
+  in-src replace-in-file Fuel.kt ": Int" ": Double"
+
+  git-commit "Amend mass and fuel value to be double"
 }

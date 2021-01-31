@@ -6,6 +6,7 @@ include(
     ":104-local-rebase-onto-main",
     ":105-local-rebase-with-conflicts",
     ":106-local-interactive-rebase-reorder-commits",
+    ":107-local-interactive-rebase-squash-commits",
     ":201-remote-amend-commit",
     ":202-remote-undo-last-commit",
     ":203-remote-rebase-onto-main",

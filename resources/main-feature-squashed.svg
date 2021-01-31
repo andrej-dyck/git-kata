@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="720px" height="155.906px" viewBox="0 -7.953 720 155.906" enable-background="new 0 -7.953 720 155.906"
+	 xml:space="preserve">
+<link  type="text/css" xmlns="" id="dark-mode-general-link" rel="stylesheet"></link>
+<link  type="text/css" xmlns="" id="dark-mode-custom-link" rel="stylesheet"></link>
+<g transform="translate(0, 18)">
+	<line fill="none" stroke="#808080" stroke-dasharray="10" x1="0" y1="53.453" x2="720" y2="53.453"/>
+	<g>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="88" y1="3.453" x2="188" y2="3.453"/>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="288" y1="103.453" x2="388" y2="103.453"/>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="188" y1="3.453" x2="288" y2="103.453"/>
+		<g>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="88" cy="3.453" rx="17.5" ry="17.5"/>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="188" cy="3.453" rx="17.5" ry="17.5"/>
+		</g>
+		<g>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="288" cy="103.453" rx="17.5" ry="17.5"/>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="388" cy="103.453" rx="17.5" ry="17.5"/>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 3.5 11.9526)" fill="#5A5A5A" font-family="'Consolas'" font-size="18">main</text>
+	<text transform="matrix(1 0 0 1 1.5 107.4531)" fill="#5A5A5A" font-family="'Consolas'" font-size="18">feature</text>
+</g>
+<text transform="matrix(0.9976 0 0 1 275.5 127.584)" enable-background="new    "><tspan x="0" y="0" stroke="#000000" font-family="'Consolas'" font-size="18.0435">1</tspan><tspan x="9.92" y="0" stroke="#000000" font-family="'Consolas'" font-size="8">,</tspan><tspan x="14.319" y="0" stroke="#000000" font-family="'Consolas'" font-size="18.0435">2</tspan></text>
+<text transform="matrix(0.9976 0 0 1 376.5 127.584)" enable-background="new    "><tspan x="0" y="0" stroke="#000000" font-family="'Consolas'" font-size="18.0435">3</tspan><tspan x="9.92" y="0" stroke="#000000" font-family="'Consolas'" font-size="8">,</tspan><tspan x="14.319" y="0" stroke="#000000" font-family="'Consolas'" font-size="18.0435">4</tspan></text>
+</svg>
