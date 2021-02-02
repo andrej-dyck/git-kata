@@ -15,5 +15,6 @@ include(
     ":202-remote-undo-last-commit",
     ":203-remote-rebase-onto-main",
     ":204-remote-rebase-with-teammates",
+    ":205-remote-interactive-rebase",
     ":exercise"
 )

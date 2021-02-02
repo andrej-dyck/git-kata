@@ -18,5 +18,5 @@ init-exercise() {
 
 commit-tmp-main() {
   copy-to-src RocketFuelPart0/tmp-main.kt
-  git-commit "REMOVE tmp main for drafting"
+  git-commit "REMOVE! tmp main for drafting"
 }
