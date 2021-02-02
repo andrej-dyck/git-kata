@@ -29,8 +29,6 @@ git-feature-branch() {
 }
 
 git-push-changes() {
-  local name="$1"
-
   git push origin
 }
 
