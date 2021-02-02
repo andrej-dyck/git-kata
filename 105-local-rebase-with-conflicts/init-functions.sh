@@ -34,10 +34,14 @@ commit-conflicting-changes-on-main() {
 }
 
 commit-fix-mass-fuel-terminology() {
-  in-src replace-in-file Mass.kt "amount" "inKg"
-  in-src replace-in-file Fuel.kt "amount" "inKg"
+  replace-amount-with-inKg
 
   git-commit "Fix mass and fuel terminology"
+}
+
+replace-amount-with-inKg() {
+  in-src replace-in-file Mass.kt "amount" "inKg"
+  in-src replace-in-file Fuel.kt "amount" "inKg"
 }
 
 work-on-estimation() {
@@ -48,10 +52,14 @@ work-on-estimation() {
   copy-rsc RocketFuelPart0/src
   copy-rsc RocketFuelPart0/test
 
-  in-src replace-in-file Mass.kt "inKg" "amount"
-  in-src replace-in-file Fuel.kt "inKg" "amount"
+  replace-inKg-with-amount
 
   git-commit "Estimate fuel based on mass"
+}
+
+replace-inKg-with-amount() {
+  in-src replace-in-file Mass.kt "inKg" "amount"
+  in-src replace-in-file Fuel.kt "inKg" "amount"
 }
 
 commit-fix-mass-and-fuel-to-be-double() {

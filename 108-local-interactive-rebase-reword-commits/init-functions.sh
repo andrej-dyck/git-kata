@@ -15,13 +15,17 @@ init-exercise() {
   in-src remove-lines-in-file Fuel.kt 3 4
   git-commit "drafting types"
 
-  copy-to-src RocketFuelPart0/src/Fuel.kt
-  in-src replace-in-file Fuel.kt "maxOf(" ""
-  in-src replace-in-file Fuel.kt ", 0.0)" ""
-  git-commit "estimate formula"
+  commit-first-estimate-formula-draft
 
   copy-to-src RocketFuelPart0/src/Fuel.kt
   copy-rsc RocketFuelPart0/test
   git-commit "squash! estimate"
+}
+
+commit-first-estimate-formula-draft() {
+  copy-to-src RocketFuelPart0/src/Fuel.kt
+  in-src replace-in-file Fuel.kt "maxOf(" ""
+  in-src replace-in-file Fuel.kt ", 0.0)" ""
+  git-commit "estimate formula"
 }
 

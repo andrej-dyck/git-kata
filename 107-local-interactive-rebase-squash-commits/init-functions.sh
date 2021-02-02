@@ -21,8 +21,12 @@ commit-fuel-estimation-and-unit-tests() {
   copy-to-src RocketFuelPart0/src/Fuel.kt
   git-commit "Estimate fuel based on mass"
 
+  commit-estimate-unit-tests
+}
+
+commit-estimate-unit-tests() {
   copy-rsc RocketFuelPart0/test
-  git-commit "Add unit tests"
+  git-commit "Add estimation unit tests"
 }
 
 commit-incomplete-readme() {
