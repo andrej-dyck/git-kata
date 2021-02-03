@@ -8,5 +8,6 @@ include(
     ":201-remote-amend-commit",
     ":202-remote-undo-last-commit",
     ":203-remote-rebase-onto-main",
+    ":204-remote-rebase-with-teammates",
     ":exercise"
 )
