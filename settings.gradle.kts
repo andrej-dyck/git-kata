@@ -17,6 +17,7 @@ include(
     ":204-remote-rebase-with-teammates",
     ":205-remote-interactive-rebase",
     ":206-remote-cherry-pick-commit-on-main",
+    ":207-remote-reflog-restore-lost-commits",
     ":301-remote-advanced-interactive-rebase",
     ":exercise"
 )
