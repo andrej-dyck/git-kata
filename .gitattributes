@@ -1,0 +1,12 @@
+# native line endings on checkout.
+*.md text
+*.kt text
+
+# Convert to LF line endings on checkout.
+*.sh text eol=lf
+
+# Binary files.
+*.svg text
+
+# Set the default behavior for all files.
+* text=auto
