@@ -12,12 +12,15 @@ A clean Git history is beneficial to a project in many ways. Similar to how clea
 However, [good commit messages](https://chris.beams.io/posts/git-commit/) are not enough for a clean Git history, and we need tend to and _refactor_ our history before we "commit" to it; or in other words, [rewrite the history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History). For all the questions above, we want to have coherent, small, and working commits. Further, a linear history helps to comprehend the sequence of changes more easily.
 
 To visualize this, we want to go from this kind of Git log (here, only 3 developers worked in parallel)
+
 ![Git merge](./resources/git-merge-3-devs.svg)
 
 to this kind of linear history (here, 5 developers worked in parallel)
+
 ![Git rebase](./resources/git-rebase-5-devs.svg)
 
 or even as linear as [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow).
+
 ![Git oneflow](./resources/git-one-flow.svg)
 
 **Note**: This kata assumes that you are already have basic Git knowledge, like how to _stage_ files, _commit_ changes, _push_ to origin, _fetch_ and _pull_ from remote, _branching_, and work with the _Git log_. 
