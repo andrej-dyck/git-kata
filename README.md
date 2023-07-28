@@ -33,6 +33,7 @@ or even as linear as [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branc
 * Navigate to the folder of an exercise; e.g., `<kata-root>/101-local-amend-commit`
 * Run the `./init.sh` in that folder
   - On Windows, use _Git BASH_ or other Bash emulators (e.g., [cmder](https://cmder.net/))
+  - On Mac OS X, checkout the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx)
 * Navigate to the created/updated folder `<kata-root>/exercise` with your favorite Git client
 * Consult the README.md in that folder for the description and task
 
