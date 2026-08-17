@@ -2,56 +2,50 @@
 
 ![Git Logo](./resources/git-logo.png)
 
-A clean Git history is beneficial to a project in many ways. Similar to how clean code documents the current state of the software, a well-tended Git log documents what changes happened and why. For example,
-* _What are the design decision in a pull request?_
+A clean Git history is beneficial to a project in many ways. 
+Similar to how clean code documents the current state of the software, a well-tended Git log documents what changes happened and why. 
+For example,
+* _What is the design decision in a pull request?_
 * _What has happened since the last fetch?_
 * _Why did the implementation of a function change?_
 * _Was this a refactoring or a change in functionality?_
-* _When did the bug got introduced? (supported by git-bisect)_
+* _When did the bug get introduced? (supported by git-bisect)_
 
-However, [good commit messages](https://chris.beams.io/posts/git-commit/) are not enough for a clean Git history, and we need tend to and _refactor_ our history before we "commit" to it; or in other words, [rewrite the history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History). For all the questions above, we want to have coherent, small, and working commits. Further, a linear history helps to comprehend the sequence of changes more easily.
+However, [good commit messages](https://chris.beams.io/posts/git-commit/) are not enough for a clean Git history, and we need to tend to and "refactor" our history before we "commit" to it; or in other words, [rewrite the history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History). 
+To this end, we want to have coherent, small, and working commits (**atomic commits**). 
+Further, a linear history helps to comprehend the sequence of changes more easily.
 
-To visualize this, we want to go from this kind of Git log (here, only 3 developers worked in parallel)
+To visualize this, we want to go from this kind of Git log (here, 3 developers worked in parallel using [GitFlow overview](https://datasift.github.io/gitflow/IntroducingGitFlow.html))
 
 ![Git merge](./resources/git-merge-3-devs.svg)
 
-to this kind of linear history (here, 5 developers worked in parallel)
+to this kind of linear history (here, 5 developers worked in parallel using [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow))
 
 ![Git rebase](./resources/git-rebase-5-devs.svg)
 
-or even as linear as [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow).
+or even as linear as [Trunk-based Development](https://trunkbaseddevelopment.com/).
 
 ![Git oneflow](./resources/git-one-flow.svg)
 
-**Note**: This kata assumes that you are already have basic Git knowledge, like how to _stage_ files, _commit_ changes, _push_ to origin, _fetch_ and _pull_ from remote, _branching_, and work with the _Git log_. 
+### Note
+This kata assumes that you are already have basic Git knowledge; e.g., how to _stage_ files, _commit_ changes, _push_ to origin, _fetch_ and _pull_ from remote, _branching_, and work with the _Git log_.
 
 ---
 
-## Quick Start
+## How To / Quick Start
+
+Each exercise is set up by an `init.sh` _bash_ script. 
+When run, it will create/overwrite an `exercise` folder with a local Git repository in a prepared task.
 
 * Ensure the latest `Git` is installed and available in the shell
-* Navigate to the folder of an exercise; e.g., `<kata-root>/101-local-amend-commit`
-* Run the `./init.sh` in that folder
-  - On Windows, use _Git BASH_ or other Bash emulators (e.g., [cmder](https://cmder.net/))
-  - On Mac OS X, checkout the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx)
-* Navigate to the created/updated folder `<kata-root>/exercise` with your favorite Git client
-* Consult the README.md in that folder for the description and task
-
-### With IntelliJ (optional)
-
-_This is optional_, if you want to have compiler support of IntelliJ and/or use its integrated Git client.
-
-* Open this Gradle project with [IntelliJ](https://www.jetbrains.com/idea/)
-  - You can use the free [Community Edition](https://www.jetbrains.com/idea/)
-  - On Windows, set `Settings > Tools > Terminal > Shell path` to `"<system-path-to-git>\bin\bash.exe" --login -i` (see _Note_)
-* In the project view, right-click the `init.sh` of an exercise and _run_ it with `Run 'init.sh'`
-* Select the created/updated folder `<kata-root>/exercise` and open the `Git` tool window (`ALT+9`)
-  - If you cloned this repository, in the Git Log window, chose the filter `Paths: exercise`
+* Navigate to the folder of an exercise; e.g., `101-local-amend-commit`
+* Run `./init.sh` within that folder
+  - On Windows, use _Git BASH_ or other Bash emulators
+* Open the created/updated folder `../exercise` with your favorite Git client
 * Consult the README.md in that folder for the description and task
 
 ### Note
-The init scripts for this kata are _bash_ scripts, at the moment. Thus, you need a Bash to execute them.
-Fortunately for Windows, the _Git Bash_ is a shell that can execute those scripts.
+On Mac OS X, checkout the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx)
 
 ---
 
@@ -59,7 +53,7 @@ Fortunately for Windows, the _Git Bash_ is a shell that can execute those script
 
 The [Git version control system](https://git-scm.com/)
 
-### Katas inpired by
+### Katas inspired by
 * [eficode-academy/git-katas](https://github.com/eficode-academy/git-katas)
 * [Git Immersion - A guided tour](https://gitimmersion.com/)
 
@@ -70,10 +64,10 @@ The [Git version control system](https://git-scm.com/)
 
 ### Workflows
 * [Comparing workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
+* [Trunk-based Development](https://trunkbaseddevelopment.com/)
 * [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow)
 * [GitFlow overview](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
 * [Enhanced GitFlow](https://www.toptal.com/gitflow/enhanced-git-flow-explained)
-* [Trunk-based Development](https://trunkbaseddevelopment.com/)
 
 ### Merge & Rebase
 * [Merge vs Rebase](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
@@ -87,10 +81,11 @@ The [Git version control system](https://git-scm.com/)
 * [Learn Git Branching](https://learngitbranching.js.org/)
 
 ### Recommended Git Clients
-* [Git-Plugin of JetBrains IDEs](https://www.jetbrains.com/help/idea/version-control-integration.html) (free with community edition IDEs)
-* [SmartGit](https://www.syntevo.com/smartgit/) (free/paid)
-* [Fork](https://git-fork.com/) (paid)
-* [GitKraken](https://www.gitkraken.com/git-client) (free/paid)
+* [Git-Plugin of JetBrains IDEs (e.g., IntelliJ)](https://www.jetbrains.com/help/idea/version-control-integration.html) (free with community edition IDEs)
+* [SmartGit](https://www.syntevo.com/smartgit/) (paid)
+* [Fork](https://git-fork.com/) (paid, free evaluation)
+* [GitKraken](https://www.gitkraken.com/git-client) (paid, free for OSS)
+* here you can find some other [Git-GUIs](https://git-scm.com/tools/guis)
 
 ### Other Tools
 * [gitignore.io](https://www.toptal.com/developers/gitignore)
