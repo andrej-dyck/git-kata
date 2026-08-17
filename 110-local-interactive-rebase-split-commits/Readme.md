@@ -1,6 +1,8 @@
 # Interactive rebase - Split commits
 
-Sometimes we committed too many changes in one commit. If that's the last commit, we could undo the last commit. However, if it's any of the earlier commits,
+Sometimes we commit too many changes in one commit. 
+If that's the last commit, we could undo the last commit. 
+However, if it's any of the earlier commits.
 
 ![](../resources/main-feature-before-split.svg)
 
@@ -10,4 +12,5 @@ we can use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive
 
 ## Exercise
 
-In this exercise, we accidentally committed the _RocketFuel_ readme with the types. Split this commit into two.
+In this exercise, we accidentally committed the _RocketFuel_ readme with the types. 
+Split this commit into two.

@@ -12,4 +12,6 @@ There are several ways to "pull" origin:
 
 ## Exercise
 
-In this exercise, you are reviewing the feature and checked out the `feature` branch locally. The author of the branch then rebased it onto `main` making your local branch fall behind `origin/feature`. _Reset_ your branch so that the branches are in sync again.
+In this exercise, you are reviewing the feature and checked out the `feature` branch locally.
+The author of the branch then rebased it onto `main` making your local branch fall behind `origin/feature`.
+_Reset_ your branch so that the branches are in sync again.
