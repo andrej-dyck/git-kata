@@ -2,7 +2,7 @@
 source ../scripts/index.sh
 
 init-exercise() {
-  clean-exercise-repo
+  init-exercise-repo
 
   commit-greeting-with-mistakes
 }

@@ -7,7 +7,7 @@ source ../110-local-interactive-rebase-split-commits/init.sh
 source ../111-local-interactive-rebase-delete-commits/init.sh
 
 init-exercise() {
-  cloned-exercise-repo
+  init-exercise-repo-with-origin
 
   local feature="fuel-estimation"
 

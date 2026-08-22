@@ -3,7 +3,7 @@ source ../scripts/index.sh
 source ../104-local-rebase-onto-main/init.sh
 
 init-exercise() {
-  clean-exercise-repo
+  init-exercise-repo
 
   commit-rocket-fuel-readme
   commit-mass-and-fuel-draft

@@ -1,20 +1,20 @@
-cloned-exercise-repo() {
+init-exercise-repo-with-origin() {
   local readmePath="${PWD##*/}"
 
   local originDir="../exercise-origin"
 
   # we need a bare origin
-  bare-exercise-origin "$originDir"
+  init-bare-origin "$originDir"
 
   # clone exercise repo
-  init-exercise-repo "$originDir"
+  create-or-clone-new-exercise-repo "$originDir"
 
   # push initial commits
   initial-commits "../$readmePath" # we are in exercise-dir now
   git push
 }
 
-bare-exercise-origin() {
+init-bare-origin() {
   local originDir="$1"
 
   # make main the default branch for init

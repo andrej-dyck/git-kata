@@ -3,7 +3,7 @@ source ../scripts/index.sh
 source ../104-local-rebase-onto-main/init.sh
 
 init-exercise() {
-  cloned-exercise-repo
+  init-exercise-repo-with-origin
 
   # dev1 rebases feature branch onto main as in exercise 203
   commit-rocket-fuel-readme

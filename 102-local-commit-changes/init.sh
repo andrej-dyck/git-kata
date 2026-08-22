@@ -3,7 +3,7 @@ source ../scripts/index.sh
 source ../101-local-amend-commit/init.sh
 
 init-exercise() {
-  clean-exercise-repo
+  init-exercise-repo
 
   commit-greeting-with-mistakes
   fix-greeting-mistakes

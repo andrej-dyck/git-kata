@@ -3,7 +3,7 @@ source ../scripts/index.sh
 source ../105-local-rebase-with-conflicts/init.sh
 
 init-exercise() {
-  clean-exercise-repo
+  init-exercise-repo
 
   local feature="fuel-estimation"
 

@@ -1,14 +1,14 @@
-clean-exercise-repo() {
+init-exercise-repo() {
   local readmePath="${PWD##*/}"
 
   # init repo without origin
-  init-exercise-repo ""
+  create-or-clone-new-exercise-repo ""
 
   # make initial commits
   initial-commits "../$readmePath" # we are in exercise-dir now
 }
 
-init-exercise-repo() {
+create-or-clone-new-exercise-repo() {
   local origin="$1"
 
   local exerciseDir="../exercise"
@@ -31,9 +31,9 @@ init-exercise-repo() {
   git config --local commit.gpgsign false
   git config --local core.autocrlf false
 
-  # rename master branch if local repository
+  # ensure main branch is called main not master if it's a non-cloned-repo
   if [ -z "$origin" ]; then
-    rename-master-branch
+    ensure-main-branch-naming
   fi
 
   # configure simple gitflow
@@ -41,7 +41,7 @@ init-exercise-repo() {
   git config --local gitflow.prefix.feature "feature"
 }
 
-rename-master-branch() {
+ensure-main-branch-naming() {
   # rename master to main
   # cf. https://sfconservancy.org/news/2020/jun/23/gitbranchname/
   # for your global config: "git config --global init.defaultBranch main"
@@ -55,8 +55,8 @@ initial-commits() {
   local readmePath="$1"
 
   cp ../.gitignore .
-  git-commit "Add .gitignore" .gitignore
+  git-commit "configure .gitignore" .gitignore
 
   cp "${readmePath}/README.md" .
-  git-commit "Add exercise README" README.md
+  git-commit "add exercise README" README.md
 }

@@ -2,7 +2,7 @@
 source ../scripts/index.sh
 
 init-exercise() {
-  cloned-exercise-repo
+  init-exercise-repo-with-origin
 
   local feature="add-greeting"
 

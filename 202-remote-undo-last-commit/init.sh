@@ -3,7 +3,7 @@ source ../scripts/index.sh
 source ../103-local-undo-last-commit/init.sh
 
 init-exercise() {
-  cloned-exercise-repo
+  init-exercise-repo-with-origin
 
   local feature="add-greeting"
 

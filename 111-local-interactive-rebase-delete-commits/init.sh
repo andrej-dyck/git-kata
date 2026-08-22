@@ -5,7 +5,7 @@ source ../107-local-interactive-rebase-squash-commits/init.sh
 source ../110-local-interactive-rebase-split-commits/init.sh
 
 init-exercise() {
-  clean-exercise-repo
+  init-exercise-repo
 
   local feature="fuel-estimation"
 

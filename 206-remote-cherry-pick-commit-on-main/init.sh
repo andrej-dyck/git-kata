@@ -4,7 +4,7 @@ source ../104-local-rebase-onto-main/init.sh
 source ../110-local-interactive-rebase-split-commits/init.sh
 
 init-exercise() {
-  cloned-exercise-repo
+  init-exercise-repo-with-origin
 
   push-fuel-estimation-without-min-req
   git-push-changes

@@ -3,7 +3,7 @@ source ../scripts/index.sh
 source ../102-local-commit-changes/init.sh
 
 init-exercise() {
-  clean-exercise-repo
+  init-exercise-repo
 
   commit-greeting-main-draft "Draft main"
   commit-unfinished-greeting "WIP: greeting"

@@ -4,7 +4,7 @@ source ../104-local-rebase-onto-main/init.sh
 source ../203-remote-rebase-onto-main/init.sh
 
 init-exercise() {
-  cloned-exercise-repo
+  init-exercise-repo-with-origin
 
   local feature="fuel-estimation"
   work-on-feature-branch "$feature"

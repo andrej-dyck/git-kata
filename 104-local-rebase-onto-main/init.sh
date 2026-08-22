@@ -2,7 +2,7 @@
 source ../scripts/index.sh
 
 init-exercise() {
-  clean-exercise-repo
+  init-exercise-repo
 
   local feature="fuel-estimation"
   work-on-feature-branch "$feature"
