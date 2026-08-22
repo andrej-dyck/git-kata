@@ -1,5 +1,7 @@
+#!/usr/bin/env bash
+
 copy-rsc() {
-  local resourcePath="$1" path="$2" subDir="$3"
+  local resourcePath="$1" path="${2:-}" subDir="${3:-}"
 
   local rscPath="../resources"
   local localDir="./"
@@ -13,7 +15,7 @@ copy-rsc() {
 }
 
 copy-to-src() {
-  local resourcePath="$1" path="$2"
+  local resourcePath="$1" path="${2:-}"
 
   copy-rsc "$resourcePath" "$path" "src"
 }

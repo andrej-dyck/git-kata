@@ -1,4 +1,4 @@
 # Further Exercise Ideas
 
-- [ ] cherry-pick from remote branch
+- [ ] cherry-pick from a remote branch
 - [ ] interactive rebase onto a branch that has been amended

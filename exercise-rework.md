@@ -902,6 +902,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
 init-exercise() {
   local exerciseDir="$1"
 
+  cd "$exerciseDir"
   echo "TODO stuff in $exerciseDir"
 }
 

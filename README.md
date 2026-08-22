@@ -2,8 +2,8 @@
 
 ![Git Logo](./resources/git-logo.png)
 
-A clean Git history is beneficial to a project in many ways. 
-Similar to how good code documents the current state of the software, a well-tended Git log documents which changes happened and why. 
+A clean Git history is beneficial to a project in many ways.
+Similar to how good code documents the current state of the software, a well-tended Git log documents which changes happened and why.
 For example,
 * _What are the design decisions?_
 * _What has happened since the last fetch?_
@@ -11,8 +11,8 @@ For example,
 * _Is the change a straight-forward refactoring or a change in functionality?_
 * _When did the bug get introduced? (supported by git-bisect)_
 
-However, [good commit messages](https://chris.beams.io/posts/git-commit/) are not enough for a clean Git history, and we need to tend to and "refactor" our history before we "commit" to it; or in other words, [rewrite the history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History). 
-To this end, we want to have coherent, small, and working commits (**atomic commits**). 
+However, [good commit messages](https://chris.beams.io/posts/git-commit/) are not enough for a clean Git history, and we need to tend to and "refactor" our history before we "commit" to it; or in other words, [rewrite the history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
+To this end, we want to have coherent, small, and working commits (**atomic commits**).
 Further, a linear history helps to comprehend the sequence of changes more easily.
 
 To visualize this, we want to go from this kind of Git log (here, 3 developers worked in parallel using [GitFlow overview](https://datasift.github.io/gitflow/IntroducingGitFlow.html))
@@ -39,15 +39,19 @@ When run, it will create/overwrite an `exercise` folder with a local Git reposit
 
 * Ensure the latest `Git` is installed and available in the shell
 * Navigate to the folder of an exercise; e.g., `101-local-amend-commit`
-* Run `./init.sh` within that folder
+* Run `init.sh` that is located in that exercise folder
   - On Windows, use _Git BASH_ or other Bash emulators
-* Open the created/updated folder `../exercise` with your favorite Git client
+* Open the created/updated folder `<root>/exercise` with your favorite Git client
 * Consult the README.md in that folder for the description and task
 
-### Note for Mac OS X
-On Mac OS X, checkout the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx).
+### Notes
+* On **Mac OS X**, checkout and use the scripts of the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx)
+* On **Linux** / **Mac OS X**, you might need to make the `init.sh` executable with `chmod +x init.sh`
+* Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "exercise-101"`
+  * _Important_: relative links or images in the `README.md` might not work
 
-### Clean-up
+### Clean-up (optional)
+Remove the `exercise` folder and its origin `exercise-origin`. For the default folders, use:
 
 ```shell
 rm -rf exercise

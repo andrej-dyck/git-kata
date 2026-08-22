@@ -1,20 +1,22 @@
+#!/usr/bin/env bash
+
 init-exercise-repo() {
   local readmePath="${PWD##*/}"
 
   # init repo without origin
-  create-or-clone-new-exercise-repo ""
+  _create-or-clone-new-exercise-repo ""
 
   # make initial commits
-  initial-commits "../$readmePath" # we are in exercise-dir now
+  _initial-commits "../$readmePath" # we are in exercise-dir now
 }
 
-create-or-clone-new-exercise-repo() {
-  local origin="$1"
+_create-or-clone-new-exercise-repo() {
+  local origin="${1:-}"
 
-  local exerciseDir="../exercise"
+  local exerciseDir="../exercise" # TODO get as argument
 
   # cleanup existing exercise folder
-  rm -rf "${exerciseDir:?}"
+  rm -rf "${exerciseDir:?}" # TODO REMOVE
 
   if [ -z "$origin" ]; then
     # initialize a new repository
@@ -33,7 +35,7 @@ create-or-clone-new-exercise-repo() {
 
   # ensure main branch is called main not master if it's a non-cloned-repo
   if [ -z "$origin" ]; then
-    ensure-main-branch-naming
+    _ensure-main-branch-naming
   fi
 
   # configure simple gitflow
@@ -41,22 +43,24 @@ create-or-clone-new-exercise-repo() {
   git config --local gitflow.prefix.feature "feature"
 }
 
-ensure-main-branch-naming() {
-  # rename master to main
+_ensure-main-branch-naming() {
+  # ensure main branch is called `main` and not `master`
   # cf. https://sfconservancy.org/news/2020/jun/23/gitbranchname/
   # for your global config: "git config --global init.defaultBranch main"
-  local branchName=$(git branch --show-current)
+  local branchName
+  branchName=$(git branch --show-current)
+
   if [ "$branchName" = "master" ]; then
     git branch -m master main
   fi
 }
 
-initial-commits() {
-  local readmePath="$1"
+_initial-commits() {
+  local exerciseDir="$1"
 
-  cp ../.gitignore .
+  cp "$REPO_ROOT_DIR/.gitignore" .
   git-commit "configure .gitignore" .gitignore
 
-  cp "${readmePath}/README.md" .
+  cp "${exerciseDir}/README.md" .
   git-commit "add exercise README" README.md
 }
