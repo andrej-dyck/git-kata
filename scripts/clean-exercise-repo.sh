@@ -57,6 +57,6 @@ initial-commits() {
   cp ../.gitignore .
   git-commit "Add .gitignore" .gitignore
 
-  cp "${readmePath}/Readme.md" .
-  git-commit "Add exercise readme" Readme.md
+  cp "${readmePath}/README.md" .
+  git-commit "Add exercise README" README.md
 }
