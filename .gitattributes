@@ -1,12 +1,8 @@
-# native line endings on checkout.
-*.md text
-*.kt text
-
-# Convert to LF line endings on checkout.
+# Convert shell scripts to LF line endings on checkout
 *.sh text eol=lf
 
-# Binary files.
+# Treat SVGs as text
 *.svg text
 
-# Set the default behavior for all files.
-* text=auto
+# Default behavior for all other files
+* text=auto eol=lf encoding=utf-8
