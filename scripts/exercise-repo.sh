@@ -1,66 +1,53 @@
 #!/usr/bin/env bash
 
 init-exercise-repo() {
-  local readmePath="${PWD##*/}"
+  if [ "$#" -lt 2 ]; then
+    echo "Usage: init-exercise-repo <exercise-dir> <exercise-readme-path>" >&2
+    return 1
+  fi
 
-  # init repo without origin
-  _create-or-clone-new-exercise-repo ""
+  local exerciseDir="$1" exerciseReadmePath="$2"
 
-  # make initial commits
-  _initial-commits "../$readmePath" # we are in exercise-dir now
+  # local repo without origin
+  _create-or-clone-new-exercise-repo "$exerciseDir" || return $?
+
+  _initial-commits "$exerciseReadmePath" || return $?
+}
+
+_initial-commits() {
+  local exerciseReadmePath="$1"
+
+  cd "$exerciseDir" || return $?
+
+  cp "$REPO_ROOT_DIR/.gitignore" . || return $?
+  git-commit "configure Git" .gitignore || return $?
+
+  cp "$exerciseReadmePath" . || return $?
+  git-commit "write exercise README" README.md || return $?
 }
 
 _create-or-clone-new-exercise-repo() {
-  local origin="${1:-}"
+  local exerciseDir="$1" origin="${2:-}"
 
-  local exerciseDir="../exercise" # TODO get as argument
-
-  # cleanup existing exercise folder
-  rm -rf "${exerciseDir:?}" # TODO REMOVE
+  # make main the default branch for init
+  git config --global init.defaultBranch main || return $?
 
   if [ -z "$origin" ]; then
     # initialize a new repository
-    git init $exerciseDir
+    git init "$exerciseDir" || return $?
   else
     # otherwise clone origin
-    git clone "$origin" "$exerciseDir"
+    git clone "$origin" "$exerciseDir" || return $?
   fi
 
   # go to exercise dir
-  cd "$exerciseDir" || exit
+  cd "$exerciseDir" || return $?
 
   # local git config
   git config --local commit.gpgsign false
   git config --local core.autocrlf false
 
-  # ensure main branch is called main not master if it's a non-cloned-repo
-  if [ -z "$origin" ]; then
-    _ensure-main-branch-naming
-  fi
-
   # configure simple gitflow
   git config --local gitflow.branch.develop "main"
   git config --local gitflow.prefix.feature "feature"
-}
-
-_ensure-main-branch-naming() {
-  # ensure main branch is called `main` and not `master`
-  # cf. https://sfconservancy.org/news/2020/jun/23/gitbranchname/
-  # for your global config: "git config --global init.defaultBranch main"
-  local branchName
-  branchName=$(git branch --show-current)
-
-  if [ "$branchName" = "master" ]; then
-    git branch -m master main
-  fi
-}
-
-_initial-commits() {
-  local exerciseDir="$1"
-
-  cp "$REPO_ROOT_DIR/.gitignore" .
-  git-commit "configure .gitignore" .gitignore
-
-  cp "${exerciseDir}/README.md" .
-  git-commit "add exercise README" README.md
 }

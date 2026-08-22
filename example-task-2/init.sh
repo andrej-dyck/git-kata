@@ -5,11 +5,10 @@ source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
 source "$REPO_ROOT_DIR/example-task-1/init.sh"
 
 init-exercise() {
-  local exerciseDir="$1"
+  local thisDir="$1" exerciseDir="$2"
 
-  cd "$exerciseDir"
-  touch ".gitignore"
-  touch "task-2.md"
+  init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return $?
+  cd "$exerciseDir" || return $?
 }
 
 run-init-exercise "$@"

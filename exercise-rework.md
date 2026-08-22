@@ -900,10 +900,12 @@ source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
 # source "$REPO_ROOT_DIR/<other-exercise>/init.sh"
 
 init-exercise() {
-  local exerciseDir="$1"
+  local thisDir="$1" exerciseDir="$2"
 
-  cd "$exerciseDir"
-  echo "TODO stuff in $exerciseDir"
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return $?
+  cd "$exerciseDir" || return $?
+
+  # TODO setup git history for exercise
 }
 
 run-init-exercise "$@"

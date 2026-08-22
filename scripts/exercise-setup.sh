@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
+# this function is expected to be called by an exercise `init.sh`
 # expects `init.sh` to define function `init-exercise`
 # and runs it when `init.sh` is called directly (rather than imported)
 run-init-exercise() {
@@ -12,22 +12,26 @@ run-init-exercise() {
 
   local initScriptDir
   initScriptDir="$(cd "$(dirname "$callerScript")" && pwd)"
-  readonly initScriptDir
-
-  local exerciseName
-  exerciseName="$(basename "$initScriptDir")"
-  readonly exerciseName
 
   local exerciseDir
   exerciseDir="${1:-$REPO_ROOT_DIR/exercise}"
-  readonly exerciseDir
+
+  local exerciseName
+  exerciseName="$(basename "$initScriptDir")"
 
   echo "Initialize '$exerciseName' at '$exerciseDir'"
 
-  echo "Ensure exercise folder is empty"
-  rm -rf "${exerciseDir:?}" && mkdir "$exerciseDir"
+  echo "Ensure exercise folder exists and is empty"
+  rm -rf "$exerciseDir" && mkdir "$exerciseDir"
+  rm -rf "$exerciseDir-origin"
 
-  init-exercise "$exerciseDir"
+  local initExitCode=0
+  init-exercise "$initScriptDir" "$exerciseDir" || initExitCode=$?
+
+  if [ "$initExitCode" -ne 0 ]; then
+    echo "Failed to initialize '$exerciseName' at '$exerciseDir'" >&2
+    return "$initExitCode"
+  fi
 
   echo "Successfully initialized '$exerciseName' at '$exerciseDir'"
 }

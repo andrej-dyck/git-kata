@@ -1,31 +1,35 @@
 #!/usr/bin/env bash
 
 init-exercise-repo-with-origin() {
-  local readmePath="${PWD##*/}"
+  if [ "$#" -lt 2 ]; then
+    echo "Usage: init-exercise-repo-with-origin <exercise-dir> <exercise-readme-path>" >&2
+    return 1
+  fi
 
-  local originDir="../exercise-origin" # TODO get as argument
+  local exerciseDir="$1" exerciseReadmePath="$2"
+  local originDir="$exerciseDir-origin"
 
-  # we need a bare origin
-  _init-bare-origin "$originDir"
+  # create a bare origin repo
+  _init-bare-origin "$originDir" || return $?
 
   # clone exercise repo
-  _create-or-clone-new-exercise-repo "$originDir"
+  _create-or-clone-new-exercise-repo "$exerciseDir" "$originDir" || return $?
 
   # push initial commits
-  _initial-commits "../$readmePath" # we are in exercise-dir now
-  git push
+  _initial-commits "$exerciseReadmePath" || return $?
+  git push || return $?
 }
 
 _init-bare-origin() {
   local originDir="$1"
 
   # make main the default branch for init
-  git config --global init.defaultBranch main
+  git config --global init.defaultBranch main || return $?
 
   # cleanup existing exercise folder
-  rm -rf "${originDir:?}"
-  mkdir -p "$originDir"
+  rm -rf "${originDir:?}" || return $?
+  mkdir -p "$originDir" || return $?
 
   # create a bare remote
-  git init --bare "$originDir"
+  git init --bare "$originDir" || return $?
 }
