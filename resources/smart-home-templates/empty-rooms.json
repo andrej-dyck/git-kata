@@ -1,0 +1,5 @@
+{
+  "$schema": "rooms.schema.json",
+  "apiVersion": "1.0",
+  "rooms": []
+}

@@ -32,27 +32,36 @@ This kata assumes that you already have basic Git knowledge; e.g., how to _stage
 
 ---
 
+## Doing this Git-Kata
+
+Each exercise is self-contained, even when they refer to previous exercise numbers; the task is described in the `README.md` file.
+
+Each exercise is safe to experiment with, as a local-only repository is set up by an `init.sh` _bash script_ and, if stuck, you can always re-run the `init.sh` again.
+
+It is highly recommended to use a graphical (GUI) Git client for the exercises.
+
+Each exercise ends in a clean working tree (i.e., `git status` shows no changes), a clean staging area (i.e., `git diff --staged` shows no changes), and a _clean_ history (i.e., `git log --oneline --graph --decorate --all` shows the target history).
+
+---
+
 ## How-To / Quick Start
 
-Each exercise is set up by an `init.sh` _bash_ script.
-When run, it will create/overwrite an `exercise` folder with a local Git repository in a prepared task.
-
-* Ensure the latest `Git` is installed and available in the shell
+* Ensure the latest [Git](https://git-scm.com/) is installed and available in your terminal
 * Navigate to the folder of an exercise; e.g., `101-local-amend-commit`
-* Run `init.sh` that is located in that exercise folder
-  - On Windows, use _Git BASH_ or other Bash emulators
-* Open the created/updated folder `<root>/exercise` with your favorite Git client
-* Consult the README.md in that folder for the description and task
+* Run the corresponding `init.sh` which setups the local repository in `<kata-root>/exercise`
+  * NOTE: by default, each exercise will use this folder and overwrite any existing content
+* Open the created/updated folder `<kata-root>/exercise` with your favorite Git client
+* Consult the `README.md` in that folder for the description and task
 
 ### Notes
 * On **Mac OS X**, checkout and use the scripts of the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx)
 * On **Linux** / **Mac OS X**, you might need to make the `init.sh` executable with `chmod +x init.sh`
+* On **Windows** with [**Git**]([Git](https://git-scm.com/)) installed, use the _Git Bash_ with `sh init.sh` to execute the script
 * Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "exercise-101"`
   * _Important_: relative links or images in the `README.md` might not work
 
 ### Clean-up (optional)
 Remove the `exercise` folder and its origin `exercise-origin`. For the default folders, use:
-
 ```shell
 rm -rf exercise
 rm -rf exercise-origin
@@ -88,12 +97,13 @@ The **body** (optional, separated by an empty line from the subject) explains _w
 
 ### One Main Branch
 Maintain one `main` branch for all environments, including production.
+It is recommended to protect this `main` branch from history rewrites.
 
 Every commit on `main` must be continuously deployed; i.e., it must be releasable and production-ready.
 
 Avoid long-lived branching schemes (e.g., GitFlow's `develop`, `release`, and `support` branches).
 
-### Short-Lived Branches
+### Short-lived Branches
 When using branches, keep them _short-lived_ and integrate them into `main` as soon as possible; ideally within minutes or hours.
 
 Rebase frequently onto `main` to stay in sync and prevent merge conflicts.

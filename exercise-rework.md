@@ -58,7 +58,7 @@ graph LR
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "name", "floor"],
+        "required": ["id", "name"],
         "properties": {
           "id": {
             "type": "string",
@@ -68,9 +68,6 @@ graph LR
             "type": "string",
             "minLength": 1
           },
-          "floor": {
-            "type": "integer"
-          }
         },
         "additionalProperties": false
       }
@@ -88,22 +85,18 @@ graph LR
     {
       "id": "living-room",
       "name": "Living Room",
-      "floor": 0
     },
     {
       "id": "kitchen",
       "name": "Kitchen",
-      "floor": 0
     },
     {
       "id": "office",
       "name": "Home Office",
-      "floor": 1
     },
     {
       "id": "bedroom",
-      "name": "Master Bedroom",
-      "floor": 1
+      "name": "Bedroom",
     }
   ]
 }
@@ -128,7 +121,7 @@ graph LR
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "name", "roomId", "type", "state"],
+        "required": ["id", "name", "roomId"],
         "properties": {
           "id": {
             "type": "string",
@@ -142,39 +135,6 @@ graph LR
             "type": "string",
             "pattern": "^[a-z0-9-]+$"
           },
-          "type": {
-            "type": "string",
-            "enum": ["light", "thermostat", "motion-sensor", "smart-plug", "door-sensor"]
-          },
-          "state": {
-            "type": "object",
-            "properties": {
-              "powered": {
-                "type": "boolean"
-              },
-              "brightness": {
-                "type": "integer",
-                "minimum": 0,
-                "maximum": 100
-              },
-              "targetTemperatureCelsius": {
-                "type": "number",
-                "minimum": 10.0,
-                "maximum": 35.0
-              },
-              "motionDetected": {
-                "type": "boolean"
-              },
-              "isOpen": {
-                "type": "boolean"
-              },
-              "maxWattage": {
-                "type": "integer",
-                "minimum": 1
-              }
-            },
-            "additionalProperties": false
-          }
         },
         "additionalProperties": false
       }
@@ -193,29 +153,16 @@ graph LR
       "id": "living-room-thermostat",
       "name": "Living Room Thermostat",
       "roomId": "living-room",
-      "type": "thermostat",
-      "state": {
-        "targetTemperatureCelsius": 21.5
-      }
     },
     {
       "id": "office-desk-lamp",
       "name": "Office Desk Lamp",
       "roomId": "office",
-      "type": "light",
-      "state": {
-        "powered": false,
-        "brightness": 80
-      }
     },
     {
       "id": "hallway-motion-sensor",
       "name": "Hallway Motion Sensor",
       "roomId": "living-room",
-      "type": "motion-sensor",
-      "state": {
-        "motionDetected": false
-      }
     }
   ]
 }
@@ -355,7 +302,7 @@ To ensure participants understand both Git state and domain state, validation op
 
 ### Formatting Conventions for Clean Git Diffs
 1. **2-space indentation** for all JSON files.
-2. **Deterministic key ordering** (`id`, `name`, `roomId`/`floor`, `type`, `state`, `enabled`, `when`, `then`).
+2. **Deterministic key ordering** (`id`, `name`, `roomId`, `type`, `state`, `enabled`, `when`, `then`).
 3. **One object per block** with closing brackets on dedicated lines to minimize diff hunks.
 4. **No trailing commas** (adhering strictly to JSON specification).
 

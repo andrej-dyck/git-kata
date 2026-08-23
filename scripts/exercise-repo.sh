@@ -25,7 +25,7 @@ _initial-exercise-commits() {
   git-commit "configure Git" .gitignore || return
 
   cp "$exerciseReadmePath" . || return
-  git-commit "write exercise README" README.md || return
+  git-commit "write README" README.md || return
 }
 
 _init-new-git-repo() {

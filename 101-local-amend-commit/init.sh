@@ -1,21 +1,26 @@
-#!/bin/bash
-source ../scripts/index.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
 
 init-exercise() {
-  init-exercise-repo
+  local thisDir="$1" exerciseDir="$2"
 
-  commit-greeting-with-mistakes
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
+
+  commit-empty-rooms || return
+  commit-living-room-with-mistake || return
 }
 
-commit-greeting-with-mistakes() {
-  copy-to-src Greeting.kt
+commit-empty-rooms() {
+  copy-rsc "smart-home-templates/rooms.schema.json" ./ || return
+  copy-rsc "smart-home-templates/empty-rooms.json" rooms.json || return
 
-  in-src replace-in-file Greeting.kt "String = \"Git\"" "String = \"World\""
-  in-src prepend-line-to-file Greeting.kt "import java.io.OutputStream\n"
-
-  in-src git-commit "Add greeting"
+  git-commit "define rooms schema"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+commit-living-room-with-mistake() {
+  json-edit rooms.json '.rooms += ["living-room"]' || return # the mistake
+
+  git-commit "add living room to rooms"
+}
+
+run-init-exercise "$@"
