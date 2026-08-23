@@ -1,14 +1,35 @@
-# Rebase onto main with pushed feature
+# 203 Rebase a Pushed Branch onto `main`
 
-In [exercise 104](../104-local-rebase-onto-main/Readme.md), we showed how we can create a linear history using [`git rebase`](https://git-scm.com/docs/git-rebase).
+🚧 WIP (this exercise isn't done yet)
 
-However, often we already pushed our `feature` to `origin`. 
-Then, Git rebase will only rebase our local feature branch onto `main`.
+TODO Git command, its purpose, and how we can use it to develop a clean git history.
+
+TODO refer to [exercise 104](../104-local-rebase-onto-main/README.md)
+
+TODO use [`git rebase`](https://git-scm.com/docs/git-rebase) and then [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to overwrite the branch on origin.
 
 ![](../resources/main-feature-out-of-sync-origin-after-rebase.svg)
 
-To achieve the linear history on `origin`, we need to override the history of `origin/feature` with our local history; i.e., force pushing our branch with [`git push --force`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force). 
+## Exercise Context
 
-## Exercise
+We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
 
-In this exercise, the _RocketFuel_ readme was pushed to `main` making our (also already pushed) `feature` out of sync. Pull the `main` branch and rebase the local `feature` branch onto `main` so that you have a linear history. Last, overwrite the `feature` branch on `origin` with the local linear history. 
+TODO current state of the project.
+
+## Task: [Task Title]
+
+TODO this exercise's task
+
+### Initial Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after `init.sh`
+```
+_Note_: ...
+
+### Target Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after exercise is done
+```
+_Note_: ...

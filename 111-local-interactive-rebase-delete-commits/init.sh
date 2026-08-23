@@ -1,27 +1,13 @@
-#!/bin/bash
-source ../scripts/index.sh
-source ../104-local-rebase-onto-main/init.sh
-source ../107-local-interactive-rebase-squash-commits/init.sh
-source ../110-local-interactive-rebase-split-commits/init.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
+# source "$REPO_ROOT_DIR/<other-exercise>/init.sh"
 
 init-exercise() {
-  init-exercise-repo
+  local thisDir="$1" exerciseDir="$2"
 
-  local feature="fuel-estimation"
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
-  git-feature-branch "$feature"
-
-  commit-rocket-fuel-readme
-  commit-mass-and-fuel-types-in-one-commit
-  commit-tmp-main
-  commit-fuel-estimation-and-unit-tests
+  # TODO setup git history for exercise
 }
 
-commit-tmp-main() {
-  copy-to-src RocketFuelPart0/tmp-main.kt
-  git-commit "REMOVE! tmp main for drafting"
-}
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+run-init-exercise "$@"

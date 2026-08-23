@@ -1,14 +1,12 @@
-# 111 Interactive Rebase - Delete Commits
+# 301 Interactive Rebase - Re-writing History With conflicts
 
 🚧 WIP (this exercise isn't done yet)
 
 TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _delete_ commits
+TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) and then [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to overwrite the branch on origin.
 
-![](../resources/main-feature-before-split.svg)
-
-![](../resources/main-feature-splitted.svg)
+TODO You might encounter conflicts during your interactive rebase, some commits might have changed that you want to be deleted from your branch
 
 ## Exercise Context
 

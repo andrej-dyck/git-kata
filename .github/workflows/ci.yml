@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ "main", "rework-to-json-source-files" ]
+    branches: [ "main" ]
 
 permissions:
   contents: read
