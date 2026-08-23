@@ -9,14 +9,14 @@ git-commit() {
   local commitMsg="$1" files="${2:-}"
 
   _git-stage-files "$files"
-  git commit -m "$commitMsg" || return $?
+  git commit -q -m "$commitMsg" || return $?
 }
 
-git-amend-commit() {
+git-amend-commit() { # obsolete? TODO remove
   local commitMsg="$1" files="${2:-}"
 
   _git-stage-files "$files"
-  git commit --amend -m "$commitMsg" || return $?
+  git commit -q --amend -m "$commitMsg" || return $?
 }
 
 _git-stage-files() {
@@ -29,28 +29,46 @@ _git-stage-files() {
   fi
 }
 
-git-feature-branch() {
-  local name="$1"
-
-  git checkout -b "feature/$name" || return $?
+git-checkout-new-branch() {
+  git checkout -b "$1" || return $?
 }
 
-git-push-changes() {
-  git push origin || return $?
-}
-
-git-push-feature-branch() {
-  local name="$1"
-
-  git push -u origin "feature/$name" || return $?
+git-checkout-branch() {
+  git checkout "$1" || return $?
 }
 
 git-checkout-main() {
   git checkout "main" || return $?
 }
 
-git-checkout-feature() {
-  local name="$1"
+git-push-new-branch() {
+  git push -q -u origin "$1" || return $?
+}
 
-  git checkout "feature/$name" || return $?
+git-push() {
+  git push -q origin || return $?
+}
+
+git-push-changes() { # obsolete(use git-push) TODO remove
+  git-push || return $?
+}
+
+git-feature-branch() { # obsolete? TODO remove
+  git-checkout-new-branch "feature/$1" || return $?
+}
+
+git-push-feature-branch() { # obsolete? TODO remove
+  git-push-new-branch "feature/$1" || return $?
+}
+
+git-checkout-feature() { # obsolete? TODO remove
+  git-checkout-branch "feature/$1" || return $?
+}
+
+git-log-graph() {
+  if [ "$#" -ge 1 ]; then
+    echo "$1"
+  fi
+
+  git log --all --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(green)(%cr)%Creset %C(blue)<%an>%Creset' --abbrev-commit --date=relative
 }

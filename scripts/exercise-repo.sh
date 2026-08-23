@@ -9,14 +9,14 @@ init-exercise-repo() {
   local exerciseDir="$1" exerciseReadmePath="$2"
 
   # local repo without origin
-  _create-or-clone-new-exercise-repo "$exerciseDir" || return $?
+  _init-new-git-repo "$exerciseDir" || return $?
 
-  _initial-commits "$exerciseReadmePath" || return $?
+  _initial-exercise-commits "$exerciseReadmePath" || return $?
 
   cd "$exerciseDir" || return $?
 }
 
-_initial-commits() {
+_initial-exercise-commits() {
   local exerciseReadmePath="$1"
 
   cd "$exerciseDir" || return $?
@@ -28,22 +28,22 @@ _initial-commits() {
   git-commit "write exercise README" README.md || return $?
 }
 
-_create-or-clone-new-exercise-repo() {
-  local exerciseDir="$1" origin="${2:-}"
+_init-new-git-repo() {
+  local dir="$1" origin="${2:-}"
 
   # make main the default branch for init
   git config --global init.defaultBranch main || return $?
 
-  if [ -z "$origin" ]; then
-    # initialize a new repository
-    git init "$exerciseDir" || return $?
-  else
-    # otherwise clone origin
-    git clone "$origin" "$exerciseDir" || return $?
-  fi
+  # initialize a new repository
+  git init "$dir" || return $?
 
-  # go to exercise dir
-  cd "$exerciseDir" || return $?
+  # go to repo folder
+  cd "$dir" || return $?
+
+  # add origin if given
+  if [ -n "$origin" ]; then
+    git remote add origin "$origin" || return $?
+  fi
 
   # local git config
   git config --local commit.gpgsign false

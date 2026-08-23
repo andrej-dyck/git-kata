@@ -8,8 +8,6 @@ init-exercise() {
 
   echo-exec touch "task-1.md"
   git-commit "add task 1"
-
-  git shortlog
 }
 
 run-init-exercise "$@"

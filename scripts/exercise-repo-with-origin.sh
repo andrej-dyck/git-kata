@@ -10,27 +10,23 @@ init-exercise-repo-with-origin() {
   local originDir="$exerciseDir-origin"
 
   # create a bare origin repo
-  _init-bare-origin "$originDir" || return $?
+  _init-bare-git-origin "$originDir" || return $?
 
   # clone exercise repo
-  _create-or-clone-new-exercise-repo "$exerciseDir" "$originDir" || return $?
+  _init-new-git-repo "$exerciseDir" "$originDir" || return $?
 
   # push initial commits
-  _initial-commits "$exerciseReadmePath" || return $?
-  git push || return $?
+  _initial-exercise-commits "$exerciseReadmePath" || return $?
+  git-push-new-branch main || return $?
 
   cd "$exerciseDir" || return $?
 }
 
-_init-bare-origin() {
+_init-bare-git-origin() {
   local originDir="$1"
 
   # make main the default branch for init
   git config --global init.defaultBranch main || return $?
-
-  # cleanup existing exercise folder
-  rm -rf "${originDir:?}" || return $?
-  mkdir -p "$originDir" || return $?
 
   # create a bare remote
   git init --bare "$originDir" || return $?

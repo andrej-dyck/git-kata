@@ -22,8 +22,8 @@ run-init-exercise() {
   echo "Initialize '$exerciseName' at '$exerciseDir'"
 
   echo "Ensure exercise folder exists and is empty"
-  rm -rf "$exerciseDir" && mkdir "$exerciseDir"
-  rm -rf "$exerciseDir-origin"
+  rm -rf "${exerciseDir:?}" && mkdir "$exerciseDir"
+  rm -rf "${exerciseDir:?}-origin"
 
   local initExitCode=0
   init-exercise "$initScriptDir" "$exerciseDir" || initExitCode=$?
@@ -33,5 +33,6 @@ run-init-exercise() {
     return "$initExitCode"
   fi
 
+  git-log-graph "Initialized Git history"
   echo "Successfully initialized '$exerciseName' at '$exerciseDir'"
 }
