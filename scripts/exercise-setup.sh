@@ -11,10 +11,10 @@ run-init-exercise() {
   fi
 
   local initScriptDir
-  initScriptDir="$(cd "$(dirname "$callerScript")" && pwd)"
+  initScriptDir="$(cd "$(dirname "$callerScript")" && pwd)" || return $?
 
   local exerciseDir
-  exerciseDir="${1:-$REPO_ROOT_DIR/exercise}"
+  exerciseDir="$(_safe-exercise-dir "${1:-$REPO_ROOT_DIR/exercise}")" || return $?
 
   local exerciseName
   exerciseName="$(basename "$initScriptDir")"
@@ -35,4 +35,23 @@ run-init-exercise() {
 
   git-log-graph "Initialized Git history"
   echo "Successfully initialized '$exerciseName' at '$exerciseDir'"
+}
+
+_safe-exercise-dir() {
+  local exerciseDir="$1"
+
+  local exerciseDirResolved
+  exerciseDirResolved="$(realpath -m "$exerciseDir")" || return $?
+
+  if [[ -z "$exerciseDirResolved" || "$exerciseDirResolved" == "/" ]]; then
+    echo "Refusing to use unsafe exercise directory: '$exerciseDir'" >&2
+    return 1
+  fi
+
+  if [[ "$exerciseDirResolved" != "$(realpath -m "$REPO_ROOT_DIR")/"* ]]; then
+    echo "Refusing to use path outside this repository: '$exerciseDirResolved'" >&2
+    return 1
+  fi
+
+  realpath -m "$exerciseDir" || return $?
 }

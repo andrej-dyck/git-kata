@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
+REPO_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)" || exit $?
 
 source "$REPO_ROOT_DIR/scripts/exercise-repo.sh"
 source "$REPO_ROOT_DIR/scripts/exercise-repo-with-origin.sh"
