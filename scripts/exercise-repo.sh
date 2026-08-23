@@ -12,6 +12,8 @@ init-exercise-repo() {
   _create-or-clone-new-exercise-repo "$exerciseDir" || return $?
 
   _initial-commits "$exerciseReadmePath" || return $?
+
+  cd "$exerciseDir" || return $?
 }
 
 _initial-commits() {

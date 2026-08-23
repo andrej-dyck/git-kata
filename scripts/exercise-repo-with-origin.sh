@@ -18,6 +18,8 @@ init-exercise-repo-with-origin() {
   # push initial commits
   _initial-commits "$exerciseReadmePath" || return $?
   git push || return $?
+
+  cd "$exerciseDir" || return $?
 }
 
 _init-bare-origin() {
