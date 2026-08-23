@@ -11,10 +11,10 @@ run-init-exercise() {
   fi
 
   local initScriptDir
-  initScriptDir="$(cd "$(dirname "$callerScript")" && pwd)" || return $?
+  initScriptDir="$(cd "$(dirname "$callerScript")" && pwd)" || return
 
   local exerciseDir
-  exerciseDir="$(_safe-exercise-dir "${1:-$REPO_ROOT_DIR/exercise}")" || return $?
+  exerciseDir="$(_safe-exercise-dir "${1:-$REPO_ROOT_DIR/exercise}")" || return
 
   local exerciseName
   exerciseName="$(basename "$initScriptDir")"
@@ -41,7 +41,7 @@ _safe-exercise-dir() {
   local exerciseDir="$1"
 
   local exerciseDirResolved
-  exerciseDirResolved="$(realpath -m "$exerciseDir")" || return $?
+  exerciseDirResolved="$(realpath -m "$exerciseDir")" || return
 
   if [[ -z "$exerciseDirResolved" || "$exerciseDirResolved" == "/" ]]; then
     echo "Refusing to use unsafe exercise directory: '$exerciseDir'" >&2
@@ -53,5 +53,5 @@ _safe-exercise-dir() {
     return 1
   fi
 
-  realpath -m "$exerciseDir" || return $?
+  realpath -m "$exerciseDir"
 }

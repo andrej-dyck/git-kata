@@ -4,9 +4,9 @@ source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
 init-exercise() {
   local thisDir="$1" exerciseDir="$2"
 
-  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return $?
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
-  echo-exec touch "task-1.md"
+  echo-exec touch "task-1.md" || return
   git-commit "add task 1"
 }
 

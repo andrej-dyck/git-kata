@@ -5,9 +5,9 @@ source "$REPO_ROOT_DIR/example-task-1/init.sh"
 init-exercise() {
   local thisDir="$1" exerciseDir="$2"
 
-  init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return $?
+  init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
-  echo-exec touch "task-1.md"
+  echo-exec touch "task-1.md" || return
   git-commit "add task 1"
 }
 

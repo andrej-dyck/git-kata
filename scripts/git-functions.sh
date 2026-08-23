@@ -9,60 +9,60 @@ git-commit() {
   local commitMsg="$1" files="${2:-}"
 
   _git-stage-files "$files"
-  git commit -q -m "$commitMsg" || return $?
+  git commit -q -m "$commitMsg"
 }
 
 git-amend-commit() { # obsolete? TODO remove
   local commitMsg="$1" files="${2:-}"
 
   _git-stage-files "$files"
-  git commit -q --amend -m "$commitMsg" || return $?
+  git commit -q --amend -m "$commitMsg"
 }
 
 _git-stage-files() {
   local pattern="${1:-}"
 
   if [ -z "$pattern" ]; then
-    git add --all || return $?
+    git add --all
   else
-    git add "$pattern" || return $?
+    git add "$pattern"
   fi
 }
 
 git-checkout-new-branch() {
-  git checkout -b "$1" || return $?
+  git checkout -b "$1"
 }
 
 git-checkout-branch() {
-  git checkout "$1" || return $?
+  git checkout "$1"
 }
 
 git-checkout-main() {
-  git checkout "main" || return $?
+  git checkout "main"
 }
 
 git-push-new-branch() {
-  git push -q -u origin "$1" || return $?
+  git push -q -u origin "$1"
 }
 
 git-push() {
-  git push -q origin || return $?
+  git push -q origin
 }
 
 git-push-changes() { # obsolete(use git-push) TODO remove
-  git-push || return $?
+  git-push
 }
 
 git-feature-branch() { # obsolete? TODO remove
-  git-checkout-new-branch "feature/$1" || return $?
+  git-checkout-new-branch "feature/$1"
 }
 
 git-push-feature-branch() { # obsolete? TODO remove
-  git-push-new-branch "feature/$1" || return $?
+  git-push-new-branch "feature/$1"
 }
 
 git-checkout-feature() { # obsolete? TODO remove
-  git-checkout-branch "feature/$1" || return $?
+  git-checkout-branch "feature/$1"
 }
 
 git-log-graph() {
