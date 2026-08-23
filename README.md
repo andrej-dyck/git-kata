@@ -58,6 +58,15 @@ rm -rf exercise
 rm -rf exercise-origin
 ```
 
+## `jq` Dependency
+
+[jq](https://jqlang.org/) is a lightweight and flexible command-line JSON processor.
+
+If you have `jq` (or `jaq`) installed and in your `PATH`, the `init.sh` script will automatically use it.
+
+Otherwise, the scripts will try to use the bundled `jq` binary (version `jq-1.8.2`).
+Or you can install it from [here](https://jqlang.org/).
+
 ---
 
 ## Recommended Way to Work with Git within a Team
