@@ -12,13 +12,6 @@ git-commit() {
   git commit -q -m "$commitMsg"
 }
 
-git-amend-commit() { # obsolete? TODO remove
-  local commitMsg="$1" files="${2:-}"
-
-  _git-stage-files "$files"
-  git commit -q --amend -m "$commitMsg"
-}
-
 _git-stage-files() {
   local pattern="${1:-}"
 
@@ -47,22 +40,6 @@ git-push-new-branch() {
 
 git-push() {
   git push -q origin
-}
-
-git-push-changes() { # obsolete(use git-push) TODO remove
-  git-push
-}
-
-git-feature-branch() { # obsolete? TODO remove
-  git-checkout-new-branch "feature/$1"
-}
-
-git-push-feature-branch() { # obsolete? TODO remove
-  git-push-new-branch "feature/$1"
-}
-
-git-checkout-feature() { # obsolete? TODO remove
-  git-checkout-branch "feature/$1"
 }
 
 git-log-graph() {

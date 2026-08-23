@@ -1,12 +1,33 @@
-# Undo last-pushed commits
+# 202 Undo Pushed Commit
 
-Sometimes we need to push changes that are temporary, e.g., work-in-progress (WIP) commits, when we want to "save" our
-days work or change workstations.
-We can use [`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) to undo our last commit locally, and with [`git push --force`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force) overwrite the branch on origin.
+🚧 WIP (this exercise isn't done yet)
 
-## Exercise
+TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-In this exercise, we pushed an unfinished implementation of `Greeting` with the commit `WIP`. 
-Undo this commit, finish the TODO, and push the changes to origin.
+TODO refer to [exercise 103](../103-local-undo-last-commit/README.md)
 
-_Bonus_: Change the commit message to `"Add greeting to Git"`
+TODO use[`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) and then [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to overwrite the branch on origin.
+
+## Exercise Context
+
+We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+
+TODO current state of the project.
+
+## Task: [Task Title]
+
+TODO this exercise's task
+
+### Initial Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after `init.sh`
+```
+_Note_: ...
+
+### Target Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after exercise is done
+```
+_Note_: ...

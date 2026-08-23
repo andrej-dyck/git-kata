@@ -1,34 +1,13 @@
-#!/bin/bash
-source ../scripts/index.sh
-source ../104-local-rebase-onto-main/init.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
+# source "$REPO_ROOT_DIR/<other-exercise>/init.sh"
 
 init-exercise() {
-  init-exercise-repo-with-origin
+  local thisDir="$1" exerciseDir="$2"
 
-  # dev1 rebases feature branch onto main as in exercise 203
-  commit-rocket-fuel-readme
-  git-push-changes
+  init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
-  local feature="fuel-estimation"
-  work-on-feature-branch "$feature"
-  git-push-feature-branch "$feature"
-
-  # dev2 has locally the old state
-  git-checkout-main
-  git branch -d "feature/$feature"
-  git reset --hard HEAD~1
-
-  work-on-feature-branch "$feature"
-  git branch --set-upstream-to="origin/feature/$feature"
+  # TODO setup git history for exercise
 }
 
-readme-pushed-to-origin-main() {
-  git-checkout-main
-  commit-rocket-fuel-readme
-  git-push-changes
-  git reset --hard HEAD~1
-}
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+run-init-exercise "$@"

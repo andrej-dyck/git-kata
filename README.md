@@ -36,6 +36,8 @@ This kata assumes that you already have basic Git knowledge; e.g., how to _stage
 
 ## Doing this Git-Kata
 
+**_IMPORTANT_**: 🚧 This Git-Kata is currently under rework. Checkout tag [`2021-git-kata-kotlin-exercise`](https://github.com/andrej-dyck/git-kata/releases/tag/2021-git-kata-kotlin-exercise) (or [`2021-git-kata-osx-kotlin-exercise`](https://github.com/andrej-dyck/git-kata/releases/tag/2021-git-kata-osx-kotlin-exercise) for Mac OS X) for an earlier version.
+
 Each exercise is self-contained, even when they refer to previous exercise numbers; the task is described in the `README.md` file.
 
 Each exercise is safe to experiment with, as a local-only repository is set up by an `init.sh` _bash script_ and, if stuck, you can always re-run the `init.sh` again.
@@ -56,7 +58,6 @@ Each exercise ends in a clean working tree (i.e., `git status` shows no changes)
 * Consult the `README.md` in that folder for the description and task
 
 ### Notes
-* On **Mac OS X**, checkout and use the scripts of the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx)
 * On **Windows** with [**Git**]([Git](https://git-scm.com/)) installed, use the _Git Bash_ with `sh init.sh` to execute the script
 * On **Linux** / **Mac OS X**, you might need to make the `init.sh` executable with `chmod +x init.sh`
 * Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "./exercise-101"`

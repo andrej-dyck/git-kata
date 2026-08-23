@@ -1,29 +1,13 @@
-#!/bin/bash
-source ../scripts/index.sh
-source ../105-local-rebase-with-conflicts/init.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
+# source "$REPO_ROOT_DIR/<other-exercise>/init.sh"
 
 init-exercise() {
-  init-exercise-repo
+  local thisDir="$1" exerciseDir="$2"
 
-  local feature="fuel-estimation"
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
-  git-feature-branch "$feature"
-
-  commit-rocket-fuel-readme
-  commit-mass-and-fuel-draft
-  commit-wip-estimation
+  # TODO setup git history for exercise
 }
 
-commit-wip-estimation() {
-  copy-rsc RocketFuelPart0/src
-  copy-rsc RocketFuelPart0/test
-
-  in-src replace-in-file Mass.kt "inKg" "amount"
-  in-src replace-in-file Fuel.kt "inKg" "amount"
-
-  git-commit "WIP: estimation"
-}
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+run-init-exercise "$@"

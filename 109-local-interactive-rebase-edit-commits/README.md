@@ -1,12 +1,31 @@
-# Interactive rebase - Modify commits
+# 109 Interactive Rebase - Modify Commits
 
-There are situations where we need to make changes to earlier commits, and it's easier to do so when the previous state is restored. 
-We can use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _edit_ commits.
+🚧 WIP (this exercise isn't done yet)
 
-![](../resources/main-feature-modify.svg)
+TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-## Exercise
+TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _edit_ commits
 
-In this exercise, we realize that we need `Double` as type for `Fuel` and `Mass`. 
-Further `inKg` is a better attribute name than `amount`. 
-Modify the commit where those types were introduced using interactive rebase and resolve the resulting conflict in the work-in-progress commit (also resolving its WIP state; thus, reword the commit message).
+## Exercise Context
+
+We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+
+TODO current state of the project.
+
+## Task: [Task Title]
+
+TODO this exercise's task
+
+### Initial Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after `init.sh`
+```
+_Note_: ...
+
+### Target Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after exercise is done
+```
+_Note_: ...

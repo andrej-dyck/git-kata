@@ -1,14 +1,12 @@
-# 111 Interactive Rebase - Delete Commits
+# 302 Move Commits with Cherry-pick and Reset
 
 🚧 WIP (this exercise isn't done yet)
 
 TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _delete_ commits
+TODO we commit changes to the wrong branch.
 
-![](../resources/main-feature-before-split.svg)
-
-![](../resources/main-feature-splitted.svg)
+TODO use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) and then [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) or [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) to remove the commit from the wrong branch
 
 ## Exercise Context
 

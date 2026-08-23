@@ -1,15 +1,33 @@
-# Interactive rebase - Re-writing history at origin 
+# 205 Interactive Rebase - Re-writing History
 
-Often our workflow is not linear.
-So we commit changes that we think are worthy of a commit, fix something, or just to have something to fall back to.
-Since we want to have a clean history, we can use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _refactor_ our history, and then, with [`git push --force`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force) overwrite the branch's history at origin.
+🚧 WIP (this exercise isn't done yet)
 
-## Exercise
+TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-In this exercise, we worked on the minimal fuel requirements feature and pushed the changes to origin (e.g., because we
-went on a break).
-Now we finished the functionality and added the missing link to the readme (uncommitted changes).
-Our last step is to bring our history in order. Use interactive rebase to achieve a clean history.
+TODO refer to [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md)
 
-_Hint_: Remember to remove the temporary main.
+TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) and then [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to overwrite the branch on origin.
 
+## Exercise Context
+
+We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+
+TODO current state of the project.
+
+## Task: [Task Title]
+
+TODO this exercise's task
+
+### Initial Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after `init.sh`
+```
+_Note_: ...
+
+### Target Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after exercise is done
+```
+_Note_: ...

@@ -9,7 +9,3 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 max_line_length = 120
 tab_width = 2
-
-[{*.kt,*.kts}]
-indent_size = 4
-tab_width = 4

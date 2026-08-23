@@ -10,8 +10,6 @@ source "$REPO_ROOT_DIR/scripts/git-functions.sh"
 source "$REPO_ROOT_DIR/scripts/json-functions.sh"
 source "$REPO_ROOT_DIR/scripts/resource-functions.sh"
 
-source "$REPO_ROOT_DIR/scripts/obsolete-functions.sh" # TODO remove
-
 echo-exec() {
   echo "$*"
   "$@"

@@ -1,16 +1,35 @@
-# Interactive rebase - Split commits
+# 110 Interactive Rebase - Split Commits
 
-Sometimes we commit too many changes in one commit. 
-If that's the last commit, we could undo the last commit. 
-However, if it's any of the earlier commits.
+🚧 WIP (this exercise isn't done yet)
+
+TODO Git command, its purpose, and how we can use it to develop a clean git history.
+
+TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _split_ commits
 
 ![](../resources/main-feature-before-split.svg)
 
-we can use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _split_ those.
-
 ![](../resources/main-feature-splitted.svg)
 
-## Exercise
+## Exercise Context
 
-In this exercise, we accidentally committed the _RocketFuel_ readme with the types. 
-Split this commit into two.
+We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+
+TODO current state of the project.
+
+## Task: [Task Title]
+
+TODO this exercise's task
+
+### Initial Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after `init.sh`
+```
+_Note_: ...
+
+### Target Git History
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output after exercise is done
+```
+_Note_: ...

@@ -1,35 +1,13 @@
-#!/bin/bash
-source ../scripts/index.sh
-source ../103-local-undo-last-commit/init.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
+# source "$REPO_ROOT_DIR/<other-exercise>/init.sh"
 
 init-exercise() {
-  init-exercise-repo-with-origin
+  local thisDir="$1" exerciseDir="$2"
 
-  local feature="add-greeting"
+  init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
-  git-feature-branch "$feature"
-
-  commit-greeting-main-draft "Draft main"
-  amend-commit-with-working-main "Draft main"
-
-  commit-unfinished-greeting "WIP: greeting"
-  amend-commit-with-correct-main "WIP: greeting"
-
-  git-push-feature-branch "$feature"
+  # TODO setup git history for exercise
 }
 
-amend-commit-with-working-main() {
-  in-src replace-in-file main.kt "Greeting.sayHello()" "Hello!"
-
-  in-src git-amend-commit "$1" main.kt
-}
-
-amend-commit-with-correct-main() {
-  in-src replace-in-file main.kt "Hello!" "Greeting.sayHello()"
-
-  git-amend-commit "$1"
-}
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+run-init-exercise "$@"
