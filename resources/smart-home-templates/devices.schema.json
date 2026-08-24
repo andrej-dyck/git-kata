@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Smart Home Devices",
+  "type": "object",
+  "required": [
+    "devices"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "apiVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+.[0-9]+(.[0-9]+)?$"
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "roomId",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "roomId": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "sensor",
+              "ac-unit",
+              "blinds",
+              "door",
+              "light",
+              "outlet",
+              "speaker",
+              "thermostat",
+              "window"
+            ]
+          },
+          "traits": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "on-off",
+                "open-close",
+                "lock-unlock",
+                "brightness-control",
+                "temperature-control",
+                "media-control",
+                "volume-control"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
