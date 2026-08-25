@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Smart Home Automation Rules",
+  "type": "object",
+  "required": [
+    "rules"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "apiVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+.[0-9]+(.[0-9]+)?$"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "when",
+          "then"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "testMode": {
+            "type": "boolean"
+          },
+          "when": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "sensorDeviceId"
+              ],
+              "properties": {
+                "sensorDeviceId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                },
+                "time": {
+                  "type": "string",
+                  "pattern": "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
+                },
+                "days": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "monday",
+                      "tuesday",
+                      "wednesday",
+                      "thursday",
+                      "friday",
+                      "saturday",
+                      "sunday"
+                    ]
+                  }
+                },
+                "event": {
+                  "type": "string",
+                  "enum": [
+                    "motion-detected",
+                    "presence-detected",
+                    "presence-cleared",
+                    "door-opened",
+                    "door-closed",
+                    "window-opened",
+                    "window-closed"
+                  ]
+                },
+                "sensorValue": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "then": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "deviceId",
+                "action"
+              ],
+              "properties": {
+                "deviceId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                },
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "turn-on",
+                    "turn-off",
+                    "open",
+                    "close",
+                    "lock",
+                    "unlock",
+                    "set-brightness",
+                    "set-temperature",
+                    "set-volume",
+                    "mute",
+                    "play",
+                    "pause",
+                    "stop",
+                    "next",
+                    "previous"
+                  ]
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "targetTemperatureCelsius": {
+                      "type": "number",
+                      "minimum": 10.0,
+                      "maximum": 30.0
+                    },
+                    "targetBrightnessLevel": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "targetVolumeLevel": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "audio-input": {
+                      "type": "object",
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9-]+$"
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
