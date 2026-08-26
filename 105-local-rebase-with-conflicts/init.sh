@@ -1,75 +1,110 @@
-#!/bin/bash
-source ../scripts/index.sh
-source ../104-local-rebase-onto-main/init.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
+source "$REPO_ROOT_DIR/104-local-rebase-onto-main/init.sh"
 
 init-exercise() {
-  init-exercise-repo
+  local thisDir="$1" exerciseDir="$2"
 
-  commit-rocket-fuel-readme
-  commit-mass-and-fuel-draft
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
-  local feature="fuel-estimation"
-  git branch "feature/$feature"
+  # main
+  commit-empty-rooms || return # from 101
+  commit-living-room || return # from 102
+  commit-empty-devices || return # from 103
+  commit-living-room-devices || return #from 103
 
-  commit-conflicting-changes-on-main
+  # feature "living-room-automation"
+  feature-living-room-automation-rules "living-room-automation" || return # from 104
+  commit-living-room-wall-lamp || return
+  commit-living-room-wall-lamp-rules || return
 
-  work-on-estimation "$feature"
+  # additional work on main
+  git-checkout-main || return
+  integrated-ac-install-commits || return # from 104
+  commit-empty-automation-rules || return # from 104
+  commit-living-room-ac-rules || return
+
+  # start task on branch "living-room-automation"
+  git-checkout-branch "living-room-automation" || return
 }
 
-commit-mass-and-fuel-draft() {
-  copy-rsc RocketFuelPart0/src
-  in-src remove-lines-in-file Fuel.kt 10 15
-  in-src remove-lines-in-file Fuel.kt 3 4
+commit-living-room-wall-lamp() {
+  json-edit devices.json '.devices += [{
+    "id": "living-room-wall-lamp",
+    "name": "Living-room wall lamp",
+    "roomId": "living-room",
+    "type": "light",
+    "traits": ["on-off", "brightness-control"]
+  }]' || return
 
-  in-src replace-in-file Mass.kt "inKg: Double" "amount: Int"
-  in-src replace-in-file Fuel.kt "inKg: Double" "amount: Int"
-  in-src replace-in-file Fuel.kt "inKg >= 0" "amount >= 0"
-
-  git-commit "Add mass and fuel types"
+  git-commit "install living-room wall lamp"
 }
 
-commit-conflicting-changes-on-main() {
-  #  git-checkout-main
+commit-living-room-wall-lamp-rules() {
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-lights-on-presence" then
+      .then += [{ "deviceId": "living-room-wall-lamp", "action": "turn-on", "parameters": { "targetBrightnessLevel": 60 } }]
+    else . end
+  )' || return
 
-  commit-fix-mass-fuel-terminology
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-lights-off-no-presence" then
+      .then += [{ "deviceId": "living-room-wall-lamp", "action": "turn-off" }]
+    else . end
+  )' || return
+
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-lights-off-ambient-bright" then
+      .then += [{ "deviceId": "living-room-wall-lamp", "action": "turn-off" }]
+    else . end
+  )' || return
+
+  git-commit "automate turning on/off living room wall lamp"
 }
 
-commit-fix-mass-fuel-terminology() {
-  replace-amount-with-inKg
+commit-living-room-ac-rules() {
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-on",
+    "name": "Turn on living-room AC when its hot",
+    "when": [{
+      "sensorDeviceId": "living-room-thermostat-sensor",
+      "sensorValue": ">25°C"
+    }, {
+      "sensorDeviceId": "living-room-balcony-door",
+      "event": "door-closed"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-on",
+      "parameters": { "targetTemperatureCelsius": 21.0 }
+    }]
+  }]' || return
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-off",
+    "name": "Turn off living-room AC when its cool",
+    "when": [{
+      "sensorDeviceId": "living-room-thermostat-sensor",
+      "sensorValue": "<20°C"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-off",
+    }]
+  }]' || return
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-off",
+    "name": "Turn off living-room AC when balcony door open",
+    "when": [{
+      "sensorDeviceId": "living-room-balcony-door",
+      "event": "door-opened"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-off",
+    }]
+  }]' || return
 
-  git-commit "Fix mass and fuel terminology"
+  git-commit "automate living-room AC"
 }
 
-replace-amount-with-inKg() {
-  in-src replace-in-file Mass.kt "amount" "inKg"
-  in-src replace-in-file Fuel.kt "amount" "inKg"
-}
-
-work-on-estimation() {
-  git-checkout-feature "$1"
-
-  commit-fix-mass-and-fuel-to-be-double
-
-  copy-rsc RocketFuelPart0/src
-  copy-rsc RocketFuelPart0/test
-
-  replace-inKg-with-amount
-
-  git-commit "Estimate fuel based on mass"
-}
-
-replace-inKg-with-amount() {
-  in-src replace-in-file Mass.kt "inKg" "amount"
-  in-src replace-in-file Fuel.kt "inKg" "amount"
-}
-
-commit-fix-mass-and-fuel-to-be-double() {
-  in-src replace-in-file Mass.kt ": Int" ": Double"
-  in-src replace-in-file Fuel.kt ": Int" ": Double"
-
-  git-commit "Amend mass and fuel value to be double"
-}
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+run-init-exercise "$@"
