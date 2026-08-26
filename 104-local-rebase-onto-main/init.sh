@@ -18,9 +18,7 @@ init-exercise() {
 
   # additional work on main
   git-checkout-main || return
-  commit-living-room-ac || return
-  commit-balcony-door-sensor || return
-  commit-living-room-thermometer || return
+  integrated-ac-install-commits || return
   commit-empty-automation-rules || return # from 103
 
   # start task on branch "living-room-automation"
@@ -88,6 +86,12 @@ commit-living-room-light-rules() {
   }]' || return
 
   git-commit "automate turning on/off the living-room light"
+}
+
+integrated-ac-install-commits() {
+  commit-living-room-ac || return
+  commit-balcony-door-sensor || return
+  commit-living-room-thermometer || return
 }
 
 commit-living-room-ac() {
