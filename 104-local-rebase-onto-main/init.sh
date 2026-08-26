@@ -1,45 +1,128 @@
-#!/bin/bash
-source ../scripts/index.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
+source "$REPO_ROOT_DIR/103-local-undo-last-commit/init.sh"
 
 init-exercise() {
-  init-exercise-repo
+  local thisDir="$1" exerciseDir="$2"
 
-  local feature="fuel-estimation"
-  work-on-feature-branch "$feature"
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
-  git-checkout-main
-  commit-rocket-fuel-readme
-  git-checkout-feature "$feature"
+  # main
+  commit-empty-rooms || return # from 101
+  commit-living-room || return # from 102
+  commit-empty-devices || return # from 103
+  commit-living-room-devices || return #from 103
+
+  # feature "living-room-automation"
+  feature-living-room-automation-rules "living-room-automation" || return
+
+  # additional work on main
+  git-checkout-main || return
+  commit-living-room-ac || return
+  commit-balcony-door-sensor || return
+  commit-living-room-thermometer || return
+  commit-empty-automation-rules || return # from 103
+
+  # start task on branch "living-room-automation"
+  git-checkout-branch "living-room-automation" || return
 }
 
-work-on-feature-branch() {
-  git-feature-branch "$1"
+feature-living-room-automation-rules() {
+  git-checkout-new-branch "$1" || return
 
-  commit-mass-and-fuel-types
-  commit-fuel-estimation
+  commit-living-room-light-traits || return
+  commit-empty-automation-rules || return # from 103
+  commit-living-room-light-rules || return
 }
 
-commit-mass-and-fuel-types() {
-  copy-to-src RocketFuelPart0/src/Mass.kt
-  git-commit "Add mass type"
+commit-living-room-light-traits() {
+  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
+  json-edit devices.json '.devices |= map(
+    if .id == "living-room-light" then . +{ "traits": ["on-off", "brightness-control"] } else . end
+  )' || return
 
-  copy-to-src RocketFuelPart0/src/Fuel.kt
-  in-src remove-lines-in-file Fuel.kt 10 15
-  in-src remove-lines-in-file Fuel.kt 3 4
-  git-commit "Add fuel type"
+  git-commit "define living-room-light trait on-off"
 }
 
-commit-fuel-estimation() {
-  copy-to-src RocketFuelPart0/src/Fuel.kt
-  copy-rsc RocketFuelPart0/test
-  git-commit "Estimate fuel based on mass"
+commit-living-room-light-rules() {
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-lights-on-presence",
+    "name": "Turn on living-room lights when presence is detected",
+    "when": [{
+      "sensorDeviceId": "living-room-presence",
+      "event": "presence-detected"
+    }, {
+      "sensorDeviceId": "living-room-ambient-light",
+      "sensorValue": "is-dark"
+    }],
+    "then": [{
+      "deviceId": "living-room-light",
+      "action": "turn-on"
+    }]
+  }]' || return
+
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-lights-off-no-presence",
+    "name": "Turn off living room lights when presence is no longer detected",
+    "when": [{
+      "sensorDeviceId": "living-room-presence",
+      "event": "presence-cleared"
+    }],
+    "then": [{
+      "deviceId": "living-room-light",
+      "action": "turn-off"
+    }]
+  }]' || return
+
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-lights-off-ambient-bright",
+    "name": "Turn off living room lights when ambient light is bright",
+    "when": [{
+      "sensorDeviceId": "living-room-ambient-light",
+      "sensorValue": "is-bright"
+    }],
+    "then": [{
+      "deviceId": "living-room-light",
+      "action": "turn-off"
+    }]
+  }]' || return
+
+  git-commit "automate turning on/off the living-room light"
 }
 
-commit-rocket-fuel-readme() {
-  copy-rsc RocketFuelPart1/RocketFuel.md
-  git-commit "Add rocket fuel readme"
+commit-living-room-ac() {
+  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
+  json-edit devices.json '.devices += [{
+    "id": "living-room-ac",
+    "name": "Living-room AC",
+    "roomId": "living-room",
+    "type": "ac-unit",
+    "traits": ["on-off", "temperature-control"]
+  }]' || return
+
+  git-commit "install living-room AC"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+commit-balcony-door-sensor() {
+  json-edit devices.json '.devices += [{
+      "id": "living-room-balcony-door",
+      "name": "Living-room balcony-door sensor",
+      "roomId": "living-room",
+      "type": "sensor"
+    }]' || return
+
+  git-commit "install living-room balcony-door sensor"
+}
+
+commit-living-room-thermometer() {
+  json-edit devices.json '.devices += [{
+      "id": "living-room-thermostat-sensor",
+      "name": "Living-room thermostat sensor",
+      "roomId": "living-room",
+      "type": "sensor"
+    }]' || return
+
+  git-commit "install living-room thermostat sensor"
+}
+
+run-init-exercise "$@"
