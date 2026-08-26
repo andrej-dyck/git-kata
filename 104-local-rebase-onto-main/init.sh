@@ -89,13 +89,13 @@ commit-living-room-light-rules() {
 }
 
 integrated-ac-install-commits() {
+  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
   commit-living-room-ac || return
   commit-balcony-door-sensor || return
   commit-living-room-thermometer || return
 }
 
 commit-living-room-ac() {
-  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
   json-edit devices.json '.devices += [{
     "id": "living-room-ac",
     "name": "Living-room AC",
@@ -108,25 +108,33 @@ commit-living-room-ac() {
 }
 
 commit-balcony-door-sensor() {
-  json-edit devices.json '.devices += [{
-      "id": "living-room-balcony-door",
-      "name": "Living-room balcony-door sensor",
-      "roomId": "living-room",
-      "type": "sensor"
-    }]' || return
+  install-living-room-balcony-door-sensor || return
 
   git-commit "install living-room balcony-door sensor"
 }
 
-commit-living-room-thermometer() {
+install-living-room-balcony-door-sensor() {
   json-edit devices.json '.devices += [{
-      "id": "living-room-thermostat-sensor",
-      "name": "Living-room thermostat sensor",
-      "roomId": "living-room",
-      "type": "sensor"
-    }]' || return
+    "id": "living-room-balcony-door",
+    "name": "Living-room balcony-door sensor",
+    "roomId": "living-room",
+    "type": "sensor"
+  }]' || return
+}
+
+commit-living-room-thermometer() {
+  install-living-room-thermometer || return
 
   git-commit "install living-room thermostat sensor"
+}
+
+install-living-room-thermometer() {
+  json-edit devices.json '.devices += [{
+    "id": "living-room-thermostat-sensor",
+    "name": "Living-room thermostat sensor",
+    "roomId": "living-room",
+    "type": "sensor"
+  }]' || return
 }
 
 run-init-exercise "$@"
