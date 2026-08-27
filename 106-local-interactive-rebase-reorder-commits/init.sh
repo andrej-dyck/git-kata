@@ -7,6 +7,11 @@ init-exercise() {
 
   init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
+  init-ac-automation-branch || return
+  wip-commits-ac-automation || return
+}
+
+init-ac-automation-branch() {
   # main
   commit-empty-rooms || return # from 101
   commit-living-room || return # from 102
@@ -21,12 +26,10 @@ init-exercise() {
 
   # feature "living-room-ac-automation"
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  wip-feature-ac-automation "living-room-ac-automation" || return
+  git-checkout-new-branch "living-room-ac-automation" || return
 }
 
-wip-feature-ac-automation() {
-  git-checkout-new-branch "$1" || return
-
+wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 104
   commit-living-room-ac || return # from 104
   commit-device-traits-schema || return
