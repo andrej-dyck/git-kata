@@ -1,5 +1,7 @@
 exercise/
+exercise-*/
 exercise-origin/
+exercise-*-origin/
 
 ## IDEs
 .idea/*

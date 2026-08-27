@@ -20,6 +20,7 @@ init-exercise() {
   git-checkout-main || return
 
   # feature "living-room-ac-automation"
+  sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
   wip-feature-ac-automation "living-room-ac-automation" || return
 }
 

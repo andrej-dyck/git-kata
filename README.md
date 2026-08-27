@@ -1,5 +1,7 @@
 # Git Kata - Clean History
 
+[![CI](https://github.com/andrej-dyck/endoflife-radar/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/andrej-dyck/git-kata/actions/workflows/ci.yml)
+
 ![Git Logo](./resources/git-logo.png)
 
 A clean Git history is beneficial to a project in many ways.
@@ -55,9 +57,9 @@ Each exercise ends in a clean working tree (i.e., `git status` shows no changes)
 
 ### Notes
 * On **Mac OS X**, checkout and use the scripts of the branch [`main-osx`](https://github.com/andrej-dyck/git-kata/tree/main-osx)
-* On **Linux** / **Mac OS X**, you might need to make the `init.sh` executable with `chmod +x init.sh`
 * On **Windows** with [**Git**]([Git](https://git-scm.com/)) installed, use the _Git Bash_ with `sh init.sh` to execute the script
-* Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "exercise-101"`
+* On **Linux** / **Mac OS X**, you might need to make the `init.sh` executable with `chmod +x init.sh`
+* Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "./exercise-101"`
   * _Important_: relative links or images in the `README.md` might not work
 
 ### Clean-up (optional)

@@ -71,4 +71,5 @@ git-log-graph() {
   fi
 
   git log --all --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(green)(%cr)%Creset %C(blue)<%an>%Creset' --abbrev-commit --date=relative
+  echo
 }

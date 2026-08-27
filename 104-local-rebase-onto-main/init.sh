@@ -17,6 +17,7 @@ init-exercise() {
   feature-living-room-automation-rules "living-room-automation" || return
 
   # additional work on main
+  sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
   git-checkout-main || return
   integrated-ac-install-commits || return
   commit-empty-automation-rules || return # from 103
