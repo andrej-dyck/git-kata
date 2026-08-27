@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main", "rework-to-json-source-files" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test-exercises:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v7
+    - name: Configure Git
+      run: git config --global user.name "Git Kata" && git config --global user.email "git-kata@andrej.dyck"
+    - name: Test Exercise 101
+      run: bash ./scripts/_dev-test-init.sh 101-local-amend-commit
+    - name: Test Exercise 102
+      run: bash ./scripts/_dev-test-init.sh 102-local-commit-changes
+    - name: Test Exercise 103
+      run: bash ./scripts/_dev-test-init.sh 103-local-undo-last-commit
+    - name: Test Exercise 104
+      run: bash ./scripts/_dev-test-init.sh 104-local-rebase-onto-main
+    - name: Test Exercise 105
+      run: bash ./scripts/_dev-test-init.sh 105-local-rebase-with-conflicts
+    - name: Test Exercise 106
+      run: bash ./scripts/_dev-test-init.sh 106-local-interactive-rebase-reorder-commits

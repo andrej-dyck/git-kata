@@ -19,6 +19,7 @@ init-exercise() {
   commit-living-room-wall-lamp-rules || return
 
   # additional work on main
+  sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
   git-checkout-main || return
   integrated-ac-install-commits || return # from 104
   commit-empty-automation-rules || return # from 104
