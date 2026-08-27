@@ -1,47 +1,98 @@
-#!/bin/bash
-source ../scripts/index.sh
-source ../104-local-rebase-onto-main/init.sh
-source ../105-local-rebase-with-conflicts/init.sh
+#!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
+source "$REPO_ROOT_DIR/106-local-interactive-rebase-reorder-commits/init.sh"
 
 init-exercise() {
-  init-exercise-repo
+  local thisDir="$1" exerciseDir="$2"
 
-  local feature="fuel-estimation"
+  init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
-  git-feature-branch "$feature"
-
-  commit-mass-and-fuel-draft
-  commit-incomplete-readme
-  commit-fix-mass-fuel-terminology
-  commit-fix-mass-and-fuel-to-be-double
-  commit-fuel-estimation-and-unit-tests
-  commit-link-with-readme
+  init-ac-automation-branch || return #from 106
+  wip-commits-ac-automation || return
 }
 
-commit-fuel-estimation-and-unit-tests() {
-  copy-to-src RocketFuelPart0/src/Fuel.kt
-  git-commit "Estimate fuel based on mass"
-
-  commit-estimate-unit-tests
+wip-commits-ac-automation() {
+  commit-empty-automation-rules || return # from 104
+  commit-living-room-ac || return       # from 104
+  commit-fix-devices-schema || return
+  commit-living-room-sensors-1 || return
+  commit-living-room-ac-rule-1 || return
+  commit-living-room-ac-rule-2 || return
+  commit-living-room-sensors-2 || return
+  commit-living-room-ac-rule-3 || return
 }
 
-commit-estimate-unit-tests() {
-  copy-rsc RocketFuelPart0/test
-  git-commit "Add estimation unit tests"
+commit-fix-devices-schema() {
+  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
+  git-commit "fixup! devices schema"
 }
 
-commit-incomplete-readme() {
-  copy-rsc RocketFuelPart1/RocketFuel.md
-
-  remove-lines-in-file RocketFuel.md 2 3
-  git-commit "Add rocket fuel readme"
+commit-living-room-sensors-1() {
+  install-living-room-balcony-door-sensor || return
+  git-commit "install living-room sensors"
 }
 
-commit-link-with-readme() {
-  copy-rsc RocketFuelPart1/RocketFuel.md
-  git-commit "Fix missing link in rocket fuel readme"
+commit-living-room-sensors-2() {
+  install-living-room-thermometer || return
+  git-commit "amend! install living-room sensors"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  init-exercise
-fi
+commit-living-room-ac-rule-1() {
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-on",
+    "name": "Turn on living-room AC when its hot",
+    "when": [{
+      "sensorDeviceId": "living-room-thermostat-sensor",
+      "sensorValue": ">25°C"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-on",
+      "parameters": { "targetTemperatureCelsius": 21.0 }
+    }]
+  }]' || return
+
+  git-commit "automate turning on living-room AC"
+}
+
+commit-living-room-ac-rule-2() {
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-off",
+    "name": "Turn off living-room AC when its cool",
+    "when": [{
+      "sensorDeviceId": "living-room-thermostat-sensor",
+      "sensorValue": "<20°C"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-off",
+    }]
+  }]' || return
+
+  git-commit "automate turning off living-room AC"
+}
+
+commit-living-room-ac-rule-3() {
+  json-edit automation-rules.json '.rules |= map(
+      if .id == "living-room-ac-on" then
+        .when += [{ "sensorDeviceId": "living-room-balcony-door", "event": "door-closed" }]
+      else . end
+    )' || return
+
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-off",
+    "name": "Turn off living-room AC when balcony door open",
+    "when": [{
+      "sensorDeviceId": "living-room-balcony-door",
+      "event": "door-opened"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-off",
+    }]
+  }]' || return
+
+  git-commit "automate turning off living-room AC when balcony door opens"
+}
+
+run-init-exercise "$@"

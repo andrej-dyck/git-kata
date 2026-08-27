@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="720px" height="155.906px" viewBox="0 0 720 155.906" enable-background="new 0 0 720 155.906" xml:space="preserve">
+<link  type="text/css" xmlns="" rel="stylesheet" id="dark-mode-general-link"></link>
+<link  type="text/css" xmlns="" rel="stylesheet" id="dark-mode-custom-link"></link>
+<g transform="translate(0, 18)">
+	<line fill="none" stroke="#808080" stroke-dasharray="10" x1="0" y1="53.453" x2="720" y2="53.453"/>
+	<g>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="88" y1="3.453" x2="188" y2="3.453"/>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="288" y1="103.453" x2="580" y2="103.453"/>
+		<line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" x1="188" y1="3.453" x2="288" y2="103.453"/>
+		<g>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="88" cy="3.453" rx="17.5" ry="17.5"/>
+			<ellipse fill="#FDE438" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="188" cy="3.453" rx="17.5" ry="17.5"/>
+		</g>
+		<g>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="288" cy="103.453" rx="17.5" ry="17.5"/>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="388" cy="103.453" rx="17.5" ry="17.5"/>
+		</g>
+		<g>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="484" cy="103.453" rx="17.5" ry="17.5"/>
+			<ellipse fill="#2FA1F4" stroke="#000000" stroke-width="5" stroke-linecap="round" cx="584" cy="103.453" rx="17.5" ry="17.5"/>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 3.5 11.9521)" fill="#5A5A5A" font-family="'Consolas'" font-size="18">main</text>
+	<text transform="matrix(1 0 0 1 1.5 107.4531)" fill="#5A5A5A" font-family="'Consolas'" font-size="18">feature</text>
+</g>
+<text transform="matrix(1 0 0 1 281.5 129.5488)" font-family="'Consolas'" font-size="24">1</text>
+<text transform="matrix(1 0 0 1 281.5 129.5488)" fill="none" stroke="#000000" font-family="'Consolas'" font-size="24">1</text>
+<text transform="matrix(1 0 0 1 477.5 129.5488)" font-family="'Consolas'" font-size="24">3</text>
+<text transform="matrix(1 0 0 1 477.5 129.5488)" fill="none" stroke="#000000" font-family="'Consolas'" font-size="24">3</text>
+<text transform="matrix(1 0 0 1 380.5 129.5488)" font-family="'Consolas'" font-size="24">2</text>
+<text transform="matrix(1 0 0 1 380.5 129.5488)" fill="none" stroke="#000000" font-family="'Consolas'" font-size="24">2</text>
+<text transform="matrix(1 0 0 1 577.5 129.5488)" font-family="'Consolas'" font-size="24">4</text>
+<text transform="matrix(1 0 0 1 577.5 129.5488)" fill="none" stroke="#000000" font-family="'Consolas'" font-size="24">4</text>
+<g id="_xD83D__xDD0D_-Product-Icons">
+	<g id="ic_fluent_thinking_24_filled">
+		<path id="_xD83C__xDFA8_-Color" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="M297.887,104.256
+			c2.451,0,4.438,1.986,4.438,4.437s-1.987,4.438-4.438,4.438s-4.438-1.988-4.438-4.438S295.437,104.256,297.887,104.256z
+			 M310.091,97.599c3.064,0,5.547,2.483,5.547,5.548c0,3.062-2.483,5.546-5.547,5.546c-3.063,0-5.547-2.484-5.547-5.546
+			C304.544,100.082,307.028,97.599,310.091,97.599z M315.638,68.753c5.901,0,10.836,4.266,11.827,9.919h0.181
+			c4.613,0,8.354,3.74,8.354,8.354s-3.74,8.354-8.354,8.354h-24.015c-4.614,0-8.354-3.74-8.354-8.354s3.74-8.354,8.354-8.354h0.18
+			C304.802,73.02,309.738,68.753,315.638,68.753z"/>
+	</g>
+	<text transform="matrix(1 0 0 1 309.6157 88.5664)" font-family="'SegoeUIBlack'" font-size="16">A</text>
+	<g id="_xD83D__xDD0D_-Product-Icons_1_">
+		<g id="ic_fluent_thinking_24_filled_1_">
+			<path id="_xD83C__xDFA8_-Color_1_" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="
+				M397.002,104.256c2.451,0,4.439,1.986,4.439,4.437s-1.988,4.438-4.439,4.438c-2.449,0-4.438-1.988-4.438-4.438
+				S394.553,104.256,397.002,104.256z M409.207,97.599c3.063,0,5.547,2.483,5.547,5.548c0,3.062-2.484,5.546-5.547,5.546
+				c-3.064,0-5.547-2.484-5.547-5.546C403.66,100.082,406.143,97.599,409.207,97.599z M414.754,68.754
+				c5.9,0,10.836,4.266,11.826,9.919h0.182c4.613,0,8.354,3.74,8.354,8.354s-3.74,8.354-8.354,8.354h-24.016
+				c-4.613,0-8.354-3.74-8.354-8.354s3.74-8.354,8.354-8.354h0.18C403.918,73.02,408.854,68.754,414.754,68.754z"/>
+		</g>
+		<text transform="matrix(1 0 0 1 405.5 88.5664)" font-family="'SegoeUIBlack'" font-size="16">A‘</text>
+	</g>
+	<g id="_xD83D__xDD0D_-Product-Icons_2_">
+		<g id="ic_fluent_thinking_24_filled_2_">
+			<path id="_xD83C__xDFA8_-Color_2_" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="
+				M490.668,104.256c2.451,0,4.439,1.986,4.439,4.437s-1.988,4.438-4.439,4.438c-2.449,0-4.438-1.988-4.438-4.438
+				S488.219,104.256,490.668,104.256z M502.873,97.599c3.063,0,5.547,2.483,5.547,5.548c0,3.062-2.484,5.546-5.547,5.546
+				c-3.064,0-5.547-2.484-5.547-5.546C497.326,100.082,499.809,97.599,502.873,97.599z M508.42,68.754
+				c5.9,0,10.836,4.266,11.826,9.919h0.182c4.613,0,8.354,3.74,8.354,8.354s-3.74,8.354-8.354,8.354h-24.016
+				c-4.613,0-8.354-3.74-8.354-8.354s3.74-8.354,8.354-8.354h0.18C497.584,73.02,502.52,68.754,508.42,68.754z"/>
+		</g>
+		<text transform="matrix(1 0 0 1 502.3984 88.5664)" font-family="'SegoeUIBlack'" font-size="16">B</text>
+	</g>
+	<g id="_xD83D__xDD0D_-Product-Icons_3_">
+		<g id="ic_fluent_thinking_24_filled_3_">
+			<path id="_xD83C__xDFA8_-Color_3_" fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" d="
+				M592.336,104.256c2.451,0,4.439,1.986,4.439,4.437s-1.988,4.438-4.439,4.438c-2.449,0-4.438-1.988-4.438-4.438
+				S589.887,104.256,592.336,104.256z M604.541,97.599c3.063,0,5.547,2.483,5.547,5.548c0,3.062-2.484,5.546-5.547,5.546
+				c-3.064,0-5.547-2.484-5.547-5.546C598.994,100.082,601.477,97.599,604.541,97.599z M610.088,68.754
+				c5.9,0,10.836,4.266,11.826,9.919h0.182c4.613,0,8.354,3.74,8.354,8.354s-3.74,8.354-8.354,8.354H598.08
+				c-4.613,0-8.354-3.74-8.354-8.354s3.74-8.354,8.354-8.354h0.18C599.252,73.02,604.188,68.754,610.088,68.754z"/>
+		</g>
+		<text transform="matrix(1 0 0 1 602.0645 88.5664)" font-family="'SegoeUIBlack'" font-size="16">B‘</text>
+	</g>
+</g>
+</svg>
