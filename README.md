@@ -46,31 +46,29 @@ It is highly recommended to use a graphical (GUI) Git client for the exercises.
 
 Each exercise ends in a clean working tree (i.e., `git status` shows no changes), a clean staging area (i.e., `git diff --staged` shows no changes), and a _clean_ history (i.e., `git log --oneline --graph --decorate --all` shows the target history).
 
----
+Each exercise is categorized by a number and a name; e.g., `101-local-amend-commit`.
+The one-hundreds `1xx` are exercises with just a local repository; i.e., no _origin_/_remote_ repository.
+The two-hundreds `2xx` are exercises with a local repository and a local _origin_/_remote_ repository.
+The three-hundreds `3xx` are advanced Git exercises.
 
-## How-To / Quick Start
-
+### Setting up an Exercise
 * Ensure the latest [Git](https://git-scm.com/) is installed and available in your terminal
 * Navigate to the folder of an exercise; e.g., `101-local-amend-commit`
 * Run the corresponding `init.sh` which setups the local repository in `<kata-root>/exercise`
   * NOTE: by default, each exercise will use this folder and overwrite any existing content
 * Open the created/updated folder `<kata-root>/exercise` with your favorite Git client
-* Consult the `README.md` in that folder for the description and task
+* Consult the `README.md` in that folder for the description of the task
 
-### Notes
+_Optional_: Cleanup isn't required, but if you want to, just remove the `exercise` _repository_ folder and its _origin_ folder `exercise-origin`.
+
+### Important Notes
 * On **Windows** with [**Git**]([Git](https://git-scm.com/)) installed, use the _Git Bash_ with `sh init.sh` to execute the script
 * On **Linux** / **Mac OS X**, you might need to make the `init.sh` executable with `chmod +x init.sh`
 * Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "./exercise-101"`
   * _Important_: relative links or images in the `README.md` might not work
+  * Folders named `exercise-*` are ignored by this Git-Kata repository
 
-### Clean-up (optional)
-Remove the `exercise` folder and its origin `exercise-origin`. For the default folders, use:
-```shell
-rm -rf exercise
-rm -rf exercise-origin
-```
-
-## `jq` Dependency
+### `jq` Dependency
 
 [jq](https://jqlang.org/) is a lightweight and flexible command-line JSON processor.
 
@@ -117,7 +115,7 @@ Rebase frequently onto `main` to stay in sync and prevent merge conflicts.
 
 The [Git version control system](https://git-scm.com/)
 
-### Katas inspired by
+### Other Git Katas
 * [eficode-academy/git-katas](https://github.com/eficode-academy/git-katas)
 * [Git Immersion - A guided tour](https://gitimmersion.com/)
 
