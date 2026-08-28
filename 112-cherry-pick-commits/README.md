@@ -1,12 +1,12 @@
-# 301 Interactive Rebase - Re-writing History With conflicts
+# 112 Cherry-pick Commits
 
 🚧 WIP (this exercise isn't done yet)
 
 TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) and then [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to overwrite the branch on origin.
+TODO we commit changes to the wrong branch.
 
-TODO You might encounter conflicts during your interactive rebase, some commits might have changed that you want to be deleted from your branch
+TODO use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick)
 
 ## Exercise Context
 

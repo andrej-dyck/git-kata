@@ -1,12 +1,12 @@
-# 302 Move Commits with Cherry-pick and Reset
+# 112 Cherry-pick Commits
 
 🚧 WIP (this exercise isn't done yet)
 
 TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-TODO we commit changes to the wrong branch.
+TODO refer to [exercise 112](../112-cherry-pick-commits/README.md)
 
-TODO use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) and then [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) or [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) to remove the commit from the wrong branch
+TODO use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) without checking out the remote branch
 
 ## Exercise Context
 
