@@ -1,4 +1,4 @@
-# 303 Restore Lost Commits with Git-reflog
+# 304 Restore Lost Commits with Git-reflog
 
 🚧 WIP (this exercise isn't done yet)
 
