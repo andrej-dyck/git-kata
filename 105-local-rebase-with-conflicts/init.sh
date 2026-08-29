@@ -107,7 +107,7 @@ commit-living-room-ac-rules() {
     }]
   }]' || return
 
-  git-commit "automate living-room AC"
+  git-commit "${1:-automate living-room AC}"
 }
 
 run-init-exercise "$@"

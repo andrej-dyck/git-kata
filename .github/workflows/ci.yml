@@ -29,3 +29,5 @@ jobs:
       run: bash ./scripts/_dev-test-init.sh 106-local-interactive-rebase-reorder-commits
     - name: Test Exercise 107
       run: bash ./scripts/_dev-test-init.sh 107-local-interactive-rebase-squash-commits
+    - name: Test Exercise 108
+      run: bash ./scripts/_dev-test-init.sh 108-local-interactive-rebase-reword-commits

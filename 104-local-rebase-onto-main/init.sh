@@ -105,7 +105,7 @@ commit-living-room-ac() {
     "traits": ["on-off", "temperature-control"]
   }]' || return
 
-  git-commit "install living-room AC"
+  git-commit "${1:-install living-room AC}"
 }
 
 commit-balcony-door-sensor() {
