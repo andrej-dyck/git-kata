@@ -13,18 +13,13 @@ init-exercise() {
 
 wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 104
-  commit-living-room-ac || return       # from 104
-  commit-fix-devices-schema || return
+  commit-living-room-ac || return # from 104
+  commit-device-traits-schema "fixup! devices schema" || return # from 106
   commit-living-room-sensors-1 || return
   commit-living-room-ac-rule-1 || return
   commit-living-room-ac-rule-2 || return
   commit-living-room-sensors-2 || return
   commit-living-room-ac-rule-3 || return
-}
-
-commit-fix-devices-schema() {
-  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
-  git-commit "fixup! devices schema"
 }
 
 commit-living-room-sensors-1() {

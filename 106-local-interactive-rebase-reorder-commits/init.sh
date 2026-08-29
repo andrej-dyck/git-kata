@@ -39,13 +39,13 @@ wip-commits-ac-automation() {
 
 commit-device-traits-schema() {
   copy-rsc "smart-home-templates/devices.schema.json" ./ || return
-  git-commit "define traits for devices"
+  git-commit "${1:-define traits for devices}"
 }
 
 commit-living-room-sensors() {
   install-living-room-balcony-door-sensor || return # from 104
   install-living-room-thermometer || return # from 104
-  git-commit "install living-room sensors"
+  git-commit "${1:-install living-room sensors}"
 }
 
 run-init-exercise "$@"
