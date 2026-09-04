@@ -15,17 +15,35 @@ json-edit() {
     return 1
   fi
 
-  local tempFile
   tempFile="$(mktemp "${targetFile}.tmp.XXXXXX" 2>/dev/null || mktemp)"
+  trap 'rm -f -- "$tempFile"' RETURN
 
   if jq-run "$@" "$filter" "$targetFile" > "$tempFile"; then
-    mv -f "$tempFile" "$targetFile"
+#    mv -f "$tempFile" "$targetFile"
+    tr -d '\r' < "$tempFile" > "$targetFile" # translates \r\n -> \n while writing to target file
   else
     local exitCode=$?
-    rm -f "$tempFile"
     echo "Error: Failed to process JSON filter on '$targetFile'." >&2
     return $exitCode
   fi
+}
+
+json-read() {
+  if [ "$#" -lt 2 ]; then
+    echo "Usage: json-read <file> <jq-filter> [extra_args...]" >&2
+    return 1
+  fi
+
+  local targetFile="$1"
+  local filter="$2"
+  shift 2
+
+  if [ ! -f "$targetFile" ]; then
+    echo "Error: File '$targetFile' not found." >&2
+    return 1
+  fi
+
+  jq-run "$@" "$filter" "$targetFile"
 }
 
 jq-run() {

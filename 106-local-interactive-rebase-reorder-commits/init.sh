@@ -38,7 +38,8 @@ wip-commits-ac-automation() {
 }
 
 commit-device-traits-schema() {
-  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
+  define-device-traits || return #from 103
+
   git-commit "${1:-define traits for devices}"
 }
 

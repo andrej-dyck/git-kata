@@ -69,12 +69,20 @@ wip-feature-automation-rules() {
 }
 
 commit-living-room-light-traits() {
-  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
+  define-device-traits || return
   json-edit devices.json '.devices |= map(
     if .id == "living-room-light" then . +{ "traits": ["on-off", "brightness-control"] } else . end
   )' || return
 
   git-commit "define living-room-light trait on-off"
+}
+
+define-device-traits() {
+  json-edit devices.schema.json ".properties.devices.items.properties += {
+    "traits": $(
+      json-read "$(rsc-file smart-home-templates/devices.schema.json)" '.properties.devices.items.properties.traits'
+    )
+  }" || return
 }
 
 commit-empty-automation-rules() {
