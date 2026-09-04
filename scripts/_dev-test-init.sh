@@ -166,7 +166,7 @@ cleanup() {
     return 1
   fi
 
-  rm -rf "$1"
+  rm -rf -- "${1:?}"
 }
 
 for ((i = 1; i <= $REPETITIONS; i++)); do

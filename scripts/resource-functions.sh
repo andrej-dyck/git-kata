@@ -21,7 +21,7 @@ copy-rsc() {
   targetDir="$(dirname "$exerciseRelPath")"
 
   if [ -n "$targetDir" ] && [ ! -d "$targetDir" ]; then
-    mkdir -p "$targetDir"
+    mkdir -p -- "$targetDir"
   fi
 
   cp -rf "$REPO_ROOT_DIR/resources/$resourceRelPath" "$exerciseRelPath"

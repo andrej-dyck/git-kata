@@ -22,8 +22,8 @@ run-init-exercise() {
   echo "Initialize '$exerciseName' at '$exerciseDir'"
 
   echo "Ensure exercise folder exists and is empty"
-  rm -rf "${exerciseDir:?}" && mkdir "$exerciseDir"
-  rm -rf "${exerciseDir:?}-origin"
+  _ensure-empty-dir "${exerciseDir:?}" || return
+  rm -rf -- "${exerciseDir:?}-origin"
 
   local initExitCode=0
   init-exercise "$initScriptDir" "$exerciseDir" || initExitCode=$?
@@ -54,4 +54,24 @@ _safe-exercise-dir() {
   fi
 
   realpath -m "$exerciseDir"
+}
+
+_ensure-empty-dir() {
+  local dir=$1
+
+  if [[ ! -e $dir ]]; then
+    mkdir -p -- "$dir"
+    return
+  fi
+
+  if [[ ! -d $dir ]]; then
+    echo "Failed to create directory '$dir'; file exists and is not a directory" >&2
+    return 1
+  fi
+
+  if [[ -z $(find "$dir" -mindepth 1 -maxdepth 1 -print -quit) ]]; then
+    return 0 # dir is already empty
+  fi
+
+  find "$dir" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
 }
