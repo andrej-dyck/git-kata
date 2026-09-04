@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+rsc-file() {
+  if [ "$#" -lt 1 ]; then
+    echo "Usage: rsc-file <resource-path>" >&2
+    return 1
+  fi
+
+  realpath -m "$REPO_ROOT_DIR/resources/$1"
+}
+
 read-rsc() {
   if [ "$#" -lt 1 ]; then
     echo "Usage: read-rsc <resource-path>" >&2
@@ -24,5 +33,5 @@ copy-rsc() {
     mkdir -p -- "$targetDir"
   fi
 
-  cp -rf "$REPO_ROOT_DIR/resources/$resourceRelPath" "$exerciseRelPath"
+  cp -rf "$REPO_ROOT_DIR/resources/$1" "$exerciseRelPath"
 }

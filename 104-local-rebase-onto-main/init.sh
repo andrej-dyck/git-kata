@@ -29,18 +29,9 @@ init-exercise() {
 feature-living-room-automation-rules() {
   git-checkout-new-branch "$1" || return
 
-  commit-living-room-light-traits || return
+  commit-living-room-light-traits || return # from 103
   commit-empty-automation-rules || return # from 103
   commit-living-room-light-rules || return
-}
-
-commit-living-room-light-traits() {
-  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
-  json-edit devices.json '.devices |= map(
-    if .id == "living-room-light" then . +{ "traits": ["on-off", "brightness-control"] } else . end
-  )' || return
-
-  git-commit "define living-room-light trait on-off"
 }
 
 commit-living-room-light-rules() {
@@ -90,7 +81,7 @@ commit-living-room-light-rules() {
 }
 
 integrated-ac-install-commits() {
-  copy-rsc "smart-home-templates/devices.schema.json" ./ || return
+  define-device-traits || return # from 103
   commit-living-room-ac || return
   commit-balcony-door-sensor || return
   commit-living-room-thermometer || return

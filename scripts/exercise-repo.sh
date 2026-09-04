@@ -22,6 +22,7 @@ _initial-exercise-commits() {
   cd "$exerciseDir" || return
 
   cp "$REPO_ROOT_DIR/.gitignore" . || return
+  echo "* text eol=lf encoding=utf-8" > .gitattributes || return
   git-commit "configure Git" .gitignore || return
 
   cp "$exerciseReadmePath" . || return
