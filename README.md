@@ -51,29 +51,41 @@ The one-hundreds `1xx` are exercises with just a local repository; i.e., no _ori
 The two-hundreds `2xx` are exercises with a local repository and a local _origin_/_remote_ repository.
 The three-hundreds `3xx` are advanced Git exercises.
 
-### Setting up an Exercise
-* Ensure the latest [Git](https://git-scm.com/) is installed and available in your terminal
-* Navigate to the folder of an exercise; e.g., `101-local-amend-commit`
-* Run the corresponding `init.sh` which setups the local repository in `<kata-root>/exercise`
-  * NOTE: by default, each exercise will use this folder and overwrite any existing content
-* Open the created/updated folder `<kata-root>/exercise` with your favorite Git client
+### Quick Start
+* Ensure the latest [Git](https://git-scm.com/) is installed
+* Clone this `git-kata` repository
+  ```shell
+  git clone --depth 1 https://github.com/andrej-dyck/git-kata.git && cd git-kata && rm -rf .git
+  ```
+* Run a `<NNN-exercise>/init.sh` to initialize the exercise in `<git-kata-root>/exercise`
+  * Note that by default, each `init.sh` will use this folder and overwrite any existing content
+  * You can use [Docker]([Docker](https://www.docker.com/)) to run the scripts in isolation
+* Open the created/updated folder `<git-kata-root>/exercise` with your favorite Git client
 * Consult the `README.md` in that folder for the description of the task
 
 _Optional_: Cleanup isn't required, but if you want to, just remove the `exercise` _repository_ folder and its _origin_ folder `exercise-origin`.
 
-### Important Notes
+#### Custom Exercise Folder
+Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "./exercise-101"`. Note that relative links or images in `README.md` might not work, and you will need to open each custom exercise folder in your Git client.
+
+### Isolated Execution with Docker
+Use [Dockerfile](./Dockerfile) and [Docker](https://www.docker.com/) to run this Kata's _bash scripts_ isolated from your operating system.
+
+Run the following command in `<git-kata-root>`, after cloning this repository:
+```shell
+docker build -t git-kata . && docker run --rm -it -v "./:/git-kata" git-kata
+```
+
+Within the Docker container, use `<NNN-exercise>/init.sh` to initialize an exercise.
+And since `/git-kata` is mounted to your local folder, you can open the `./exercise` folder with your local Git client.
+
+### Local Execution
 * On **Windows** with [**Git**]([Git](https://git-scm.com/)) installed, use the _Git Bash_ with `sh init.sh` to execute the script
 * On **Linux** / **Mac OS X**, you might need to make the `init.sh` executable with `chmod +x init.sh`
-* Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "./exercise-101"`
-  * _Important_: relative links or images in the `README.md` might not work
-  * Folders named `exercise-*` are ignored by this Git-Kata repository
 
-### `jq` Dependency
-
+#### `jq` Dependency
 [jq](https://jqlang.org/) is a lightweight and flexible command-line JSON processor.
-
 If you have `jq` (or `jaq`) installed and in your `PATH`, the `init.sh` script will automatically use it.
-
 Otherwise, the scripts will try to use the bundled `jq` binary (version `jq-1.8.2`).
 Or you can install it from [here](https://jqlang.org/).
 
