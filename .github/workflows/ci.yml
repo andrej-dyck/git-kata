@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v7
     - name: Configure Git
-      run: git config --global user.name "Git Kata" && git config --global user.email "git-kata@andrej.dyck"
+      run: git config --global user.name "Git Kata" && git config --global user.email "git-kata@andrej-dyck"
     - name: Test Exercise 101
       run: bash ./scripts/_dev-test-init.sh 101-local-amend-commit
     - name: Test Exercise 102
