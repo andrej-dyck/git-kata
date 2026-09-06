@@ -7,6 +7,7 @@ Sometimes we include unrelated changes to a commit and want to undo this commit.
 [`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) helps us to reset to a previous git-state while keeping all changes from those undone commits staged, so they can be recommitted.
 
 So, unlike a _hard reset_, the changes are not lost; with `--soft`, they remain staged.
+Read more about _Git reset_ in the article [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified).
 
 ## Exercise Context
 

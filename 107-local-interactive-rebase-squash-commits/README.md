@@ -1,6 +1,6 @@
 # 107 Interactive Rebase - Squash Commits
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable afterward (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
+[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
 
 Sometimes we find that too small commits appear fragmented and disjointed.
 Sometimes we need to fix or improve on something in a several-commits earlier commit.

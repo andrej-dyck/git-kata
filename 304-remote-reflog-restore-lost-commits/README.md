@@ -9,6 +9,8 @@ Fortunately, nothing is ever lost with Git (well, almost nothing).
 Git even provides a possibility to restore _lost_ commits[^1].
 To this end, [`git reflog`](https://git-scm.com/docs/git-reflog) can show us the scrapped commits, and we can then use tools like [cherry-picking](https://git-scm.com/docs/git-cherry-pick), [branching](https://git-scm.com/docs/git-branch) or [git-reset](https://git-scm.com/docs/git-reset) to restore those.
 
+TODO [Data Recovery with Git-reflog](https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery#_data_recovery)
+
 [^1]: Git only knows the scrapped commits within your local repository; it's like a local history.
 
 ## Exercise Context

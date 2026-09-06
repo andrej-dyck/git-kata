@@ -4,6 +4,7 @@ Amending commits is useful when we didn't stage something that belongs to the mo
 or we made a mistake in that commit.
 
 For example, we might want to fix a typo, reformat code, add related files, or improve logic that was introduced with that commit.
+It's probably the most common way to rewrite the Git history.
 
 [`git commit --amend`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend) allows us to do that.
 

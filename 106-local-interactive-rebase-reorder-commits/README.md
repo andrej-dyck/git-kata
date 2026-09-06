@@ -1,6 +1,6 @@
 # 106 Interactive Rebase - Re-order Commits
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable afterward.
+[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others.
 
 It is only natural that we work on problems in a non-linear fashion.
 - We have an idea on how to start 💡

@@ -1,6 +1,6 @@
 # 108 Interactive Rebase - Re-word Commit Message
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable afterward (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
+[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
 
 Focusing on the progress of our work is important, and so, we should avoid context switching.
 While committing work often is good, even thinking about how to word commit messages is a cognitive load which might make us lose our focus.
