@@ -92,7 +92,7 @@ If you have `jq` (or `jaq`) installed and in your `PATH`, the `init.sh` script w
 Otherwise, the scripts will try to use the bundled `jq` binary (version `jq-1.8.2`).
 Or you can install it from [here](https://jqlang.org/).
 
-## Recommended Way to Work with Git within a Team
+## Recommended Way of Working with Git as a Team
 
 ### Atomic Commits
 An **atomic commit** represents a _single_, _self-contained_, and _coherent unit of change_ that keeps the codebase in a working and testable state.
@@ -121,6 +121,20 @@ Avoid long-lived branching schemes; e.g., GitFlow's `develop`, `release`, and `s
 When using branches, keep them _short-lived_ and integrate them into `main` as soon as possible; ideally within minutes or hours.
 
 Rebase frequently onto `main` to stay in sync and prevent merge conflicts.
+
+### Enforce a Linear Commit History
+Keep the commit history linear by using [Git _rebase_](https://git-scm.com/docs/git-rebase).
+A linear history is easier to read, navigate, and reason about.
+It better represents the logical evolution of the project.
+
+The idea that [Git _merge_](https://git-scm.com/docs/git-merge) preserves the _"true"_ history, and that this therefore has significant value is a straw-man argument.
+While _merge commits_ accurately record _when_ branches were integrated, they add noise and make it harder to follow the actual changes.
+This is especially true when merge conflict resolutions combine unrelated changes.
+
+Keeping the history clean, focused, and linear improves team collaboration and makes maintenance easier with [Git's rewriting tools](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
+It also makes [debugging with Git, e.g., bisecting,](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git#_binary_search) easier because each commit represents a clear step in the development.
+
+The goal is to preserve a history of the project's logical evolution; not the history of branch integration.
 
 ## Links and Resources
 
