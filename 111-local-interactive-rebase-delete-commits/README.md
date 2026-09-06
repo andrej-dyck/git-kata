@@ -6,9 +6,9 @@ TODO Git command, its purpose, and how we can use it to develop a clean git hist
 
 TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _delete_ commits
 
-![](../resources/main-feature-before-split.svg)
+![](../resources/main-feature-with-commit-for-removal.svg)
 
-![](../resources/main-feature-splitted.svg)
+![](../resources/main-feature-with-removed-commit.svg)
 
 ## Exercise Context
 

@@ -4,6 +4,8 @@
 
 TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
+Git allows us to make decisions about the commit history later.
+
 TODO use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _split_ commits
 
 ![](../resources/main-feature-before-split.svg)

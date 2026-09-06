@@ -12,13 +12,25 @@ git-commit() {
   git commit -q -m "$commitMsg"
 }
 
+git-amend-commit() {
+  local commitMsg="${1:-}" files="${2:-}"
+
+  _git-stage-files "$files"
+
+  if [ -z "$commitMsg" ]; then
+    git commit -q --amend --no-edit
+  else
+    git commit -q --amend -m "$commitMsg"
+  fi
+}
+
 _git-stage-files() {
   local pattern="${1:-}"
 
   if [ -z "$pattern" ]; then
     git add --all
   else
-    git add "$pattern"
+    git add -- "$pattern"
   fi
 }
 
