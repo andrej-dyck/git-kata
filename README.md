@@ -4,39 +4,42 @@
 
 ![Git Logo](./resources/git-logo.png)
 
-A clean Git history is beneficial to a project in many ways.
-Similar to how good code documents the current state of the software, a well-tended Git log documents which changes happened and why.
-For example,
-* _What are the design decisions?_
-* _What has happened since the last fetch?_
-* _Why did the implementation of a function change?_
-* _Is the change a straight-forward refactoring or a change in functionality?_
-* _When did the bug get introduced? (supported by git-bisect)_
+A _clean Git history_ is linear, coherent, and intentional; and therefore easier to read, navigate, and reason about.
 
-However, [good commit messages](https://chris.beams.io/posts/git-commit/) are not enough for a clean Git history, and we need to tend to and "refactor" our history before we "commit" to it; or in other words, [rewrite the history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
-To this end, we want to have coherent, small, and working commits (**atomic commits**).
-Further, a linear history helps to comprehend the sequence of changes more easily.
+A well-tended Git history tells the story of the project's logical evolution: _which_ changes were made and, more importantly, _why_.
+It should help us understand the project, not how the team happened to work.
 
-To visualize this, we want to go from this kind of Git log (here, three developers worked in parallel using [GitFlow overview](https://datasift.github.io/gitflow/IntroducingGitFlow.html)):
+We should be able to look at the history and answer questions such as: _What changed? Why? What decisions led to this change? How has the project evolved? When did a particular change or problem emerge (supported by [Git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git#_binary_search))?_
 
-![Git merge](./resources/git-merge-3-devs.svg)
+[Good commit messages](https://chris.beams.io/posts/git-commit/) are an important part of a clean Git history, but they are not enough on their own.
+To improve the readability of the project's history, we want _atomic commits_ (small, coherent, and working) in a logical, linear sequence.
 
-To this kind of linear history (here, five developers worked in parallel using [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow)):
+Working with [Trunk-based Development](https://trunkbaseddevelopment.com/) or [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow) helps us to maintain linear history:
 
-![Git rebase](./resources/git-rebase-5-devs.svg)
+![Git trunk-based linear history](resources/git-trunk-based.svg)
 
-Or even as linear as with [Trunk-based Development](https://trunkbaseddevelopment.com/):
+Or this, when working with merge PRs:
 
-![Git oneflow](./resources/git-one-flow.svg)
+![Git oneflow linear history](resources/git-oneflow.svg)
 
-### Note
+Compare those linear histories to one that a typical [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) produces; and that's only the `develop` branch with three developers committing work:
+
+![typical GitFlow history](./resources/git-merge-3-devs.svg)
+
+But a linear history alone is not necessarily a _clean history_. The commits themselves should still be atomic, coherent, and intentional.
+And tending to the Git history requires focus and discipline.
+
+Fortunately, Git allows us to revise the commit history later by [rewriting the history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
+With these tools, we can _"refactor"_ our history before we share it with others.
+
+## About this Git Kata
+This kata focuses on creating a clean and linear Git history by using Git's [history rewriting](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History) features.
+
 This kata assumes that you already have basic Git knowledge; e.g., how to _stage_ files, _commit_ changes, _push_ to origin, _fetch_ and _pull_ from remote, _branching_, and work with the _Git log_.
 
----
+## Doing this Git Kata
 
-## Doing this Git-Kata
-
-**_IMPORTANT_**: 🚧 This Git-Kata is currently under rework. Checkout tag [`2021-git-kata-kotlin-exercise`](https://github.com/andrej-dyck/git-kata/releases/tag/2021-git-kata-kotlin-exercise) (or [`2021-git-kata-osx-kotlin-exercise`](https://github.com/andrej-dyck/git-kata/releases/tag/2021-git-kata-osx-kotlin-exercise) for Mac OS X) for an earlier version.
+**_IMPORTANT_**: 🚧 This Git kata is currently under rework. Checkout tag [`2021-git-kata-kotlin-exercise`](https://github.com/andrej-dyck/git-kata/releases/tag/2021-git-kata-kotlin-exercise) (or [`2021-git-kata-osx-kotlin-exercise`](https://github.com/andrej-dyck/git-kata/releases/tag/2021-git-kata-osx-kotlin-exercise) for Mac OS X) for an earlier version.
 
 Each exercise is self-contained, even when they refer to previous exercise numbers; the task is described in the `README.md` file.
 
@@ -69,7 +72,7 @@ _Optional_: Cleanup isn't required, but if you want to, just remove the `exercis
 Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "./exercise-101"`. Note that relative links or images in `README.md` might not work, and you will need to open each custom exercise folder in your Git client.
 
 ### Isolated Execution with Docker
-Use [Dockerfile](./Dockerfile) and [Docker](https://www.docker.com/) to run this Kata's _bash scripts_ isolated from your operating system.
+Use [Dockerfile](./Dockerfile) and [Docker](https://www.docker.com/) to run this kata's _bash scripts_ isolated from your operating system.
 
 Run the following command in `<git-kata-root>`, after cloning this repository:
 ```shell
@@ -88,8 +91,6 @@ And since `/git-kata` is mounted to your local folder, you can open the `./exerc
 If you have `jq` (or `jaq`) installed and in your `PATH`, the `init.sh` script will automatically use it.
 Otherwise, the scripts will try to use the bundled `jq` binary (version `jq-1.8.2`).
 Or you can install it from [here](https://jqlang.org/).
-
----
 
 ## Recommended Way to Work with Git within a Team
 
@@ -114,14 +115,12 @@ It is recommended to protect this `main` branch from history rewrites.
 
 Every commit on `main` must be continuously deployed; i.e., it must be releasable and production-ready.
 
-Avoid long-lived branching schemes (e.g., GitFlow's `develop`, `release`, and `support` branches).
+Avoid long-lived branching schemes; e.g., GitFlow's `develop`, `release`, and `support` branches. Read also [GitFlow considered harmful](https://www.endoflineblog.com/gitflow-considered-harmful)
 
 ### Short-lived Branches
 When using branches, keep them _short-lived_ and integrate them into `main` as soon as possible; ideally within minutes or hours.
 
 Rebase frequently onto `main` to stay in sync and prevent merge conflicts.
-
----
 
 ## Links and Resources
 
@@ -131,7 +130,7 @@ The [Git version control system](https://git-scm.com/)
 * [eficode-academy/git-katas](https://github.com/eficode-academy/git-katas)
 * [Git Immersion - A guided tour](https://gitimmersion.com/)
 
-### Naming conventions
+### Naming Conventions
 * [Git commit message](https://chris.beams.io/posts/git-commit/)
 * [Providing context with commit messages](https://testing.googleblog.com/2017/09/code-health-providing-context-with.html)
 * [Git branch naming](https://deepsource.io/blog/git-branch-naming-conventions/)
