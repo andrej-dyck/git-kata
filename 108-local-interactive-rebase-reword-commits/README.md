@@ -20,7 +20,7 @@ Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [1
 
 In this exercise, we committed our work on `living-room-ac-automation` in small commits and didn't focus on wording messages too much.
 
-For example, ... TODO
+For example, `"ac"` is fine for work-in-progress commits, but should be replaced with a more descriptive message like `"install living-room AC"`.
 
 _Re-word_ the commit messages on `living-room-ac-automation` to tell a coherent story.
 
