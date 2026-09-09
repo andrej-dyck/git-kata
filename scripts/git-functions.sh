@@ -54,6 +54,14 @@ git-push() {
   git push -q origin
 }
 
+git-integrate-into-main() {
+  git switch "$1" || return
+  git rebase "main" || return
+  git switch "main" || return
+  git merge --ff-only "$1" || return
+  git branch -d "$1" || return
+}
+
 git-log-graph() {
   if [ "$#" -ge 1 ]; then
     echo "$1"

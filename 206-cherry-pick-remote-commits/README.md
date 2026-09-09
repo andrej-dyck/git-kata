@@ -4,7 +4,7 @@
 
 TODO Git command, its purpose, and how we can use it to develop a clean git history.
 
-TODO refer to [exercise 112](../112-cherry-pick-commits/README.md)
+TODO refer to [exercise 113](../113-cherry-pick-commits/README.md)
 
 TODO use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) without checking out the remote branch
 

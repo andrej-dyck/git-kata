@@ -123,11 +123,11 @@ When using branches, keep them _short-lived_ and integrate them into `main` as s
 Rebase frequently onto `main` to stay in sync and prevent merge conflicts.
 
 ### Enforce a Linear Commit History
-Keep the commit history linear by using [Git _rebase_](https://git-scm.com/docs/git-rebase).
+Keep the commit history linear by using [Git _rebase_](https://git-scm.com/book/en/v2/Git-Branching-Rebasing).
 A linear history is easier to read, navigate, and reason about.
 It better represents the logical evolution of the project.
 
-The idea that [Git _merge_](https://git-scm.com/docs/git-merge) preserves the _"true"_ history, and that this therefore has significant value is a straw-man argument.
+The idea that [Git _merge_](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) preserves the _"true"_ history, and that this therefore has significant value is a straw-man argument.
 While _merge commits_ accurately record _when_ branches were integrated, they add noise and make it harder to follow the actual changes.
 This is especially true when merge conflict resolutions combine unrelated changes.
 

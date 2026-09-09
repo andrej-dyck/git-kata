@@ -47,7 +47,7 @@ commit-living-room-ac-rule-on() {
     }]
   }]' || return
 
-  git-commit "automate turning on living-room AC"
+  git-commit "${1:-automate turning on living-room AC}"
 }
 
 commit-living-room-ac-rule-off() {
@@ -64,7 +64,7 @@ commit-living-room-ac-rule-off() {
     }]
   }]' || return
 
-  git-commit "automate turning off living-room AC"
+  git-commit "${1:-automate turning off living-room AC}"
 }
 
 commit-living-room-ac-rule-on-off-balcony-door() {
@@ -87,7 +87,7 @@ commit-living-room-ac-rule-on-off-balcony-door() {
     }]
   }]' || return
 
-  git-commit "automate turning off living-room AC when balcony door opens"
+  git-commit "${1:-automate turning off living-room AC when balcony door opens}"
 }
 
 run-init-exercise "$@"

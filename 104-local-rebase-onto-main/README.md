@@ -1,25 +1,25 @@
 # 104 Rebase onto `main`
 
-When working in a team (or on several changes at once), we might want to use short-lived branches (i.e., integrated into `main` within hours).
-It is unavoidable that `main` will have commits that are more recent than those on our `feature` branch.
+When working as a team, we want to prefer short-lived branches (i.e., integrated into `main` within hours).
+But it's unavoidable that `main` will sometimes have commits that are more recent than those on our `feature` branch.
 
 ![](../resources/main-feature-out-of-sync.svg)
 
 There are two ways to integrate the changes in `main`.
 
-One way is to **merge `main` into `feature`** branch with [`git merge`](https://git-scm.com/docs/git-merge).
+One way is to **[merge](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) `main` into `feature`** branch with [`git merge`](https://git-scm.com/docs/git-merge).
 
 ![](../resources/main-feature-sync-merge.svg)
 
 This leads to a non-linear, often messy Git history, which can never be linearized again; and in fact, prevents us from cleaning up our history.
 With a non-linear, messy history, we might encounter changes in our branch that are not ours (integrated with the _merge commit_), reverting can be less straightforward, and investigating the history (e.g., _"what happened?"_ and debugging with `git bisect`) is more challenging.
 
-The second way is to **rebase `feature` onto `main`** with [`git rebase`](https://git-scm.com/docs/git-rebase); in other words, re-applying our changes starting with a new _base_ leading to a linear history. Think of it _"as if we started our branch later"_.
+The second way is to **[rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) `feature` onto `main`** with [`git rebase`](https://git-scm.com/docs/git-rebase); in other words, re-applying our changes starting with a new _base_ leading to a linear history. Think of it _"as if we started our branch later"_.
 
 ![](../resources/main-feature-sync-rebase.svg)
 
 `git merge` and `git rebase` mainly differ in how they incorporate changes and represent history.
-_Merge_ preserves the actual branching and integration history, while _rebase_ rewrites commits to produce a cleaner, linear history.
+_Merge_ preserves the actual branching and integration history (_"how the developers worked"_), while _rebase_ rewrites commits to produce a linear history to focus on the logical changes (_"how the developers want to document it"_).
 
 Many problems often attributed to `git merge` vs. `git rebase` aren't inherent to either approach.
 Expensive conflicts, repeated conflict resolution, late integration issues, and changes that merge cleanly but don't work together are usually consequences of late integration and long-lived, diverging branches.
