@@ -40,7 +40,7 @@ jobs:
     - name: Test Exercise 112
       run: bash ./scripts/_test-init.sh 112-local-interactive-rebase-onto-main
     - name: Test Exercise 113
-      run: bash ./scripts/_test-init.sh 113-cherry-pick-commits
+      run: bash ./scripts/_test-init.sh 113-local-cherry-pick-commits
     - name: Test Exercise 201
       run: bash ./scripts/_test-init.sh 201-remote-amend-commit
     - name: Test Exercise 202
