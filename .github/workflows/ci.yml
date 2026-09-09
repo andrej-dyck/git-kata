@@ -39,3 +39,5 @@ jobs:
       run: bash ./scripts/_test-init.sh 111-local-interactive-rebase-delete-commits
     - name: Test Exercise 112
       run: bash ./scripts/_test-init.sh 112-local-interactive-rebase-onto-main
+    - name: Test Exercise 113
+      run: bash ./scripts/_test-init.sh 113-cherry-pick-commits
