@@ -39,7 +39,7 @@ $ git log --oneline --graph --decorate --all
 * 5907845 write README
 * c832a9c configure Git
 ```
-_Note_: The commit IDs are different from the previous `README.md` as each exercise is generated.
+_Note_: The commit hashes are different from the previous `README.md` as each exercise is generated.
 This will also be true for all subsequent exercises.
 
 ### Target Git History

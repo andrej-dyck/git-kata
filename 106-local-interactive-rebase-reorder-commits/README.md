@@ -92,4 +92,4 @@ $ git log --oneline --graph --decorate --all
 * 9e76d4d write README
 * 5bea84e configure Git
 ```
-_Note_: The commit IDs after the re-ordering have changed because to Git, commits aren't isolated patches with an ID but rather changes in a hierarchical order.
+_Note_: The commit hashes after the re-ordering have changed because to Git, commits aren't isolated patches with an ID but rather changes in a hierarchical order.

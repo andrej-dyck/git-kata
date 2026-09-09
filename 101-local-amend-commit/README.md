@@ -42,7 +42,7 @@ $ git log --oneline --graph --decorate --all
 * 8765181 write README
 * 17adacf configure Git
 ```
-_Note_: The commit IDs are examples and will differ in your generated exercise repository.
+_Note_: The commit hashes are examples and will differ in your generated exercise repository.
 
 ### Target Git History
 ```console
@@ -52,4 +52,4 @@ $ git log --oneline --graph --decorate --all
 * 8765181 write README
 * 17adacf configure Git
 ```
-_Note_: Since we amended the last commit (`HEAD`), it has a different commit ID now.
+_Note_: Since we amended the last commit (`HEAD`), it has a different commit hash now.

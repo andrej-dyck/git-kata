@@ -83,4 +83,4 @@ $ git log --oneline --graph --decorate --all
 * 9315fb1 write README
 * dbc3611 configure Git
 ```
-_Note_: Since we rebased the branch `living-room-automation` onto `main`, all the branch commit IDs have changed.
+_Note_: Since we rebased the branch `living-room-automation` onto `main`, all the branch commit hashes have changed.

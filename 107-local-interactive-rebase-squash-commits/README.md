@@ -85,4 +85,4 @@ $ git log --oneline --graph --decorate --all
 * 18806df write README
 * 3e2c173 configure Git
 ```
-_Note_: The commit IDs after squashing are different as the commits are new, and so their child commits new commit IDs as well.
+_Note_: The commit hashes after squashing are different as the commits are new, and so their child commits new commit hashes as well.

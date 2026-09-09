@@ -148,4 +148,4 @@ $ git log --oneline --graph --decorate --all
 * ce3cbc0 write README
 * 229fdbc configure Git
 ```
-_Note_: After editing the commit `"install living-room AC"` all following commits have new commit IDs.
+_Note_: After editing the commit `"install living-room AC"` all following commits have new commit hashes.
