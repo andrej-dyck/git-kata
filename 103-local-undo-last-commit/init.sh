@@ -81,7 +81,7 @@ define-device-traits() {
   json-edit devices.schema.json ".properties.devices.items.properties += {
     "traits": $(
       json-read "$(rsc-file smart-home-templates/devices.schema.json)" '.properties.devices.items.properties.traits'
-    )
+  )
   }" || return
 }
 
@@ -93,6 +93,17 @@ commit-empty-automation-rules() {
 }
 
 commit-wip-automation-rule() {
+  define-lights-on-presence-rule || return
+  git-commit "WIP automate turning on the living-room light"
+
+  define-lights-off-presence-rule || return
+  git-commit "WIP automate turning off the living-room light"
+
+  define-lights-on-off-ambient-light-rule || return
+  git-commit "WIP automate living-room light based on ambient light"
+}
+
+define-lights-on-presence-rule() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-lights-on-presence",
     "name": "Turn on living-room lights when presence is detected",
@@ -106,9 +117,9 @@ commit-wip-automation-rule() {
       "action": "turn-on"
     }]
   }]' || return
+}
 
-  git-commit "WIP automate turning on the living-room light"
-
+define-lights-off-presence-rule() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-lights-off-no-presence",
     "name": "Turn off living room lights when presence is no longer detected",
@@ -122,9 +133,9 @@ commit-wip-automation-rule() {
       "action": "turn-off"
     }]
   }]' || return
+}
 
-  git-commit "WIP automate turning off the living-room light"
-
+define-lights-on-off-ambient-light-rule() {
   json-edit automation-rules.json '.rules |= map(
     if .id == "living-room-lights-on-presence" then
       .when += [{ "sensorDeviceId": "living-room-ambient-light", "sensorValue": "is-dark" }]
@@ -144,8 +155,6 @@ commit-wip-automation-rule() {
       "action": "turn-off"
     }]
   }]' || return
-
-  git-commit "WIP automate living-room light based on ambient light"
 }
 
 run-init-exercise "$@"

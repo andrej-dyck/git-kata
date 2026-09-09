@@ -35,47 +35,9 @@ feature-living-room-lights-automation() {
 }
 
 commit-living-room-light-rules() {
-  json-edit automation-rules.json '.rules += [{
-    "id": "living-room-lights-on-presence",
-    "name": "Turn on living-room lights when presence is detected",
-    "when": [{
-      "sensorDeviceId": "living-room-presence",
-      "event": "presence-detected"
-    }, {
-      "sensorDeviceId": "living-room-ambient-light",
-      "sensorValue": "is-dark"
-    }],
-    "then": [{
-      "deviceId": "living-room-light",
-      "action": "turn-on"
-    }]
-  }]' || return
-
-  json-edit automation-rules.json '.rules += [{
-    "id": "living-room-lights-off-no-presence",
-    "name": "Turn off living room lights when presence is no longer detected",
-    "when": [{
-      "sensorDeviceId": "living-room-presence",
-      "event": "presence-cleared"
-    }],
-    "then": [{
-      "deviceId": "living-room-light",
-      "action": "turn-off"
-    }]
-  }]' || return
-
-  json-edit automation-rules.json '.rules += [{
-    "id": "living-room-lights-off-ambient-bright",
-    "name": "Turn off living room lights when ambient light is bright",
-    "when": [{
-      "sensorDeviceId": "living-room-ambient-light",
-      "sensorValue": "is-bright"
-    }],
-    "then": [{
-      "deviceId": "living-room-light",
-      "action": "turn-off"
-    }]
-  }]' || return
+  define-lights-on-presence-rule || return
+  define-lights-off-presence-rule || return
+  define-lights-on-off-ambient-light-rule || return
 
   git-commit "automate living-room light"
 }
