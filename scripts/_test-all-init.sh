@@ -39,7 +39,7 @@ done < <(
   exit 2
 }
 
-echo "▶ Testing 'init.sh' files of ${#EXERCISE_DIRS[@]} exercises"
+echo "🔷 Testing all 'init.sh' files of ${#EXERCISE_DIRS[@]} exercises ..."
 echo
 
 for exerciseDir in "${EXERCISE_DIRS[@]}"; do

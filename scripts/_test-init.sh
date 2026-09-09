@@ -46,15 +46,15 @@ test-init-script() {
   [[ "$exerciseNumber" =~ ^[0-9]+$ ]] || fail-check "No exercise number determined" "Expected '$exerciseName' to follow '<NNN>-<name>'"
 
   if [[ $REPETITIONS -ge 2 ]]; then
-    echo "▶ Testing 'init.sh' of '$exerciseName' (🔁 $testCycle/$REPETITIONS)"
+    echo "🔶 Testing 'init.sh' of '$exerciseName' (🔁 $testCycle/$REPETITIONS)"
   else
-    echo "▶ Testing 'init.sh' of '$exerciseName'"
+    echo "🔶 Testing 'init.sh' of '$exerciseName'"
   fi
 
   # Temporary files
   initScriptOutput="$(mktemp)" || exit-unexpectingly "Failed to create temporary file"
   exerciseTempDir=$(mktemp -d "$REPO_ROOT_DIR/exercise-XXXXXX") || exit-unexpectingly "Failed to create temporary exercise folder"
-  trap 'cleanup "$initScriptOutput"; cleanup "$exerciseTempDir"' EXIT RETURN
+  trap 'cleanup "$initScriptOutput"; cleanup "$exerciseTempDir"; cleanup "$exerciseTempDir-origin"' EXIT RETURN
 
   # Test git-index of 'init.sh' for execution flag
   check-init-script-file-mode "$initScriptDir" || exit-unexpectingly "Failed to check chmod=+x"
