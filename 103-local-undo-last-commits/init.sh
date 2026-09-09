@@ -7,14 +7,16 @@ init-exercise() {
 
   init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
-  # main
+  commit-initial-work-on-main || return
+  wip-feature-lights-automation "living-room-lights-automation" || return
+}
+
+commit-initial-work-on-main() {
+  git-switch-main
   commit-empty-rooms || return # from 101
   commit-living-room || return # from 102
   commit-empty-devices || return
   commit-living-room-devices || return
-
-  # feature "living-room-lights-automation"
-  wip-feature-lights-automation "living-room-lights-automation" || return
 }
 
 commit-empty-devices() {
@@ -94,12 +96,36 @@ commit-empty-automation-rules() {
 
 commit-wip-automation-rule() {
   define-lights-on-presence-rule || return
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-lights-on-presence" then
+      to_entries
+        | map(if .key == "when" then [{key:"testMode", value:true}, .] else [.] end)
+        | flatten
+        | from_entries
+    else . end
+  )' || return
   git-commit "WIP automate turning on the living-room light"
 
   define-lights-off-presence-rule || return
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-lights-off-no-presence" then
+      to_entries
+        | map(if .key == "when" then [{key:"testMode", value:true}, .] else [.] end)
+        | flatten
+        | from_entries
+    else . end
+  )' || return
   git-commit "WIP automate turning off the living-room light"
 
   define-lights-on-off-ambient-light-rule || return
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-lights-off-ambient-bright" then
+      to_entries
+        | map(if .key == "when" then [{key:"testMode", value:true}, .] else [.] end)
+        | flatten
+        | from_entries
+    else . end
+  )' || return
   git-commit "WIP automate living-room light based on ambient light"
 }
 
@@ -107,7 +133,6 @@ define-lights-on-presence-rule() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-lights-on-presence",
     "name": "Turn on living-room lights when presence is detected",
-    "testMode": true,
     "when": [{
       "sensorDeviceId": "living-room-presence",
       "event": "presence-detected"
@@ -123,7 +148,6 @@ define-lights-off-presence-rule() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-lights-off-no-presence",
     "name": "Turn off living room lights when presence is no longer detected",
-    "testMode": true,
     "when": [{
       "sensorDeviceId": "living-room-presence",
       "event": "presence-cleared"
@@ -145,7 +169,6 @@ define-lights-on-off-ambient-light-rule() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-lights-off-ambient-bright",
     "name": "Turn off living room lights when ambient light is bright",
-    "testMode": true,
     "when": [{
       "sensorDeviceId": "living-room-ambient-light",
       "sensorValue": "is-bright"

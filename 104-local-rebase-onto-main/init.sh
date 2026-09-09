@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source "$(dirname "${BASH_SOURCE[0]}")/../scripts/index.sh"
-source "$REPO_ROOT_DIR/103-local-undo-last-commit/init.sh"
+source "$REPO_ROOT_DIR/103-local-undo-last-commits/init.sh"
 
 init-exercise() {
   local thisDir="$1" exerciseDir="$2"

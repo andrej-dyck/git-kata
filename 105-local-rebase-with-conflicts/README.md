@@ -16,7 +16,7 @@ When a branch has only a couple (_1-5_) of _atomic_ commits, is _integrated_ wit
 
 We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
 
-Following [exercise 101](../101-local-amend-commit/README.md) to [103](../103-local-undo-last-commit/README.md), we successfully installed all of our _living-room devices_ and finished implementing an automation rule for the _living room lights_.
+Following [exercise 101](../101-local-amend-commit/README.md) to [103](../103-local-undo-last-commits/README.md), we successfully installed all of our _living-room devices_ and finished implementing an automation rule for the _living room lights_.
 
 It's time to integrate our feature branch; however, `main` has advanced in the meanwhile.
 

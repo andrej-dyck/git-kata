@@ -13,7 +13,7 @@ _Hint_: Using `--force-with-lease` is safer than `--force` because it ensures we
 
 We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
 
-We successfully installed our first _living-room devices_, and now, we work on _automating the living-room lights_.
+We successfully installed our first _living-room devices_, and now, work on _automating the living-room lights_.
 
 ## Task: Amend Commit and Force-Push
 
@@ -27,7 +27,12 @@ Amend the WIP commit with the following changes and give it a proper name; e.g.,
 ```diff
 --- a/automation-rules.json
 +++ b/automation-rules.json
-@@ -10,6 +10,10 @@
+@@ -5,11 +5,14 @@
+     {
+       "id": "living-room-lights-on-presence",
+       "name": "Turn on living-room lights when presence is detected",
+-      "testMode": true,
+       "when": [
          {
            "sensorDeviceId": "living-room-presence",
            "event": "presence-detected"
@@ -38,7 +43,15 @@ Amend the WIP commit with the following changes and give it a proper name; e.g.,
          }
        ],
        "then": [
-@@ -35,6 +39,23 @@
+@@ -22,7 +25,6 @@
+     {
+       "id": "living-room-lights-off-no-presence",
+       "name": "Turn off living room lights when presence is no longer detected",
+-      "testMode": true,
+       "when": [
+         {
+           "sensorDeviceId": "living-room-presence",
+@@ -35,6 +37,22 @@
            "action": "turn-off"
          }
        ]
@@ -46,7 +59,6 @@ Amend the WIP commit with the following changes and give it a proper name; e.g.,
 +    {
 +      "id": "living-room-lights-off-ambient-bright",
 +      "name": "Turn off living room lights when ambient light is bright",
-+      "testMode": true,
 +      "when": [
 +        {
 +          "sensorDeviceId": "living-room-ambient-light",
