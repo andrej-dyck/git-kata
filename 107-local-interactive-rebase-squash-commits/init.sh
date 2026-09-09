@@ -23,12 +23,12 @@ wip-commits-ac-automation() {
 }
 
 commit-living-room-sensors-1() {
-  install-living-room-balcony-door-sensor || return
+  install-living-room-thermometer || return
   git-commit "install living-room sensors"
 }
 
 commit-living-room-sensors-2() {
-  install-living-room-thermometer || return
+  install-living-room-balcony-door-sensor || return
   git-commit "amend! install living-room sensors"
 }
 
