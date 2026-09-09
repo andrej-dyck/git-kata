@@ -15,24 +15,24 @@ wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 104
   commit-living-room-ac || return # from 104
   commit-device-traits-schema "fixup! devices schema" || return # from 106
-  commit-living-room-sensors-1 || return
-  commit-living-room-ac-rule-1 || return
-  commit-living-room-ac-rule-2 || return
-  commit-living-room-sensors-2 || return
-  commit-living-room-ac-rule-3 || return
+  commit-living-room-sensors-thermometer "install living-room sensors" || return
+  commit-living-room-ac-rule-on || return
+  commit-living-room-ac-rule-off || return
+  commit-living-room-sensors-balcony-door "amend! install living-room sensors" || return
+  commit-living-room-ac-rule-on-off-balcony-door || return
 }
 
-commit-living-room-sensors-1() {
+commit-living-room-sensors-thermometer() {
   install-living-room-thermometer || return
-  git-commit "install living-room sensors"
+  git-commit "${1:-install living-room thermometer}"
 }
 
-commit-living-room-sensors-2() {
+commit-living-room-sensors-balcony-door() {
   install-living-room-balcony-door-sensor || return
-  git-commit "amend! install living-room sensors"
+  git-commit "${1:-install living-room balcony-door sensor}"
 }
 
-commit-living-room-ac-rule-1() {
+commit-living-room-ac-rule-on() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-ac-on",
     "name": "Turn on living-room AC when its hot",
@@ -50,7 +50,7 @@ commit-living-room-ac-rule-1() {
   git-commit "automate turning on living-room AC"
 }
 
-commit-living-room-ac-rule-2() {
+commit-living-room-ac-rule-off() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-ac-off-temperature",
     "name": "Turn off living-room AC when its cool",
@@ -67,12 +67,12 @@ commit-living-room-ac-rule-2() {
   git-commit "automate turning off living-room AC"
 }
 
-commit-living-room-ac-rule-3() {
+commit-living-room-ac-rule-on-off-balcony-door() {
   json-edit automation-rules.json '.rules |= map(
-      if .id == "living-room-ac-on" then
-        .when += [{ "sensorDeviceId": "living-room-balcony-door", "event": "door-closed" }]
-      else . end
-    )' || return
+    if .id == "living-room-ac-on" then
+      .when += [{ "sensorDeviceId": "living-room-balcony-door", "event": "door-closed" }]
+    else . end
+  )' || return
 
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-ac-off-balcony",

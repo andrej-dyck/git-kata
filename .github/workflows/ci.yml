@@ -35,3 +35,5 @@ jobs:
       run: bash ./scripts/_dev-test-init.sh 109-local-interactive-rebase-edit-commits
     - name: Test Exercise 110
       run: bash ./scripts/_dev-test-init.sh 110-local-interactive-rebase-split-commits
+    - name: Test Exercise 111
+      run: bash ./scripts/_dev-test-init.sh 111-local-interactive-rebase-delete-commits

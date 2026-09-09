@@ -14,6 +14,8 @@ We are working on a _Smart Home_ project, where its configuration is split acros
 
 While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
 
+Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md) have the same context, but with slightly different initial and target Git history to best support the exercise's focus.
+
 ## Task: Re-word Commit Messages using Interactive Rebase
 
 In this exercise, we committed our work on `living-room-ac-automation` in small commits and didn't focus on wording messages too much.
