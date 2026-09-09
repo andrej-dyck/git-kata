@@ -35,15 +35,15 @@ _git-stage-files() {
 }
 
 git-new-branch() {
-  git switch -c "$1"
+  git switch -q -c "$1"
 }
 
 git-switch-branch() {
-  git switch "$1"
+  git switch -q "$1"
 }
 
 git-switch-main() {
-  git switch "main"
+  git switch -q "main"
 }
 
 git-push-new-branch() {

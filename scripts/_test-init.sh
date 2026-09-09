@@ -50,6 +50,7 @@ test-init-script() {
   else
     echo "🔶 Testing 'init.sh' of '$exerciseName'"
   fi
+  echo '----------------------------------------'
 
   # Temporary files
   initScriptOutput="$(mktemp)" || exit-unexpectingly "Failed to create temporary file"
@@ -89,15 +90,14 @@ check-init-script-file-mode() {
 run-init-script() {
   local initScriptDir="$1" exerciseDir="$2" initOutput="$3"
 
-  echo '----------------------------------------'
   (
     './init.sh' "$exerciseDir" || exit-unexpectingly "Failed to run 'init.sh'"
   ) 2>&1 | tee "$initOutput"
 
-  local lastOutputLine="$(tail -n 1 "$initOutput")"
-  echo '----------------------------------------'
+  local lastOutputLine="$(tail -n 2 "$initOutput")"
 
-  [[ "$lastOutputLine" =~ ^Successfully\ initialized\ .+ ]] || fail-check "Expected last console output line to be 'Successfully initialized ...'" "Last console output line was: $lastOutputLine"
+  echo '----------------------------------------'
+  [[ "$lastOutputLine" =~ ^✅\ Successfully\ initialized\ .+ ]] || fail-check "Expected last console output line to be 'Successfully initialized ...'" "Last console output line was: $lastOutputLine"
 }
 
 check-readme() {
@@ -161,12 +161,12 @@ cleanup() {
   resolvedPath="$(realpath -m "$1")" || return
 
   if [[ -z "$resolvedPath" || "$resolvedPath" == "/" ]]; then
-    echo "Refusing to remove unsafe exercise directory: '$exerciseDir'" >&2
+    echo "🛑 Refusing to remove unsafe exercise directory: '$exerciseDir'" >&2
     return 1
   fi
 
   if [[ "$resolvedPath" != "$(realpath -m "$REPO_ROOT_DIR")/"* && "$resolvedPath" != "/tmp/"* ]]; then
-    echo "Refusing to remove path outside this repository: '$resolvedPath'" >&2
+    echo "🛑 Refusing to remove path outside this repository: '$resolvedPath'" >&2
     return 1
   fi
 
