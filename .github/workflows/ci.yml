@@ -43,3 +43,5 @@ jobs:
       run: bash ./scripts/_test-init.sh 113-cherry-pick-commits
     - name: Test Exercise 201
       run: bash ./scripts/_test-init.sh 201-remote-amend-commit
+    - name: Test Exercise 202
+      run: bash ./scripts/_test-init.sh 202-remote-undo-last-commits
