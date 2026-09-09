@@ -13,8 +13,8 @@ init-exercise() {
   commit-empty-devices || return # from 103
   commit-living-room-devices || return #from 103
 
-  # feature "living-room-automation"
-  feature-living-room-automation-rules "living-room-automation" || return
+  # feature "living-room-lights-automation"
+  feature-living-room-lights-automation "living-room-lights-automation" || return
 
   # additional work on main
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
@@ -22,11 +22,11 @@ init-exercise() {
   integrated-ac-install-commits || return
   commit-empty-automation-rules || return # from 103
 
-  # start task on branch "living-room-automation"
-  git-switch-branch "living-room-automation" || return
+  # start task on branch "living-room-lights-automation"
+  git-switch-branch "living-room-lights-automation" || return
 }
 
-feature-living-room-automation-rules() {
+feature-living-room-lights-automation() {
   git-new-branch "$1" || return
 
   commit-living-room-light-traits || return # from 103
@@ -77,7 +77,7 @@ commit-living-room-light-rules() {
     }]
   }]' || return
 
-  git-commit "automate turning on/off the living-room light"
+  git-commit "automate living-room light"
 }
 
 integrated-ac-install-commits() {

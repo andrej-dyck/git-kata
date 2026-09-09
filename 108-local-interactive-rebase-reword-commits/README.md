@@ -34,7 +34,7 @@ $ git log --oneline --graph --decorate --all
 * b213a87 fix ac
 * 910610c ac
 * 0f9b61f define automation-rules schema
-| * 087bab5 (living-room-automation) automate turning on/off the living-room light
+| * 087bab5 (living-room-lights-automation) automate living-room light
 | * d8a17ab define automation-rules schema
 | * 08fb7a0 define living-room-light trait on-off
 |/
@@ -55,7 +55,7 @@ $ git log --oneline --graph --decorate --all
 * d13e956 install living-room sensors
 * 44e95a3 install living-room AC
 * 0f9b61f define automation-rules schema
-| * 087bab5 (living-room-automation) automate turning on/off the living-room light
+| * 087bab5 (living-room-lights-automation) automate living-room light
 | * d8a17ab define automation-rules schema
 | * 08fb7a0 define living-room-light trait on-off
 |/

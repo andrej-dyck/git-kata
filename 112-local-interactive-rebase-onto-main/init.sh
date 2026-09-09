@@ -8,7 +8,7 @@ init-exercise() {
   init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
   init-ac-automation-branch || return #from 106
-  git-integrate-into-main "living-room-automation" || return
+  git-integrate-into-main "living-room-lights-automation" || return
   git-switch-branch "living-room-ac-automation" || return
   wip-commits-ac-automation || return
 }

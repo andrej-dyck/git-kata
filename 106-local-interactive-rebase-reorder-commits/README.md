@@ -56,7 +56,7 @@ $ git log --oneline --graph --decorate --all
 * f047bde define traits for devices
 * b53944f install living-room AC
 * 46ceb87 define automation-rules schema
-| * b37d325 (living-room-automation) automate turning on/off the living-room light
+| * b37d325 (living-room-lights-automation) automate living-room light
 | * 9ce53f0 define automation-rules schema
 | * 88e0d8e define living-room-light trait on-off
 |/
@@ -69,7 +69,7 @@ $ git log --oneline --graph --decorate --all
 * 9e76d4d write README
 * 5bea84e configure Git
 ```
-_Note_: We also see the feature branch `living-room-automation` here, but it isn't relevant to this exercise.
+_Note_: We also see the feature branch `living-room-lights-automation` here, but it isn't relevant to this exercise.
 
 ### Target Git History
 ```console
@@ -79,7 +79,7 @@ $ git log --oneline --graph --decorate --all
 * 336fdf1 install living-room sensors
 * c011f2d install living-room AC
 * 74576bd define traits for devices
-| * b37d325 (living-room-automation) automate turning on/off the living-room light
+| * b37d325 (living-room-lights-automation) automate living-room light
 | * 9ce53f0 define automation-rules schema
 | * 88e0d8e define living-room-light trait on-off
 |/

@@ -33,7 +33,7 @@ $ git log --oneline --graph --decorate --all
 * f3eb688 install thermometer
 * 9ae6ee4 install ac
 * 986ef20 define automation-rules schema
-| * cc7b2f0 (main) automate turning on/off the living-room light
+| * cc7b2f0 (main) automate living-room light
 | * b85a1a9 define automation-rules schema
 | * 8260331 define living-room-light trait on-off
 |/
@@ -53,7 +53,7 @@ $ git log --oneline --graph --decorate --all
 * 9fb56c9 (HEAD -> living-room-ac-automation) automate turning off living-room AC
 * bcbff7b install living-room sensors
 * f22da0b install living-room AC
-* cc7b2f0 (main) automate turning on/off the living-room light
+* cc7b2f0 (main) automate living-room light
 * b85a1a9 define automation-rules schema
 * 8260331 define living-room-light trait on-off
 * 2ecb46f install living-room ambient-light sensor

@@ -24,9 +24,9 @@ To continue our work, we need the _automation-rules schema_.
 
 The schema for automation rules `automation-rules.schema.json` is not yet integrated into `main` and we don't want to redefine ourselves.
 
-To be sure we have the same version of `automation-rules.schema.json` as our team, we can cherry-pick the commit `"define automation-rules schema"` from branch `living-room-automation` onto our branch `living-room-ac-automation`.
+To be sure we have the same version of `automation-rules.schema.json` as our team, we can cherry-pick the commit `"define automation-rules schema"` from branch `living-room-lights-automation` onto our branch `living-room-ac-automation`.
 
-This way we can continue our work on the living-room AC automation without waiting for the integration of `living-room-automation` into `main`.
+This way we can continue our work on the living-room AC automation without waiting for the integration of `living-room-lights-automation` into `main`.
 
 Once either of the branches is integrated into `main`, a [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) will simply remove the cherry-picked commit from the other branch.
 
@@ -35,7 +35,7 @@ Once either of the branches is integrated into `main`, a [rebase](https://git-sc
 $ git log --oneline --graph --decorate --all
 * 27932b0 (HEAD -> living-room-ac-automation) install living-room sensors
 * 32a150b install living-room AC
-| * 0be7489 (living-room-automation) automate turning on/off the living-room light
+| * 0be7489 (living-room-lights-automation) automate living-room light
 | * 5d5581d define automation-rules schema
 | * dba85f9 define living-room-light trait on-off
 |/
@@ -55,7 +55,7 @@ $ git log --oneline --graph --decorate --all
 * 1633f87 (HEAD -> living-room-ac-automation) define automation-rules schema
 * 27932b0 install living-room sensors
 * 32a150b install living-room AC
-| * 0be7489 (living-room-automation) automate turning on/off the living-room light
+| * 0be7489 (living-room-lights-automation) automate living-room light
 | * 5d5581d define automation-rules schema
 | * dba85f9 define living-room-light trait on-off
 |/
@@ -68,4 +68,4 @@ $ git log --oneline --graph --decorate --all
 * 1429929 write README
 * b8f3f4b configure Git
 ```
-_Note_: Cherry-picking commit `"define automation-rules schema"` from branch `living-room-automation` results in different commit hash, but the changes are applied to brach `living-room-ac-automation` as a patch.
+_Note_: Cherry-picking commit `"define automation-rules schema"` from branch `living-room-lights-automation` results in different commit hash, but the changes are applied to brach `living-room-ac-automation` as a patch.

@@ -1,7 +1,6 @@
 # 101 Amend Commit on a Local Branch
 
-Amending commits is useful when we didn't stage something that belongs to the most recent commit,
-or we made a mistake in that commit.
+Amending commits is useful when we didn't stage something that belongs to the most recent commit, or we made a mistake in that commit.
 
 For example, we might want to fix a typo, reformat code, add related files, or improve logic that was introduced with that commit.
 It's probably the most common way to rewrite the Git history.

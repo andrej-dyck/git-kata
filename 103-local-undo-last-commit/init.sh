@@ -13,8 +13,8 @@ init-exercise() {
   commit-empty-devices || return
   commit-living-room-devices || return
 
-  # feature "living-room-automation"
-  wip-feature-automation-rules "living-room-automation" || return
+  # feature "living-room-lights-automation"
+  wip-feature-lights-automation "living-room-lights-automation" || return
 }
 
 commit-empty-devices() {
@@ -60,7 +60,7 @@ commit-living-room-ambient-light-sensor() {
   git-commit "install living-room ambient-light sensor"
 }
 
-wip-feature-automation-rules() {
+wip-feature-lights-automation() {
   git-new-branch "$1" || return
 
   commit-living-room-light-traits || return
@@ -145,7 +145,7 @@ commit-wip-automation-rule() {
     }]
   }]' || return
 
-  git-commit "WIP automate turning on/off the living-room light based on ambient light"
+  git-commit "WIP automate living-room light based on ambient light"
 }
 
 run-init-exercise "$@"

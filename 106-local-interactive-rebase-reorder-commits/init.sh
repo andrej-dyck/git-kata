@@ -20,8 +20,8 @@ init-ac-automation-branch() {
   commit-living-room-presence-sensor || return # from 103
   commit-living-room-ambient-light-sensor || return # from 103
 
-  # another feature "living-room-automation"
-  feature-living-room-automation-rules "living-room-automation" || return # from 104
+  # another feature "living-room-lights-automation"
+  feature-living-room-lights-automation "living-room-lights-automation" || return # from 104
   git-switch-main || return
 
   # feature "living-room-ac-automation"
