@@ -5,7 +5,7 @@
 ````markdown
 # [NNN] [Title]
 
-TODO Git command, its purpose, and how we can use it to develop a clean git history.
+TODO Git command introduction, its problem context, and how we can use it to develop a clean git history.
 
 ## Exercise Context
 
@@ -22,14 +22,14 @@ TODO this exercise's task
 $ git log --oneline --graph --decorate --all
 TODO git log output after `init.sh`
 ```
-_Note_: ...
+_Note_: TODO observations about the initial git history or remove note
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
 TODO git log output after exercise is done
 ```
-_Note_: ...
+_Note_: TODO observations about the target git history or remove note
 ````
 
 ## Use Exercise `init.sh` Template
