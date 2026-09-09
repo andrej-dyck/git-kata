@@ -1,4 +1,4 @@
-# 204 Rebase Pushed Branches with Teammates (or another PC)
+# 205 Rewriting History with Teammates (or another PC)
 
 🚧 WIP (this exercise isn't done yet)
 

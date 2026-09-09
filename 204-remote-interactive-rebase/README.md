@@ -1,4 +1,4 @@
-# 205 Interactive Rebase - Re-writing History
+# 204 Interactive Rebase - Re-writing History
 
 🚧 WIP (this exercise isn't done yet)
 
