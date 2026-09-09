@@ -21,12 +21,12 @@ init-ac-automation-branch() {
   commit-living-room-ambient-light-sensor || return # from 103
 
   # another feature "living-room-automation"
-  feature-living-room-automation-rules "living-room-automation" || return
-  git-checkout-main || return
+  feature-living-room-automation-rules "living-room-automation" || return # from 104
+  git-switch-main || return
 
   # feature "living-room-ac-automation"
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  git-checkout-new-branch "living-room-ac-automation" || return
+  git-new-branch "living-room-ac-automation" || return
 }
 
 wip-commits-ac-automation() {

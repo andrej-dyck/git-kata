@@ -18,16 +18,16 @@ init-exercise() {
 
   # additional work on main
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  git-checkout-main || return
+  git-switch-main || return
   integrated-ac-install-commits || return
   commit-empty-automation-rules || return # from 103
 
   # start task on branch "living-room-automation"
-  git-checkout-branch "living-room-automation" || return
+  git-switch-branch "living-room-automation" || return
 }
 
 feature-living-room-automation-rules() {
-  git-checkout-new-branch "$1" || return
+  git-new-branch "$1" || return
 
   commit-living-room-light-traits || return # from 103
   commit-empty-automation-rules || return # from 103

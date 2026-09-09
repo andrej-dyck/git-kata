@@ -34,16 +34,16 @@ _git-stage-files() {
   fi
 }
 
-git-checkout-new-branch() {
-  git checkout -b "$1"
+git-new-branch() {
+  git switch -c "$1"
 }
 
-git-checkout-branch() {
-  git checkout "$1"
+git-switch-branch() {
+  git switch "$1"
 }
 
-git-checkout-main() {
-  git checkout "main"
+git-switch-main() {
+  git switch "main"
 }
 
 git-push-new-branch() {

@@ -20,13 +20,13 @@ init-exercise() {
 
   # additional work on main
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  git-checkout-main || return
+  git-switch-main || return
   integrated-ac-install-commits || return # from 104
   commit-empty-automation-rules || return # from 104
   commit-living-room-ac-rules || return
 
   # start task on branch "living-room-automation"
-  git-checkout-branch "living-room-automation" || return
+  git-switch-branch "living-room-automation" || return
 }
 
 commit-living-room-wall-lamp() {

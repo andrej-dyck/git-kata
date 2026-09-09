@@ -61,7 +61,7 @@ commit-living-room-ambient-light-sensor() {
 }
 
 wip-feature-automation-rules() {
-  git-checkout-new-branch "$1" || return
+  git-new-branch "$1" || return
 
   commit-living-room-light-traits || return
   commit-empty-automation-rules || return
