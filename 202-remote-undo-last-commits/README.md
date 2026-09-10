@@ -21,7 +21,7 @@ Now, the automation rules for the _living-room light_ are complete, but the Git 
 
 Before sharing this branch for review or integrating it, we want to replace those WIP commits with one clean commit that describes the completed feature.
 
-## Task: [Task Title]
+## Task: Undo WIP Commits with Soft Reset and Force Push Changes
 
 On the branch `living-room-light-automation`, replace the three pushed WIP commits with one clean commit.
 

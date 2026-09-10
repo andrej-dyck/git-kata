@@ -15,7 +15,7 @@ We are working on a _Smart Home_ project, where its configuration is split acros
 
 We successfully installed our first _living-room devices_, and now, work on _automating the living-room lights_.
 
-## Task: Amend Commit and Force-Push
+## Task: Amend Commit and Force-Push Changes
 
 On the branch `living-room-light-automation`, we are working on _automating the living-room lights_.
 

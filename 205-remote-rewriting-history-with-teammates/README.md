@@ -20,7 +20,7 @@ We are working on a _Smart Home_ project, where its configuration is split acros
 
 TODO current state of the project.
 
-## Task: [Task Title]
+## Task: [TODO Task Title]
 
 TODO this exercise's task
 
@@ -29,11 +29,18 @@ TODO this exercise's task
 $ git log --oneline --graph --decorate --all
 TODO git log output after `init.sh`
 ```
-_Note_: ...
+_Note_: TODO observations about the initial git history or remove note
+
+### Pre-push Git History [TODO delete for local-only exercises]
+```console
+$ git log --oneline --graph --decorate --all
+TODO git log output of intermediate graph before force push
+```
+_Note_: TODO observations about the pre-push git history or remove note
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
 TODO git log output after exercise is done
 ```
-_Note_: ...
+_Note_: TODO observations about the target git history or remove note
