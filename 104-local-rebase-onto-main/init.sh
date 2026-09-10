@@ -8,22 +8,25 @@ init-exercise() {
   init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
   # main
-  commit-empty-rooms || return # from 101
-  commit-living-room || return # from 102
-  commit-empty-devices || return # from 103
-  commit-living-room-devices || return #from 103
+  commit-initial-work-on-main || return
 
   # feature "living-room-light-automation"
   feature-living-room-light-automation "living-room-light-automation" || return
 
   # additional work on main
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  git-switch-main || return
-  integrated-ac-install-commits || return
-  commit-empty-automation-rules || return # from 103
+  additional-work-on-main || return
 
   # start task on branch "living-room-light-automation"
   git-switch-branch "living-room-light-automation" || return
+}
+
+commit-initial-work-on-main() {
+  git-switch-main
+  commit-empty-rooms || return # from 101
+  commit-living-room || return # from 102
+  commit-empty-devices || return # from 103
+  commit-living-room-devices || return # from 103
 }
 
 feature-living-room-light-automation() {
@@ -40,6 +43,12 @@ commit-living-room-light-rules() {
   define-lights-on-off-ambient-light-rule || return
 
   git-commit "automate living-room light"
+}
+
+additional-work-on-main() {
+  git-switch-main || return
+  integrated-ac-install-commits || return
+  commit-empty-automation-rules || return # from 103
 }
 
 integrated-ac-install-commits() {

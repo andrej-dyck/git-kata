@@ -68,7 +68,7 @@ $ git log --oneline --graph --decorate --all
 * 2d8e307 write README
 * d4e66cb configure Git
 ```
-_Note_: After the soft-reset and new commit, the local branch contains the clean commit, while `origin/living-room-light-automation` still points to the old WIP history.
+_Note_: After the soft-reset and new commit, the local branch contains the clean commit, while `origin/living-room-light-automation` still points to the old WIP history. A Git client typically shows something similar to `↓3 ↑1` for this graph.
 
 ### Target Git History
 ```console

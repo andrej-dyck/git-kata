@@ -3,8 +3,11 @@
 Amending commits is useful when we want to fix a typo, add forgotten changes, or improve logic in the most recent commit (cf. [exercise 101](../101-local-amend-commit/README.md)).
 
 However, once a commit has been pushed to a remote repository (`origin`), amending it changes it the commit sequence and our local copy diverges from the one on `origin`.
-Git will reject a standard `git push` to prevent overwriting history on the remote.
+A Git client typically shows something similar to `↓1 ↑1` at this point; i.e., our local branch is both behind and ahead of `origin`.
 
+![](../resources/main-feature-out-of-sync-origin-after-amend.svg)
+
+Git will reject a standard `git push` to prevent overwriting history on the remote.
 To update the remote branch with our rewritten commit, we need to overwrite the remote branch using [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease).
 
 _Hint_: Using `--force-with-lease` is safer than `--force` because it ensures we only overwrite the remote branch if no one else has pushed new commits to it since we last fetched.
@@ -110,7 +113,7 @@ $ git log --oneline --graph --decorate --all
 * cd6326c write README
 * c58a904 configure Git
 ```
-_Note_: Since we amended the last commit (`HEAD`), it has a different commit hash and the history diverges from `origin`.
+_Note_: Since we amended the last commit (`HEAD`), it has a different commit hash and the history diverges from `origin`. A Git client typically shows something similar to `↓1 ↑1` for this graph.
 
 ### Target Git History
 ```console

@@ -5,7 +5,7 @@ But it's unavoidable that `main` will sometimes have commits that are more recen
 
 ![](../resources/main-feature-out-of-sync.svg)
 
-There are two ways to integrate the changes in `main`.
+There are two ways to integrate the changes from `main`.
 
 One way is to **[merge](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) `main` into `feature`** branch with [`git merge`](https://git-scm.com/docs/git-merge).
 
