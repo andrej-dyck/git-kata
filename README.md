@@ -60,16 +60,14 @@ The three-hundreds `3xx` are advanced Git exercises.
   ```shell
   git clone --depth 1 https://github.com/andrej-dyck/git-kata.git && cd git-kata && rm -rf .git
   ```
-* Run a `<NNN-exercise>/init.sh` to initialize the exercise in `<git-kata-root>/exercise`
-  * Note that by default, each `init.sh` will use this folder and overwrite any existing content
+* Run `./init.sh` and choose which exercise to initialize
+* The exercise will be initialized in `<git-kata-root>/exercise`
+  * Note that by default each exercise uses this folder and overwrites any existing content
   * You can use [Docker]([Docker](https://www.docker.com/)) to run the scripts in isolation
-* Open the created/updated folder `<git-kata-root>/exercise` with your favorite Git client
+* Open the created/updated `<git-kata-root>/exercise` folder with your favorite Git client
 * Consult the `README.md` in that folder for the description of the task
 
 _Optional_: Cleanup isn't required, but if you want to, just remove the `exercise` _repository_ folder and its _origin_ folder `exercise-origin`.
-
-#### Custom Exercise Folder
-Use `init.sh "path-to-exercise"` to use a different exercise folder; e.g., `init.sh "./exercise-101"`. Note that relative links or images in `README.md` might not work, and you will need to open each custom exercise folder in your Git client.
 
 ### Isolated Execution with Docker
 Use [Dockerfile](./Dockerfile) and [Docker](https://www.docker.com/) to run this kata's _bash scripts_ isolated from your operating system.
@@ -79,7 +77,7 @@ Run the following command in `<git-kata-root>`, after cloning this repository:
 docker build -t git-kata . && docker run --rm -it -v "./:/git-kata" git-kata
 ```
 
-Within the Docker container, use `<NNN-exercise>/init.sh` to initialize an exercise.
+Within the Docker container, use `./init.sh` to choose and initialize an exercise.
 And since `/git-kata` is mounted to your local folder, you can open the `./exercise` folder with your local Git client.
 
 ### Local Execution
