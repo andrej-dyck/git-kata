@@ -23,7 +23,7 @@ Before sharing this branch for review or integrating it, we want to replace thos
 
 ## Task: [Task Title]
 
-On the branch `living-room-lights-automation`, replace the three pushed WIP commits with one clean commit.
+On the branch `living-room-light-automation`, replace the three pushed WIP commits with one clean commit.
 
 Use [`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) to undo the WIP commits while keeping their changes staged.
 
@@ -34,7 +34,7 @@ Use `git push --force-with-lease` to overwrite the remote branch with the cleane
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 7a38b10 (HEAD -> living-room-lights-automation, origin/living-room-lights-automation) WIP automate living-room light based on ambient light
+* 7a38b10 (HEAD -> living-room-light-automation, origin/living-room-light-automation) WIP automate living-room light based on ambient light
 * 6f188b9 WIP automate turning off the living-room light
 * 82de217 WIP automate turning on the living-room light
 * 9aae62c define automation-rules schema
@@ -52,8 +52,8 @@ $ git log --oneline --graph --decorate --all
 ### Pre-push Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* bb82700 (HEAD -> living-room-lights-automation) automate living-room light
-| * 7a38b10 (origin/living-room-lights-automation) WIP automate living-room light based on ambient light
+* bb82700 (HEAD -> living-room-light-automation) automate living-room light
+| * 7a38b10 (origin/living-room-light-automation) WIP automate living-room light based on ambient light
 | * 6f188b9 WIP automate turning off the living-room light
 | * 82de217 WIP automate turning on the living-room light
 |/
@@ -68,12 +68,12 @@ $ git log --oneline --graph --decorate --all
 * 2d8e307 write README
 * d4e66cb configure Git
 ```
-_Note_: After the soft-reset and new commit, the local branch contains the clean commit, while `origin/living-room-lights-automation` still points to the old WIP history.
+_Note_: After the soft-reset and new commit, the local branch contains the clean commit, while `origin/living-room-light-automation` still points to the old WIP history.
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* bb82700 (HEAD -> living-room-lights-automation, origin/living-room-lights-automation) automate living-room light
+* bb82700 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
 * 9aae62c define automation-rules schema
 * ad280a9 define living-room-light trait on-off
 * 0f2750e (origin/main, main) install living-room ambient-light sensor

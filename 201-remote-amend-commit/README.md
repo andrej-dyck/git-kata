@@ -17,7 +17,7 @@ We successfully installed our first _living-room devices_, and now, work on _aut
 
 ## Task: Amend Commit and Force-Push
 
-On the branch `living-room-lights-automation`, we are working on _automating the living-room lights_.
+On the branch `living-room-light-automation`, we are working on _automating the living-room lights_.
 
 With the final changes, we are ready to finish the automation and _push the changes_.
 However, we already pushed our work-in-progress (_WIP_) to `origin` earlier, so our changes are backed up.
@@ -79,7 +79,7 @@ Amend the WIP commit with the following changes and give it a proper name; e.g.,
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* e22b66a (HEAD -> living-room-lights-automation, origin/living-room-lights-automation) WIP automation rules
+* e22b66a (HEAD -> living-room-light-automation, origin/living-room-light-automation) WIP automation rules
 * dc6f8e2 define automation-rules schema
 * 3c557d0 define living-room-light trait on-off
 * 06295d8 (origin/main, main) install living-room ambient-light sensor
@@ -91,13 +91,13 @@ $ git log --oneline --graph --decorate --all
 * cd6326c write README
 * c58a904 configure Git
 ```
-_Note_: You can see that a branch is in sync with `origin`, when both, your local copy `living-room-lights-automation` and remote `origin/living-room-lights-automation` point to the same commit.
+_Note_: You can see that a branch is in sync with `origin`, when both, your local copy `living-room-light-automation` and remote `origin/living-room-light-automation` point to the same commit.
 
 ### Pre-push Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 2339348 (HEAD -> living-room-lights-automation) automate living-room light
-| * e22b66a (origin/living-room-lights-automation) WIP automation rules
+* 2339348 (HEAD -> living-room-light-automation) automate living-room light
+| * e22b66a (origin/living-room-light-automation) WIP automation rules
 |/
 * dc6f8e2 define automation-rules schema
 * 3c557d0 define living-room-light trait on-off
@@ -115,7 +115,7 @@ _Note_: Since we amended the last commit (`HEAD`), it has a different commit has
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 2339348 (HEAD -> living-room-lights-automation, origin/living-room-lights-automation) automate living-room light
+* 2339348 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
 * dc6f8e2 define automation-rules schema
 * 3c557d0 define living-room-light trait on-off
 * 06295d8 (origin/main, main) install living-room ambient-light sensor

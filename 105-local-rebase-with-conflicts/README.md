@@ -26,7 +26,7 @@ While we were working on the light automation, our team installed further device
 
 We are finishing our feature branch and want to integrate it.
 But in contrast to [exercise 104](../104-local-rebase-onto-main/README.md), we didn't integrate for too long and now encounter merge conflicts.
-Use [`git rebase`](https://git-scm.com/docs/git-rebase) to rebase our branch `living-room-lights-automation` onto `main`, and resolve the emerging conflicts.
+Use [`git rebase`](https://git-scm.com/docs/git-rebase) to rebase our branch `living-room-light-automation` onto `main`, and resolve the emerging conflicts.
 
 Before executing the _rebase_ though, try to identify which commits will cause conflicts and prepare accordingly.
 
@@ -38,7 +38,7 @@ $ git log --oneline --graph --decorate --all
 * 901a8f7 install living-room thermostat sensor
 * 9e9db27 install living-room balcony-door sensor
 * a4dcc86 install living-room AC
-| * 24189cb (HEAD -> living-room-lights-automation) automate turning on/off living room wall lamp
+| * 24189cb (HEAD -> living-room-light-automation) automate turning on/off living room wall lamp
 | * 9852d2b install living-room wall lamp
 | * ff58bf0 automate living-room light
 | * 811951b define automation-rules schema
@@ -57,7 +57,7 @@ $ git log --oneline --graph --decorate --all
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* c2a2bfc (HEAD -> living-room-lights-automation) automate turning on/off living room wall lamp
+* c2a2bfc (HEAD -> living-room-light-automation) automate turning on/off living room wall lamp
 * 4569584 install living-room wall lamp
 * 299c6e8 automate living-room light
 * ded6133 define living-room-light trait on-off

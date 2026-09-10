@@ -14,11 +14,11 @@ We are working on a _Smart Home_ project, where its configuration is split acros
 
 While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
 
-In the meantime, `living-room-automation` was integrated into `main`.
+In the meantime, `living-room-light-automation` was integrated into `main`.
 
 ## Task: Rebase onto `main` using Interactive Rebase to Clean Up History
 
-While we were working on _automating_ the _living-room AC_, our team integrated `living-room-automation` into `main`.
+While we were working on _automating_ the _living-room AC_, our team integrated `living-room-light-automation` into `main`.
 Our branch is also almost ready to be integrated into `main`.
 
 To prepare the integration and _resolve conflicts_, use `git rebase -i main` to rebase onto `main` and clean up our history (cf. _target Git history_) in one go.

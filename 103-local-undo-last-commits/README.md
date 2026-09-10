@@ -21,7 +21,7 @@ We are currently working on the `automation-rules.json` file.
 
 We finished installing our _living-room_ devices: _light_, _presence sensor_, and _ambient-light sensor_.
 
-On the branch `living-room-lights-automation`, we are currently working on the `automation-rules.json` file.
+On the branch `living-room-light-automation`, we are currently working on the `automation-rules.json` file.
 Here, we find our work in progress (_WIP_) from our previous session; e.g., the previous day, before lunch, from another PC.
 
 Everything works, and it's time to finalize this feature branch.
@@ -31,7 +31,7 @@ _Soft-reset_ to before the WIP commits, remove `testMode` from all `rules` in `a
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 28fe671 (HEAD -> living-room-lights-automation) WIP automate living-room light based on ambient light
+* 28fe671 (HEAD -> living-room-light-automation) WIP automate living-room light based on ambient light
 * 1d62832 WIP automate turning off the living-room light
 * 9709189 WIP automate turning on the living-room light
 * da3ea2f define automation-rules schema
@@ -45,12 +45,12 @@ $ git log --oneline --graph --decorate --all
 * 5ff2789 write README
 * 258621a configure Git
 ```
-_Note_: The _WIP_ commits are on the branch `living-room-lights-automation` which is currently checked out.
+_Note_: The _WIP_ commits are on the branch `living-room-light-automation` which is currently checked out.
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* c2cca52 (HEAD -> living-room-lights-automation) automate living-room light
+* c2cca52 (HEAD -> living-room-light-automation) automate living-room light
 * da3ea2f define automation-rules schema
 * 00d7a16 define living-room-light trait on-off
 * ba2f53b (main) install living-room ambient-light sensor

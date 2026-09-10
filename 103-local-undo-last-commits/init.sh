@@ -8,7 +8,7 @@ init-exercise() {
   init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
   commit-initial-work-on-main || return
-  wip-feature-lights-automation "living-room-lights-automation" || return
+  wip-feature-lights-automation "living-room-light-automation" || return
 }
 
 commit-initial-work-on-main() {

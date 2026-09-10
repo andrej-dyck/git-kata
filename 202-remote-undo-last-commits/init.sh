@@ -10,8 +10,8 @@ init-exercise() {
   commit-initial-work-on-main || return # from 103
   git-push
 
-  wip-feature-lights-automation "living-room-lights-automation" || return # from 103
-  git-push-new-branch "living-room-lights-automation"
+  wip-feature-lights-automation "living-room-light-automation" || return # from 103
+  git-push-new-branch "living-room-light-automation"
 }
 
 run-init-exercise "$@"

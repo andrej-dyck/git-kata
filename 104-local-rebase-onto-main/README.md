@@ -38,10 +38,10 @@ It's time to integrate our feature branch; however, `main` has advanced in the m
 While we were working on the light automation, our team installed further devices and sensors, as well as, _cherry-picked_ the _automation-rules schema_.
 
 Before we finish our feature branch, it's a good practice to integrate `main` into our branch and make sure our changes work when integrated.
-To this end, use [`git rebase`](https://git-scm.com/docs/git-rebase) to rebase our branch `living-room-lights-automation` onto `main`.
+To this end, use [`git rebase`](https://git-scm.com/docs/git-rebase) to rebase our branch `living-room-light-automation` onto `main`.
 
 ### Deep Dive
-After the rebase onto `main`, investigate what happened to the commits `"define automation-rules schema"` and `"define living-room-light trait on-off"` of the branch `living-room-lights-automation`.
+After the rebase onto `main`, investigate what happened to the commits `"define automation-rules schema"` and `"define living-room-light trait on-off"` of the branch `living-room-light-automation`.
 
 ### Initial Git History
 ```console
@@ -50,7 +50,7 @@ $ git log --oneline --graph --decorate --all
 * 2461e1b install living-room thermostat sensor
 * 97070dc install living-room balcony-door sensor
 * 25dc6e3 install living-room AC
-| * 3edb867 (HEAD -> living-room-lights-automation) automate living-room light
+| * 3edb867 (HEAD -> living-room-light-automation) automate living-room light
 | * 51f3204 define automation-rules schema
 | * 70865e0 define living-room-light trait on-off
 |/
@@ -63,12 +63,12 @@ $ git log --oneline --graph --decorate --all
 * 9315fb1 write README
 * dbc3611 configure Git
 ```
-_Note_: The branch `living-room-lights-automation` is checked out, thus the `HEAD` is at `3edb867`.
+_Note_: The branch `living-room-light-automation` is checked out, thus the `HEAD` is at `3edb867`.
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 9e28e3b (HEAD -> living-room-lights-automation) automate living-room light
+* 9e28e3b (HEAD -> living-room-light-automation) automate living-room light
 * 3c69fc3 define living-room-light trait on-off
 * f30d539 (main) define automation-rules schema
 * 2461e1b install living-room thermostat sensor
@@ -83,4 +83,4 @@ $ git log --oneline --graph --decorate --all
 * 9315fb1 write README
 * dbc3611 configure Git
 ```
-_Note_: Since we rebased the branch `living-room-lights-automation` onto `main`, all the branch commit hashes have changed.
+_Note_: Since we rebased the branch `living-room-light-automation` onto `main`, all the branch commit hashes have changed.

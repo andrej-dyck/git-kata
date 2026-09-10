@@ -13,8 +13,8 @@ init-exercise() {
   commit-empty-devices || return # from 103
   commit-living-room-devices || return #from 103
 
-  # feature "living-room-lights-automation"
-  feature-living-room-lights-automation "living-room-lights-automation" || return # from 104
+  # feature "living-room-light-automation"
+  feature-living-room-light-automation "living-room-light-automation" || return # from 104
   commit-living-room-wall-lamp || return
   commit-living-room-wall-lamp-rules || return
 
@@ -25,8 +25,8 @@ init-exercise() {
   commit-empty-automation-rules || return # from 104
   commit-living-room-ac-rules || return
 
-  # start task on branch "living-room-lights-automation"
-  git-switch-branch "living-room-lights-automation" || return
+  # start task on branch "living-room-light-automation"
+  git-switch-branch "living-room-light-automation" || return
 }
 
 commit-living-room-wall-lamp() {

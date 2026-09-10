@@ -10,8 +10,8 @@ init-exercise() {
   commit-initial-work-on-main || return # from 103
   git-push
 
-  wip-feature-lights-automation "living-room-lights-automation" || return
-  git-push-new-branch "living-room-lights-automation"
+  wip-feature-lights-automation "living-room-light-automation" || return
+  git-push-new-branch "living-room-light-automation"
 
   # uncommited changes to be amended
   changes-finalize-lights-on-off-rule || return
