@@ -54,12 +54,20 @@ git-push() {
   git push -q origin
 }
 
+git-rebase-onto-main() {
+  git rebase -q main
+}
+
+git-push-force() {
+  git push -q --force-with-lease origin
+}
+
 git-integrate-into-main() {
-  git switch "$1" || return
-  git rebase "main" || return
-  git switch "main" || return
-  git merge --ff-only "$1" || return
-  git branch -d "$1" || return
+  git-switch-branch "$1" || return
+  git rebase main || return
+  git-switch-main || return
+  git merge -q --ff-only "$1" || return
+  git branch -q -d "$1" || return
 }
 
 git-log-graph() {

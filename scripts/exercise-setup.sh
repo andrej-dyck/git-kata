@@ -96,15 +96,15 @@ _start-spinner() {
   ) &
 
   SPINNER_PID=$!
+  trap '_stop-spinner "✖"' EXIT SIGINT
 }
 SPINNER_PID=""
 
 _stop-spinner() {
-  if [[ -n "${SPINNER_PID:-}" ]]; then
-    kill "$SPINNER_PID" 2>/dev/null || true
-    wait "$SPINNER_PID" 2>/dev/null || true
-    unset SPINNER_PID
-  fi
+  [[ -n "${SPINNER_PID:-}" ]] || return 0
 
-  printf "\b✔\b\n"
+  kill "$SPINNER_PID" 2> /dev/null || true
+  wait "$SPINNER_PID" 2> /dev/null || true
+  unset SPINNER_PID
+  printf "\b${1:-✔}\b\n"
 }
