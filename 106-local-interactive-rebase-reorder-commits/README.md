@@ -44,15 +44,16 @@ For example, commits that conceptually belong together like `"define automation-
 
 Further, some commits are technically broken, e.g.:
 - `"install living-room AC"` uses the property `traits`, but the schema is fixed only after that commit with `"define traits for devices"`
-- `"automate living-room AC"` uses `sensorDeviceId`s that are only defined with the next commit `"install living-room sensors"`
+- `"automate living-room AC"` uses a `sensorDeviceId` that is only defined with the next commit `"install living-room balcony-door sensor"`
 
 _Re-order_ the commits on `living-room-ac-automation` to tell a coherent story.
 
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 01453a4 (HEAD -> living-room-ac-automation) install living-room sensors
+* 01453a4 (HEAD -> living-room-ac-automation) install living-room balcony-door sensor
 * c5022d9 automate living-room AC
+* d6e2c23 install living-room thermostat sensor
 * f047bde define traits for devices
 * b53944f install living-room AC
 * 46ceb87 define automation-rules schema
@@ -76,7 +77,8 @@ _Note_: We also see the feature branch `living-room-light-automation` here, but 
 $ git log --oneline --graph --decorate --all
 * bf3e297 (HEAD -> living-room-ac-automation) automate living-room AC
 * 45e9569 define automation-rules schema
-* 336fdf1 install living-room sensors
+* 0d2220d install living-room balcony-door sensor
+* 336fdf1 install living-room thermostat sensor
 * c011f2d install living-room AC
 * 74576bd define traits for devices
 | * b37d325 (living-room-light-automation) automate living-room light

@@ -109,7 +109,8 @@ It stops the rebase at that commit and lets us amend it.
 ```console
 $ git log --oneline --graph --decorate --all
 * 65d5315 (HEAD -> living-room-ac-automation) automate living-room AC
-* 5b7eeba install living-room sensors
+* 3b31497 install living-room balcony-door sensor
+* 5b7eeba install living-room thermostat sensor
 * 95621c0 install living-room AC
 * 2884e2f define traits for devices
 * 6973a59 define automation-rules schema
@@ -131,7 +132,8 @@ $ git log --oneline --graph --decorate --all
 ```console
 $ git log --oneline --graph --decorate --all
 * 53dd464 (HEAD -> living-room-ac-automation) automate living-room AC
-* b66fa4c install living-room sensors
+* 99017e2 install living-room balcony-door sensor
+* b66fa4c install living-room thermostat sensor
 * 38a7b1e install living-room AC
 * 2884e2f define traits for devices
 * 6973a59 define automation-rules schema

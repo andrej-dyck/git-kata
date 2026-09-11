@@ -9,23 +9,23 @@ init-exercise() {
 
   # main
   commit-initial-work-on-main || return
-  git-push
+  git-push || return
 
   # feature "living-room-light-automation"
   feature-living-room-light-automation "living-room-light-automation" || return
-  git-push-new-branch "living-room-light-automation"
+  git-push-new-branch "living-room-light-automation" || return
 
   # additional work on main
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
   additional-work-on-main || return # from 104
-  git-push
+  git-push || return
 
   # start task on branch "living-room-light-automation"
   git-switch-branch "living-room-light-automation" || return
 }
 
 commit-initial-work-on-main() {
-  git-switch-main
+  git-switch-main || return
   commit-empty-rooms || return # from 101
   commit-living-room || return # from 102
   commit-empty-devices || return # from 103

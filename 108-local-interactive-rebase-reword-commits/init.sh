@@ -15,7 +15,8 @@ wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 104
   commit-living-room-ac "ac" || return # from 104
   commit-device-traits-schema "fix ac" || return # from 106
-  commit-living-room-sensors "sensors" || return # from 106
+  commit-living-room-sensors-thermometer "thermometer" || return # from 104
+  commit-living-room-sensors-balcony-door "balcony door" || return # from 104
   commit-living-room-ac-rules "WIP automation" || return # from 105
 }
 

@@ -8,10 +8,10 @@ init-exercise() {
   init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
   commit-initial-work-on-main || return # from 103
-  git-push
+  git-push || return
 
   wip-feature-lights-automation "living-room-light-automation" || return
-  git-push-new-branch "living-room-light-automation"
+  git-push-new-branch "living-room-light-automation" || return
 
   # uncommited changes to be amended
   changes-finalize-lights-on-off-rule || return

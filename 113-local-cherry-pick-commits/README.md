@@ -33,7 +33,8 @@ Once either of the branches is integrated into `main`, a [rebase](https://git-sc
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 27932b0 (HEAD -> living-room-ac-automation) install living-room sensors
+* 27932b0 (HEAD -> living-room-ac-automation) install living-room balcony-door sensor
+* 4829d15 install living-room thermostat sensor
 * 32a150b install living-room AC
 | * 0be7489 (living-room-light-automation) automate living-room light
 | * 5d5581d define automation-rules schema
@@ -53,7 +54,8 @@ $ git log --oneline --graph --decorate --all
 ```console
 $ git log --oneline --graph --decorate --all
 * 1633f87 (HEAD -> living-room-ac-automation) define automation-rules schema
-* 27932b0 install living-room sensors
+* 27932b0 install living-room balcony-door sensor
+* 4829d15 install living-room thermostat sensor
 * 32a150b install living-room AC
 | * 0be7489 (living-room-light-automation) automate living-room light
 | * 5d5581d define automation-rules schema

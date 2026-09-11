@@ -14,7 +14,8 @@ init-exercise() {
 wip-commits-ac-automation() {
   define-device-traits || return # from 103
   commit-living-room-ac || return # from 104
-  commit-living-room-sensors || return # from 106
+  commit-living-room-sensors-thermometer || return # from 104
+  commit-living-room-sensors-balcony-door|| return # from 104
 }
 
 run-init-exercise "$@"

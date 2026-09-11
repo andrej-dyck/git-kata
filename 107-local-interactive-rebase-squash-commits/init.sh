@@ -22,16 +22,6 @@ wip-commits-ac-automation() {
   commit-living-room-ac-rule-on-off-balcony-door || return
 }
 
-commit-living-room-sensors-thermometer() {
-  install-living-room-thermometer || return
-  git-commit "${1:-install living-room thermometer}"
-}
-
-commit-living-room-sensors-balcony-door() {
-  install-living-room-balcony-door-sensor || return
-  git-commit "${1:-install living-room balcony-door sensor}"
-}
-
 commit-living-room-ac-rule-on() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-ac-on",

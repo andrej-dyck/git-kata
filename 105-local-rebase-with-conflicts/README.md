@@ -35,8 +35,8 @@ Before executing the _rebase_ though, try to identify which commits will cause c
 $ git log --oneline --graph --decorate --all
 * 3576afb (main) automate living-room AC
 * c2c6516 define automation-rules schema
-* 901a8f7 install living-room thermostat sensor
 * 9e9db27 install living-room balcony-door sensor
+* 901a8f7 install living-room thermostat sensor
 * a4dcc86 install living-room AC
 | * 24189cb (HEAD -> living-room-light-automation) automate turning on/off living room wall lamp
 | * 9852d2b install living-room wall lamp
@@ -63,8 +63,8 @@ $ git log --oneline --graph --decorate --all
 * ded6133 define living-room-light trait on-off
 * 3576afb (main) automate living-room AC
 * c2c6516 define automation-rules schema
-* 901a8f7 install living-room thermostat sensor
 * 9e9db27 install living-room balcony-door sensor
+* 901a8f7 install living-room thermostat sensor
 * a4dcc86 install living-room AC
 * 4af729b install living-room ambient-light sensor
 * a115cf6 install living-room presence sensor

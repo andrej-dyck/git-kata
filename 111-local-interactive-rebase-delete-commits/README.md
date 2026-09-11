@@ -47,7 +47,7 @@ $ git log --oneline --graph --decorate --all
 * e1ae49b DELETE! ac on testmode
 * 26a970c automate turning on living-room AC
 * 6eb6ff1 DELETE! thermometer test value 26°C
-* b34232c install living-room thermometer
+* b34232c install living-room thermostat sensor
 * ab77be6 install living-room AC
 * 0a8d1bc define automation-rules schema
 | * 390de11 (living-room-light-automation) automate living-room light
@@ -71,7 +71,7 @@ $ git log --oneline --graph --decorate --all
 * 9c7189d install living-room balcony-door sensor
 * 95f7bd1 automate turning off living-room AC
 * dce12c9 automate turning on living-room AC
-* b34232c install living-room thermometer
+* b34232c install living-room thermostat sensor
 * ab77be6 install living-room AC
 * 0a8d1bc define automation-rules schema
 | * 390de11 (living-room-light-automation) automate living-room light

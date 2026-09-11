@@ -39,8 +39,8 @@ Since we already pushed our branch, use `git push --force-with-lease` to overwri
 ```console
 $ git log --oneline --graph --decorate --all
 * 00f1515 (origin/main, main) define automation-rules schema
-* 205e2d4 install living-room thermostat sensor
 * bc034f3 install living-room balcony-door sensor
+* 205e2d4 install living-room thermostat sensor
 * 4ca4d1c install living-room AC
 | * c26c0d5 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
 | * 320820f define automation-rules schema
@@ -65,8 +65,8 @@ $ git log --oneline --graph --decorate --all
 * 1e56542 install living-room ambient-light sensor
 * 3a3605f install living-room presence sensor
 * 00f1515 (origin/main, main) define automation-rules schema
-* 205e2d4 install living-room thermostat sensor
 * bc034f3 install living-room balcony-door sensor
+* 205e2d4 install living-room thermostat sensor
 * 4ca4d1c install living-room AC
 | * c26c0d5 (origin/living-room-light-automation) automate living-room light
 | * 320820f define automation-rules schema
@@ -91,8 +91,8 @@ $ git log --oneline --graph --decorate --all
 * 1e56542 install living-room ambient-light sensor
 * 3a3605f install living-room presence sensor
 * 00f1515 (origin/main, main) define automation-rules schema
-* 205e2d4 install living-room thermostat sensor
 * bc034f3 install living-room balcony-door sensor
+* 205e2d4 install living-room thermostat sensor
 * 4ca4d1c install living-room AC
 * 6f16dfe install living-room light
 * d75c547 define devices schema

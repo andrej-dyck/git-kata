@@ -51,7 +51,8 @@ $ git log --oneline --graph --decorate --all
 ```console
 $ git log --oneline --graph --decorate --all
 * 9fb56c9 (HEAD -> living-room-ac-automation) automate turning off living-room AC
-* bcbff7b install living-room sensors
+* 03375f6 install living-room balcony-door sensor
+* bcbff7b install living-room thermostat sensor
 * f22da0b install living-room AC
 * cc7b2f0 (main) automate living-room light
 * b85a1a9 define automation-rules schema

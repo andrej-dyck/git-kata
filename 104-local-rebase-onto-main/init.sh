@@ -54,8 +54,8 @@ additional-work-on-main() {
 integrated-ac-install-commits() {
   define-device-traits || return # from 103
   commit-living-room-ac || return
-  commit-balcony-door-sensor || return
-  commit-living-room-thermometer || return
+  commit-living-room-sensors-thermometer || return
+  commit-living-room-sensors-balcony-door || return
 }
 
 commit-living-room-ac() {
@@ -70,31 +70,29 @@ commit-living-room-ac() {
   git-commit "${1:-install living-room AC}"
 }
 
-commit-balcony-door-sensor() {
-  install-living-room-balcony-door-sensor || return
-
-  git-commit "install living-room balcony-door sensor"
-}
-
-install-living-room-balcony-door-sensor() {
-  json-edit devices.json '.devices += [{
-    "id": "living-room-balcony-door",
-    "name": "Living-room balcony-door sensor",
-    "roomId": "living-room",
-    "type": "sensor"
-  }]' || return
-}
-
-commit-living-room-thermometer() {
+commit-living-room-sensors-thermometer() {
   install-living-room-thermometer || return
-
-  git-commit "install living-room thermostat sensor"
+  git-commit "${1:-install living-room thermostat sensor}"
 }
 
 install-living-room-thermometer() {
   json-edit devices.json '.devices += [{
     "id": "living-room-thermostat-sensor",
     "name": "Living-room thermostat sensor",
+    "roomId": "living-room",
+    "type": "sensor"
+  }]' || return
+}
+
+commit-living-room-sensors-balcony-door() {
+  install-living-room-balcony-door-sensor || return
+  git-commit "${1:-install living-room balcony-door sensor}"
+}
+
+install-living-room-balcony-door-sensor() {
+  json-edit devices.json '.devices += [{
+    "id": "living-room-balcony-door",
+    "name": "Living-room balcony-door sensor",
     "roomId": "living-room",
     "type": "sensor"
   }]' || return

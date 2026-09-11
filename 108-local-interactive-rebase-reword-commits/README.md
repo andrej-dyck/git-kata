@@ -30,7 +30,8 @@ Make sure to _squash_ related WIP commits and _reword_ the commit message of the
 ```console
 $ git log --oneline --graph --decorate --all
 * 3ff3e66 (HEAD -> living-room-ac-automation) WIP automation
-* 77c5301 sensors
+* 77c5301 balcony door
+* 7fe575b thermometer
 * b213a87 fix ac
 * 910610c ac
 * 0f9b61f define automation-rules schema
@@ -52,7 +53,8 @@ $ git log --oneline --graph --decorate --all
 ```console
 $ git log --oneline --graph --decorate --all
 * ebd57ea (HEAD -> living-room-ac-automation) automate living-room AC
-* d13e956 install living-room sensors
+* 160300f install living-room balcony-door sensor
+* d13e956 install living-room thermostat sensor
 * 44e95a3 install living-room AC
 * 0f9b61f define automation-rules schema
 | * 087bab5 (living-room-light-automation) automate living-room light

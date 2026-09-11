@@ -47,8 +47,8 @@ After the rebase onto `main`, investigate what happened to the commits `"define 
 ```console
 $ git log --oneline --graph --decorate --all
 * f30d539 (main) define automation-rules schema
-* 2461e1b install living-room thermostat sensor
 * 97070dc install living-room balcony-door sensor
+* 2461e1b install living-room thermostat sensor
 * 25dc6e3 install living-room AC
 | * 3edb867 (HEAD -> living-room-light-automation) automate living-room light
 | * 51f3204 define automation-rules schema
@@ -71,8 +71,8 @@ $ git log --oneline --graph --decorate --all
 * 9e28e3b (HEAD -> living-room-light-automation) automate living-room light
 * 3c69fc3 define living-room-light trait on-off
 * f30d539 (main) define automation-rules schema
-* 2461e1b install living-room thermostat sensor
 * 97070dc install living-room balcony-door sensor
+* 2461e1b install living-room thermostat sensor
 * 25dc6e3 install living-room AC
 * b2a2383 install living-room ambient-light sensor
 * 0301603 install living-room presence sensor
