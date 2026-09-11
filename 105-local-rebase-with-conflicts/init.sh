@@ -22,7 +22,7 @@ init-exercise() {
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
   git-switch-main || return
   integrated-ac-install-commits || return # from 104
-  commit-empty-automation-rules || return # from 104
+  commit-empty-automation-rules || return # from 103
   commit-living-room-ac-rules || return
 
   # start task on branch "living-room-light-automation"
@@ -64,23 +64,30 @@ commit-living-room-wall-lamp-rules() {
 }
 
 commit-living-room-ac-rules() {
+  define-living-room-ac-on-rule || return
+  define-living-room-ac-rule-off-rule || return
+  define-living-room-ac-rule-on-off-balcony-door-rule || return
+
+  git-commit "${1:-automate living-room AC}"
+}
+
+define-living-room-ac-on-rule() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-ac-on",
     "name": "Turn on living-room AC when its hot",
     "when": [{
       "sensorDeviceId": "living-room-thermostat-sensor",
       "sensorValue": ">25°C"
-    }, {
-      "sensorDeviceId": "living-room-balcony-door",
-      "event": "door-closed"
     }],
     "then": [{
       "deviceId": "living-room-ac",
       "action": "turn-on",
       "parameters": { "targetTemperatureCelsius": 21.0 }
     }]
-  }]' || return
+  }]'
+}
 
+define-living-room-ac-rule-off-rule() {
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-ac-off-temperature",
     "name": "Turn off living-room AC when its cool",
@@ -92,7 +99,15 @@ commit-living-room-ac-rules() {
       "deviceId": "living-room-ac",
       "action": "turn-off",
     }]
-  }]' || return
+  }]'
+}
+
+define-living-room-ac-rule-on-off-balcony-door-rule() {
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-ac-on" then
+      .when += [{ "sensorDeviceId": "living-room-balcony-door", "event": "door-closed" }]
+    else . end
+  )' || return
 
   json-edit automation-rules.json '.rules += [{
     "id": "living-room-ac-off-balcony",
@@ -106,8 +121,6 @@ commit-living-room-ac-rules() {
       "action": "turn-off",
     }]
   }]' || return
-
-  git-commit "${1:-automate living-room AC}"
 }
 
 run-init-exercise "$@"

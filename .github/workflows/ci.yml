@@ -53,3 +53,5 @@ jobs:
       run: bash ./scripts/_test-init.sh 205-remote-rewriting-history-with-teammates
     - name: Test Exercise 206
       run: bash ./scripts/_test-init.sh 206-remote-cherry-pick-remote-commits
+    - name: Test Exercise 301
+      run: bash ./scripts/_test-init.sh 301-advanced-interactive-rebase-onto-a-rewritten-branch

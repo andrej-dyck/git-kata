@@ -17,10 +17,11 @@ init-exercise() {
 push-initial-work-on-main-and-feature() {
   # main
   commit-initial-work-on-main || return # from 203
-  git-push
+  git-push || push
 
   # feature "living-room-ac-automation"
-  start-commits-ac-automation "$1" || return
+  git-new-branch "$1" || return
+  start-commits-ac-and-sensors || return
   git-push-new-branch "$1" || return
 
   # advance main
@@ -31,9 +32,7 @@ push-initial-work-on-main-and-feature() {
   git-push || return
 }
 
-start-commits-ac-automation() {
-  git-new-branch "$1" || return
-
+start-commits-ac-and-sensors() {
   define-device-traits || return # from 103
   commit-living-room-ac "install ac" || return # from 104
   commit-living-room-sensors "install sensors" || return # from 110
@@ -42,7 +41,7 @@ start-commits-ac-automation() {
 continue-wip-commits-ac-automation() {
   git-switch-branch "$1" || return
 
-  commit-empty-automation-rules || return # from 104
+  commit-empty-automation-rules || return # from 103
 
   commit-living-room-ac-rule-on "WIP ac on" || return # from 107
   amend-rule-test-mode-on "living-room-ac-on" || return # from 111

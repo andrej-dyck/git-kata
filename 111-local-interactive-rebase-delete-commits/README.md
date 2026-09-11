@@ -37,7 +37,7 @@ $ git log --oneline --graph --decorate --all
 * 9fae271 (HEAD -> living-room-ac-automation) DELETE! balcony-door test value door-opened
 * 98d79cb DELETE! thermometer test value 26°C
 * 5eae5d0 DELETE! ac on/off with balcony-door testmode
-* c2f63dd automate turning off living-room AC when balcony door opens
+* c2f63dd automate turning on/off living-room AC w/ balcony door
 * 459e1f5 DELETE! balcony-door test value door-closed
 * dc9f146 install living-room balcony-door sensor
 * 7475fff DELETE! thermometer test value 19°C
@@ -67,7 +67,7 @@ $ git log --oneline --graph --decorate --all
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* a78a6be (HEAD -> living-room-ac-automation) automate turning off living-room AC when balcony door opens
+* a78a6be (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
 * 9c7189d install living-room balcony-door sensor
 * 95f7bd1 automate turning off living-room AC
 * dce12c9 automate turning on living-room AC

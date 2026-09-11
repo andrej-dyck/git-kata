@@ -7,6 +7,12 @@ init-exercise() {
 
   init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
+  echo ""
+  echo ""
+  echo "🚧 Exercise under Construction"
+  echo ""
+  return 2
+
   # TODO setup git history for exercise
 }
 

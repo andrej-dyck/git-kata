@@ -18,7 +18,8 @@ init-exercise() {
   # start feature "living-room-light-automation"
   git-switch-main || return
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  start-commits-ac-automation "living-room-ac-automation" || return # from 204
+  git-new-branch "living-room-ac-automation" || return
+  start-commits-ac-and-sensors || return # from 204
   git-push-new-branch "living-room-ac-automation"
 
   # prepare feature "automation-schema"

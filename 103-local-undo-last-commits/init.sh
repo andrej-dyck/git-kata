@@ -91,7 +91,7 @@ commit-empty-automation-rules() {
   copy-rsc "smart-home-templates/automation-rules.schema.json" ./ || return
   copy-rsc "smart-home-templates/empty-automation-rules.json" automation-rules.json || return
 
-  git-commit "define automation-rules schema"
+  git-commit "${1:-define automation-rules schema}"
 }
 
 commit-wip-automation-rule() {

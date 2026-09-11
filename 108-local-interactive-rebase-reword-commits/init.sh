@@ -12,7 +12,7 @@ init-exercise() {
 }
 
 wip-commits-ac-automation() {
-  commit-empty-automation-rules || return # from 104
+  commit-empty-automation-rules || return # from 103
   commit-living-room-ac "ac" || return # from 104
   commit-device-traits-schema "fix ac" || return # from 106
   commit-living-room-sensors-thermometer "thermometer" || return # from 104
