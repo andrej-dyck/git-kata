@@ -81,7 +81,7 @@ $ git log --oneline --graph --decorate --all
 * bd3f9de write README
 * ec8e764 configure Git
 ```
-_Note_: A Git client typically shows something similar to `↓5 ↑8` for this graph.
+_Note_: A Git client shows something similar to `↓5 ↑8` for this graph.
 
 ### Target Git History
 ```console

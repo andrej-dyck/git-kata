@@ -13,7 +13,7 @@ Assuming we have the simple case that `origin` has the most recent history,
 we can update our local history by using [`git fetch`](https://git-scm.com/docs/git-fetch) and then [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) onto `origin/feature`.
 
 If our local branch has also new changes, we can [interactively rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) onto `origin/feature`, _delete_ obsolete commits, and resolve conflicts with new commits.
-[Exercise 301](../301-advanced-rebase-onto-a-rewritten-branch) addresses this scenario.
+[Exercise 301](../301-advanced-interactive-rebase-onto-a-rewritten-branch) addresses this scenario.
 
 _Note_: Don't use [`git pull`](https://git-scm.com/docs/git-pull) when working with _rebase_.
 Always use [`git pull --ff-only`](https://git-scm.com/docs/git-fetch); that's shorthand for [`git fetch`](https://git-scm.com/docs/git-fetch) plus [`git merge --no-commit --ff --ff-only`](https://git-scm.com/docs/git-merge).
@@ -23,7 +23,6 @@ Always use [`git pull --ff-only`](https://git-scm.com/docs/git-fetch); that's sh
 We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
 
 We worked on _automating_ the _living-room AC_ and pushed our work-in-progress (_WIP_) changes.
-
 Meanwhile, on a different machine, we (or a teammate) finished the feature, cleaned up the history, and pushed it to `origin`.
 
 ## Task: Adopt the Cleaned up History from `origin`

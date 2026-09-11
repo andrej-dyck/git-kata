@@ -13,13 +13,15 @@ init-exercise() {
   continue-wip-commits-ac-automation "living-room-ac-automation" || return
 
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  cleaned-up-origin-ac-automation "living-room-ac-automation" || return
+  cleaned-up-origin "living-room-ac-automation" \
+    clean-ac-automation-commits \
+    || return
 }
 
 continue-wip-commits-ac-automation() {
   git-switch-branch "$1" || return
 
-  commit-empty-automation-rules || return # from 104
+  commit-empty-automation-rules || return # from 103
 
   commit-living-room-ac-rule-on "WIP ac on" || return # from 107
   amend-rule-test-mode-on "living-room-ac-on" || return # from 111
@@ -34,19 +36,23 @@ continue-wip-commits-ac-automation() {
   commit-DELETE-thermometer-test-value "19°C" || return # from 111
 }
 
-cleaned-up-origin-ac-automation() {
+cleaned-up-origin() {
   git-switch-main
   git-new-branch "$1-clean" || return
 
-  commit-living-room-ac || return # from 104
-  commit-living-room-sensors-thermometer || return # from 104
-  commit-living-room-sensors-balcony-door || return # from 104
-  commit-living-room-ac-rules || return # from 105
+  "$2" || return
 
   git push -q --force-with-lease -u origin "HEAD:$1"
 
   git-switch-branch "$1"
   git-force-delete-local-branch "$1-clean" || return
+}
+
+clean-ac-automation-commits() {
+  commit-living-room-ac || return # from 104
+  commit-living-room-sensors-thermometer || return # from 104
+  commit-living-room-sensors-balcony-door || return # from 104
+  commit-living-room-ac-rules || return # from 105
 }
 
 run-init-exercise "$@"

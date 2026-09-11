@@ -31,7 +31,7 @@ In this exercise, we committed our work on `living-room-ac-automation` in small 
 However, the sequence of commits is quite fragmented.
 For example, commits like `"fixup! devices schema"` (belongs to `"install living-room AC"`) and `"amend! install living-room sensors"` (belongs to `"install living-room sensors"`) make the Git log unnecessarily convoluted.
 
-Further, one can argue that _automation_ is only complete with all rules in place, so `"turning on living-room AC"`, `"turning off living-room AC"`, and `"automate turning off living-room AC when balcony door opens"` can be combined into one commit  `"automate living-room AC"`.
+Further, one can argue that _automation_ is only complete with all rules in place, so `"turning on living-room AC"`, `"turning off living-room AC"`, and `"automate turning on/off living-room AC w/ balcony door"` can be combined into one commit  `"automate living-room AC"`.
 
 _Squash_ the commits on `living-room-ac-automation` to tell a coherent story.
 
@@ -42,7 +42,7 @@ _Nice to Know_: You can make use of the [`--autosquash`](https://git-scm.com/doc
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 71f8476 (HEAD -> living-room-ac-automation) automate turning off living-room AC when balcony door opens
+* 71f8476 (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
 * 6c0afe8 amend! install living-room sensors
 * eb52221 automate turning off living-room AC
 * d27d2f8 automate turning on living-room AC

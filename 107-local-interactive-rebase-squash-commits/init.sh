@@ -12,7 +12,7 @@ init-exercise() {
 }
 
 wip-commits-ac-automation() {
-  commit-empty-automation-rules || return # from 104
+  commit-empty-automation-rules || return # from 103
   commit-living-room-ac || return # from 104
   commit-device-traits-schema "fixup! devices schema" || return # from 106
   commit-living-room-sensors-thermometer "install living-room sensors" || return
@@ -23,61 +23,18 @@ wip-commits-ac-automation() {
 }
 
 commit-living-room-ac-rule-on() {
-  json-edit automation-rules.json '.rules += [{
-    "id": "living-room-ac-on",
-    "name": "Turn on living-room AC when its hot",
-    "when": [{
-      "sensorDeviceId": "living-room-thermostat-sensor",
-      "sensorValue": ">25°C"
-    }],
-    "then": [{
-      "deviceId": "living-room-ac",
-      "action": "turn-on",
-      "parameters": { "targetTemperatureCelsius": 21.0 }
-    }]
-  }]' || return
-
+  define-living-room-ac-on-rule || return # from 105
   git-commit "${1:-automate turning on living-room AC}"
 }
 
 commit-living-room-ac-rule-off() {
-  json-edit automation-rules.json '.rules += [{
-    "id": "living-room-ac-off-temperature",
-    "name": "Turn off living-room AC when its cool",
-    "when": [{
-      "sensorDeviceId": "living-room-thermostat-sensor",
-      "sensorValue": "<20°C"
-    }],
-    "then": [{
-      "deviceId": "living-room-ac",
-      "action": "turn-off",
-    }]
-  }]' || return
-
+  define-living-room-ac-rule-off-rule || return # from 105
   git-commit "${1:-automate turning off living-room AC}"
 }
 
 commit-living-room-ac-rule-on-off-balcony-door() {
-  json-edit automation-rules.json '.rules |= map(
-    if .id == "living-room-ac-on" then
-      .when += [{ "sensorDeviceId": "living-room-balcony-door", "event": "door-closed" }]
-    else . end
-  )' || return
-
-  json-edit automation-rules.json '.rules += [{
-    "id": "living-room-ac-off-balcony",
-    "name": "Turn off living-room AC when balcony door open",
-    "when": [{
-      "sensorDeviceId": "living-room-balcony-door",
-      "event": "door-opened"
-    }],
-    "then": [{
-      "deviceId": "living-room-ac",
-      "action": "turn-off",
-    }]
-  }]' || return
-
-  git-commit "${1:-automate turning off living-room AC when balcony door opens}"
+  define-living-room-ac-rule-on-off-balcony-door-rule || return
+  git-commit "${1:-automate turning on/off living-room AC w/ balcony door}"
 }
 
 run-init-exercise "$@"

@@ -113,7 +113,7 @@ $ git log --oneline --graph --decorate --all
 * cd6326c write README
 * c58a904 configure Git
 ```
-_Note_: Since we amended the last commit (`HEAD`), it has a different commit hash and the history diverges from `origin`. A Git client typically shows something similar to `↓1 ↑1` for this graph.
+_Note_: Since we amended the last commit (`HEAD`), it has a different commit hash and the history diverges from `origin`. A Git client shows something similar to `↓1 ↑1` for this graph.
 
 ### Target Git History
 ```console
