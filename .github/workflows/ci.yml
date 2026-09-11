@@ -47,3 +47,5 @@ jobs:
       run: bash ./scripts/_test-init.sh 202-remote-undo-last-commits
     - name: Test Exercise 203
       run: bash ./scripts/_test-init.sh 203-remote-rebase-onto-main
+    - name: Test Exercise 204
+      run: bash ./scripts/_test-init.sh 204-remote-interactive-rebase

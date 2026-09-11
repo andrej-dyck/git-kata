@@ -34,67 +34,49 @@ wip-commits-ac-automation() {
 }
 
 commit-DELETE-thermometer-test-value() {
+  amend-sensor-test-value "living-room-thermostat-sensor" "$1" || return
+  git-commit "DELETE! thermometer test value $1"
+}
+
+amend-sensor-test-value() {
   json-edit devices.json '.devices |= map(
-    if .id == "living-room-thermostat-sensor" then
+    if .id == $deviceId then
       to_entries
         | map(if .key == "type" then [{key:"sensorTestValue", value:$sensorTestValue}, .] else [.] end)
         | flatten
         | from_entries
     else . end
-  )' --arg sensorTestValue "$1" || return
-
-  git-commit "DELETE! thermometer test value $1"
+  )' --arg deviceId "$1" --arg sensorTestValue "$2"
 }
 
 commit-DELETE-ac-rule-on-test-mode() {
-  json-edit automation-rules.json '.rules |= map(
-    if .id == "living-room-ac-on" then
-      to_entries
-        | map(if .key == "when" then [{key:"testMode", value:true}, .] else [.] end)
-        | flatten
-        | from_entries
-    else . end
-  )' || return
-
+  amend-rule-test-mode-on "living-room-ac-on" || return
   git-commit "DELETE! ac on testmode"
 }
 
-commit-DELETE-ac-rule-off-test-mode() {
+amend-rule-test-mode-on() {
   json-edit automation-rules.json '.rules |= map(
-    if .id == "living-room-ac-off-temperature" then
+    if .id == $ruleId then
       to_entries
         | map(if .key == "when" then [{key:"testMode", value:true}, .] else [.] end)
         | flatten
         | from_entries
     else . end
-  )' || return
+  )' --arg ruleId "$1"
+}
 
+commit-DELETE-ac-rule-off-test-mode() {
+  amend-rule-test-mode-on "living-room-ac-off-temperature" || return
   git-commit "DELETE! ac off testmode"
 }
 
 commit-DELETE-balcony-test-value() {
-  json-edit devices.json '.devices |= map(
-    if .id == "living-room-balcony-door" then
-      to_entries
-        | map(if .key == "type" then [{key:"sensorTestValue", value:$sensorTestValue}, .] else [.] end)
-        | flatten
-        | from_entries
-    else . end
-  )' --arg sensorTestValue "$1" || return
-
+  amend-sensor-test-value "living-room-balcony-door" "$1" || return
   git-commit "DELETE! balcony-door test value $1"
 }
 
 commit-DELETE-ac-rule-off-balcony-door-test-mode() {
-  json-edit automation-rules.json '.rules |= map(
-    if .id == "living-room-ac-off-balcony" then
-      to_entries
-        | map(if .key == "when" then [{key:"testMode", value:true}, .] else [.] end)
-        | flatten
-        | from_entries
-    else . end
-  )' || return
-
+  amend-rule-test-mode-on "living-room-ac-off-balcony" || return
   git-commit "DELETE! ac on/off with balcony-door testmode"
 }
 
