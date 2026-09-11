@@ -49,3 +49,5 @@ jobs:
       run: bash ./scripts/_test-init.sh 203-remote-rebase-onto-main
     - name: Test Exercise 204
       run: bash ./scripts/_test-init.sh 204-remote-interactive-rebase
+    - name: Test Exercise 205
+      run: bash ./scripts/_test-init.sh 205-remote-rewriting-history-with-teammates

@@ -8,15 +8,20 @@ init-exercise() {
 
   init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
+  push-initial-work-on-main-and-feature "living-room-ac-automation" || return
+
+  sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
+  continue-wip-commits-ac-automation "living-room-ac-automation" || return
+}
+
+push-initial-work-on-main-and-feature() {
   # main
   commit-initial-work-on-main || return # from 203
   git-push
 
   # feature "living-room-ac-automation"
-  git-switch-main || return
-  sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  start-commits-ac-automation "living-room-ac-automation" || return
-  git-push-new-branch "living-room-ac-automation" || return
+  start-commits-ac-automation "$1" || return
+  git-push-new-branch "$1" || return
 
   # advance main
   git-switch-main || return
@@ -24,10 +29,6 @@ init-exercise() {
   commit-device-traits-schema || return # from 106
   commit-empty-automation-rules || return # from 103
   git-push || return
-
-  # continue on "living-room-ac-automation"
-  sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  continue-wip-commits-ac-automation "living-room-ac-automation" || return
 }
 
 start-commits-ac-automation() {
@@ -48,7 +49,6 @@ continue-wip-commits-ac-automation() {
   git-amend-commit
 
   commit-DELETE-thermometer-test-value "26°C" || return # from 111
-  commit-DELETE-balcony-test-value "door-closed" || return # from 111
 
   commit-living-room-ac-rule-off "WIP ac off" || return # from 107
   amend-rule-test-mode-on "living-room-ac-off-temperature" || return # from 111
@@ -61,6 +61,7 @@ continue-wip-commits-ac-automation() {
   git-amend-commit
 
   commit-DELETE-thermometer-test-value "26°C" || return # from 111
+  commit-DELETE-balcony-test-value "door-closed" || return # from 111
   commit-DELETE-balcony-test-value "door-opened" || return # from 111
 }
 

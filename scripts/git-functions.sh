@@ -70,6 +70,10 @@ git-integrate-into-main() {
   git branch -q -d "$1" || return
 }
 
+git-force-delete-local-branch() {
+  git branch -q -D "$1"
+}
+
 git-log-graph() {
   if [ "$#" -ge 1 ]; then
     echo "$1"

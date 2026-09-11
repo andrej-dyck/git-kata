@@ -9,7 +9,8 @@ So, to update the remote repository, we have to overwrite its branch version wit
 
 We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
 
-We started work on _automating_ the _living-room AC_. To unblock the team, we realized we should integrate schema changes into `main` before continuing.
+We started work on _automating_ the _living-room AC_.
+To unblock the team, we realized we should integrate schema changes into `main` before continuing.
 Thus, we integrated changes to `device.schema.json` and defined `automation-rules.schema.json`.
 
 After completing work on the _AC automation_, it is time to clean up the history and push our changes.
@@ -32,11 +33,11 @@ Here are our cleanup tasks:
 ```console
 $ git log --oneline --graph --decorate --all
 * cd1a4fd (HEAD -> living-room-ac-automation) DELETE! balcony-door test value door-opened
+* 8f108ea DELETE! balcony-door test value door-closed
 * bf9e66c DELETE! thermometer test value 26°C
 * d18ddbc WIP ac on/off + balcony-door
 * f03749e DELETE! thermometer test value 19°C
 * f664475 WIP ac off
-* 8f108ea DELETE! balcony-door test value door-closed
 * 48e9344 DELETE! thermometer test value 26°C
 * ee8ec92 WIP ac on
 * 3556472 define automation-rules schema
