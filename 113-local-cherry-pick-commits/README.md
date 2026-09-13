@@ -1,10 +1,10 @@
 # 113 Cherry-pick Commits
 
-Cherry-picking a commit is useful when we want to apply changes introduced by that commit in to another branch.
+_Cherry-picking_ a commit is useful when we want to apply changes introduced by that commit in to another branch.
 
 For example, we can use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) to selectively integrate a change, fix, or feature into our current branch without merging the entire source branch.
 
-It can also be useful for building a clean, intentional history from a messy or experimental branch by cherry-picking only the commits that represent the changes you actually want to preserve.
+It can also be useful for building a clean, intentional history from a messy or experimental branch by _cherry-picking_ only the commits that represent the changes you actually want to preserve.
 
 ![](../resources/main-cherry-pickable-commit.svg)
 

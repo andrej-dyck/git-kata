@@ -39,7 +39,7 @@ This kata assumes that you already have basic Git knowledge; e.g., how to _stage
 
 ## Doing this Git Kata
 
-**_IMPORTANT_**: 🚧 This Git kata is currently under rework. Though, all but [exercise 302](./302-advanced-clean-history-with-cherry-pick/README.md) and [exercise 303](./303-advanced-restore-lost-commits/README.md) are ready.
+**_IMPORTANT_**: 🚧 This Git kata is currently under rework. Though, all but [exercise 303](./303-advanced-restore-lost-commits/README.md) are ready.
 
 Each exercise is self-contained, even when they refer to previous exercise numbers; the task is described in the `README.md` file.
 

@@ -39,7 +39,7 @@ feature-living-room-light-automation() {
   commit-living-room-ambient-light-sensor || return # from 103
   commit-living-room-light-traits || return # from 103
   commit-empty-automation-rules || return # from 103
-  commit-living-room-light-rules || return
+  commit-living-room-light-rules || return # from 104
 }
 
 run-init-exercise "$@"
