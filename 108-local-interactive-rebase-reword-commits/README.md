@@ -71,3 +71,9 @@ $ git log --oneline --graph --decorate --all
 * 3c32c60 configure Git
 ```
 _Note_: Rewording a commit message also changes the commit's ID.
+
+## Reflect & Review
+
+- What makes a commit message useful during review or understanding the project evolution? What messages aren't helpful?
+- When is a commit message body necessary?
+- How would you decide whether a commit message is specific enough?

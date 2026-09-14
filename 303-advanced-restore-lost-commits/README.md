@@ -91,3 +91,9 @@ $ git log --oneline --graph --decorate --all
 * e95970f write README
 * 5b78593 configure Git
 ```
+
+## Reflect & Review
+
+- Why can commits appear _"lost"_ even though Git may still know about them?
+- What are the limits of _reflog_-based recovery?
+- What habits reduce the likelihood of needing reflog recovery?

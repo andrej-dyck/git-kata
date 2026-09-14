@@ -85,4 +85,9 @@ $ git log --oneline --graph --decorate --all
 * 2d8e307 write README
 * d4e66cb configure Git
 ```
-_Note_: The old pushed WIP commits are no longer part of the branch history.
+_Note_: The old pushed _WIP_ commits are no longer part of the branch history.
+
+## Reflect & Review
+
+- Why might we want to push a _WIP_ commit in the first place?
+- How is branch ownership affected whether _force pushing_ is accepted?

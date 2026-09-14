@@ -64,3 +64,9 @@ $ git log --oneline --graph --decorate --all
 * 20f93b1 write README
 * 5ccef44 configure Git
 ```
+
+## Reflect & Review
+
+- Why is it useful to cherry-pick from a remote branch without checking it out?
+- When the same change exists on multiple remote branches (as in this exercise), what should guide your choice of which commit to cherry-pick?
+- What is the relationship between the cherry-picking and the original commit? What happens to the commits when you later integrate branches using _rebase_ and what if using _merge_?

@@ -2,7 +2,7 @@
 
 [Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md) to [112](../112-local-interactive-rebase-onto-main/README.md)).
 
-Using _interactive rebase_ re-writes a branch's history locally.
+Using _interactive rebase_ rewrites a branch's history locally.
 So, to update the remote repository, we have to overwrite its branch version with [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) (cf. [exercise 201](../201-remote-amend-commit/README.md) to [203](../203-remote-rebase-onto-main/README.md)).
 
 ## Exercise Context
@@ -93,3 +93,9 @@ $ git log --oneline --graph --decorate --all
 * 07f4fdd configure Git
 ```
 _Note_: After the rebase onto `main`, commit `"define automation-rules schema"` and the change to `devices.schema.json` in `"install living-room AC"` is now gone from `living-room-ac-automation`.
+
+## Reflect & Review
+
+- What kinds of cleanup are worth doing before a branch is reviewed or merged?
+- Why might review comments become outdated after rewriting commits?
+- What balance should a team strike between clean history and review continuity?

@@ -2,7 +2,7 @@
 
 To keep a linear history, we want to [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) our branch onto `main` before integrating it (cf. [exercise 104](../104-local-rebase-onto-main/README.md)).
 
-Since [`git rebase`](https://git-scm.com/docs/git-rebase) re-writes the Git history, the branch will diverge from `origin` when it has already been pushed to the remote repository.
+Since [`git rebase`](https://git-scm.com/docs/git-rebase) rewrites the Git history, the branch will diverge from `origin` when it has already been pushed to the remote repository.
 A Git client typically shows something similar to `↓2 ↑4`.
 
 ![](../resources/main-feature-out-of-sync-origin-after-rebase.svg)
@@ -102,3 +102,9 @@ $ git log --oneline --graph --decorate --all
 * ec8e764 configure Git
 ```
 _Note_: Notice how `"define living-room-light trait on-off"` doesn't have any changes to `devices.schema.json` anymore, and that `"define automation-rules schema"` is removed from `living-room-light-automation`.
+
+## Reflect & Review
+
+- Why does the remote branch appear _"out of sync"_ after a local rebase?
+- What risks are involved in force pushing a rewritten feature branch?
+- Why is rebasing feature branches often acceptable while rebasing `main` is usually not?

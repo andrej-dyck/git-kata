@@ -17,7 +17,7 @@ We worked on _automating_ the _living-room AC_ and pushed our work-in-progress (
 Meanwhile, on a different machine, we (or a teammate) cleaned up the history, but before the final changes.
 Now, as we finished the feature _balcony-door_ sensor and rules, both our branch and `origin` have changes that we want to keep.
 
-## Task: Re-write the Git History and Craft a Clean History
+## Task: Rewrite the Git History and Craft a Clean History
 
 Merge both histories of `living-room-ac-automation` and it's `origin` counterpart to compose a clean history using _interactive rebase_.
 
@@ -117,3 +117,10 @@ $ git log --oneline --graph --decorate --all
 * 3c2ac1a configure Git
 ```
 _Note_: Finally, after the _force push_, we have a linear history with good commits (atomic, descriptive, coherent) that is easy to understand.
+
+## Reflect & Review
+
+- Why is it harder to reconcile histories when both the local branch and `origin` contain changes we want to keep?
+- What makes a commit obsolete?
+- Why is it useful to perform this cleanup commit by commit instead of accepting one history wholesale?
+- How does the final history improve compared with the initially diverged histories?

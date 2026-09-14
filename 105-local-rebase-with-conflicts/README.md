@@ -75,3 +75,10 @@ $ git log --oneline --graph --decorate --all
 * 6d223d7 write README
 * 1ab9aab configure Git
 ```
+
+## Reflect & Review
+
+- Why can both merge and rebase lead to conflicts?
+- What makes a conflict resolution during rebase different from resolving the same conflict in a merge? What makes it easier, what makes it more difficult?
+- How can small, atomic commits and a short-lived branch make conflict resolution easier?
+- Why are _semantic_ conflicts harder to detect than _textual_ conflicts?

@@ -87,3 +87,9 @@ $ git log --oneline --graph --decorate --all
 * 2f675cf write README
 * 219782e configure Git
 ```
+
+## Reflect & Review
+
+- What is the difference between deleting a commit and reverting a commit?
+- How does isolating temporary work make it easier to remove later?
+- What kinds of temporary commits should never reach `main`?

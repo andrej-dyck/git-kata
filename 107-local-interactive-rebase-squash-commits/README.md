@@ -86,3 +86,10 @@ $ git log --oneline --graph --decorate --all
 * 3e2c173 configure Git
 ```
 _Note_: The commit hashes after squashing are different as the commits are new, and so their child commits new commit hashes as well.
+
+## Reflect & Review
+
+- What is the difference between a _small_ commit and an _atomic_ commit?
+- When does having many tiny commits make history harder to understand?
+- When should commits not be squashed, even if they are small?
+- Why can _"fix"_ commits be useful during development but distracting in final history?

@@ -80,3 +80,9 @@ $ git log --oneline --graph --decorate --all
 * 9d1fbb3 configure Git
 ```
 _Note_: Here, we split `"install living-room sensors"` into two commits, one for thermostat sensor and one for balcony-door sensor, and then _re-ordered_ the commits to intermix with automation. It's fine if you choose not to do this.
+
+## Reflect & Review
+
+- What are the signs that a commit contains too many unrelated changes?
+- How does splitting support the idea of _atomic_ commits?
+- How would a cleaner split help someone _cherry-pick_ or _revert_ only part of the work?

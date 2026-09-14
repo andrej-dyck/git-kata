@@ -95,3 +95,10 @@ $ git log --oneline --graph --decorate --all
 * 5bea84e configure Git
 ```
 _Note_: The commit hashes after the re-ordering have changed because to Git, commits aren't isolated patches with an ID but rather changes in a hierarchical order.
+
+## Reflect & Review
+
+- Why might the chronological order of commits not be the best order for understanding history?
+- What makes one commit order easier to review than another?
+- What kinds of commits are safe to re-order, and which are not?
+- How can re-ordering commits reveal _hidden coupling_ between changes?

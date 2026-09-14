@@ -71,3 +71,10 @@ $ git log --oneline --graph --decorate --all
 * dd1072a write README
 * 375a72b configure Git
 ```
+
+## Reflect & Review
+
+- How can rebasing a shared branch affect another developer's local history?
+- How can teams coordinate when force pushing is allowed?
+- What alternatives exist if rewriting shared history is too risky?
+- What would you do if your teammate force-pushed over commits you still needed?

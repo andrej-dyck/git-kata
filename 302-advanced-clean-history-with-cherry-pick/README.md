@@ -124,3 +124,9 @@ $ git log --oneline --graph --decorate --all
 * d663a0b configure Git
 ```
 _Note_: After the _force push_, we have a linear history with good commits (atomic, descriptive, coherent) that is easy to understand.
+
+## Reflect & Review
+
+- Why can merge commits make later history cleanup more difficult?
+- How do short-lived vs. long-lived branches affect integration and cleanup work?
+- What risks come with using `git reset --hard` before rebuilding the branch and what is an alternative?

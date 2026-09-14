@@ -1,4 +1,4 @@
-# 101 Amend Commit on a Local Branch
+# 101 Amend Recent Commit
 
 Amending commits is useful when we didn't stage something that belongs to the most recent commit, or we made a mistake in that commit.
 
@@ -52,3 +52,9 @@ $ git log --oneline --graph --decorate --all
 * 17adacf configure Git
 ```
 _Note_: Since we amended the last commit (`HEAD`), it has a different commit hash now.
+
+## Reflect & Review
+
+* What kinds of changes are good candidates for `git commit --amend`?
+* When is it better to produce one _correct_ commit instead of a commit followed by a typo-fix commit?
+* When would you prefer a separate fix commit, and when would you amend the previous commit?

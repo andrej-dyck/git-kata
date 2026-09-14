@@ -84,3 +84,10 @@ $ git log --oneline --graph --decorate --all
 * dbc3611 configure Git
 ```
 _Note_: Since we rebased the branch `living-room-light-automation` onto `main`, all the branch commit hashes have changed.
+
+## Reflect & Review
+
+- What does it mean to rebase a branch onto `main` and how does it differ from merging?
+- Why can _rebase_ make reviewing and understanding the history easier?
+- How can Git determine that a commit does not need to be replayed?
+- How is the story told by a rebased branch different from the story told by a merge commit?

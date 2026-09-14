@@ -131,3 +131,9 @@ $ git log --oneline --graph --decorate --all
 * c58a904 configure Git
 ```
 _Note_: After `git push --force-with-lease`, `origin/main` is updated to point to the new amended commit, and the old commit doesn't exist anymore.
+
+## Reflect & Review
+
+- Why does amending a pushed commit require a _force push_?
+- When is it acceptable to rewrite pushed history?
+- How does `--force-with-lease` reduce the risk compared with plain `--force`?

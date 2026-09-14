@@ -71,3 +71,9 @@ $ git log --oneline --graph --decorate --all
 * b8f3f4b configure Git
 ```
 _Note_: Cherry-picking commit `"define automation-rules schema"` from branch `living-room-light-automation` results in different commit hash, but the changes are applied to brach `living-room-ac-automation` as a patch.
+
+## Reflect & Review
+
+- What problem does cherry-pick solve compared with merging an entire branch?
+- How does atomic commit design make cherry-picking safer?
+- Why does a cherry-picked commit receive a new commit hash, although they have the same patch?

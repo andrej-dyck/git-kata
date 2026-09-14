@@ -67,3 +67,9 @@ $ git log --oneline --graph --decorate --all
 * c832a9c configure Git
 ```
 _Note_: This history is where we amended the last commit `"define devices schema"` with the fix; i.e., no separate _"fix"_ commit.
+
+## Reflect & Review
+
+* How can staging individual hunks or lines lead to more coherent commits?
+* How does patch staging help separate unrelated work that happened in the same file?
+* How does this exercise reinforce the idea of atomic commits?

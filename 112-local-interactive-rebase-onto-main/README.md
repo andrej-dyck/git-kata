@@ -67,3 +67,9 @@ $ git log --oneline --graph --decorate --all
 * d1b4b6e configure Git
 ```
 _Note_: As we rebased `living-room-ac-automation` onto main, now `devices.json` and `automation-rules.json` have all devices, sensors, and rules for both _living-room light_ and _living-room AC_.
+
+## Reflect & Review
+
+- How does _interactive rebase_ help integrate changes from `main` compared to a simple _rebase_?
+- When would you choose interactive rebase onto `main` over a plain rebase followed by a separate cleanup rebase?
+- What kinds of history cleanup are easier to perform during a rebase onto `main` rather than as a separate step afterward?

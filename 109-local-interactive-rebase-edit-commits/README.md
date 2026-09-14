@@ -151,3 +151,9 @@ $ git log --oneline --graph --decorate --all
 * 229fdbc configure Git
 ```
 _Note_: After editing the commit `"install living-room AC"` all following commits have new commit hashes.
+
+## Reflect & Review
+
+- When is editing an earlier commit better than adding a new corrective commit?
+- Why can modifying an earlier commit create conflicts in later commits?
+- How does editing an earlier commit differ from amending the current HEAD?

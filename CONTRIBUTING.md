@@ -37,6 +37,10 @@ $ git log --oneline --graph --decorate --all
 TODO git log output after exercise is done
 ```
 _Note_: TODO observations about the target git history or remove note
+
+## Reflect & Review
+
+- TODO add reflection questions
 ````
 
 ## Use Exercise `init.sh` Template

@@ -62,3 +62,9 @@ $ git log --oneline --graph --decorate --all
 * 5ff2789 write README
 * 258621a configure Git
 ```
+
+## Reflect & Review
+
+* Why might _WIP_ commits be useful during development but undesirable in final history?
+* How is _soft reset_ useful for rewriting history?
+* What risks are avoided by using `--soft` instead of `--hard`?
