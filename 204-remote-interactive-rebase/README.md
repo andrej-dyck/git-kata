@@ -1,35 +1,35 @@
-# 204 Interactive Rebase - Re-writing Remote History
+# 204 Interactive Rebase - Remote-Historie umschreiben
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md) to [112](../112-local-interactive-rebase-onto-main/README.md)).
+Der [interaktive Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) ermöglicht es uns, Probleme auf natürliche Weise zu bearbeiten, Änderungen schrittweise zu committen und unsere Git-Historie kohärenter und lesbarer zu gestalten, bevor wir sie mit anderen teilen (vgl. [Übung 106](../106-local-interactive-rebase-reorder-commits/README.md) bis [112](../112-local-interactive-rebase-onto-main/README.md)).
 
-Using _interactive rebase_ rewrites a branch's history locally.
-So, to update the remote repository, we have to overwrite its branch version with [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) (cf. [exercise 201](../201-remote-amend-commit/README.md) to [203](../203-remote-rebase-onto-main/README.md)).
+Die Nutzung des _interaktiven Rebase_ schreibt die Historie eines Branches lokal um.
+Um das Remote-Repository zu aktualisieren, müssen wir dessen Branch-Version mit [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) überschreiben (vgl. [Übung 201](../201-remote-amend-commit/README.md) bis [203](../203-remote-rebase-onto-main/README.md)).
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We started work on _automating_ the _living-room AC_.
-To unblock the team, we realized we should integrate schema changes into `main` before continuing.
-Thus, we integrated changes to `device.schema.json` and defined `automation-rules.schema.json`.
+Wir haben mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
+Um das Team nicht zu blockieren, haben wir erkannt, dass wir Schema-Änderungen zuerst in `main` integrieren sollten, bevor wir fortfahren.
+Daher haben wir Änderungen an `device.schema.json` integriert und `automation-rules.schema.json` definiert.
 
-After completing work on the _AC automation_, it is time to clean up the history and push our changes.
+Nach Abschluss der Arbeit an der _Klimaanlagen-Automatisierung_ ist es an der Zeit, die Historie aufzuräumen und unsere Änderungen zu pushen.
 
-## Task: Interactively Rebase onto `main` to Clean Up History and Force-Push Changes
+## Aufgabe: Mittels Interactive Rebase auf `main` rebasen zum Aufräumen der Historie und Änderungen force-pushen
 
-We finished our work and tested the _living-room AC automation_.
+Wir haben unsere Arbeit abgeschlossen und die _Automatisierung der Wohnzimmer-Klimaanlage_ getestet.
 
-Clean up the history of `living-room-ac-automation` using _interactive rebase_ and probably some other re-writing tools, rebase onto `main`, and overwrite the remote branch with the new history using `git push --force-with-lease`.
+Räume die Historie von `living-room-ac-automation` mithilfe des _interaktiven Rebase_ (und ggf. weiteren Werkzeugen zum Umschreiben) auf, führe einen Rebase auf `main` durch und überschreibe den Remote-Branch mit der neuen Historie mittels `git push --force-with-lease`.
 
-Here are our cleanup tasks:
-- [ ] _Rebase_ onto `main`
-- [ ] _Remove_ all `DELETE!` commits
-- [ ] _Squash_ all `WIP` _AC automation_ related commits into a single one
-- [ ] _Edit_ AC automation rules and remove the `testMode` property
-- [ ] _Split_ `"install sensors"` into two separate commits
-- [ ] _Reword_ all commits to have good commit messages
+Hier sind unsere Aufgaben zum Aufräumen:
+- [ ] _Rebase_ auf `main`
+- [ ] _Lösche_ alle `DELETE!`-Commits
+- [ ] _Squashe_ alle `WIP`-Commits zur _Klimaanlagen-Automatisierung_ in einen einzelnen Commit
+- [ ] _Bearbeite_ die Regeln der Klimaanlagen-Automatisierung und entferne die Eigenschaft `testMode`
+- [ ] _Teile_ `"install sensors"` in zwei separate Commits auf
+- [ ] _Formuliere_ alle Commits so _um_, dass sie gute Commit-Messages haben
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * cd1a4fd (HEAD -> living-room-ac-automation) DELETE! balcony-door test value door-opened
@@ -53,9 +53,9 @@ $ git log --oneline --graph --decorate --all
 * e17ec40 write README
 * 07f4fdd configure Git
 ```
-_Note_: Our branch `living-room-ac-automation` has local changes that are not yet pushed to `origin`. Also, `main` has newer commits that will make some changes of `living-room-ac-automation` obsolete.
+_Hinweis_: Unser Branch `living-room-ac-automation` enthält lokale Änderungen, die noch nicht nach `origin` gepusht wurden. Zudem enthält `main` neuere Commits, die einige Änderungen von `living-room-ac-automation` obsolet machen.
 
-### Pre-push Git History
+### Git-Historie vor dem Push
 ```console
 $ git log --oneline --graph --decorate --all
 * c4ee170 (HEAD -> living-room-ac-automation) automate living-room AC
@@ -74,9 +74,9 @@ $ git log --oneline --graph --decorate --all
 * e17ec40 write README
 * 07f4fdd configure Git
 ```
-_Note_: `origin/living-room-ac-automation` shows only two commits as our `WIP` and `DELETE` commits were never pushed.
+_Hinweis_: `origin/living-room-ac-automation` zeigt nur zwei Commits, da unsere `WIP`- und `DELETE`-Commits nie gepusht wurden.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * c4ee170 (HEAD -> living-room-ac-automation, origin/living-room-ac-automation) automate living-room AC
@@ -92,10 +92,10 @@ $ git log --oneline --graph --decorate --all
 * e17ec40 write README
 * 07f4fdd configure Git
 ```
-_Note_: After the rebase onto `main`, commit `"define automation-rules schema"` and the change to `devices.schema.json` in `"install living-room AC"` is now gone from `living-room-ac-automation`.
+_Hinweis_: Nach dem Rebase auf `main` sind der Commit `"define automation-rules schema"` und die Änderung an `devices.schema.json` in `"install living-room AC"` nun aus `living-room-ac-automation` verschwunden.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- What kinds of cleanup are worth doing before a branch is reviewed or merged?
-- Why might review comments become outdated after rewriting commits?
-- What balance should a team strike between clean history and review continuity?
+- Welche Arten von Bereinigungen lohnen sich, bevor ein Branch gereviewt oder gemergt wird?
+- Warum können Review-Kommentare nach dem Umschreiben von Commits veraltet sein?
+- Welche Balance sollte ein Team zwischen einer sauberen Historie und der Kontinuität von Reviews finden?

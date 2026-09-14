@@ -1,32 +1,32 @@
-# 302 Craft a Clean History by Cherry-picking Commits
+# 302 Eine saubere Historie durch Cherry-Picken von Commits aufbauen
 
-_Cherry-picking_ a commit is useful when we want to apply changes introduced by that commit in to another branch (cf. [exercise 113](../113-local-cherry-pick-commits/README.md)).
+Das _Cherry-picking_ eines Commits ist nützlich, wenn wir Änderungen aus diesem Commit in einen anderen Branch übernehmen möchten (vgl. [Übung 113](../113-local-cherry-pick-commits/README.md)).
 
-It can also be useful for building a clean, intentional history from a messy or experimental branch by _cherry-picking_ only the commits that represent the changes we actually want to preserve.
+Es kann auch nützlich sein, um aus einem unordentlichen oder experimentellen Branch eine saubere, zielgerichtete Historie aufzubauen, indem wir nur die Commits _cherry-picken_, die die tatsächlich gewünschten Änderungen darstellen.
 
-This exercise will demonstrate how to use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) to clean up a messy Git history.
+Diese Übung zeigt, wie man [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) verwendet, um eine unordentliche Git-Historie aufzuräumen.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We worked on _automating_ the _living-room AC_ and pushed our work-in-progress (_WIP_) changes.
-Earlier, we merged `main` into our branch using a _merge commit_.
-As our branch advanced, so did `main`, and now, we have to integrate both branches and resolve conflicts.
+Wir haben an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ gearbeitet und unsere Work-in-Progress (_WIP_)-Änderungen gepusht.
+Zuvor haben wir `main` über einen _Merge-Commit_ in unseren Branch gemergt.
+Als unser Branch voranschritt, entwickelte sich auch `main` weiter, und nun müssen wir beide Branches integrieren und Konflikte lösen.
 
-## Task: Selectively Cherry-pick Commits to Compose a Clean History
+## Aufgabe: Commits selektiv cherry-picken, um eine saubere Historie zu erstellen
 
-At this point, `living-room-ac-automation` is done, and we need to integrate `main` into our branch.
-However, we integrated `main` with a [_merge commit_](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) earlier, and this now prevents us from doing a [Git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) (cf. [exercise 104](../104-local-rebase-onto-main/README.md) and [exercise 203](../203-remote-rebase-onto-main/README.md)).
+Zu diesem Zeitpunkt ist `living-room-ac-automation` fertig und wir müssen `main` in unseren Branch integrieren.
+Wir haben `main` zuvor jedoch mit einem [_Merge-Commit_](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) integriert, was uns nun daran hindert, einen [Git Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) durchzuführen (vgl. [Übung 104](../104-local-rebase-onto-main/README.md) und [Übung 203](../203-remote-rebase-onto-main/README.md)).
 
-To construct a linear history, we'll need to build the feature from the ground up.
+Um eine lineare Historie zu konstruieren, bauen wir das Feature von Grund auf neu auf:
 
-- Abort the ongoing [_Git merge_](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) with [`git merge --abort`](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---abort)
-- [_Hard reset_](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) the local branch `living-room-ac-automation` to `origin/main` with [`git reset --hard origin/main`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard)
-- Selectively [_cherry-pick_](https://git-scm.com/docs/git-cherry-pick) commits from `origin/living-room-ac-automation` onto our clean `living-room-ac-automation` with [`git cherry-pick origin/main`](https://git-scm.com/docs/git-cherry-pick), resolve occurring conflicts, and _re-word_ commits
-- Remember to remove the `testMode` property from the AC automation rules
+- Brich den laufenden [_Git-Merge_](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) mit [`git merge --abort`](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---abort) ab
+- Setze den lokalen Branch `living-room-ac-automation` per [_Hard-Reset_](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) mit [`git reset --hard origin/main`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) auf `origin/main` zurück
+- Wende selektiv [_Cherry-Pick_](https://git-scm.com/docs/git-cherry-pick) auf Commits von `origin/living-room-ac-automation` auf unseren sauberen `living-room-ac-automation`-Branch an, löse auftretende Konflikte und formuliere Commits _um_
+- Denke daran, die Eigenschaft `testMode` aus den AC-Automatisierungsregeln zu entfernen
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 4ec1b9e (HEAD -> living-room-ac-automation, origin/living-room-ac-automation) DELETE! balcony-door test value door-opened
@@ -58,9 +58,9 @@ $ git log --oneline --graph --decorate --all
 * f2e38bc write README
 * d663a0b configure Git
 ```
-_Note_: The merge commit `"Merge remote-tracking branch 'origin/main' into living-room-ac-automation"` already integrated `main` and resolved some conflicts. However, `main` advanced further, and we need to integrate it again.
+_Hinweis_: Der Merge-Commit `"Merge remote-tracking branch 'origin/main' into living-room-ac-automation"` hat `main` bereits integriert und einige Konflikte gelöst. `main` hat sich jedoch weiterentwickelt und wir müssen erneut integrieren.
 
-### Pre-push Git History
+### Git-Historie vor dem Push
 ```console
 $ git log --oneline --graph --decorate --all
 * aced70a (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -99,9 +99,9 @@ $ git log --oneline --graph --decorate --all
 * f2e38bc write README
 * d663a0b configure Git
 ```
-_Note_: At this point, the local `living-room-ac-automation` branch completely diverged from `origin` and is made up of cherry-picked commits.
+_Hinweis_: Zu diesem Zeitpunkt weicht der lokale Branch `living-room-ac-automation` vollständig von `origin` ab und besteht aus neu cherry-gepickten Commits.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * aced70a (HEAD -> living-room-ac-automation, origin/living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -123,10 +123,10 @@ $ git log --oneline --graph --decorate --all
 * f2e38bc write README
 * d663a0b configure Git
 ```
-_Note_: After the _force push_, we have a linear history with good commits (atomic, descriptive, coherent) that is easy to understand.
+_Hinweis_: Nach dem _Force-Push_ haben wir eine lineare Historie mit guten Commits (atomar, deskriptiv, kohärent), die leicht verständlich ist.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why can merge commits make later history cleanup more difficult?
-- How do short-lived vs. long-lived branches affect integration and cleanup work?
-- What risks come with using `git reset --hard` before rebuilding the branch and what is an alternative?
+- Warum können Merge-Commits spätere Bereinigungen der Historie erschweren?
+- Wie wirken sich kurzlebige im Vergleich zu langlebigen Branches auf Integrations- und Aufräumarbeiten aus?
+- Welche Risiken birgt die Verwendung von `git reset --hard` vor dem Neuaufbau des Branches und welche Alternativen gibt es?

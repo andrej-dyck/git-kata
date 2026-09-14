@@ -1,35 +1,35 @@
-# 205 Rewriting History with Teammates (or on another Machine)
+# 205 Historie im Team umschreiben (oder auf einem anderen Rechner)
 
-When working on different machines or collaborating with teammates on the same branch, _re-writing Git history_ (cf. [exercise 201](../201-remote-amend-commit/README.md) to [204](../204-remote-interactive-rebase/README.md)) brings some challenges.
+Wenn wir auf verschiedenen Rechnern arbeiten oder mit Teammitgliedern auf demselben Branch zusammenarbeiten, bringt das _Umschreiben der Git-Historie_ (vgl. [Übung 201](../201-remote-amend-commit/README.md) bis [204](../204-remote-interactive-rebase/README.md)) einige Herausforderungen mit sich.
 
-The most common decision is whether our local copy or `origin` has the most recent history.
-If both, the local branch and `origin`, have new changes, we need to decide which one to prioritize and manually _"merge"_ the histories.
-Thus, it's recommended to either _"hand off"_ the branch, pair on the same machine, or collaborate on separate short-lived branches.
+Die häufigste Entscheidung ist, ob unsere lokale Kopie oder `origin` die aktuellste Historie besitzt.
+Wenn sowohl der lokale Branch als auch `origin` neue Änderungen enthalten, müssen wir entscheiden, welche davon priorisiert werden, und die Historien manuell _"zusammenführen"_.
+Daher empfiehlt es sich den Branch entweder sauber _"zu übergeben"_ (Hand-off), am selben Rechner im Pair zu arbeiten oder auf getrennten kurzlebigen Branches zusammenzuarbeiten.
 
-Assuming we have the simple case that `origin` has the most recent history,
+Gehen wir vom einfachen Fall aus, dass `origin` die aktuellste Historie hat:
 
 ![](../resources/main-feature-out-of-sync-origin-ahead.svg)
 
-we can update our local history by using [`git fetch`](https://git-scm.com/docs/git-fetch) and then [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) onto `origin/feature`.
+In diesem Fall können wir unsere lokale Historie aktualisieren, indem wir [`git fetch`](https://git-scm.com/docs/git-fetch) und anschließend [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) auf `origin/feature` ausführen.
 
-If our local branch has also new changes, we can [interactively rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) onto `origin/feature`, _delete_ obsolete commits, and resolve conflicts with new commits.
-[Exercise 301](../301-advanced-interactive-rebase-onto-a-rewritten-branch) addresses this scenario.
+Wenn unser lokaler Branch ebenfalls neue Änderungen enthält, können wir einen [interaktiven Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) auf `origin/feature` durchführen, obsolete Commits _löschen_ und Konflikte mit neuen Commits lösen.
+[Übung 301](../301-advanced-interactive-rebase-onto-a-rewritten-branch) widmet sich diesem Szenario.
 
-_Note_: Don't use [`git pull`](https://git-scm.com/docs/git-pull) when working with _rebase_.
-Always use [`git pull --ff-only`](https://git-scm.com/docs/git-fetch); that's shorthand for [`git fetch`](https://git-scm.com/docs/git-fetch) plus [`git merge --no-commit --ff --ff-only`](https://git-scm.com/docs/git-merge).
+_Hinweis_: Verwende kein [`git pull`](https://git-scm.com/docs/git-pull), wenn du mit _Rebase_ arbeitest.
+Nutze stattdessen immer [`git pull --ff-only`](https://git-scm.com/docs/git-fetch); das ist die Kurzform für [`git fetch`](https://git-scm.com/docs/git-fetch) plus [`git merge --no-commit --ff --ff-only`](https://git-scm.com/docs/git-merge).
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We worked on _automating_ the _living-room AC_ and pushed our work-in-progress (_WIP_) changes.
-Meanwhile, on a different machine, we (or a teammate) finished the feature, cleaned up the history, and pushed it to `origin`.
+Wir haben an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ gearbeitet und unsere Work-in-Progress (_WIP_)-Änderungen gepusht.
+In der Zwischenzeit haben wir (oder ein Teammitglied) auf einem anderen Rechner das Feature fertiggestellt, die Historie aufgeräumt und nach `origin` gepusht.
 
-## Task: Adopt the Cleaned up History from `origin`
+## Aufgabe: Die aufgeräumte Historie von `origin` übernehmen
 
-Use `git fetch` and then [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) onto `origin/living-room-ac-automation`.
+Nutze `git fetch` und anschließend [`git reset --hard`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) auf `origin/living-room-ac-automation`.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * da2218a (origin/living-room-ac-automation) automate living-room AC
@@ -53,9 +53,9 @@ $ git log --oneline --graph --decorate --all
 * dd1072a write README
 * 375a72b configure Git
 ```
-_Note_: This local copy of the Git repository has still the old branch history of `living-room-ac-automation` checked out, while `origin/living-room-ac-automation` has the new branch history.
+_Hinweis_: In dieser lokalen Kopie des Git-Repositorys ist noch die alte Branch-Historie von `living-room-ac-automation` ausgecheckt, während `origin/living-room-ac-automation` die neue Branch-Historie enthält.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * da2218a (HEAD -> living-room-ac-automation, origin/living-room-ac-automation) automate living-room AC
@@ -72,9 +72,9 @@ $ git log --oneline --graph --decorate --all
 * 375a72b configure Git
 ```
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- How can rebasing a shared branch affect another developer's local history?
-- How can teams coordinate when force pushing is allowed?
-- What alternatives exist if rewriting shared history is too risky?
-- What would you do if your teammate force-pushed over commits you still needed?
+- Wie kann sich das Rebasen eines geteilten Branches auf die lokale Historie anderer Entwickler auswirken?
+- Wie können Teams sich abstimmen, wenn Force-Pushing erlaubt ist?
+- Welche Alternativen gibt es, wenn das Umschreiben einer geteilten Historie zu riskant ist?
+- Was würdest du tun, wenn ein Teammitglied Commits überschrieben hat, die du noch benötigst?

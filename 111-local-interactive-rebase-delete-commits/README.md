@@ -1,37 +1,37 @@
-# 111 Interactive Rebase - Delete Commits
+# 111 Interactive Rebase - Commits löschen
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
+Der [interaktive Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) ermöglicht es uns, Probleme auf natürliche Weise zu bearbeiten, Änderungen schrittweise zu committen und unsere Git-Historie kohärenter und lesbarer zu gestalten, bevor wir sie mit anderen teilen (vgl. [Übung 106](../106-local-interactive-rebase-reorder-commits/README.md)).
 
-An advantage to _atomic commits_ (small, coherent, and working) is that they support [rewriting history](https://git-scm.com/docs/git-rebase#_interactive_mode) very well.
-So, instead of manually introducing changes to revert decisions or undo work-in-progress, we can simply _delete_ the corresponding commits.
+Ein Vorteil von _atomaren Commits_ (klein, kohärent und funktionsfähig) ist, dass sie das [Umschreiben der Historie](https://git-scm.com/docs/git-rebase#_interactive_mode) hervorragend unterstützen.
+Anstatt manuell Änderungen vorzunehmen, um Entscheidungen rückgängig zu machen oder Work-in-Progress zu entfernen, können wir die entsprechenden Commits einfach _löschen_.
 
-This exercise will help you understand how to use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _delete_ commits.
+Diese Übung hilft dir zu verstehen, wie du den [interaktiven Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) nutzt, um Commits zu _löschen_.
 
 ![](../resources/main-feature-with-commit-for-removal.svg)
 
-After deleting the commit of the `feature` branch it's like it never existed:
+Nach dem Löschen des Commits auf dem `feature`-Branch ist es so, als hätte er nie existiert:
 
 ![](../resources/main-feature-with-removed-commit.svg)
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
+Während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet (Übungen `101` bis `104`), haben wir deren _automation-rules Schema_ per _Cherry-Pick_ übernommen und mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
 
-Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md) have the same context, but with slightly different initial and target Git history to best support the exercise's focus.
+Die Übungen [106](../106-local-interactive-rebase-reorder-commits/README.md) bis [111](../111-local-interactive-rebase-delete-commits/README.md) haben denselben Kontext, aber leicht abweichende initiale und Ziel-Git-Historien, um den jeweiligen Schwerpunkt der Übung optimal zu unterstützen.
 
-## Task: Delete Commits using Interactive Rebase
+## Aufgabe: Commits mittels Interactive Rebase löschen
 
-In this exercise, we committed our work on `living-room-ac-automation` along with many test-related commits.
+In dieser Übung haben wir unsere Arbeit an `living-room-ac-automation` zusammen mit vielen testbezogenen Commits festgehalten.
 
-To test the automation rules, we set some test values.
-But instead of mixing the test-related changes with our logic, we carefully separated them into their own commits.
-This allows us to now simply remove those commits as if they never existed, instead of manually checking every file and reverting the changes manually.
+Um die Automatisierungsregeln zu testen, haben wir einige Testwerte gesetzt.
+Anstatt jedoch die testbezogenen Änderungen mit unserer Logik zu vermischen, haben wir sie sorgfältig in eigene Commits aufgeteilt.
+Dadurch können wir diese Commits nun einfach entfernen, als hätten sie nie existiert, anstatt jede Datei manuell prüfen und die Änderungen mühsam zurücknehmen zu müssen.
 
-Use _interactive rebase_ to _delete_ those commits to clean up our Git history before integrating our work.
+Nutze den _interaktiven Rebase_, um diese Commits zu _löschen_ und unsere Git-Historie vor der Integration aufzuräumen.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 9fae271 (HEAD -> living-room-ac-automation) DELETE! balcony-door test value door-opened
@@ -64,7 +64,7 @@ $ git log --oneline --graph --decorate --all
 * 219782e configure Git
 ```
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * a78a6be (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -88,8 +88,8 @@ $ git log --oneline --graph --decorate --all
 * 219782e configure Git
 ```
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- What is the difference between deleting a commit and reverting a commit?
-- How does isolating temporary work make it easier to remove later?
-- What kinds of temporary commits should never reach `main`?
+- Was ist der Unterschied zwischen dem Löschen eines Commits und dem Rückgängigmachen eines Commits?
+- Wie erleichtert das Isolieren von temporärer Arbeit das spätere Entfernen?
+- Welche Arten von temporären Commits sollten niemals `main` erreichen?

@@ -121,7 +121,7 @@ check-git-log() {
 
   readmeHistoryNormalized="$(
     awk '
-      /^### Initial Git History[[:space:]]*$/ { in_section = 1; next }
+      /^### (Initial Git History|Initiale Git-Historie)[[:space:]]*$/ { in_section = 1; next }
       in_section && /^```/ {
         fence_count++
         next

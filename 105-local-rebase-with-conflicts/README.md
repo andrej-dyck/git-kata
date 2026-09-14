@@ -1,36 +1,36 @@
-# 105 Rebase onto `main` with Conflicts
+# 105 Rebase auf `main` mit Konflikten
 
-Regardless of whether we use [`git merge`](https://git-scm.com/docs/git-merge) or [`git rebase`](https://git-scm.com/docs/git-rebase) to integrate branches, we potentially need to resolve merge conflicts.
+Unabhängig davon, ob wir [`git merge`](https://git-scm.com/docs/git-merge) oder [`git rebase`](https://git-scm.com/docs/git-rebase) zum Integrieren von Branches verwenden, müssen wir unter Umständen Merge-Konflikte lösen.
 
 ![](../resources/main-feature-out-of-sync-conflict.svg)
 
-While with `git merge` the conflict is resolved in the merge commit, `git rebase` will stop at each problematic commit, and we need to resolve the conflicts in the order of those commits.
+Während bei `git merge` der Konflikt im Merge-Commit gelöst wird, stoppt `git rebase` bei jedem problematischen Commit, und wir müssen die Konflikte in der Reihenfolge dieser Commits auflösen.
 
-Resolving conflicts during a rebase can be complex, especially if the conflicts are hidden within the code (semantic conflicts) and multiple commits are involved.
-This is why most developers prefer to use `git merge` over `git rebase`.
+Das Lösen von Konflikten während eines Rebase kann komplex sein, insbesondere wenn die Konflikte im Code versteckt sind (semantische Konflikte) und mehrere Commits betroffen sind.
+Aus diesem Grund bevorzugen viele Entwickler `git merge` gegenüber `git rebase`.
 
-However, the vast majority of merge conflicts can be easily avoided by making _atomic commit_ and integrating changes early and often (_short-lived branches_).
-When a branch has only a couple (_1-5_) of _atomic_ commits, is _integrated_ with `main` continuously, and exists only for a short period of time, conflicts are less likely to occur.
+Die allermeisten Merge-Konflikte lassen sich jedoch leicht vermeiden, wenn wir _atomare Commits_ erstellen und Änderungen früh und häufig integriert (_kurzlebige Branches_).
+Wenn ein Branch nur wenige (_1–5_) _atomare_ Commits enthält, kontinuierlich mit `main` _integriert_ wird und nur für kurze Zeit existiert, treten Konflikte deutlich seltener auf.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-Following [exercise 101](../101-local-amend-commit/README.md) to [103](../103-local-undo-last-commits/README.md), we successfully installed all of our _living-room devices_ and finished implementing an automation rule for the _living room lights_.
+Im Anschluss an die Übungen [101](../101-local-amend-commit/README.md) bis [103](../103-local-undo-last-commits/README.md) haben wir alle unsere _Wohnzimmer-Geräte_ erfolgreich installiert und die Implementierung einer Automatisierungsregel für die _Wohnzimmer-Beleuchtung_ abgeschlossen.
 
-It's time to integrate our feature branch; however, `main` has advanced in the meanwhile.
+Es ist Zeit, unseren Feature-Branch zu integrieren; `main` hat sich in der Zwischenzeit jedoch weiterentwickelt.
 
-## Task: Rebase the Feature Branch onto `main`
+## Aufgabe: Den Feature-Branch auf `main` rebasen
 
-While we were working on the light automation, our team installed further devices and sensors, as well as, _cherry-picked_ the _automation-rules schema_ and worked on automating the _living-room AC_.
+Während wir an der Licht-Automatisierung gearbeitet haben, hat unser Team weitere Geräte und Sensoren installiert sowie das _automation-rules Schema_ per _Cherry-Pick_ übernommen und an der Automatisierung der _Wohnzimmer-Klimaanlage_ gearbeitet.
 
-We are finishing our feature branch and want to integrate it.
-But in contrast to [exercise 104](../104-local-rebase-onto-main/README.md), we didn't integrate for too long and now encounter merge conflicts.
-Use [`git rebase`](https://git-scm.com/docs/git-rebase) to rebase our branch `living-room-light-automation` onto `main`, and resolve the emerging conflicts.
+Wir schließen unseren Feature-Branch ab und möchten ihn integrieren.
+Im Gegensatz zu [Übung 104](../104-local-rebase-onto-main/README.md) haben wir jedoch zu lange nicht integriert und stoßen nun auf Merge-Konflikte.
+Verwende [`git rebase`](https://git-scm.com/docs/git-rebase), um unseren Branch `living-room-light-automation` auf `main` zu rebasen, und löse die auftretenden Konflikte.
 
-Before executing the _rebase_ though, try to identify which commits will cause conflicts and prepare accordingly.
+Versuche jedoch vor dem Ausführen des _Rebase_ zu identifizieren, welche Commits Konflikte verursachen werden, und bereite dich entsprechend vor.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 3576afb (main) automate living-room AC
@@ -54,7 +54,7 @@ $ git log --oneline --graph --decorate --all
 * 1ab9aab configure Git
 ```
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * c2a2bfc (HEAD -> living-room-light-automation) automate turning on/off living room wall lamp
@@ -76,9 +76,9 @@ $ git log --oneline --graph --decorate --all
 * 1ab9aab configure Git
 ```
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why can both merge and rebase lead to conflicts?
-- What makes a conflict resolution during rebase different from resolving the same conflict in a merge? What makes it easier, what makes it more difficult?
-- How can small, atomic commits and a short-lived branch make conflict resolution easier?
-- Why are _semantic_ conflicts harder to detect than _textual_ conflicts?
+- Warum können sowohl Merge als auch Rebase zu Konflikten führen?
+- Was unterscheidet die Konfliktlösung während eines Rebase von der Lösung desselben Konflikts bei einem Merge? Was macht sie einfacher, was schwieriger?
+- Wie können kleine, atomare Commits und ein kurzlebiger Branch die Konfliktlösung erleichtern?
+- Warum sind _semantische_ Konflikte schwerer zu erkennen als _textuelle_ Konflikte?

@@ -1,29 +1,29 @@
-# 206 Cherry-pick Remote Commits
+# 206 Remote-Commits cherry-picken
 
-_Cherry-picking_ a commit is useful when we want to apply changes introduced by that commit in to another branch (cf. [exercise 113](../113-local-cherry-pick-commits/README.md)).
+Das _Cherry-picking_ eines Commits ist nützlich, wenn wir Änderungen aus diesem Commit in einen anderen Branch übernehmen möchten (vgl. [Übung 113](../113-local-cherry-pick-commits/README.md)).
 
-Sometimes, the changes we want to _cherry-pick_ are only available on a remote branch.
-This exercise focuses on using [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) without checking out the remote branch.
+Manchmal sind die Änderungen, die wir _cherry-picken_ möchten, nur auf einem Remote-Branch verfügbar.
+Diese Übung konzentriert sich auf die Verwendung von [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick), ohne den Remote-Branch auszuchecken.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We started work on _automating_ the _living-room AC_.
-However, we realized that the team working on _automating_ the _living-room light_ needs similar schema changes.
+Wir haben mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
+Wir haben jedoch festgestellt, dass das Team, das an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet, ähnliche Schema-Änderungen benötigt.
 
-We decided to stop our work and integrate the schema changes to `device.schema.json` and definition of `automation-rules.schema.json` into `main` first.
+Wir haben beschlossen, unsere Arbeit zu unterbrechen und zuerst die Schema-Änderungen an `device.schema.json` sowie die Definition von `automation-rules.schema.json` in `main` zu integrieren.
 
-## Task: Cherry-pick Changes from a Remote Branch
+## Aufgabe: Änderungen von einem Remote-Branch cherry-picken
 
-Cherry-pick changes to `device.schema.json` from either `"install ac"` or `"define living-room-light trait on-off"` without checking out the corresponding remote branch.
-Commit the changes as `"define traits for devices"`.
+Cherry-picke Änderungen an `device.schema.json` von entweder `"install ac"` oder `"define living-room-light trait on-off"`, ohne den entsprechenden Remote-Branch auszuchecken.
+Committe die Änderungen als `"define traits for devices"`.
 
-Then, cherry-pick and commit `"define automation-rules schema"` from `origin/living-room-light-automation`.
+Cherry-picke und committe dann `"define automation-rules schema"` von `origin/living-room-light-automation`.
 
-Push the commits on `automation-schema` to `origin` so they can be integrated into `main`.
+Pushe die Commits auf `automation-schema` nach `origin`, damit sie in `main` integriert werden können.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * a5e6ece (origin/living-room-ac-automation) install sensors
@@ -41,9 +41,9 @@ $ git log --oneline --graph --decorate --all
 * 20f93b1 write README
 * 5ccef44 configure Git
 ```
-_Note_: The `HEAD` is on the empty `automation-schema` branch.
+_Hinweis_: Der `HEAD` befindet sich auf dem leeren `automation-schema`-Branch.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 6cf0014 (HEAD -> automation-schema, origin/automation-schema) define automation-rules schema
@@ -65,8 +65,8 @@ $ git log --oneline --graph --decorate --all
 * 5ccef44 configure Git
 ```
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why is it useful to cherry-pick from a remote branch without checking it out?
-- When the same change exists on multiple remote branches (as in this exercise), what should guide your choice of which commit to cherry-pick?
-- What is the relationship between the cherry-picking and the original commit? What happens to the commits when you later integrate branches using _rebase_ and what if using _merge_?
+- Warum ist es nützlich, von einem Remote-Branch zu cherry-picken, ohne ihn auszuchecken?
+- Wenn dieselbe Änderung auf mehreren Remote-Branches existiert (wie in dieser Übung), was sollte deine Wahl leiten, welchen Commit du cherry-pickst?
+- In welcher Beziehung stehen der cherry-gepickte und der ursprüngliche Commit? Was passiert mit den Commits, wenn du Branches später mittels _Rebase_ integrierst, und was bei einem _Merge_?

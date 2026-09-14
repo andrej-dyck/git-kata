@@ -1,37 +1,37 @@
-# 109 Interactive Rebase - Edit Commits
+# 109 Interactive Rebase - Commits bearbeiten
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
+Der [interaktive Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) ermöglicht es uns, Probleme auf natürliche Weise zu bearbeiten, Änderungen schrittweise zu committen und unsere Git-Historie kohärenter und lesbarer zu gestalten, bevor wir sie mit anderen teilen (vgl. [Übung 106](../106-local-interactive-rebase-reorder-commits/README.md)).
 
-We often find that we need to edit commits to _fix mistakes_ or _improve code_ that was introduced with that commit.
+Häufig stellen wir fest, dass wir Commits bearbeiten müssen, um _Fehler zu beheben_ oder _Code zu verbessern_, der mit diesem Commit eingeführt wurde.
 
-While [`git commit --amend`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend) allows us to edit the most recent commit (cf. [exercise 101](../101-local-amend-commit/README.md)), [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) lets us edit any commit in a linear history.
+Während [`git commit --amend`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend) es uns erlaubt, den neuesten Commit zu bearbeiten (vgl. [Übung 101](../101-local-amend-commit/README.md)), können wir mit [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) jeden beliebigen Commit in einer linearen Historie bearbeiten.
 
 ![](../resources/main-feature-with-commit-for-modification.svg)
 
-This exercise will help you understand how to use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _edit_ commits.
+Diese Übung hilft dir zu verstehen, wie du den [interaktiven Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) nutzt, um Commits zu _bearbeiten_ (`edit`).
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
+Während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet (Übungen `101` bis `104`), haben wir deren _automation-rules Schema_ per _Cherry-Pick_ übernommen und mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
 
-Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md) have the same context, but with slightly different initial and target Git history to best support the exercise's focus.
+Die Übungen [106](../106-local-interactive-rebase-reorder-commits/README.md) bis [111](../111-local-interactive-rebase-delete-commits/README.md) haben denselben Kontext, aber leicht abweichende initiale und Ziel-Git-Historien, um den jeweiligen Schwerpunkt der Übung optimal zu unterstützen.
 
-## Task: Edit Commits using Interactive Rebase
+## Aufgabe: Commits mittels Interactive Rebase bearbeiten
 
-In this exercise, we committed our work on `living-room-ac-automation`.
+In dieser Übung haben wir unsere Arbeit an `living-room-ac-automation` committet.
 
-After finishing the automation rules, we realized that we didn't uphold our team's _naming convention_ for _device_ and _rule IDs_.
-For example, we used `"ac"` as the _device ID_ and `"ac-on"` as a _rule ID_. However, it should have been `"living-room-ac"` and `"living-room-ac-on"`.
+Nachdem wir die Automatisierungsregeln fertiggestellt hatten, fiel uns auf, dass wir die _Namenskonvention_ unseres Teams für _Geräte-_ und _Regel-IDs_ nicht eingehalten haben.
+Beispielsweise haben wir `"ac"` als _Geräte-ID_ und `"ac-on"` als _Regel-ID_ verwendet. Es hätte jedoch `"living-room-ac"` und `"living-room-ac-on"` heißen sollen.
 
-_Edit_ commits `"install living-room AC"` and `"automate living-room AC"` in a single _interactive rebase_ session.
-Note that we could make new commits and _squash_ those onto the old commits, but sometimes it's useful to make changes in the context of the old commit; e.g., when using automated refactoring actions.
+_Bearbeite_ die Commits `"install living-room AC"` und `"automate living-room AC"` in einer einzigen _Interactive-Rebase_-Session.
+Beachte, dass wir auch neue Commits erstellen und diese per _Squash_ mit den alten Commits zusammenführen könnten; manchmal ist es jedoch nützlich, Änderungen direkt im Kontext des alten Commits vorzunehmen, z. B. bei der Verwendung automatisierter Refactoring-Aktionen.
 
-_Hint_: To edit old commits, use the `edit` option of [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i).
-It stops the rebase at that commit and lets us amend it.
+_Tipp_: Um alte Commits zu bearbeiten, verwende die Option `edit` von [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i).
+Dadurch stoppt der Rebase bei diesem Commit und lässt uns Änderungen per Amend anbringen.
 
-- Edit commit `"install living-room AC"` as follows:
+- Bearbeite den Commit `"install living-room AC"` wie folgt:
   ```diff
   --- a/devices.json
   +++ b/devices.json
@@ -47,7 +47,7 @@ It stops the rebase at that commit and lets us amend it.
          "type": "ac-unit",
          "traits": [
   ```
-- Edit commit `"automate living-room AC"` as follows:
+- Bearbeite den Commit `"automate living-room AC"` wie folgt:
   ```diff
   --- a/automation-rules.json
   +++ b/automation-rules.json
@@ -105,7 +105,7 @@ It stops the rebase at that commit and lets us amend it.
          ]
   ```
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 65d5315 (HEAD -> living-room-ac-automation) automate living-room AC
@@ -128,7 +128,7 @@ $ git log --oneline --graph --decorate --all
 * 229fdbc configure Git
 ```
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 53dd464 (HEAD -> living-room-ac-automation) automate living-room AC
@@ -150,10 +150,10 @@ $ git log --oneline --graph --decorate --all
 * ce3cbc0 write README
 * 229fdbc configure Git
 ```
-_Note_: After editing the commit `"install living-room AC"` all following commits have new commit hashes.
+_Hinweis_: Nach dem Bearbeiten des Commits `"install living-room AC"` haben alle nachfolgenden Commits neue Commit-Hashes.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- When is editing an earlier commit better than adding a new corrective commit?
-- Why can modifying an earlier commit create conflicts in later commits?
-- How does editing an earlier commit differ from amending the current HEAD?
+- Wann ist das Bearbeiten eines früheren Commits besser als das Hinzufügen eines neuen Korrektur-Commits?
+- Warum kann das Modifizieren eines früheren Commits Konflikte in späteren Commits verursachen?
+- Wie unterscheidet sich das Bearbeiten eines früheren Commits vom Anpassen des aktuellen HEAD per Amend?

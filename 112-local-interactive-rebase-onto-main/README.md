@@ -1,29 +1,29 @@
-# 112 Interactive Rebase onto `main`
+# 112 Interactive Rebase auf `main`
 
-In [exercise 104](../104-local-rebase-onto-main/README.md), we learned how to integrate changes from `main` using _[rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)_ a branch onto `main`.
+In [Übung 104](../104-local-rebase-onto-main/README.md) haben wir gelernt, wie man Änderungen aus `main` durch einen _[Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)_ eines Branches auf `main` integriert.
 
 ![](../resources/main-feature-out-of-sync-more.svg)
 
-For more manageable changes, we can use _[interactive rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)_ [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md)) to rebase onto `main` and clean up our history in one go.
+Für besser handhabbare Änderungen können wir den _[interaktiven Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)_ [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) nutzen (vgl. [Übung 106](../106-local-interactive-rebase-reorder-commits/README.md) bis [111](../111-local-interactive-rebase-delete-commits/README.md)), um einen Rebase auf `main` durchzuführen und unsere Historie in einem einzigen Durchgang aufzuräumen.
 
 ![](../resources/main-feature-sync-rebase-i.svg)
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
+Während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet (Übungen `101` bis `104`), haben wir deren _automation-rules Schema_ per _Cherry-Pick_ übernommen und mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
 
-In the meantime, `living-room-light-automation` was integrated into `main`.
+In der Zwischenzeit wurde `living-room-light-automation` in `main` integriert.
 
-## Task: Rebase onto `main` using Interactive Rebase to Clean Up History
+## Aufgabe: Auf `main` rebasen mittels Interactive Rebase zum Aufräumen der Historie
 
-While we were working on _automating_ the _living-room AC_, our team integrated `living-room-light-automation` into `main`.
-Our branch is also almost ready to be integrated into `main`.
+Während wir an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ gearbeitet haben, hat unser Team `living-room-light-automation` in `main` integriert.
+Unser Branch ist ebenfalls fast bereit für die Integration in `main`.
 
-To prepare the integration and _resolve conflicts_, use `git rebase -i main` to rebase onto `main` and clean up our history (cf. _target Git history_) in one go.
+Um die Integration vorzubereiten und _Konflikte zu lösen_, nutze `git rebase -i main`, um auf `main` zu rebasen und unsere Historie (vgl. _Ziel-Git-Historie_) in einem Schritt aufzuräumen.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * f6110e8 (HEAD -> living-room-ac-automation) ac on/off balcony-door
@@ -47,7 +47,7 @@ $ git log --oneline --graph --decorate --all
 * d1b4b6e configure Git
 ```
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 9fb56c9 (HEAD -> living-room-ac-automation) automate turning off living-room AC
@@ -66,10 +66,10 @@ $ git log --oneline --graph --decorate --all
 * 5b8d964 write README
 * d1b4b6e configure Git
 ```
-_Note_: As we rebased `living-room-ac-automation` onto main, now `devices.json` and `automation-rules.json` have all devices, sensors, and rules for both _living-room light_ and _living-room AC_.
+_Hinweis_: Da wir `living-room-ac-automation` auf `main` gerebased haben, enthalten `devices.json` und `automation-rules.json` nun alle Geräte, Sensoren und Regeln sowohl für das _Wohnzimmer-Licht_ als auch für die _Wohnzimmer-Klimaanlage_.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- How does _interactive rebase_ help integrate changes from `main` compared to a simple _rebase_?
-- When would you choose interactive rebase onto `main` over a plain rebase followed by a separate cleanup rebase?
-- What kinds of history cleanup are easier to perform during a rebase onto `main` rather than as a separate step afterward?
+- Wie hilft der _interaktive Rebase_ bei der Integration von Änderungen aus `main` im Vergleich zu einem einfachen _Rebase_?
+- Wann würdest du einen interaktiven Rebase auf `main` einem einfachen Rebase gefolgt von einem separaten Aufräum-Rebase vorziehen?
+- Welche Arten von Bereinigungen der Historie lassen sich während eines Rebase auf `main` einfacher durchführen als in einem separaten Schritt danach?

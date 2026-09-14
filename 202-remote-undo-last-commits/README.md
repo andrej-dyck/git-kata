@@ -1,37 +1,37 @@
-# 202 Undo Pushed Commits
+# 202 Gepushte Commits rückgängig machen
 
-We want to push work-in-progress (_WIP_) commits to a remote repository because we want a backup our work, continue working from another machine, or share an intermediate state.
+Wir möchten Work-in-Progress (_WIP_)-Commits auf ein Remote-Repository pushen, um unsere Arbeit zu sichern, von einem anderen Rechner weiterzuarbeiten oder einen Zwischenstand zu teilen.
 
-Later, once the work is complete, we may want to replace those temporary commits with a smaller, cleaner, more meaningful commit.
-Locally, we can do this with [`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft), as introduced in [exercise 103](../103-local-undo-last-commits/README.md).
+Später, sobald die Arbeit abgeschlossen ist, möchten wir diese temporären Commits durch einen kleineren, saubereren und aussagekräftigeren Commit ersetzen.
+Lokal können wir dies mit [`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) tun, wie in [Übung 103](../103-local-undo-last-commits/README.md) eingeführt.
 
-However, when those commits have already been pushed to `origin`, rewriting them locally is not enough.
-After the soft-reset and the new commit, the local branch and the remote branch have diverged.
+Wenn diese Commits jedoch bereits nach `origin` gepusht wurden, reicht das lokale Umschreiben nicht aus.
+Nach dem Soft-Reset und dem neuen Commit sind der lokale Branch und der Remote-Branch auseinandergelaufen.
 
-Similar like in [exercise 201](../201-remote-amend-commit/README.md), we can use [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to overwrite the branch on `origin` with our cleaned-up history.
+Ähnlich wie in [Übung 201](../201-remote-amend-commit/README.md) können wir [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) verwenden, um den Branch auf `origin` mit unserer aufgeräumten Historie zu überschreiben.
 
-_Hint_: Prefer `--force-with-lease` over `--force`.
+_Tipp_: Bevorzuge `--force-with-lease` gegenüber `--force`.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We successfully installed our first _living-room devices_, and worked on _automating the living-room lights_.
-Now, the automation rules for the _living-room light_ are complete, but the Git history still contains multiple temporary WIP commits.
+Wir haben unsere ersten _Wohnzimmer-Geräte_ erfolgreich installiert und an der _Automatisierung der Wohnzimmer-Beleuchtung_ gearbeitet.
+Nun sind die Automatisierungsregeln für das _Wohnzimmer-Licht_ vollständig, aber die Git-Historie enthält noch mehrere temporäre WIP-Commits.
 
-Before sharing this branch for review or integrating it, we want to replace those WIP commits with one clean commit that describes the completed feature.
+Bevor wir diesen Branch für ein Review bereitstellen oder integrieren, möchten wir diese WIP-Commits durch einen einzelnen sauberen Commit ersetzen, der das fertige Feature beschreibt.
 
-## Task: Undo WIP Commits with Soft Reset and Force Push Changes
+## Aufgabe: WIP-Commits per Soft-Reset rückgängig machen und Änderungen force-pushen
 
-On the branch `living-room-light-automation`, replace the three pushed WIP commits with one clean commit.
+Ersetze auf dem Branch `living-room-light-automation` die drei gepushten WIP-Commits durch einen einzigen sauberen Commit.
 
-Use [`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) to undo the WIP commits while keeping their changes staged.
+Nutze [`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft), um die WIP-Commits rückgängig zu machen, während ihre Änderungen im Staging-Bereich verbleiben.
 
-Then remove `testMode` property from all rules in `automation-rules.json` and create a single commit named `"automate living-room light"`.
+Entferne dann die Eigenschaft `testMode` aus allen Regeln in `automation-rules.json` und erstelle einen einzelnen Commit namens `"automate living-room light"`.
 
-Use `git push --force-with-lease` to overwrite the remote branch with the cleaned-up history.
+Nutze `git push --force-with-lease`, um den Remote-Branch mit der aufgeräumten Historie zu überschreiben.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 7a38b10 (HEAD -> living-room-light-automation, origin/living-room-light-automation) WIP automate living-room light based on ambient light
@@ -49,7 +49,7 @@ $ git log --oneline --graph --decorate --all
 * d4e66cb configure Git
 ```
 
-### Pre-push Git History
+### Git-Historie vor dem Push
 ```console
 $ git log --oneline --graph --decorate --all
 * bb82700 (HEAD -> living-room-light-automation) automate living-room light
@@ -68,9 +68,9 @@ $ git log --oneline --graph --decorate --all
 * 2d8e307 write README
 * d4e66cb configure Git
 ```
-_Note_: After the soft-reset and new commit, the local branch contains the clean commit, while `origin/living-room-light-automation` still points to the old WIP history. A Git client shows something similar to `↓3 ↑1` for this graph.
+_Hinweis_: Nach dem Soft-Reset und dem neuen Commit enthält der lokale Branch den sauberen Commit, während `origin/living-room-light-automation` noch auf die alte WIP-Historie zeigt. Ein Git-Client zeigt für diesen Graphen so etwas wie `↓3 ↑1` an.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * bb82700 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
@@ -85,9 +85,9 @@ $ git log --oneline --graph --decorate --all
 * 2d8e307 write README
 * d4e66cb configure Git
 ```
-_Note_: The old pushed _WIP_ commits are no longer part of the branch history.
+_Hinweis_: Die alten gepushten _WIP_-Commits sind nicht mehr Teil der Branch-Historie.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why might we want to push a _WIP_ commit in the first place?
-- How is branch ownership affected whether _force pushing_ is accepted?
+- Warum wollen wir überhaupt einen _WIP_-Commit pushen?
+- Welchen Einfluss hat das Branch-Ownership darauf, ob _Force-Pushing_ akzeptiert wird?

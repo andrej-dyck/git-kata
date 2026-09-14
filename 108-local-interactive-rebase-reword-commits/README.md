@@ -1,32 +1,32 @@
-# 108 Interactive Rebase - Re-word Commit Message
+# 108 Interactive Rebase - Commit-Messages umformulieren
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
+Der [interaktive Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) ermöglicht es uns, Probleme auf natürliche Weise zu bearbeiten, Änderungen schrittweise zu committen und unsere Git-Historie kohärenter und lesbarer zu gestalten, bevor wir sie mit anderen teilen (vgl. [Übung 106](../106-local-interactive-rebase-reorder-commits/README.md)).
 
-Focusing on the progress of our work is important, and so, we should avoid context switching.
-While committing work often is good, even thinking about how to word commit messages is a cognitive load which might make us lose our focus.
-With _interactive rebase_ we can commit changes with a quick message and then reword them later.
+Es ist wichtig, sich auf den Fortschritt unserer Arbeit zu konzentrieren, weshalb wir Kontextwechsel vermeiden sollten.
+Häufiges Committen ist zwar gut, aber schon das Nachdenken über passende Commit-Messages bedeutet kognitive Last, die uns aus dem Fokus bringen kann.
+Mit dem _interaktiven Rebase_ können wir Änderungen mit einer schnellen Nachricht committen und sie später umformulieren.
 
-This exercise will help you understand how to use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _reword_ commits.
+Diese Übung hilft dir zu verstehen, wie du den [interaktiven Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) nutzt, um Commits _umzuformulieren_ (`reword`).
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
+Während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet (Übungen `101` bis `104`), haben wir deren _automation-rules Schema_ per _Cherry-Pick_ übernommen und mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
 
-Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md) have the same context, but with slightly different initial and target Git history to best support the exercise's focus.
+Die Übungen [106](../106-local-interactive-rebase-reorder-commits/README.md) bis [111](../111-local-interactive-rebase-delete-commits/README.md) haben denselben Kontext, aber leicht abweichende initiale und Ziel-Git-Historien, um den jeweiligen Schwerpunkt der Übung optimal zu unterstützen.
 
-## Task: Re-word Commit Messages using Interactive Rebase
+## Aufgabe: Commit-Messages mittels Interactive Rebase umformulieren
 
-In this exercise, we committed our work on `living-room-ac-automation` in small commits and didn't focus on wording messages too much.
+In dieser Übung haben wir unsere Arbeit an `living-room-ac-automation` in kleinen Commits festgehalten und uns nicht allzu viele Gedanken über die Formulierung der Nachrichten gemacht.
 
-For example, `"ac"` is fine for work-in-progress commits, but should be replaced with a more descriptive message like `"install living-room AC"`.
+Zum Beispiel ist `"ac"` für Work-in-Progress-Commits in Ordnung, sollte jedoch durch eine aussagekräftigere Nachricht wie `"install living-room AC"` ersetzt werden.
 
-_Re-word_ the commit messages on `living-room-ac-automation` to tell a coherent story.
+_Formuliere_ die Commit-Messages auf `living-room-ac-automation` _um_, um eine schlüssige Story zu erzählen.
 
-Make sure to _squash_ related WIP commits and _reword_ the commit message of the squashed commit.
+Stelle sicher, zusammengehörige WIP-Commits per _Squash_ zu vereinen und die Commit-Message des zusammengeführten Commits _umzuformulieren_.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 3ff3e66 (HEAD -> living-room-ac-automation) WIP automation
@@ -49,7 +49,7 @@ $ git log --oneline --graph --decorate --all
 * 3c32c60 configure Git
 ```
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * ebd57ea (HEAD -> living-room-ac-automation) automate living-room AC
@@ -70,10 +70,10 @@ $ git log --oneline --graph --decorate --all
 * 4c8d1a7 write README
 * 3c32c60 configure Git
 ```
-_Note_: Rewording a commit message also changes the commit's ID.
+_Hinweis_: Das Umformulieren einer Commit-Message ändert auch die Commit-ID.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- What makes a commit message useful during review or understanding the project evolution? What messages aren't helpful?
-- When is a commit message body necessary?
-- How would you decide whether a commit message is specific enough?
+- Was macht eine Commit-Message bei einem Review oder beim Verstehen der Projektentwicklung nützlich? Welche Nachrichten sind nicht hilfreich?
+- Wann ist ein Body in einer Commit-Message notwendig?
+- Woran machst du fest, ob eine Commit-Message spezifisch genug ist?
