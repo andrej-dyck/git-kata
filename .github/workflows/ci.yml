@@ -57,3 +57,5 @@ jobs:
       run: bash ./scripts/_test-init.sh 301-advanced-interactive-rebase-onto-a-rewritten-branch
     - name: Test Exercise 302
       run: bash ./scripts/_test-init.sh 302-advanced-clean-history-with-cherry-pick
+    - name: Test Exercise 303
+      run: bash ./scripts/_test-init.sh 303-advanced-restore-lost-commits

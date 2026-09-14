@@ -39,8 +39,6 @@ This kata assumes that you already have basic Git knowledge; e.g., how to _stage
 
 ## Doing this Git Kata
 
-**_IMPORTANT_**: 🚧 This Git kata is currently under rework. Though, all but [exercise 303](./303-advanced-restore-lost-commits/README.md) are ready.
-
 Each exercise is self-contained, even when they refer to previous exercise numbers; the task is described in the `README.md` file.
 
 Each exercise is safe to experiment with, as a local-only repository is set up by an `init.sh` _bash script_ and, if stuck, you can always re-run the `init.sh` again.
