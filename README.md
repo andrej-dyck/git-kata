@@ -4,7 +4,7 @@
  [![language-en](./resources/lang-en.svg)](https://github.com/andrej-dyck/git-kata/)
  [![language-de](./resources/lang-de.svg)](https://github.com/andrej-dyck/git-kata/tree/language-de)
 
-![Git Logo](./resources/git-logo.png)
+![Git Logo](./resources/git-logo-clean.svg)
 
 A _clean Git history_ is linear, coherent, and intentional; and therefore easier to read, navigate, and reason about.
 
