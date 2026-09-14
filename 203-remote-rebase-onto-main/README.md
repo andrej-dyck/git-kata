@@ -1,41 +1,41 @@
-# 203 Rebase a Pushed Branch onto `main`
+# 203 Einen gepushten Branch auf `main` rebasen
 
-To keep a linear history, we want to [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) our branch onto `main` before integrating it (cf. [exercise 104](../104-local-rebase-onto-main/README.md)).
+Um eine lineare Historie beizubehalten, möchten wir unseren Branch vor der Integration auf `main` [rebasen](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) (vgl. [Übung 104](../104-local-rebase-onto-main/README.md)).
 
-Since [`git rebase`](https://git-scm.com/docs/git-rebase) rewrites the Git history, the branch will diverge from `origin` when it has already been pushed to the remote repository.
-A Git client typically shows something similar to `↓2 ↑4`.
+Da [`git rebase`](https://git-scm.com/docs/git-rebase) die Git-Historie umschreibt, weicht der Branch von `origin` ab, wenn er bereits in das Remote-Repository gepusht wurde.
+Ein Git-Client zeigt typischerweise so etwas wie `↓2 ↑4` an.
 
 ![](../resources/main-feature-out-of-sync-origin-after-rebase.svg)
 
-A common **mistake** users new to _Git rebase_ make is to use `git pull` or `git merge`.
-Both actions result in either overwriting our changes or a messy history with a _merge commit_.
+Ein häufiger **Fehler**, den Einsteiger bei _Git rebase_ machen, ist die Verwendung von `git pull` oder `git merge`.
+Beide Aktionen führen entweder zum Überschreiben unserer Änderungen oder zu einer unordentlichen Historie mit einem _Merge-Commit_.
 
-To publish our changes and update the remote repository, we need to use [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to overwrite the branch on `origin`.
+Um unsere Änderungen zu veröffentlichen und das Remote-Repository zu aktualisieren, müssen wir [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) verwenden, um den Branch auf `origin` zu überschreiben.
 
-_Note_: Two issues can arise when working with _force pushes_:
-1. We may accidentally overwrite a remote branch that we did not intend to overwrite.
-   Thus, it's recommended to protect `main` from history rewrites.
-2. Other collaborators might have already pulled the remote branch and worked on it.
-   We will discuss how to collaborate with others in [exercise 205](../205-remote-rewriting-history-with-teammates/README.md).
+_Hinweis_: Bei der Arbeit mit _Force-Pushes_ können zwei Probleme auftreten:
+1. Wir überschreiben versehentlich einen Remote-Branch, den wir gar nicht überschreiben wollten.
+   Daher empfiehlt sich `main` vor dem Umschreiben der Historie zu schützen.
+2. Andere Teammitglieder haben den Remote-Branch möglicherweise bereits gepullt und darauf gearbeitet.
+   Wie wir in solchen Fällen mit anderen zusammenarbeiten, behandeln wir in [Übung 205](../205-remote-rewriting-history-with-teammates/README.md).
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-Following [exercise 201](../201-remote-amend-commit/README.md) and [202](../202-remote-undo-last-commits/README.md), we successfully installed all of our _living-room devices_ and finished implementing an automation rule for the _living room lights_.
+Im Anschluss an [Übung 201](../201-remote-amend-commit/README.md) und [202](../202-remote-undo-last-commits/README.md) haben wir alle unsere _Wohnzimmer-Geräte_ erfolgreich installiert und die Implementierung einer Automatisierungsregel für die _Wohnzimmer-Beleuchtung_ abgeschlossen.
 
-It's time to integrate our feature branch; however, `main` has advanced in the meanwhile.
+Es ist Zeit, unseren Feature-Branch zu integrieren; `main` hat sich in der Zwischenzeit jedoch weiterentwickelt.
 
-## Task: Rebase Branch onto `main` and Force-Push Changes
+## Aufgabe: Branch auf `main` rebasen und Änderungen force-pushen
 
-While we were working on the light automation, our team integrated further changes to `main`.
+Während wir an der Licht-Automatisierung gearbeitet haben, hat unser Team weitere Änderungen in `main` integriert.
 
-To finalize our branch, we want to integrate the changes of `main` into our branch `living-room-light-automation` using [`git rebase`](https://git-scm.com/docs/git-rebase).
-During the rebase, we probably will encounter conflicts.
+Um unseren Branch abzuschließen, möchten wir die Änderungen aus `main` mittels [`git rebase`](https://git-scm.com/docs/git-rebase) in unseren Branch `living-room-light-automation` integrieren.
+Während des Rebase werden wir voraussichtlich auf Konflikte stoßen.
 
-Since we already pushed our branch, use `git push --force-with-lease` to overwrite the remote branch with the cleaned-up history.
+Da wir unseren Branch bereits gepusht haben, nutze `git push --force-with-lease`, um den Remote-Branch mit der aufgeräumten Historie zu überschreiben.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 11d621e (origin/main, main) define automation-rules schema
@@ -53,9 +53,9 @@ $ git log --oneline --graph --decorate --all
 * 0c2ca64 write README
 * 6b18d94 configure Git
 ```
-_Note_: Notice how `"install living-room AC"` and `"define living-room-light trait on-off"` both make changes to `devices.schema.json`. Further, `"define automation-rules schema"` on `main` was _cherry-picked_ from `living-room-light-automation`.
+_Hinweis_: Beachte, wie `"install living-room AC"` und `"define living-room-light trait on-off"` beide Änderungen an `devices.schema.json` vornehmen. Außerdem wurde `"define automation-rules schema"` auf `main` aus `living-room-light-automation` _cherry-picked_.
 
-### Pre-push Git History
+### Git-Historie vor dem Push
 ```console
 $ git log --oneline --graph --decorate --all
 * 2114c97 (HEAD -> living-room-light-automation) automate living-room light
@@ -77,9 +77,9 @@ $ git log --oneline --graph --decorate --all
 * 0c2ca64 write README
 * 6b18d94 configure Git
 ```
-_Note_: A Git client shows something similar to `↓5 ↑8` for this graph.
+_Hinweis_: Ein Git-Client zeigt für diesen Graphen so etwas wie `↓5 ↑8` an.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 2114c97 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
@@ -95,10 +95,10 @@ $ git log --oneline --graph --decorate --all
 * 0c2ca64 write README
 * 6b18d94 configure Git
 ```
-_Note_: Notice how `"define living-room-light trait on-off"` doesn't have any changes to `devices.schema.json` anymore, and that `"define automation-rules schema"` is removed from `living-room-light-automation`.
+_Hinweis_: Beachte, dass `"define living-room-light trait on-off"` keine Änderungen mehr an `devices.schema.json` enthält und dass `"define automation-rules schema"` aus `living-room-light-automation` entfernt wurde.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why does the remote branch appear _"out of sync"_ after a local rebase?
-- What risks are involved in force pushing a rewritten feature branch?
-- Why is rebasing feature branches often acceptable while rebasing `main` is usually not?
+- Warum erscheint der Remote-Branch nach einem lokalen Rebase als _"nicht synchron"_?
+- Welche Risiken birgt das Force-Pushen eines umgeschriebenen Feature-Branches?
+- Warum ist das Rebasen von Feature-Branches oft akzeptabel, während das Rebasen von `main` meist vermieden werden sollte?

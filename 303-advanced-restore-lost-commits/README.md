@@ -1,29 +1,29 @@
-# 303 Restore Lost Commits with Git-reflog
+# 303 Verlorene Commits mit Git-Reflog wiederherstellen
 
-When working with destructive operations like [`git reset --hard origin/main`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) or [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i), you could unwantingly overwrite important commits and lose work.
+Bei destruktiven Operationen wie [`git reset --hard origin/main`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard) oder [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) kann es passieren, dass man versehentlich wichtige Commits überschreibt und Arbeit verliert.
 
-Fortunately, Git provides a possibility to recover _lost_ commits[^1] with [_Git reflog_](https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery#_data_recovery).
-[`git reflog`](https://git-scm.com/docs/git-reflog) shows us scrapped commits, which we can restore using tools like [cherry-picking](https://git-scm.com/docs/git-cherry-pick), [branching](https://git-scm.com/docs/git-branch) or [git-reset](https://git-scm.com/docs/git-reset).
+Glücklicherweise bietet Git mit dem [_Git-Reflog_](https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery#_data_recovery) eine Möglichkeit, _verlorene_ Commits[^1] wiederherzustellen.
+[`git reflog`](https://git-scm.com/docs/git-reflog) zeigt uns verworfene Commits an, die wir mit Werkzeugen wie [Cherry-Picking](https://git-scm.com/docs/git-cherry-pick), [Branching](https://git-scm.com/docs/git-branch) oder [Git-Reset](https://git-scm.com/docs/git-reset) wiederherstellen können.
 
-[^1]: Git only knows the scrapped commits within your local repository; it's like a local history.
-But, if you run [`git gc`](https://git-scm.com/docs/git-gc), `git reflog drop`, or remove the entire local repository, you will lose the ability to reflog.
+[^1]: Git kennt die verworfenen Commits nur innerhalb deines lokalen Repositorys; es ist wie ein lokales Protokoll.
+Wenn du jedoch [`git gc`](https://git-scm.com/docs/git-gc) oder `git reflog drop` ausführst oder das gesamte lokale Repository löschst, geht die Möglichkeit zur Wiederherstellung per Reflog verloren.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We worked on _automating_ the _living-room AC_, cleaned up our branch, and now want to integrate the recent changes of `main` using _rebase_.
+Wir haben an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ gearbeitet, unseren Branch aufgeräumt und möchten nun die neuesten Änderungen von `main` mittels _Rebase_ integrieren.
 
-## Task: Lose Commits and Then Restore Them
+## Aufgabe: Commits verlieren und anschließend wiederherstellen
 
-We finished our feature and cleaned up our branch, but instead of _rebasing_ the branch onto `main` we _hard reset_ it.
-Thus, we accidentally lost some commits, and since we haven't pushed in a while `origin/living-room-ac-automation` only has some old commits.
+Wir haben unser Feature fertiggestellt und unseren Branch aufgeräumt. Doch anstatt den Branch auf `main` zu _rebasen_, haben wir versehentlich einen _Hard-Reset_ ausgeführt.
+Dadurch haben wir unabsichtlich einige Commits verloren, und da wir länger nicht gepusht haben, enthält `origin/living-room-ac-automation` nur alte Commits.
 
-Use `git reflog` to find and _restore_ the lost commit history.
+Nutze `git reflog`, um die verlorene Commit-Historie zu finden und _wiederherzustellen_.
 
-Once we have our history back, use `git rebase` to integrate the recent changes of `main` and _force push_ to `origin`.
+Sobald wir unsere Historie zurückhaben, nutze `git rebase`, um die aktuellen Änderungen von `main` zu integrieren, und führe einen _Force-Push_ nach `origin` durch.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * ab4b7bc (HEAD -> living-room-ac-automation, origin/main, main) define automation-rules schema
@@ -40,9 +40,9 @@ $ git log --oneline --graph --decorate --all
 * e95970f write README
 * 5b78593 configure Git
 ```
-_Note_: Our _lost_ changes to `living-room-ac-automation` are not visible with `git log`.
+_Hinweis_: Unsere _verlorenen_ Änderungen auf `living-room-ac-automation` sind mit `git log` nicht sichtbar.
 
-### Pre-push Git History
+### Git-Historie vor dem Push
 ```console
 $ git log --oneline --graph --decorate --all
 * 8e384f9 (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -65,9 +65,9 @@ $ git log --oneline --graph --decorate --all
 * e95970f write README
 * 5b78593 configure Git
 ```
-_Note_: After restoring our lost changes and rebasing onto `main`, we achieved a linear history without doing the work twice.
+_Hinweis_: Nach der Wiederherstellung unserer verlorenen Änderungen und dem Rebase auf `main` haben wir eine lineare Historie erreicht, ohne die Arbeit doppelt machen zu müssen.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 8e384f9 (HEAD -> living-room-ac-automation, origin/living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -86,8 +86,8 @@ $ git log --oneline --graph --decorate --all
 * 5b78593 configure Git
 ```
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why can commits appear _"lost"_ even though Git may still know about them?
-- What are the limits of _reflog_-based recovery?
-- What habits reduce the likelihood of needing reflog recovery?
+- Warum können Commits als _"verloren"_ erscheinen, obwohl Git sie möglicherweise noch kennt?
+- Wo liegen die Grenzen der Wiederherstellung über das _Reflog_?
+- Welche Gewohnheiten verringern die Wahrscheinlichkeit, dass eine Reflog-Wiederherstellung erforderlich wird?

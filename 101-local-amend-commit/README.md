@@ -1,25 +1,25 @@
-# 101 Amend Recent Commit
+# 101 Ändern des letzten Commits
 
-Amending commits is useful when we didn't stage something that belongs to the most recent commit, or we made a mistake in that commit.
+Das Anpassen von Commits per Amend ist nützlich, wenn wir etwas vergessen haben zu _stagen_, was zum letzten Commit gehört, oder wir in diesem Commit einen Fehler gemacht haben.
 
-For example, we might want to fix a typo, reformat code, add related files, or improve logic that was introduced with that commit.
-It's probably the most common way to rewrite the Git history.
+Zum Beispiel möchten wir vielleicht einen Tippfehler korrigieren, Code neu formatieren, zugehörige Dateien hinzufügen oder die mit diesem Commit eingeführte Logik verbessern.
+Es ist wahrscheinlich der gebräuchlichste Weg, die Git-Historie umzuschreiben.
 
-[`git commit --amend`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend) allows us to do that.
+[`git commit --amend`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend) ermöglicht uns genau das.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-With this exercise, we start by registering the _rooms_ of our smart home.
+Mit dieser Übung beginnen wir damit, die _Räume_ unseres Smart Homes zu registrieren.
 
-## Task: Amend Commit
+## Aufgabe: Commit per Amend anpassen
 
-We registered the `living-room` with `rooms.json` in the most recent commit.
-However, in `rooms.schema.json`, we defined that `rooms` is an array of _objects_.
-And so, we made a mistake.
+Wir haben im letzten Commit den `living-room` in `rooms.json` registriert.
+In `rooms.schema.json` haben wir jedoch definiert, dass `rooms` ein Array von _Objekten_ ist.
+Wir haben also einen Fehler gemacht.
 
-Let's amend this commit to fix this mistake and at the same time give the room a proper name.
+Lass uns diesen Commit per Amend anpassen, um diesen Fehler zu beheben und dem Raum gleichzeitig einen passenden Namen zu geben.
 
 ```diff
 {
@@ -31,9 +31,9 @@ Let's amend this commit to fix this mistake and at the same time give the room a
 }
 ```
 
-Also, change the commit message to `"register living room"`
+Ändere außerdem die Commit-Message zu `"register living room"`.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * f9d96c0 (HEAD -> main) add living room to rooms
@@ -41,9 +41,9 @@ $ git log --oneline --graph --decorate --all
 * 8765181 write README
 * 17adacf configure Git
 ```
-_Note_: The commit hashes are examples and will differ in your generated exercise repository.
+_Hinweis_: Die Commit-Hashes sind Beispiele und weichen in deinem generierten Übungs-Repository ab.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 291145d (HEAD -> main) register living room
@@ -51,10 +51,10 @@ $ git log --oneline --graph --decorate --all
 * 8765181 write README
 * 17adacf configure Git
 ```
-_Note_: Since we amended the last commit (`HEAD`), it has a different commit hash now.
+_Hinweis_: Da wir den letzten Commit (`HEAD`) per Amend geändert haben, hat er nun einen anderen Commit-Hash.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-* What kinds of changes are good candidates for `git commit --amend`?
-* When is it better to produce one _correct_ commit instead of a commit followed by a typo-fix commit?
-* When would you prefer a separate fix commit, and when would you amend the previous commit?
+* Welche Arten von Änderungen sind gute Kandidaten für `git commit --amend`?
+* Wann ist es besser, einen einzelnen _korrekten_ Commit zu erstellen, anstatt eines Commits gefolgt von einem Tippfehler-Korrektur-Commit?
+* Wann würdest du einen separaten Korrektur-Commit bevorzugen und wann den vorherigen Commit per Amend anpassen?

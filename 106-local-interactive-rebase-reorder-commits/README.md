@@ -1,54 +1,54 @@
-# 106 Interactive Rebase - Re-order Commits
+# 106 Interactive Rebase - Commits sortieren
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others.
+Der [interaktive Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) ermöglicht es uns, Probleme auf natürliche Weise zu bearbeiten, Änderungen schrittweise zu committen und unsere Git-Historie kohärenter und lesbarer zu gestalten, bevor wir sie mit anderen teilen.
 
-It is only natural that we work on problems in a non-linear fashion.
-- We have an idea on how to start 💡
-- We experiment and try a solution 🔦
-- We stumble upon a problem and fix it 🐞
-- We get stuck and leave work unfinished (_WIP_) ⏸
-- We revise solutions 🔧
-- We finish something worthy to integrate ↗
+Es ist ganz natürlich, dass wir an Problemen nicht-linear arbeiten:
+- Wir haben eine Idee, wie wir anfangen können 💡
+- Wir experimentieren und probieren eine Lösung aus 🔦
+- Wir stoßen auf ein Problem und beheben es 🐞
+- Wir kommen nicht weiter und hinterlassen unfertige Arbeit (_WIP_) ⏸
+- Wir überarbeiten Lösungen 🔧
+- Wir stellen etwas fertig, das es wert ist, integriert zu werden ↗
 
-While technically a chronological sequence of commits _"is how work happened"_, it is hard to comprehend and retrace the _"story"_.
+Auch wenn eine chronologische Abfolge von Commits technisch gesehen _"zeigt, wie die Arbeit ablief“_, ist es oft schwer, die eigentliche _„Story"_ nachzuvollziehen und zu verstehen.
 
-Integrating the messy sequence of commits would be easy but quite hard to read and understand.
-It would be like reading the raw and unorganized _author's notes on a book_.
+Die unübersichtliche Abfolge von Commits einfach zu integrieren wäre zwar leicht, aber schwer zu lesen und zu verstehen.
+Es wäre so, als würdest du die rohen und unsortierten _Notizen eines Autors zu einem Buch_ lesen.
 
-We want to achieve a more readable, better discoverable, clearer Git history, so we need a more powerful tool than _amend commit_ or _soft reset_ to _"refactor"_ our Git history: [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i).
+Wir wollen eine lesbare, besser nachvollziehbare und klarere Git-Historie erreichen. Daher benötigen wir ein mächtigeres Werkzeug als _Amend Commit_ oder _Soft Reset_, um unsere Git-Historie zu _"refaktorisieren"_: [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i).
 
-This exercise will help you understand how to use _interactive rebase_ to _re-order_ commits.
+Diese Übung hilft dir zu verstehen, wie du _Interactive Rebase_ nutzt, um Commits _umzuordnen_.
 
-The following graph shows `feature` branch commits in chronological order:
+Die folgende Grafik zeigt die Commits eines `feature`-Branches in chronologischer Reihenfolge:
 
 ![](../resources/main-feature-in-order.svg)
 
-After _re-ordering_ these to a coherent order with _interactive rebase_:
+Nach dem _Umsortieren_ in eine kohärente Reihenfolge mit _Interactive Rebase_:
 
 ![](../resources/main-feature-coherent-order.svg)
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-While our team is working on _automating_ the _living-room light_ ([exercise 101](../101-local-amend-commit/README.md) to [104](../104-local-rebase-onto-main/README.md)), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
+Während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet ([Übung 101](../101-local-amend-commit/README.md) bis [104](../104-local-rebase-onto-main/README.md)), haben wir deren _automation-rules Schema_ per _Cherry-Pick_ übernommen und mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
 
-Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md) have the same context, but with slightly different initial and target Git history to best support the exercise's focus.
+Die Übungen [106](../106-local-interactive-rebase-reorder-commits/README.md) bis [111](../111-local-interactive-rebase-delete-commits/README.md) haben denselben Kontext, aber leicht abweichende initiale und Ziel-Git-Historien, um den jeweiligen Schwerpunkt der Übung optimal zu unterstützen.
 
-## Task: Re-order Commits using Interactive Rebase
+## Aufgabe: Commits mittels Interactive Rebase Sortieren
 
-In this exercise, we committed our work on `living-room-ac-automation` in chronological order.
+In dieser Übung haben wir unsere Arbeit an `living-room-ac-automation` in chronologischer Reihenfolge committet.
 
-However, those commits are in a non-ideal order to understand what is being achieved.
-For example, commits that conceptually belong together like `"define automation-rules schema"` and `"automate living-room AC"` are far apart.
+Diese Commits sind jedoch in einer ungünstigen Reihenfolge, um zu verstehen, was erreicht wird.
+Beispielsweise liegen Commits, die konzeptionell zusammengehören wie `"define automation-rules schema"` und `"automate living-room AC"`, weit auseinander.
 
-Further, some commits are technically broken, e.g.:
-- `"install living-room AC"` uses the property `traits`, but the schema is fixed only after that commit with `"define traits for devices"`
-- `"automate living-room AC"` uses a `sensorDeviceId` that is only defined with the next commit `"install living-room balcony-door sensor"`
+Darüber hinaus sind einige Commits technisch fehlerhaft, z. B.:
+- `"install living-room AC"` verwendet die Eigenschaft `traits`, aber das Schema wird erst nach diesem Commit mit `"define traits for devices"` angepasst
+- `"automate living-room AC"` verwendet eine `sensorDeviceId`, die erst mit dem nächsten Commit `"install living-room balcony-door sensor"` definiert wird
 
-_Re-order_ the commits on `living-room-ac-automation` to tell a coherent story.
+_Ordne_ die Commits auf `living-room-ac-automation` _um_, um eine schlüssige Story zu erzählen.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 01453a4 (HEAD -> living-room-ac-automation) install living-room balcony-door sensor
@@ -70,9 +70,9 @@ $ git log --oneline --graph --decorate --all
 * 9e76d4d write README
 * 5bea84e configure Git
 ```
-_Note_: We also see the feature branch `living-room-light-automation` here, but it isn't relevant to this exercise.
+_Hinweis_: Wir sehen hier auch den Feature-Branch `living-room-light-automation`, dieser ist für diese Übung jedoch nicht relevant.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * bf3e297 (HEAD -> living-room-ac-automation) automate living-room AC
@@ -94,11 +94,11 @@ $ git log --oneline --graph --decorate --all
 * 9e76d4d write README
 * 5bea84e configure Git
 ```
-_Note_: The commit hashes after the re-ordering have changed because to Git, commits aren't isolated patches with an ID but rather changes in a hierarchical order.
+_Hinweis_: Die Commit-Hashes haben sich nach dem Sortieren geändert, da Commits für Git keine isolierten Patches mit einer ID sind, sondern Änderungen in einer hierarchischen Reihenfolge.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why might the chronological order of commits not be the best order for understanding history?
-- What makes one commit order easier to review than another?
-- What kinds of commits are safe to re-order, and which are not?
-- How can re-ordering commits reveal _hidden coupling_ between changes?
+- Warum ist die chronologische Reihenfolge der Commits möglicherweise nicht die beste Reihenfolge, um die Historie zu verstehen?
+- Was macht eine Commit-Reihenfolge leichter zu verstehen als eine andere?
+- Welche Arten von Commits kannst du sicher umsortieren und welche nicht?
+- Wie kann das Umordnen von Commits _versteckte Kopplungen_ zwischen Änderungen aufdecken?

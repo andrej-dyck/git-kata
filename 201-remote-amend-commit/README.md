@@ -1,31 +1,31 @@
-# 201 Amend Pushed Commit
+# 201 Gepushten Commit per Amend anpassen
 
-Amending commits is useful when we want to fix a typo, add forgotten changes, or improve logic in the most recent commit (cf. [exercise 101](../101-local-amend-commit/README.md)).
+Das Anpassen von Commits per Amend ist nützlich, wenn wir einen Tippfehler korrigieren, vergessene Änderungen hinzufügen oder die Logik im neuesten Commit verbessern möchten (vgl. [Übung 101](../101-local-amend-commit/README.md)).
 
-However, once a commit has been pushed to a remote repository (`origin`), amending it changes it the commit sequence and our local copy diverges from the one on `origin`.
-A Git client typically shows something similar to `↓1 ↑1` at this point; i.e., our local branch is both behind and ahead of `origin`.
+Sobald ein Commit jedoch in ein Remote-Repository (`origin`) gepusht wurde, verändert ein Amend die Commit-Abfolge und unsere lokale Kopie weicht von der auf `origin` ab.
+Ein Git-Client zeigt an dieser Stelle typischerweise so etwas wie `↓1 ↑1` an; d. h. unser lokaler Branch ist sowohl hinter `origin` zurück als auch voraus.
 
 ![](../resources/main-feature-out-of-sync-origin-after-amend.svg)
 
-Git will reject a standard `git push` to prevent overwriting history on the remote.
-To update the remote branch with our rewritten commit, we need to overwrite the remote branch using [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease).
+Git wird einen normalen `git push` ablehnen, um das Überschreiben der Historie auf dem Remote zu verhindern.
+Um den Remote-Branch mit unserem umgeschriebenen Commit zu aktualisieren, müssen wir den Remote-Branch mit [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) überschreiben.
 
-_Hint_: Using `--force-with-lease` is safer than `--force` because it ensures we only overwrite the remote branch if no one else has pushed new commits to it since we last fetched.
+_Tipp_: Die Verwendung von `--force-with-lease` ist sicherer als `--force`, da sichergestellt wird, dass wir den Remote-Branch nur überschreiben, wenn seit unserem letzten Fetch niemand sonst neue Commits darauf gepusht hat.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We successfully installed our first _living-room devices_, and now, work on _automating the living-room lights_.
+Wir haben unsere ersten _Wohnzimmer-Geräte_ erfolgreich installiert und arbeiten nun an der _Automatisierung der Wohnzimmer-Beleuchtung_.
 
-## Task: Amend Commit and Force-Push Changes
+## Aufgabe: Commit per Amend anpassen und Änderungen force-pushen
 
-On the branch `living-room-light-automation`, we are working on _automating the living-room lights_.
+Auf dem Branch `living-room-light-automation` arbeiten wir an der _Automatisierung der Wohnzimmer-Beleuchtung_.
 
-With the final changes, we are ready to finish the automation and _push the changes_.
-However, we already pushed our work-in-progress (_WIP_) to `origin` earlier, so our changes are backed up.
+Mit den finalen Änderungen sind wir bereit, die Automatisierung abzuschließen und _die Änderungen zu pushen_.
+Wir haben unseren Zwischenstand (_WIP_) jedoch zuvor bereits nach `origin` gepusht, um unsere Änderungen zu sichern.
 
-Amend the WIP commit with the following changes and give it a proper name; e.g., `"automate living-room light"`:
+Passe den WIP-Commit mit den folgenden Änderungen per Amend an und gib ihm einen passenden Namen; z. B. `"automate living-room light"`:
 
 ```diff
 --- a/automation-rules.json
@@ -79,7 +79,7 @@ Amend the WIP commit with the following changes and give it a proper name; e.g.,
  }
 ```
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * e22b66a (HEAD -> living-room-light-automation, origin/living-room-light-automation) WIP automation rules
@@ -94,9 +94,9 @@ $ git log --oneline --graph --decorate --all
 * cd6326c write README
 * c58a904 configure Git
 ```
-_Note_: You can see that a branch is in sync with `origin`, when both, your local copy `living-room-light-automation` and remote `origin/living-room-light-automation` point to the same commit.
+_Hinweis_: Du erkennst, dass ein Branch mit `origin` synchron ist, wenn sowohl deine lokale Kopie `living-room-light-automation` als auch das Remote `origin/living-room-light-automation` auf denselben Commit zeigen.
 
-### Pre-push Git History
+### Git-Historie vor dem Push
 ```console
 $ git log --oneline --graph --decorate --all
 * 2339348 (HEAD -> living-room-light-automation) automate living-room light
@@ -113,9 +113,9 @@ $ git log --oneline --graph --decorate --all
 * cd6326c write README
 * c58a904 configure Git
 ```
-_Note_: Since we amended the last commit (`HEAD`), it has a different commit hash and the history diverges from `origin`. A Git client shows something similar to `↓1 ↑1` for this graph.
+_Hinweis_: Da wir den letzten Commit (`HEAD`) per Amend geändert haben, hat er einen anderen Commit-Hash und die Historie weicht von `origin` ab. Ein Git-Client zeigt für diesen Graphen so etwas wie `↓1 ↑1` an.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 2339348 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
@@ -130,10 +130,10 @@ $ git log --oneline --graph --decorate --all
 * cd6326c write README
 * c58a904 configure Git
 ```
-_Note_: After `git push --force-with-lease`, `origin/main` is updated to point to the new amended commit, and the old commit doesn't exist anymore.
+_Hinweis_: Nach `git push --force-with-lease` wird `origin/living-room-light-automation` so aktualisiert, dass er auf den neuen, per Amend geänderten Commit zeigt, und der alte Commit existiert nicht mehr.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why does amending a pushed commit require a _force push_?
-- When is it acceptable to rewrite pushed history?
-- How does `--force-with-lease` reduce the risk compared with plain `--force`?
+- Warum erfordert das Anpassen eines gepushten Commits per Amend einen _Force-Push_?
+- Wann ist es akzeptabel, gepushte Historie umzuschreiben?
+- Wie reduziert `--force-with-lease` das Risiko im Vergleich zu einem einfachen `--force`?

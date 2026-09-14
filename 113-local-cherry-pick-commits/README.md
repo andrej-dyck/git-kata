@@ -1,36 +1,36 @@
-# 113 Cherry-pick Commits
+# 113 Commits cherry-picken
 
-_Cherry-picking_ a commit is useful when we want to apply changes introduced by that commit in to another branch.
+Das _Cherry-picking_ eines Commits ist nützlich, wenn wir Änderungen aus diesem Commit in einen anderen Branch übernehmen möchten.
 
-For example, we can use [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) to selectively integrate a change, fix, or feature into our current branch without merging the entire source branch.
+Beispielsweise können wir [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) verwenden, um selektiv eine Änderung, einen Fix oder ein Feature in unseren aktuellen Branch zu integrieren, ohne den gesamten Quell-Branch zu mergen.
 
-It can also be useful for building a clean, intentional history from a messy or experimental branch by _cherry-picking_ only the commits that represent the changes you actually want to preserve.
+Es kann auch nützlich sein, um aus einem unordentlichen oder experimentellen Branch eine saubere, zielgerichtete Historie aufzubauen, indem wir nur die Commits _cherry-picken_, die die tatsächlich gewünschten Änderungen enthalten.
 
 ![](../resources/main-cherry-pickable-commit.svg)
 
-With [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) we can apply the changes of commit `P` to our current branch.
+Mit [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) können wir die Änderungen aus Commit `P` auf unseren aktuellen Branch anwenden.
 
 ![](../resources/main-commit-cherry-picked.svg)
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We started to install and automate the living-room AC, while our team is working on _automating_ the _living-room light_ (exercises `101` to `104`).
+Wir haben mit der Installation und Automatisierung der Wohnzimmer-Klimaanlage begonnen, während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet (Übungen `101` bis `104`).
 
-To continue our work, we need the _automation-rules schema_.
+Um unsere Arbeit fortzusetzen, benötigen wir das _automation-rules Schema_.
 
-## Task: Cherry-pick a Commit from another Branch
+## Aufgabe: Einen Commit von einem anderen Branch cherry-picken
 
-The schema for automation rules `automation-rules.schema.json` is not yet integrated into `main` and we don't want to redefine ourselves.
+Das Schema für Automatisierungsregeln `automation-rules.schema.json` ist noch nicht in `main` integriert und wir möchten es nicht selbst neu definieren.
 
-To be sure we have the same version of `automation-rules.schema.json` as our team, we can cherry-pick the commit `"define automation-rules schema"` from branch `living-room-light-automation` onto our branch `living-room-ac-automation`.
+Um sicherzugehen, dass wir dieselbe Version von `automation-rules.schema.json` wie unser Team verwenden, können wir den Commit `"define automation-rules schema"` vom Branch `living-room-light-automation` auf unseren Branch `living-room-ac-automation` cherry-picken.
 
-This way we can continue our work on the living-room AC automation without waiting for the integration of `living-room-light-automation` into `main`.
+Auf diese Weise können wir unsere Arbeit an der Automatisierung der Wohnzimmer-Klimaanlage fortsetzen, ohne auf die Integration von `living-room-light-automation` in `main` warten zu müssen.
 
-Once either of the branches is integrated into `main`, a [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) will simply remove the cherry-picked commit from the other branch.
+Sobald einer der beiden Branches in `main` integriert ist, entfernt ein [Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) den cherry-gepickten Commit einfach aus dem anderen Branch.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 27932b0 (HEAD -> living-room-ac-automation) install living-room balcony-door sensor
@@ -50,7 +50,7 @@ $ git log --oneline --graph --decorate --all
 * b8f3f4b configure Git
 ```
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 1633f87 (HEAD -> living-room-ac-automation) define automation-rules schema
@@ -70,10 +70,10 @@ $ git log --oneline --graph --decorate --all
 * 1429929 write README
 * b8f3f4b configure Git
 ```
-_Note_: Cherry-picking commit `"define automation-rules schema"` from branch `living-room-light-automation` results in different commit hash, but the changes are applied to brach `living-room-ac-automation` as a patch.
+_Hinweis_: Das Cherry-Picken des Commits `"define automation-rules schema"` vom Branch `living-room-light-automation` führt zu einem anderen Commit-Hash, die Änderungen werden jedoch als Patch auf den Branch `living-room-ac-automation` angewendet.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- What problem does cherry-pick solve compared with merging an entire branch?
-- How does atomic commit design make cherry-picking safer?
-- Why does a cherry-picked commit receive a new commit hash, although they have the same patch?
+- Welches Problem löst Cherry-Pick im Vergleich zum Mergen eines gesamten Branches?
+- Wie macht das Design atomarer Commits das Cherry-Picken sicherer?
+- Warum erhält ein cherry-gepickter Commit einen neuen Commit-Hash, obwohl der Patch identisch ist?

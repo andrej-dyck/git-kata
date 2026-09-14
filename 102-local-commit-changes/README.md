@@ -1,35 +1,35 @@
-# 102 Commit Changes, Not Files
+# 102 Änderungen committen, nicht Dateien
 
-Git tracks changes to a file rather than the file itself.
-So, when we stage a change, we can stage every change within a file; a substring, a line, or a _hunk_.
+Git verfolgt Änderungen an einer Datei und nicht die Datei selbst.
+Wenn wir eine Änderung stagen, können wir daher jede Änderung innerhalb einer Datei stagen: einen Teilstring, eine Zeile oder einen Textblock (_hunk_).
 
-This allows us to commit changes within one file in patches resulting in multiple commits.
+Dadurch können wir Änderungen innerhalb einer Datei in Patches committen, was zu mehreren Commits führt.
 
-To stage the differences within files, use [`git add -p`](https://git-scm.com/docs/git-add#Documentation/git-add.txt-patch) to create _patches_.
+Um Unterschiede innerhalb von Dateien zu stagen, verwende [`git add -p`](https://git-scm.com/docs/git-add#Documentation/git-add.txt-patch), um _Patches_ zu erstellen.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-Following [exercise 101](../101-local-amend-commit/README.md), we now want to install our _living-room devices_.
+Im Anschluss an [Übung 101](../101-local-amend-commit/README.md) wollen wir nun unsere _Wohnzimmer-Geräte_ installieren.
 
-## Task: Commit Changes by Staging Lines within a File
+## Aufgabe: Änderungen committen durch Stagen von Zeilen innerhalb einer Datei
 
-We registered the _living room_ with `rooms.json` in the previous exercise.
+Wir haben das _Wohnzimmer_ in der vorherigen Übung in `rooms.json` registriert.
 
-Now, we defined the schema for devices in `devices.schema.json` and are about to install our _living-room light_ in `devices.json`.
-And we noticed that we made a typo in the `"$schema"` property of `devices.json`; we fixed this right away.
+Gerade haben wir das Schema für Geräte in `devices.schema.json` definiert und sind dabei, unser _Wohnzimmer-Licht_ in `devices.json` einzuragen.
+Dabei haben wir festgestellt, dass wir einen Tippfehler in der Eigenschaft `"$schema"` von `devices.json` gemacht haben; und dies haben sofort behoben.
 
-The fix technically belongs to the previous commit `"define devices schema"`.
-Here are our three choices:
-1. commit the fix together with `"define devices schema"` (_that is not what we want in this exercise_)
-2. commit the fix separately with `"fix typo in devices.schema.json"`
-3. amend the previous commit `"define devices schema"` with the fix (_preferred way_)
+Diese Korrektur gehört technisch gesehen zum vorherigen Commit `"define devices schema"`.
+Also sind unsere drei Optionen:
+1. Den Fix zusammen mit `"define devices schema"` committen (_das ist in dieser Übung nicht das Ziel_)
+2. Den Fix separat mit `"fix typo in devices.schema.json"` committen
+3. Den vorherigen Commit `"define devices schema"` per Amend mit dem Fix anpassen (_bevorzugter Weg_)
 
-Separate the two changes by staging the typo fix and commit the fix (option _2._) or amend the previous commit (option _3._).
-And then, make a separate commit `"install living-room light"` with the _living-room light_.
+Separiere die zwei Änderungen, indem du _Patch-Staging_ verwendest, um nur den Schema-Fix zu committen (per Option 2. oder 3.).
+Und danach, in einem zweiten Commit `"install living-room light"`, installiere das _Wohnzimmer-Licht_.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 2d1c1ab (HEAD -> main) define devices schema
@@ -38,12 +38,12 @@ $ git log --oneline --graph --decorate --all
 * 5907845 write README
 * c832a9c configure Git
 ```
-_Note_: The commit hashes are different from the previous `README.md` as each exercise is generated.
-This will also be true for all subsequent exercises.
+_Hinweis_: Die Commit-Hashes unterscheiden sich von der vorherigen `README.md`, da jede Übung generiert wird.
+Dies gilt auch für alle nachfolgenden Übungen.
 
-### Target Git History
+### Ziel-Git-Historie
 
-**... when choosing option 2.**
+**… bei Wahl von Option 2.**
 ```console
 $ git log --oneline --graph --decorate --all
 * afaef65 install living-room light
@@ -55,7 +55,7 @@ $ git log --oneline --graph --decorate --all
 * c832a9c configure Git
 ```
 
-**... when choosing option 3.**
+**… bei Wahl von Option 3.**
 ```console
 $ git log --oneline --graph --decorate --all
 * afaef65 (HEAD -> main) install living-room light
@@ -65,10 +65,10 @@ $ git log --oneline --graph --decorate --all
 * 5907845 write README
 * c832a9c configure Git
 ```
-_Note_: This history is where we amended the last commit `"define devices schema"` with the fix; i.e., no separate _"fix"_ commit.
+_Hinweis_: In dieser Historie haben wir den letzten Commit `"define devices schema"` mit dem Fix per Amend angepasst; d. h. es gibt keinen separaten _"Fix"_-Commit.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-* How can staging individual hunks or lines lead to more coherent commits?
-* How does patch staging help separate unrelated work that happened in the same file?
-* How does this exercise reinforce the idea of atomic commits?
+* Wie kann das Stagen einzelner Hunks oder Zeilen zu kohärenten Commits führen?
+* Wie hilft Patch-Staging dabei, unabhängige Arbeiten zu trennen, die in derselben Datei stattgefunden haben?
+* Wie bestärkt diese Übung das Konzept atomarer Commits?

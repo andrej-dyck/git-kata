@@ -1,45 +1,45 @@
-# 107 Interactive Rebase - Squash Commits
+# 107 Interactive Rebase - Commits squashen
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
+Der [interaktive Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) ermöglicht es uns, Probleme auf natürliche Weise zu bearbeiten, Änderungen schrittweise zu committen und unsere Git-Historie kohärenter und lesbarer zu gestalten, bevor wir sie mit anderen teilen (vgl. [Übung 106](../106-local-interactive-rebase-reorder-commits/README.md)).
 
-Sometimes we find that too small commits appear fragmented and disjointed.
-Sometimes we need to fix or improve on something in a several-commits earlier commit.
+Manchmal stellen wir fest, dass zu kleine Commits fragmentiert und zusammenhangslos wirken.
+Manchmal müssen wir etwas in einem Commit korrigieren oder verbessern, das mehrere Commits zurückliegt.
 
-Combining (_squashing_) commits is another important tool to rewrite history towards coherent commits telling a clear _"story"_.
-This exercise will help you understand how to use _interactive rebase_ [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _squash_ commits.
+Das Zusammenführen (_Squashen_) von Commits ist ein weiteres wichtiges Werkzeug, um die Historie so umzuschreiben, dass kohärente Commits eine klare _"Story"_ erzählen.
+Diese Übung hilft dir zu verstehen, wie du den _interaktiven Rebase_ [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) nutzt, um Commits zu _squashen_.
 
-The following graph shows `feature` branch commits in chronological order:
+Die folgende Grafik zeigt die Commits eines `feature`-Branches in chronologischer Reihenfolge:
 
 ![](../resources/main-feature-in-order-pre-squash.svg)
 
-After _squashing_ these commits to be complete and self-contained with _interactive rebase_:
+Nach dem _Squashen_ dieser Commits zu vollständigen und in sich geschlossenen Einheiten mit _Interactive Rebase_:
 
 ![](../resources/main-feature-squashed.svg)
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
+Während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet (Übungen `101` bis `104`), haben wir deren _automation-rules Schema_ per _Cherry-Pick_ übernommen und mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
 
-Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md) have the same context, but with slightly different initial and target Git history to best support the exercise's focus.
+Die Übungen [106](../106-local-interactive-rebase-reorder-commits/README.md) bis [111](../111-local-interactive-rebase-delete-commits/README.md) haben denselben Kontext, aber leicht abweichende initiale und Ziel-Git-Historien, um den jeweiligen Schwerpunkt der Übung optimal zu unterstützen.
 
-## Task: Squash Commits using Interactive Rebase
+## Aufgabe: Commits mittels Interactive Rebase squashen
 
-In this exercise, we committed our work on `living-room-ac-automation` in small commits.
+In dieser Übung haben wir unsere Arbeit an `living-room-ac-automation` in vielen kleinen Commits festgehalten.
 
-However, the sequence of commits is quite fragmented.
-For example, commits like `"fixup! devices schema"` (belongs to `"install living-room AC"`) and `"amend! install living-room sensors"` (belongs to `"install living-room sensors"`) make the Git log unnecessarily convoluted.
+Die Abfolge der Commits ist jedoch ziemlich fragmentiert.
+Beispielsweise machen Commits wie `"fixup! devices schema"` (gehört zu `"install living-room AC"`) und `"amend! install living-room sensors"` (gehört zu `"install living-room sensors"`) das Git-Log unnötig unübersichtlich.
 
-Further, one can argue that _automation_ is only complete with all rules in place, so `"turning on living-room AC"`, `"turning off living-room AC"`, and `"automate turning on/off living-room AC w/ balcony door"` can be combined into one commit  `"automate living-room AC"`.
+Darüber hinaus lässt sich argumentieren, dass die _Automatisierung_ erst vollständig ist, wenn alle Regeln vorhanden sind, sodass `"turning on living-room AC"`, `"turning off living-room AC"` und `"automate turning on/off living-room AC w/ balcony door"` zu einem einzigen Commit `"automate living-room AC"` zusammengefasst werden können.
 
-_Squash_ the commits on `living-room-ac-automation` to tell a coherent story.
+_Führe_ die Commits auf `living-room-ac-automation` per _Squash_ zusammen, um eine kohärente Story zu erzählen.
 
-_Hint_: You can only squash commits that are next to each other, so you need to move some commits to be able to squash them.
+_Tipp_: Du kannst nur Commits squashen, die direkt nebeneinanderliegen; du musst also einige Commits verschieben, um sie squashen zu können.
 
-_Nice to Know_: You can make use of the [`--autosquash`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt---autosquash) by prefixing a commit message with `"squash! ..."`, `fixup! ...`, or `amend! ...`.
+_Gut zu wissen_: Du kannst [`--autosquash`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt---autosquash) nutzen, indem du einer Commit-Message das Präfix `"squash! ..."`, `fixup! ...` oder `amend! ...` voranstellst.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 71f8476 (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -63,9 +63,9 @@ $ git log --oneline --graph --decorate --all
 * 18806df write README
 * 3e2c173 configure Git
 ```
-_Note_: The initial Git history of `living-room-ac-automation` slightly different from exercise `106` by design.
+_Hinweis_: Die initiale Git-Historie von `living-room-ac-automation` unterscheidet sich bewusst leicht von Übung `106`.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * e99ef08 (HEAD -> living-room-ac-automation) automate living-room AC
@@ -85,11 +85,11 @@ $ git log --oneline --graph --decorate --all
 * 18806df write README
 * 3e2c173 configure Git
 ```
-_Note_: The commit hashes after squashing are different as the commits are new, and so their child commits new commit hashes as well.
+_Hinweis_: Die Commit-Hashes nach dem Squashen sind unterschiedlich, da neue Commits entstanden sind und somit auch deren Child-Commits neue Hashes erhalten.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- What is the difference between a _small_ commit and an _atomic_ commit?
-- When does having many tiny commits make history harder to understand?
-- When should commits not be squashed, even if they are small?
-- Why can _"fix"_ commits be useful during development but distracting in final history?
+- Was ist der Unterschied zwischen einem _kleinen_ Commit und einem _atomaren_ Commit?
+- Wann machen viele winzige Commits die Historie schwerer verständlich?
+- Wann sollten Commits nicht gesquasht werden, selbst wenn sie klein sind?
+- Warum können _"Fix"_-Commits während der Entwicklung nützlich, in der finalen Historie jedoch störend sein?

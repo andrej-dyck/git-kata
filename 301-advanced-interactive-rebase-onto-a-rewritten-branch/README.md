@@ -1,36 +1,36 @@
-# 301 Interactive Rebase onto a Re-written Branch
+# 301 Interactive Rebase auf einen umgeschriebenen Branch
 
-At times, we commit work to a branch that has been re-written at origin.
-This can happen when we work on different machines, collaborate with others, or have integrated changes early through other branches.
+Gelegentlich committen wir Arbeiten auf einen Branch, der auf origin umgeschrieben wurde.
+Dies kann passieren, wenn wir auf verschiedenen Rechnern arbeiten, mit anderen zusammenarbeiten oder Änderungen frühzeitig über andere Branches integriert haben.
 
-As alluded to in [exercise 205](../205-remote-rewriting-history-with-teammates/README.md), our branch and `origin` can both have changes that we want to keep.
-In this case, we want to decide which changes to keep commit by commit.
+Wie in [Übung 205](../205-remote-rewriting-history-with-teammates/README.md) angedeutet, können sowohl unser lokaler Branch als auch `origin` Änderungen enthalten, die wir behalten möchten.
+In diesem Fall wollen wir Commit für Commit entscheiden, welche Änderungen beibehalten werden sollen.
 
-To cleanly merge both histories, we can use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) followed by a [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) to publish a clean history.
-Here, the general approach is to _delete_ obsolete commits from our branch or resolve the conflicts manually while rebasing onto `origin`.
+Um beide Historien sauber zusammenzuführen, können wir den [interaktiven Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) gefolgt von einem [`git push --force-with-lease`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease) nutzen, um eine saubere Historie zu veröffentlichen.
+Hierbei besteht der allgemeine Ansatz darin, obsolete Commits aus unserem Branch zu _löschen_ oder die Konflikte während des Rebase auf `origin` manuell aufzulösen.
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-We worked on _automating_ the _living-room AC_ and pushed our work-in-progress (_WIP_) changes.
-Meanwhile, on a different machine, we (or a teammate) cleaned up the history, but before the final changes.
-Now, as we finished the feature _balcony-door_ sensor and rules, both our branch and `origin` have changes that we want to keep.
+Wir haben an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ gearbeitet und unsere Work-in-Progress (_WIP_)-Änderungen gepusht.
+In der Zwischenzeit haben wir (oder ein Teammitglied) auf einem anderen Rechner die Historie aufgeräumt; allerdings vor den finalen Änderungen.
+Nun, da wir das Feature für den _Balkontür_-Sensor und die zugehörigen Regeln fertiggestellt haben, enthalten sowohl unser Branch als auch `origin` Änderungen, die wir behalten möchten.
 
-## Task: Rewrite the Git History and Craft a Clean History
+## Aufgabe: Die Git-Historie umschreiben und eine saubere Historie erstellen
 
-Merge both histories of `living-room-ac-automation` and it's `origin` counterpart to compose a clean history using _interactive rebase_.
+Führe beide Historien von `living-room-ac-automation` und dessen `origin`-Gegenstück zusammen, um mithilfe des _interaktiven Rebase_ eine saubere Historie zu erstellen.
 
-On our local branch, we extended the feature by automating the living-room AC based on the _balcony-door sensor_.
+Auf unserem lokalen Branch haben wir das Feature erweitert, indem wir die Wohnzimmer-Klimaanlage basierend auf dem _Balkontürsensor_ automatisieren.
 
-At `origin`, the commits have proper commit messages and remove the `testMode` property from the AC automation rules.
-Further, they _squash_ the two automation commits into one.
+Auf `origin` haben die Commits saubere Commit-Messages und die Eigenschaft `testMode` wurde aus den AC-Automatisierungsregeln entfernt.
+Außerdem wurden dort die beiden Automatisierungs-Commits per _Squash_ zu einem zusammengeführt.
 
-Also note that `main` has a more complete `automation-rules.schema.json` with `"define automation-rules schema"` than our `"WIP automation rules schema`".
+Beachte auch, dass `main` mit `"define automation-rules schema"` eine vollständigere Version von `automation-rules.schema.json` besitzt als unser `"WIP automation rules schema"`.
 
-Finally, make a second _interactive rebase_ to remove the `testMode` property, and undo the _squash_ `"automate living-room AC"` back into separate commits.
+Führe schließlich einen zweiten _interaktiven Rebase_ durch, um die Eigenschaft `testMode` zu entfernen und den per Squash zusammengefassten Commit `"automate living-room AC"` wieder in separate Commits aufzuteilen.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 3afe36c (HEAD -> living-room-ac-automation) WIP ac on/off + balcony door
@@ -53,10 +53,10 @@ $ git log --oneline --graph --decorate --all
 * 1cf3070 write README
 * 3c2ac1a configure Git
 ```
-_Note_: Both, `living-room-ac-automation` and `origin`, have recent changes that we want to keep.
-A Git client shows something similar to `↓5 ↑7` for this graph.
+_Hinweis_: Sowohl `living-room-ac-automation` als auch `origin` enthalten neuere Änderungen, die wir behalten möchten.
+Ein Git-Client zeigt für diesen Graphen so etwas wie `↓5 ↑7` an.
 
-### Git History after the 1st Interactive Rebase
+### Git-Historie nach dem 1. interaktiven Rebase
 ```console
 $ git log --oneline --graph --decorate --all
 * 5a0e09f (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -73,9 +73,9 @@ $ git log --oneline --graph --decorate --all
 * 1cf3070 write README
 * 3c2ac1a configure Git
 ```
-_Note_: After the first _interactive rebase_ onto `origin/living-room-ac-automation`, we should have two newer `↑2` commits and a linear history.
+_Hinweis_: Nach dem ersten _interaktiven Rebase_ auf `origin/living-room-ac-automation` sollten wir zwei neuere Commits (`↑2`) und eine lineare Historie haben.
 
-### Pre-push Git History (after the 2nd Interactive Rebase)
+### Git-Historie vor dem Push (nach dem 2. interaktiven Rebase)
 ```console
 $ git log --oneline --graph --decorate --all
 * 007d041 (HEAD -> living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -95,10 +95,10 @@ $ git log --oneline --graph --decorate --all
 * 1cf3070 write README
 * 3c2ac1a configure Git
 ```
-_Note_: After the second _interactive rebase_, we should have no more `testMode` property and have three commits automating the living-room AC.
-As we are about to overwrite `origin` dropping one commit, a Git client shows something like `↓1 ↑4`.
+_Hinweis_: Nach dem zweiten _interaktiven Rebase_ sollten wir keine `testMode`-Eigenschaft mehr haben und drei Commits zur Automatisierung der Wohnzimmer-Klimaanlage vorfinden.
+Da wir dabei sind, `origin` zu überschreiben und einen Commit zu verwerfen, zeigt ein Git-Client etwas wie `↓1 ↑4` an.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 007d041 (HEAD -> living-room-ac-automation, origin/living-room-ac-automation) automate turning on/off living-room AC w/ balcony door
@@ -116,11 +116,11 @@ $ git log --oneline --graph --decorate --all
 * 1cf3070 write README
 * 3c2ac1a configure Git
 ```
-_Note_: Finally, after the _force push_, we have a linear history with good commits (atomic, descriptive, coherent) that is easy to understand.
+_Hinweis_: Nach dem _Force-Push_ haben wir schließlich eine lineare Historie mit guten Commits (atomar, deskriptiv, kohärent), die leicht verständlich ist.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- Why is it harder to reconcile histories when both the local branch and `origin` contain changes we want to keep?
-- What makes a commit obsolete?
-- Why is it useful to perform this cleanup commit by commit instead of accepting one history wholesale?
-- How does the final history improve compared with the initially diverged histories?
+- Warum ist es schwieriger, Historien abzugleichen, wenn sowohl der lokale Branch als auch `origin` Änderungen enthalten, die wir behalten möchten?
+- Was macht einen Commit obsolet?
+- Warum ist es nützlich, diese Bereinigung Commit für Commit durchzuführen, anstatt eine Historie pauschal zu übernehmen?
+- Wie verbessert sich die finale Historie im Vergleich zu den anfänglich auseinandergelaufenen Historien?

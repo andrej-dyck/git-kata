@@ -1,34 +1,34 @@
-# 103 Undo Last Commit(s) with Soft-Reset
+# 103 Letzte(n) Commit(s) mit Soft-Reset rückgängig machen
 
-Sometimes we commit changes that are temporary, e.g., work-in-progress (_WIP_).
-Sometimes we want to manually re-stage changes and separate commits.
-Sometimes we include unrelated changes to a commit and want to undo this commit.
+Manchmal committen wir Änderungen, die nur temporär sind, z. B. Work-in-Progress (_WIP_).
+Manchmal möchten wir Änderungen manuell neu stagen und in separate Commits aufteilen.
+Manchmal fügen wir einem Commit nicht dazugehörige Änderungen hinzu und möchten diesen Commit rückgängig machen.
 
-[`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) helps us to reset to a previous git-state while keeping all changes from those undone commits staged, so they can be recommitted.
+[`git reset --soft`](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft) hilft uns, auf einen früheren Git-Zustand zurückzusetzen, während alle Änderungen aus diesen rückgängig gemachten Commits im Staging-Bereich bleiben, sodass sie erneut committet werden können.
 
-So, unlike a _hard reset_, the changes are not lost; with `--soft`, they remain staged.
-Read more about _Git reset_ in the article [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified).
+Anders als bei einem _Hard-Reset_ gehen die Änderungen also nicht verloren; mit `--soft` bleiben sie gestaget.
+Lies mehr über _Git reset_ im Artikel [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified).
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-Following [exercise 101](../101-local-amend-commit/README.md) and [102](../102-local-commit-changes/README.md), we successfully installed our first _living-room devices_.
-Now, it's time for the _automation_.
-We are currently working on the `automation-rules.json` file.
+Im Anschluss an [Übung 101](../101-local-amend-commit/README.md) und [102](../102-local-commit-changes/README.md) haben wir unsere ersten _Wohnzimmer-Geräte_ erfolgreich installiert.
+Nun ist es Zeit für die _Automatisierung_.
+Wir arbeiten derzeit an der Datei `automation-rules.json`.
 
-## Task: Soft-reset and Replace WIP Commits
+## Aufgabe: Soft-Reset durchführen und WIP-Commits ersetzen
 
-We finished installing our _living-room_ devices: _light_, _presence sensor_, and _ambient-light sensor_.
+Wir haben die Installation unserer _Wohnzimmer_-Geräte abgeschlossen: _Licht_, _Präsenzsensor_ und _Umgebungslichtsensor_.
 
-On the branch `living-room-light-automation`, we are currently working on the `automation-rules.json` file.
-Here, we find our work in progress (_WIP_) from our previous session; e.g., the previous day, before lunch, from another PC.
+Auf dem Branch `living-room-light-automation` arbeiten wir aktuell an der Datei `automation-rules.json`.
+Hier finden wir unseren Zwischenstand (_WIP_) aus unserer vorherigen Session; z. B. vom Vortag, vor dem Mittagessen oder von einem anderen Rechner.
 
-Everything works, and it's time to finalize this feature branch.
+Alles funktioniert und es ist Zeit, diesen Feature-Branch fertigzustellen.
 
-_Soft-reset_ to before the WIP commits, remove `testMode` from all `rules` in `automation-rules.json`, and make one commit `"automate turning on/off the living room light"`.
+Führe einen _Soft-Reset_ auf den Zustand vor den WIP-Commits durch, entferne `testMode` aus allen `rules` in `automation-rules.json` und erstelle einen einzelnen Commit `"automate turning on/off the living room light"`.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 42980cf (HEAD -> living-room-light-automation) WIP automate living-room light based on ambient light
@@ -45,9 +45,9 @@ $ git log --oneline --graph --decorate --all
 * 9b570a5 write README
 * 951e3f4 configure Git
 ```
-_Note_: The _WIP_ commits are on the branch `living-room-light-automation` which is currently checked out.
+_Hinweis_: Die _WIP_-Commits befinden sich auf dem Branch `living-room-light-automation`, der aktuell ausgecheckt ist.
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 133124a (HEAD -> living-room-light-automation) automate living-room light
@@ -63,8 +63,8 @@ $ git log --oneline --graph --decorate --all
 * 951e3f4 configure Git
 ```
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-* Why might _WIP_ commits be useful during development but undesirable in final history?
-* How is _soft reset_ useful for rewriting history?
-* What risks are avoided by using `--soft` instead of `--hard`?
+* Warum können _WIP_-Commits während der Entwicklung nützlich, in der finalen Historie jedoch unerwünscht sein?
+* Wie ist der _Soft-Reset_ beim Umschreiben der Historie hilfreich?
+* Welche Risiken werden vermieden, wenn man `--soft` anstelle von `--hard` verwendet?

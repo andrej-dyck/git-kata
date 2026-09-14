@@ -1,41 +1,41 @@
-# 110 Interactive Rebase - Split Commits
+# 110 Interactive Rebase - Commits aufteilen
 
-[Interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) lets us work on problems naturally, commit changes as we go, and make our Git history more coherent and readable before sharing it with others (cf. [exercise 106](../106-local-interactive-rebase-reorder-commits/README.md)).
+Der [interaktive Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) ermöglicht es uns, Probleme auf natürliche Weise zu bearbeiten, Änderungen schrittweise zu committen und unsere Git-Historie kohärenter und lesbarer zu gestalten, bevor wir sie mit anderen teilen (vgl. [Übung 106](../106-local-interactive-rebase-reorder-commits/README.md)).
 
-Git allows us to make decisions about the commit history later.
-One of these decisions might be to _split_ a commit into multiple smaller commits.
-Splitting commits is useful when we committed unrelated changes by mistake, the commit isn't atomic, or realize later that we can split off changes to integrate those sooner.
+Git erlaubt es uns, Entscheidungen über die Commit-Historie nachträglich zu treffen.
+Eine dieser Entscheidungen kann sein, einen Commit in mehrere kleinere Commits _aufzuteilen_ (`split`).
+Das Aufteilen von Commits ist nützlich, wenn wir versehentlich unabhängige Änderungen zusammen committet haben, der Commit nicht atomar ist oder wir später feststellen, dass wir Änderungen abspalten können, um sie früher zu integrieren.
 
-Note that splitting commits is a balancing act between lacking coherence and overly broad.
-Each commit should be small enough to be focused but large enough to represent a coherent change.
+Beachte, dass das Aufteilen von Commits eine Gratwanderung zwischen fehlender Kohärenz und zu großer Breite ist.
+Jeder Commit sollte klein genug sein, um fokussiert zu sein, aber groß genug, um eine kohärente Änderung darzustellen.
 
-This exercise will help you understand how to use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) to _split_ commits.
+Diese Übung hilft dir zu verstehen, wie du den [interaktiven Rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) [`git rebase -i`](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i) nutzt, um Commits _aufzuteilen_.
 
 ![](../resources/main-feature-before-split.svg)
 
-After splitting the first commit of the `feature` branch into two separate commits:
+Nach dem Aufteilen des ersten Commits des `feature`-Branches in zwei separate Commits:
 
 ![](../resources/main-feature-splitted.svg)
 
-## Exercise Context
+## Kontext der Übung
 
-We are working on a _Smart Home_ project, where its configuration is split across three primary data files: `rooms.json`, `devices.json`, and `automation-rules.json`.
+Wir arbeiten an einem _Smart Home_-Projekt, dessen Konfiguration auf drei primäre Datendateien aufgeteilt ist: `rooms.json`, `devices.json` und `automation-rules.json`.
 
-While our team is working on _automating_ the _living-room light_ (exercises `101` to `104`), we _cherry-picked_ their _automation-rules schema_ and started the work on _automating_ the _living-room AC_.
+Während unser Team an der _Automatisierung_ des _Wohnzimmer-Lichts_ arbeitet (Übungen `101` bis `104`), haben wir deren _automation-rules Schema_ per _Cherry-Pick_ übernommen und mit der Arbeit an der _Automatisierung_ der _Wohnzimmer-Klimaanlage_ begonnen.
 
-Exercises [106](../106-local-interactive-rebase-reorder-commits/README.md) to [111](../111-local-interactive-rebase-delete-commits/README.md) have the same context, but with slightly different initial and target Git history to best support the exercise's focus.
+Die Übungen [106](../106-local-interactive-rebase-reorder-commits/README.md) bis [111](../111-local-interactive-rebase-delete-commits/README.md) haben denselben Kontext, aber leicht abweichende initiale und Ziel-Git-Historien, um den jeweiligen Schwerpunkt der Übung optimal zu unterstützen.
 
-## Task: Split Commits using Interactive Rebase
+## Aufgabe: Commits mittels Interactive Rebase aufteilen
 
-In this exercise, we committed our work on `living-room-ac-automation`.
-We achieved a pretty good sequence of commits, but arguably, some commits comprise more than one logical change.
+In dieser Übung haben wir unsere Arbeit an `living-room-ac-automation` committet.
+Wir haben eine recht gute Abfolge von Commits erreicht, allerdings enthalten einige Commits mehr als eine logische Änderung.
 
-For example, `"install living-room AC"` defines the `traits`-schema for `devices`. This might be a useful commit to integrate early, so our team can start using it sooner.
-And we can also split the installation of sensors `"install living-room sensors"` as well as automation `"automate living-room AC"` into two commits, respectively.
+Beispielsweise definiert `"install living-room AC"` das `traits`-Schema für `devices`. Dies könnte ein nützlicher Commit sein, um ihn frühzeitig zu integrieren, damit unser Team ihn früher nutzen kann.
+Zudem können wir die Installation der Sensoren `"install living-room sensors"` sowie die Automatisierung `"automate living-room AC"` jeweils in zwei Commits aufteilen.
 
-_Split_ those three commits mentioned above using _interactive rebase_.
+_Teile_ diese drei oben genannten Commits mittels _interaktivem Rebase_ auf.
 
-### Initial Git History
+### Initiale Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 6075807 (HEAD -> living-room-ac-automation) automate living-room AC
@@ -56,7 +56,7 @@ $ git log --oneline --graph --decorate --all
 * 9d1fbb3 configure Git
 ```
 
-### Target Git History
+### Ziel-Git-Historie
 ```console
 $ git log --oneline --graph --decorate --all
 * 7e19fe6 (HEAD -> living-room-ac-automation) turn off/on living-room AC based on open/closed balcony-door
@@ -79,10 +79,10 @@ $ git log --oneline --graph --decorate --all
 * 598bd6d write README
 * 9d1fbb3 configure Git
 ```
-_Note_: Here, we split `"install living-room sensors"` into two commits, one for thermostat sensor and one for balcony-door sensor, and then _re-ordered_ the commits to intermix with automation. It's fine if you choose not to do this.
+_Hinweis_: Hier haben wir `"install living-room sensors"` in zwei Commits aufgeteilt (einen für den Thermostatsensor und einen für den Balkontürsensor) und die Commits anschließend so _umgeordnet_, dass sie sich mit der Automatisierung abwechseln. Es ist völlig in Ordnung, wenn du dies anders machst.
 
-## Reflect & Review
+## Reflektieren & Wiederholen
 
-- What are the signs that a commit contains too many unrelated changes?
-- How does splitting support the idea of _atomic_ commits?
-- How would a cleaner split help someone _cherry-pick_ or _revert_ only part of the work?
+- Was sind Anzeichen dafür, dass ein Commit zu viele unabhängige Änderungen enthält?
+- Wie unterstützt das Aufteilen von Commits das Prinzip _atomarer_ Commits?
+- Wie würde eine sauberere Aufteilung jemandem helfen, nur einen Teil der Arbeit per _Cherry-Pick_ zu übernehmen oder _rückgängig_ zu machen?
