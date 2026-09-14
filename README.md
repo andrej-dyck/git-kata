@@ -1,6 +1,8 @@
 # Git Kata - Clean History
 
-[![CI](https://github.com/andrej-dyck/endoflife-radar/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/andrej-dyck/git-kata/actions/workflows/ci.yml)
+[![CI](https://github.com/andrej-dyck/endoflife-radar/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/andrej-dyck/git-kata/actions/workflows/ci.yml) 
+ [![language-en](./resources/lang-en.svg)](https://github.com/andrej-dyck/git-kata/)
+ [![language-de](./resources/lang-de.svg)](https://github.com/andrej-dyck/git-kata/tree/language-de)
 
 ![Git Logo](./resources/git-logo.png)
 
