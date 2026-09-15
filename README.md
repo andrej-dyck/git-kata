@@ -58,7 +58,7 @@ The three-hundreds `3xx` are advanced Git exercises.
 * Ensure the latest [Git](https://git-scm.com/) is installed
 * Clone this `git-kata` repository
   ```shell
-  git clone --depth 1 https://github.com/andrej-dyck/git-kata.git && cd git-kata && rm -rf .git
+  git clone --depth 1 https://github.com/andrej-dyck/git-kata.git && cd git-kata && rm -rf .git && rm -rf .github
   ```
 * Run `./init.sh` and choose which exercise to initialize
 * The exercise will be initialized in `<git-kata-root>/exercise`
