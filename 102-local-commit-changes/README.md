@@ -16,19 +16,18 @@ Following [exercise 101](../101-local-amend-commit/README.md), we now want to in
 ## Task: Commit Changes by Staging Lines within a File
 
 We registered the _living room_ with `rooms.json` in the previous exercise.
+
 Now, we defined the schema for devices in `devices.schema.json` and are about to install our _living-room light_ in `devices.json`.
+And we noticed that we made a typo in the `"$schema"` property of `devices.json`; we fixed this right away.
 
-Further, we noticed that we made a typo in the `"$schema"` property of `devices.json`; we fixed this right away.
-This change technically belongs to the previous commit `"define devices schema"`.
-
+The fix technically belongs to the previous commit `"define devices schema"`.
 Here are our three choices:
 1. commit the fix together with `"define devices schema"` (_that is not what we want in this exercise_)
 2. commit the fix separately with `"fix typo in devices.schema.json"`
 3. amend the previous commit `"define devices schema"` with the fix (_preferred way_)
 
-Implement option _2._ or _3._ using patch staging to commit only the schema fix, while leaving other changes in that file unstaged.
-
-Then, install the _living-room light_ with a separate commit `"install living-room light"`.
+Separate the two changes by staging the typo fix and commit the fix (option _2._) or amend the previous commit (option _3._).
+And then, make a separate commit `"install living-room light"` with the _living-room light_.
 
 ### Initial Git History
 ```console

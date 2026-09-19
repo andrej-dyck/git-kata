@@ -24,7 +24,7 @@ commit-empty-devices-with-mistake() {
   copy-rsc "smart-home-templates/empty-devices.json" devices.json || return
 
   json-edit devices.schema.json 'del(.properties.devices.items.properties.traits)' # we will add traits later
-  json-edit devices.json '."$schema" = "devices_schema.json"' || return # the mistake
+  json-edit devices.json '."$schema" = "deivce-scheme.json"' || return # the mistake
 
   git-commit "define devices schema"
 }
