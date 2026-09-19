@@ -33,47 +33,43 @@ Before executing the _rebase_ though, try to identify which commits will cause c
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 3576afb (main) automate living-room AC
-* c2c6516 define automation-rules schema
-* 9e9db27 install living-room balcony-door sensor
-* 901a8f7 install living-room thermostat sensor
-* a4dcc86 install living-room AC
-| * 24189cb (HEAD -> living-room-light-automation) automate turning on/off living room wall lamp
-| * 9852d2b install living-room wall lamp
-| * ff58bf0 automate living-room light
-| * 811951b define automation-rules schema
-| * c173e66 define living-room-light trait on-off
+* d994035 (main) install living-room balcony-door sensor
+* 2000688 install living-room thermostat sensor
+* 7e33e41 install living-room AC
+* 523a401 define automation-rules schema
+* 56c699a define traits for devices
+| * dd71c5a (HEAD -> living-room-light-automation) automate living-room light
+| * 06f1ae7 define automation-rules schema
+| * aabef6d install living-room ambient-light sensor
+| * ae93029 install living-room presence sensor
+| * 0b9c22e define living-room-light trait on-off
 |/
-* 4af729b install living-room ambient-light sensor
-* a115cf6 install living-room presence sensor
-* db1dab9 install living-room light
-* 4016796 define devices schema
-* 6082fdf register living room
-* 4310a75 define rooms schema
-* 6d223d7 write README
-* 1ab9aab configure Git
+* 9817010 install living-room light
+* 24f2db2 define devices schema
+* 3d94ca1 register living room
+* 4ab80a3 define rooms schema
+* 4201555 write README
+* 221fce7 configure Git
 ```
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* c2a2bfc (HEAD -> living-room-light-automation) automate turning on/off living room wall lamp
-* 4569584 install living-room wall lamp
-* 299c6e8 automate living-room light
-* ded6133 define living-room-light trait on-off
-* 3576afb (main) automate living-room AC
-* c2c6516 define automation-rules schema
-* 9e9db27 install living-room balcony-door sensor
-* 901a8f7 install living-room thermostat sensor
-* a4dcc86 install living-room AC
-* 4af729b install living-room ambient-light sensor
-* a115cf6 install living-room presence sensor
-* db1dab9 install living-room light
-* 4016796 define devices schema
-* 6082fdf register living room
-* 4310a75 define rooms schema
-* 6d223d7 write README
-* 1ab9aab configure Git
+* 3506132 (HEAD -> living-room-light-automation) automate living-room light
+* 2ccd6ca install living-room ambient-light sensor
+* fc61987 install living-room presence sensor
+* 7aa91fc define living-room-light trait on-off
+* d994035 (main) install living-room balcony-door sensor
+* 2000688 install living-room thermostat sensor
+* 7e33e41 install living-room AC
+* 523a401 define automation-rules schema
+* 56c699a define traits for devices
+* 9817010 install living-room light
+* 24f2db2 define devices schema
+* 3d94ca1 register living room
+* 4ab80a3 define rooms schema
+* 4201555 write README
+* 221fce7 configure Git
 ```
 
 ## Reflect & Review

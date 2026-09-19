@@ -33,8 +33,6 @@ $ git log --oneline --graph --decorate --all
 | * 4632064 WIP sensors
 | * da3763e install ac
 |/
-* 134e91c install living-room ambient-light sensor
-* 8e5c7e2 install living-room presence sensor
 * 4eaed49 install living-room light
 * 055027d define devices schema
 * 62fdd8a register living room
@@ -60,8 +58,6 @@ $ git log --oneline --graph --decorate --all
 | * 4632064 WIP sensors
 | * da3763e install ac
 |/
-* 134e91c install living-room ambient-light sensor
-* 8e5c7e2 install living-room presence sensor
 * 4eaed49 install living-room light
 * 055027d define devices schema
 * 62fdd8a register living room
@@ -82,8 +78,6 @@ $ git log --oneline --graph --decorate --all
 * c5264e6 install living-room AC
 * ab4b7bc (origin/main, main) define automation-rules schema
 * feb70e5 define traits for devices
-* 134e91c install living-room ambient-light sensor
-* 8e5c7e2 install living-room presence sensor
 * 4eaed49 install living-room light
 * 055027d define devices schema
 * 62fdd8a register living room

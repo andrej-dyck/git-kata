@@ -16,7 +16,7 @@ init-exercise() {
 
 push-initial-work-on-main-and-feature() {
   # main
-  commit-initial-work-on-main || return # from 203
+  commit-initial-work-on-main || return # from 103
   git-push || push
 
   # feature "living-room-ac-automation"
@@ -25,17 +25,15 @@ push-initial-work-on-main-and-feature() {
   git-push-new-branch "$1" || return
 
   # advance main
-  git-switch-main || return
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  commit-device-traits-schema || return # from 106
-  commit-empty-automation-rules || return # from 103
+  additional-work-on-main || return # from 104
   git-push || return
 }
 
 start-commits-ac-and-sensors() {
   define-device-traits || return # from 103
-  commit-living-room-ac "install ac" || return # from 104
-  commit-living-room-sensors "install sensors" || return # from 110
+  commit-living-room-ac "install ac" || return # from 105
+  commit-living-room-ac-sensors "install sensors" || return # from 110
 }
 
 continue-wip-commits-ac-automation() {

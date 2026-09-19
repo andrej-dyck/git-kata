@@ -17,8 +17,6 @@ init-ac-automation-branch() {
   commit-living-room || return # from 102
   commit-empty-devices || return # from 103
   commit-living-room-light  || return #from 103
-  commit-living-room-presence-sensor || return # from 103
-  commit-living-room-ambient-light-sensor || return # from 103
 
   # another feature "living-room-light-automation"
   feature-living-room-light-automation "living-room-light-automation" || return # from 104
@@ -31,17 +29,71 @@ init-ac-automation-branch() {
 
 wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 103
-  commit-living-room-ac || return # from 104
-  commit-device-traits-schema || return
-  commit-living-room-sensors-thermometer || return # from 104
-  commit-living-room-ac-rules || return # from 105
+  commit-living-room-ac || return # from 105
+  commit-device-traits-schema || return # from 104
+  commit-living-room-sensors-thermometer || return # from 105
+  commit-living-room-ac-rules || return
   commit-living-room-sensors-balcony-door|| return # from 104
 }
 
-commit-device-traits-schema() {
-  define-device-traits || return #from 103
+commit-living-room-ac-rules() {
+  define-living-room-ac-on-rule || return
+  define-living-room-ac-rule-off-rule || return
+  define-living-room-ac-rule-on-off-balcony-door-rule || return
 
-  git-commit "${1:-define traits for devices}"
+  git-commit "${1:-automate living-room AC}"
+}
+
+define-living-room-ac-on-rule() {
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-on",
+    "name": "Turn on living-room AC when its hot",
+    "when": [{
+      "sensorDeviceId": "living-room-thermostat-sensor",
+      "sensorValue": ">25°C"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-on",
+      "parameters": { "targetTemperatureCelsius": 21.0 }
+    }]
+  }]'
+}
+
+define-living-room-ac-rule-off-rule() {
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-off-temperature",
+    "name": "Turn off living-room AC when its cool",
+    "when": [{
+      "sensorDeviceId": "living-room-thermostat-sensor",
+      "sensorValue": "<20°C"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-off",
+    }]
+  }]'
+}
+
+define-living-room-ac-rule-on-off-balcony-door-rule() {
+  json-edit automation-rules.json '.rules |= map(
+    if .id == "living-room-ac-on" then
+      .when += [{ "sensorDeviceId": "living-room-balcony-door", "event": "door-closed" }]
+    else . end
+  )' || return
+
+  json-edit automation-rules.json '.rules += [{
+    "id": "living-room-ac-off-balcony",
+    "name": "Turn off living-room AC when balcony door open",
+    "when": [{
+      "sensorDeviceId": "living-room-balcony-door",
+      "event": "door-opened"
+    }],
+    "then": [{
+      "deviceId": "living-room-ac",
+      "action": "turn-off",
+    }]
+  }]' || return
 }
 
 run-init-exercise "$@"

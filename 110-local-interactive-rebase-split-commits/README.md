@@ -44,11 +44,11 @@ $ git log --oneline --graph --decorate --all
 * b9fb38e define automation-rules schema
 | * 3b79ba4 (living-room-light-automation) automate living-room light
 | * 42f707e define automation-rules schema
+| * b1cc447 install living-room ambient-light sensor
+| * 3e0a64b install living-room presence sensor
 | * c5669d2 define living-room-light trait on-off
 |/
-* b1cc447 (main) install living-room ambient-light sensor
-* 3e0a64b install living-room presence sensor
-* d4a8fa2 install living-room light
+* d4a8fa2 (main) install living-room light
 * 4fc7c87 define devices schema
 * 6ceafa8 register living room
 * e770935 define rooms schema
@@ -68,11 +68,11 @@ $ git log --oneline --graph --decorate --all
 * b9fb38e define automation-rules schema
 | * 3b79ba4 (living-room-light-automation) automate living-room light
 | * 42f707e define automation-rules schema
+| * b1cc447 install living-room ambient-light sensor
+| * 3e0a64b install living-room presence sensor
 | * c5669d2 define living-room-light trait on-off
 |/
-* b1cc447 (main) install living-room ambient-light sensor
-* 3e0a64b install living-room presence sensor
-* d4a8fa2 install living-room light
+* d4a8fa2 (main) install living-room light
 * 4fc7c87 define devices schema
 * 6ceafa8 register living room
 * e770935 define rooms schema

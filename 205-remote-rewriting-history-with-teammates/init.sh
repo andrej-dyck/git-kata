@@ -49,10 +49,10 @@ cleaned-up-origin() {
 }
 
 clean-ac-automation-commits() {
-  commit-living-room-ac || return # from 104
-  commit-living-room-sensors-thermometer || return # from 104
-  commit-living-room-sensors-balcony-door || return # from 104
-  commit-living-room-ac-rules || return # from 105
+  commit-living-room-ac || return # from 105
+  commit-living-room-sensors-thermometer || return # from 105
+  commit-living-room-sensors-balcony-door || return # from 105
+  commit-living-room-ac-rules || return # from 106
 }
 
 run-init-exercise "$@"

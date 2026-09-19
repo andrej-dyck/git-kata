@@ -21,6 +21,7 @@ wip-feature-lights-automation() {
   git-new-branch "$1" || return
 
   commit-living-room-light-traits || return # from 103
+  commit-living-room-light-sensors || return # from 103
   commit-empty-automation-rules || return # from 103
   commit-wip-automation-rule || return
 }

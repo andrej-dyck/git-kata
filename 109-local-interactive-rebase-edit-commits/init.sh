@@ -14,11 +14,11 @@ init-exercise() {
 wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 103
   commit-device-traits-schema || return # from 106
-  commit-living-room-ac || return # from 104
+  commit-living-room-ac || return # from 105
   amend-ac-id || return
-  commit-living-room-sensors-thermometer || return # from 104
-  commit-living-room-sensors-balcony-door || return # from 104
-  commit-living-room-ac-rules || return # from 105
+  commit-living-room-sensors-thermometer || return # from 105
+  commit-living-room-sensors-balcony-door || return # from 105
+  commit-living-room-ac-rules || return # from 106
   amend-ac-rules-deviceId || return
 }
 

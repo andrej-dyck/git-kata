@@ -31,36 +31,36 @@ _Soft-reset_ to before the WIP commits, remove `testMode` from all `rules` in `a
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 28fe671 (HEAD -> living-room-light-automation) WIP automate living-room light based on ambient light
-* 1d62832 WIP automate turning off the living-room light
-* 9709189 WIP automate turning on the living-room light
-* da3ea2f define automation-rules schema
-* 00d7a16 define living-room-light trait on-off
-* ba2f53b (main) install living-room ambient-light sensor
-* ab9be2f install living-room presence sensor
-* 2fb482d install living-room light
-* f04f895 define devices schema
-* 86e198f register living room
-* 753e83b define rooms schema
-* 5ff2789 write README
-* 258621a configure Git
+* 42980cf (HEAD -> living-room-light-automation) WIP automate living-room light based on ambient light
+* ba68393 WIP automate turning off the living-room light
+* fee2a34 WIP automate turning on the living-room light
+* a2c97f8 define automation-rules schema
+* 13108ca install living-room ambient-light sensor
+* 49f4ba2 install living-room presence sensor
+* 17d752c define living-room-light trait on-off
+* 38a6e17 (main) install living-room light
+* 3e58fd0 define devices schema
+* 75bb5c6 register living room
+* ffc4d23 define rooms schema
+* 9b570a5 write README
+* 951e3f4 configure Git
 ```
 _Note_: The _WIP_ commits are on the branch `living-room-light-automation` which is currently checked out.
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* c2cca52 (HEAD -> living-room-light-automation) automate living-room light
-* da3ea2f define automation-rules schema
-* 00d7a16 define living-room-light trait on-off
-* ba2f53b (main) install living-room ambient-light sensor
-* ab9be2f install living-room presence sensor
-* 2fb482d install living-room light
-* f04f895 define devices schema
-* 86e198f register living room
-* 753e83b define rooms schema
-* 5ff2789 write README
-* 258621a configure Git
+* 133124a (HEAD -> living-room-light-automation) automate living-room light
+* a2c97f8 define automation-rules schema
+* 13108ca install living-room ambient-light sensor
+* 49f4ba2 install living-room presence sensor
+* 17d752c define living-room-light trait on-off
+* 38a6e17 (main) install living-room light
+* 3e58fd0 define devices schema
+* 75bb5c6 register living room
+* ffc4d23 define rooms schema
+* 9b570a5 write README
+* 951e3f4 configure Git
 ```
 
 ## Reflect & Review

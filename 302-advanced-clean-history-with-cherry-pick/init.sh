@@ -71,7 +71,7 @@ continue-wip-commits-ac-automation-balcony-door() {
   commit-DELETE-thermometer-test-value "26°C" || return # from 111
   commit-DELETE-thermometer-test-value "19°C" || return # from 111
 
-  commit-living-room-sensors-balcony-door "install balcony door" || return # from 110
+  commit-living-room-sensors-balcony-door "install balcony door" || return # from 105
 
   commit-living-room-ac-rule-on-off-balcony-door "WIP ac on/off + balcony door" || return # from 107
   amend-rule-test-mode-on "living-room-ac-off-balcony" || return # from 111

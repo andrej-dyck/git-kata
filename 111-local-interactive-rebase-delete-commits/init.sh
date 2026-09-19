@@ -15,9 +15,9 @@ wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 103
 
   define-device-traits || return # from 103
-  commit-living-room-ac || return # from 104
+  commit-living-room-ac || return # from 105
 
-  commit-living-room-sensors-thermometer || return # from 107
+  commit-living-room-sensors-thermometer || return # from 105
   commit-DELETE-thermometer-test-value "26°C" || return
   commit-living-room-ac-rule-on || return # from 107
   commit-DELETE-ac-rule-on-test-mode || return
@@ -25,7 +25,7 @@ wip-commits-ac-automation() {
   commit-living-room-ac-rule-off || return # from 107
   commit-DELETE-ac-rule-off-test-mode || return
   commit-DELETE-thermometer-test-value "19°C" || return
-  commit-living-room-sensors-balcony-door || return # from 107
+  commit-living-room-sensors-balcony-door || return # from 105
   commit-DELETE-balcony-test-value "door-closed" || return
   commit-living-room-ac-rule-on-off-balcony-door || return # from 107
   commit-DELETE-ac-rule-off-balcony-door-test-mode || return

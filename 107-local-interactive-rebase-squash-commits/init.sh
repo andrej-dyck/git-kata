@@ -13,9 +13,9 @@ init-exercise() {
 
 wip-commits-ac-automation() {
   commit-empty-automation-rules || return # from 103
-  commit-living-room-ac || return # from 104
-  commit-device-traits-schema "fixup! devices schema" || return # from 106
-  commit-living-room-sensors-thermometer "install living-room sensors" || return
+  commit-living-room-ac || return # from 105
+  commit-device-traits-schema "fixup! devices schema" || return # from 104
+  commit-living-room-sensors-thermometer "install living-room sensors" || return # from 105
   commit-living-room-ac-rule-on || return
   commit-living-room-ac-rule-off || return
   commit-living-room-sensors-balcony-door "amend! install living-room sensors" || return
@@ -23,17 +23,17 @@ wip-commits-ac-automation() {
 }
 
 commit-living-room-ac-rule-on() {
-  define-living-room-ac-on-rule || return # from 105
+  define-living-room-ac-on-rule || return # from 106
   git-commit "${1:-automate turning on living-room AC}"
 }
 
 commit-living-room-ac-rule-off() {
-  define-living-room-ac-rule-off-rule || return # from 105
+  define-living-room-ac-rule-off-rule || return # from 106
   git-commit "${1:-automate turning off living-room AC}"
 }
 
 commit-living-room-ac-rule-on-off-balcony-door() {
-  define-living-room-ac-rule-on-off-balcony-door-rule || return
+  define-living-room-ac-rule-on-off-balcony-door-rule || return # from 106
   git-commit "${1:-automate turning on/off living-room AC w/ balcony door}"
 }
 

@@ -84,10 +84,10 @@ Amend the WIP commit with the following changes and give it a proper name; e.g.,
 $ git log --oneline --graph --decorate --all
 * e22b66a (HEAD -> living-room-light-automation, origin/living-room-light-automation) WIP automation rules
 * dc6f8e2 define automation-rules schema
-* 3c557d0 define living-room-light trait on-off
-* 06295d8 (origin/main, main) install living-room ambient-light sensor
+* 06295d8 install living-room ambient-light sensor
 * b0ecad5 install living-room presence sensor
-* 80152be install living-room light
+* 3c557d0 define living-room-light trait on-off
+* 80152be (origin/main, main) install living-room light
 * 40912ed define devices schema
 * 2d944e2 register living room
 * f07c0e6 define rooms schema
@@ -103,10 +103,10 @@ $ git log --oneline --graph --decorate --all
 | * e22b66a (origin/living-room-light-automation) WIP automation rules
 |/
 * dc6f8e2 define automation-rules schema
-* 3c557d0 define living-room-light trait on-off
-* 06295d8 (origin/main, main) install living-room ambient-light sensor
+* 06295d8 install living-room ambient-light sensor
 * b0ecad5 install living-room presence sensor
-* 80152be install living-room light
+* 3c557d0 define living-room-light trait on-off
+* 80152be (origin/main, main) install living-room light
 * 40912ed define devices schema
 * 2d944e2 register living room
 * f07c0e6 define rooms schema
@@ -120,10 +120,10 @@ _Note_: Since we amended the last commit (`HEAD`), it has a different commit has
 $ git log --oneline --graph --decorate --all
 * 2339348 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
 * dc6f8e2 define automation-rules schema
-* 3c557d0 define living-room-light trait on-off
-* 06295d8 (origin/main, main) install living-room ambient-light sensor
+* 06295d8 install living-room ambient-light sensor
 * b0ecad5 install living-room presence sensor
-* 80152be install living-room light
+* 3c557d0 define living-room-light trait on-off
+* 80152be (origin/main, main) install living-room light
 * 40912ed define devices schema
 * 2d944e2 register living room
 * f07c0e6 define rooms schema

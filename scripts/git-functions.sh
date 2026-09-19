@@ -64,7 +64,7 @@ git-push-force() {
 
 git-integrate-into-main() {
   git-switch-branch "$1" || return
-  git rebase main || return
+  git rebase -q main || return
   git-switch-main || return
   git merge -q --ff-only "$1" || return
   git branch -q -d "$1" || return

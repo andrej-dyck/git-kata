@@ -16,7 +16,7 @@ commit-initial-work-on-main() {
   commit-empty-rooms || return # from 101
   commit-living-room || return # from 102
   commit-empty-devices || return
-  commit-living-room-devices || return
+  commit-living-room-light || return
 }
 
 commit-empty-devices() {
@@ -28,16 +28,15 @@ commit-empty-devices() {
   git-commit "define devices schema"
 }
 
-commit-living-room-devices() {
-  commit-living-room-light || return
-  commit-living-room-presence-sensor || return
-  commit-living-room-ambient-light-sensor || return
-}
-
 commit-living-room-light() {
   install-living-room-light || return # from 102
 
   git-commit "install living-room light"
+}
+
+commit-living-room-light-sensors() {
+  commit-living-room-presence-sensor || return
+  commit-living-room-ambient-light-sensor || return
 }
 
 commit-living-room-presence-sensor() {
@@ -66,6 +65,7 @@ wip-feature-lights-automation() {
   git-new-branch "$1" || return
 
   commit-living-room-light-traits || return
+  commit-living-room-light-sensors || return
   commit-empty-automation-rules || return
   commit-wip-automation-rule || return
 }

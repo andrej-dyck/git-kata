@@ -8,7 +8,7 @@ init-exercise() {
   init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
   # main
-  commit-initial-work-on-main || return # from 203
+  commit-initial-work-on-main || return # from 103
   git-push || push
 
   # feature "origin/living-room-ac-automation"
@@ -19,10 +19,8 @@ init-exercise() {
   ac-automation-clean-branch "living-room-ac-automation" || return
 
   # advance main
-  git-switch-main || return
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  commit-device-traits-schema || return # from 106
-  commit-empty-automation-rules || return # from 103
+  additional-work-on-main || return # from 104
   git-push || return
 
   # start task on branch "living-room-ac-automation"
@@ -32,8 +30,8 @@ init-exercise() {
 
 ac-automation-WIP-commits-on-origin() {
   git-new-branch "$1" || return
-  commit-living-room-ac "install ac" || return # from 104
-  commit-living-room-sensors "WIP sensors" || return # from 110
+  commit-living-room-ac "install ac" || return # from 105
+  commit-living-room-ac-sensors "WIP sensors" || return # from 110
   amend-sensor-test-value "living-room-thermostat-sensor" "26°C" || return # from 111
   git-amend-commit
   amend-sensor-test-value "living-room-balcony-door" "door-closed" || return # from 111
@@ -49,12 +47,12 @@ ac-automation-clean-branch() {
   git-switch-branch "$1" || return
   git reset -q --hard origin/main || return
 
-  commit-living-room-ac || return # from 104
-  commit-living-room-sensors-thermometer || return # from 104
+  commit-living-room-ac || return # from 105
+  commit-living-room-sensors-thermometer || return # from 105
   commit-empty-automation-rules || return # from 103
   commit-living-room-ac-rule-on || return # from 107
   commit-living-room-ac-rule-off || return # from 107
-  commit-living-room-sensors-balcony-door || return # from 104
+  commit-living-room-sensors-balcony-door || return # from 105
   commit-living-room-ac-rule-on-off-balcony-door || return # from 107
 }
 

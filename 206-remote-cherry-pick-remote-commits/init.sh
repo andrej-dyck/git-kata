@@ -8,7 +8,7 @@ init-exercise() {
   init-exercise-repo-with-origin "$exerciseDir" "$thisDir/README.md" || return
 
   # main
-  commit-initial-work-on-main || return # from 203
+  commit-initial-work-on-main || return # from 103
   git-push
 
   # feature "living-room-light-automation"

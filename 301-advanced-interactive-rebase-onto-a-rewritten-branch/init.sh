@@ -23,21 +23,19 @@ init-exercise() {
 
 push-initial-work-on-main-and-feature() {
   # main
-  commit-initial-work-on-main || return # from 203
+  commit-initial-work-on-main || return # from 103
   git-push || push
 
   # feature "living-room-ac-automation"
   git-new-branch "$1" || return
   define-device-traits || return # from 103
-  commit-living-room-ac "install ac" || return # from 104
-  commit-living-room-sensors-thermometer "install thermostat" || return # from 110
+  commit-living-room-ac "install ac" || return # from 105
+  commit-living-room-sensors-thermometer "install thermostat" || return # from 105
   git-push-new-branch "$1" || return
 
   # advance main
-  git-switch-main || return
   sleep 1 # required so git log shows the same history as 'Initial Git History' of the README
-  commit-device-traits-schema || return # from 106
-  commit-empty-automation-rules || return # from 103
+  additional-work-on-main || return # from 104
   git-push || return
 }
 
@@ -66,16 +64,16 @@ continue-wip-commits-ac-automation() {
 }
 
 origin-ac-automation-commits() {
-  commit-living-room-ac || return # from 104
-  commit-living-room-sensors-thermometer || return # from 104
+  commit-living-room-ac || return # from 105
+  commit-living-room-sensors-thermometer || return # from 105
 
-  define-living-room-ac-on-rule || return #from 105
-  define-living-room-ac-rule-off-rule || return #from 105
+  define-living-room-ac-on-rule || return #from 106
+  define-living-room-ac-rule-off-rule || return #from 106
   git-commit "automate living-room AC"
 }
 
 continue-wip-commits-ac-automation-balcony-door() {
-  commit-living-room-sensors-balcony-door "install balcony door" || return # from 110
+  commit-living-room-sensors-balcony-door "install balcony door" || return # from 105
 
   commit-living-room-ac-rule-on-off-balcony-door "WIP ac on/off + balcony door" || return # from 107
   amend-rule-test-mode-on "living-room-ac-off-balcony" || return # from 111

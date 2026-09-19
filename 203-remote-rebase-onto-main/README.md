@@ -38,68 +38,62 @@ Since we already pushed our branch, use `git push --force-with-lease` to overwri
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 00f1515 (origin/main, main) define automation-rules schema
-* bc034f3 install living-room balcony-door sensor
-* 205e2d4 install living-room thermostat sensor
-* 4ca4d1c install living-room AC
-| * c26c0d5 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
-| * 320820f define automation-rules schema
-| * 9ac7d52 define living-room-light trait on-off
-| * b7fab4d install living-room ambient-light sensor
-| * ab6e9f2 install living-room presence sensor
+* 11d621e (origin/main, main) define automation-rules schema
+* 0b6cfd3 define traits for devices
+| * 32caf6f (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
+| * a9a5d2f define automation-rules schema
+| * ac9d0ce install living-room ambient-light sensor
+| * a060542 install living-room presence sensor
+| * 53f48ef define living-room-light trait on-off
 |/
-* 6f16dfe install living-room light
-* d75c547 define devices schema
-* 6db1232 register living room
-* bcd8abe define rooms schema
-* bd3f9de write README
-* ec8e764 configure Git
+* f715fcd install living-room light
+* 296fd9f define devices schema
+* f290e3c register living room
+* 9ff6aea define rooms schema
+* 0c2ca64 write README
+* 6b18d94 configure Git
 ```
 _Note_: Notice how `"install living-room AC"` and `"define living-room-light trait on-off"` both make changes to `devices.schema.json`. Further, `"define automation-rules schema"` on `main` was _cherry-picked_ from `living-room-light-automation`.
 
 ### Pre-push Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* f1c0b20 (HEAD -> living-room-light-automation) automate living-room light
-* 1b2180b define living-room-light trait on-off
-* 1e56542 install living-room ambient-light sensor
-* 3a3605f install living-room presence sensor
-* 00f1515 (origin/main, main) define automation-rules schema
-* bc034f3 install living-room balcony-door sensor
-* 205e2d4 install living-room thermostat sensor
-* 4ca4d1c install living-room AC
-| * c26c0d5 (origin/living-room-light-automation) automate living-room light
-| * 320820f define automation-rules schema
-| * 9ac7d52 define living-room-light trait on-off
-| * b7fab4d install living-room ambient-light sensor
-| * ab6e9f2 install living-room presence sensor
+* 2114c97 (HEAD -> living-room-light-automation) automate living-room light
+* 22cfb0f install living-room ambient-light sensor
+* 570c3ce install living-room presence sensor
+* 9545b9b define living-room-light trait on-off
+* 11d621e (origin/main, main) define automation-rules schema
+* 0b6cfd3 define traits for devices
+| * 32caf6f (origin/living-room-light-automation) automate living-room light
+| * a9a5d2f define automation-rules schema
+| * ac9d0ce install living-room ambient-light sensor
+| * a060542 install living-room presence sensor
+| * 53f48ef define living-room-light trait on-off
 |/
-* 6f16dfe install living-room light
-* d75c547 define devices schema
-* 6db1232 register living room
-* bcd8abe define rooms schema
-* bd3f9de write README
-* ec8e764 configure Git
+* f715fcd install living-room light
+* 296fd9f define devices schema
+* f290e3c register living room
+* 9ff6aea define rooms schema
+* 0c2ca64 write README
+* 6b18d94 configure Git
 ```
 _Note_: A Git client shows something similar to `↓5 ↑8` for this graph.
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* f1c0b20 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
-* 1b2180b define living-room-light trait on-off
-* 1e56542 install living-room ambient-light sensor
-* 3a3605f install living-room presence sensor
-* 00f1515 (origin/main, main) define automation-rules schema
-* bc034f3 install living-room balcony-door sensor
-* 205e2d4 install living-room thermostat sensor
-* 4ca4d1c install living-room AC
-* 6f16dfe install living-room light
-* d75c547 define devices schema
-* 6db1232 register living room
-* bcd8abe define rooms schema
-* bd3f9de write README
-* ec8e764 configure Git
+* 2114c97 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
+* 22cfb0f install living-room ambient-light sensor
+* 570c3ce install living-room presence sensor
+* 9545b9b define living-room-light trait on-off
+* 11d621e (origin/main, main) define automation-rules schema
+* 0b6cfd3 define traits for devices
+* f715fcd install living-room light
+* 296fd9f define devices schema
+* f290e3c register living room
+* 9ff6aea define rooms schema
+* 0c2ca64 write README
+* 6b18d94 configure Git
 ```
 _Note_: Notice how `"define living-room-light trait on-off"` doesn't have any changes to `devices.schema.json` anymore, and that `"define automation-rules schema"` is removed from `living-room-light-automation`.
 

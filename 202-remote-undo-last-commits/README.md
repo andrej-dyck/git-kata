@@ -38,10 +38,10 @@ $ git log --oneline --graph --decorate --all
 * 6f188b9 WIP automate turning off the living-room light
 * 82de217 WIP automate turning on the living-room light
 * 9aae62c define automation-rules schema
-* ad280a9 define living-room-light trait on-off
-* 0f2750e (origin/main, main) install living-room ambient-light sensor
+* 0f2750e install living-room ambient-light sensor
 * ff61447 install living-room presence sensor
-* 633c8c4 install living-room light
+* ad280a9 define living-room-light trait on-off
+* 633c8c4 (origin/main, main) install living-room light
 * 039a6af define devices schema
 * 40e06ce register living room
 * 7d2582f define rooms schema
@@ -58,10 +58,10 @@ $ git log --oneline --graph --decorate --all
 | * 82de217 WIP automate turning on the living-room light
 |/
 * 9aae62c define automation-rules schema
-* ad280a9 define living-room-light trait on-off
-* 0f2750e (origin/main, main) install living-room ambient-light sensor
+* 0f2750e install living-room ambient-light sensor
 * ff61447 install living-room presence sensor
-* 633c8c4 install living-room light
+* ad280a9 define living-room-light trait on-off
+* 633c8c4 (origin/main, main) install living-room light
 * 039a6af define devices schema
 * 40e06ce register living room
 * 7d2582f define rooms schema
@@ -75,10 +75,10 @@ _Note_: After the soft-reset and new commit, the local branch contains the clean
 $ git log --oneline --graph --decorate --all
 * bb82700 (HEAD -> living-room-light-automation, origin/living-room-light-automation) automate living-room light
 * 9aae62c define automation-rules schema
-* ad280a9 define living-room-light trait on-off
-* 0f2750e (origin/main, main) install living-room ambient-light sensor
+* 0f2750e install living-room ambient-light sensor
 * ff61447 install living-room presence sensor
-* 633c8c4 install living-room light
+* ad280a9 define living-room-light trait on-off
+* 633c8c4 (origin/main, main) install living-room light
 * 039a6af define devices schema
 * 40e06ce register living room
 * 7d2582f define rooms schema

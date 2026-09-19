@@ -8,7 +8,7 @@ init-exercise() {
   init-exercise-repo "$exerciseDir" "$thisDir/README.md" || return
 
   # main
-  commit-initial-work-on-main || return
+  commit-initial-work-on-main || return # from 103
 
   # feature "living-room-light-automation"
   feature-living-room-light-automation "living-room-light-automation" || return
@@ -21,18 +21,11 @@ init-exercise() {
   git-switch-branch "living-room-light-automation" || return
 }
 
-commit-initial-work-on-main() {
-  git-switch-main
-  commit-empty-rooms || return # from 101
-  commit-living-room || return # from 102
-  commit-empty-devices || return # from 103
-  commit-living-room-devices || return # from 103
-}
-
 feature-living-room-light-automation() {
   git-new-branch "$1" || return
 
   commit-living-room-light-traits || return # from 103
+  commit-living-room-light-sensors || return # from 103
   commit-empty-automation-rules || return # from 103
   commit-living-room-light-rules || return
 }
@@ -45,57 +38,16 @@ commit-living-room-light-rules() {
   git-commit "automate living-room light"
 }
 
-additional-work-on-main() {
+additional-work-on-main() { # TODO rework 203
   git-switch-main || return
-  integrated-ac-install-commits || return
+  commit-device-traits-schema || return
   commit-empty-automation-rules || return # from 103
 }
 
-integrated-ac-install-commits() {
-  define-device-traits || return # from 103
-  commit-living-room-ac || return
-  commit-living-room-sensors-thermometer || return
-  commit-living-room-sensors-balcony-door || return
-}
+commit-device-traits-schema() {
+  define-device-traits || return #from 103
 
-commit-living-room-ac() {
-  json-edit devices.json '.devices += [{
-    "id": "living-room-ac",
-    "name": "Living-room AC",
-    "roomId": "living-room",
-    "type": "ac-unit",
-    "traits": ["on-off", "temperature-control"]
-  }]' || return
-
-  git-commit "${1:-install living-room AC}"
-}
-
-commit-living-room-sensors-thermometer() {
-  install-living-room-thermometer || return
-  git-commit "${1:-install living-room thermostat sensor}"
-}
-
-install-living-room-thermometer() {
-  json-edit devices.json '.devices += [{
-    "id": "living-room-thermostat-sensor",
-    "name": "Living-room thermostat sensor",
-    "roomId": "living-room",
-    "type": "sensor"
-  }]' || return
-}
-
-commit-living-room-sensors-balcony-door() {
-  install-living-room-balcony-door-sensor || return
-  git-commit "${1:-install living-room balcony-door sensor}"
-}
-
-install-living-room-balcony-door-sensor() {
-  json-edit devices.json '.devices += [{
-    "id": "living-room-balcony-door",
-    "name": "Living-room balcony-door sensor",
-    "roomId": "living-room",
-    "type": "sensor"
-  }]' || return
+  git-commit "${1:-define traits for devices}"
 }
 
 run-init-exercise "$@"

@@ -35,9 +35,9 @@ It's time to integrate our feature branch; however, `main` has advanced in the m
 
 ## Task: Rebase the Feature Branch onto `main`
 
-While we were working on the light automation, our team installed further devices and sensors, as well as, _cherry-picked_ the _automation-rules schema_.
+While we were working on the light automation, our team _cherry-picked_ the _schemas_ and integrated them into `main`.
 
-Before we finish our feature branch, it's a good practice to integrate `main` into our branch and make sure our changes work when integrated.
+To ensure our changes work when integrated and that there are no conflicts, it's a good practice to integrate `main` into our branch.
 To this end, use [`git rebase`](https://git-scm.com/docs/git-rebase) to rebase our branch `living-room-light-automation` onto `main`.
 
 ### Deep Dive
@@ -46,44 +46,41 @@ After the rebase onto `main`, investigate what happened to the commits `"define 
 ### Initial Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* f30d539 (main) define automation-rules schema
-* 97070dc install living-room balcony-door sensor
-* 2461e1b install living-room thermostat sensor
-* 25dc6e3 install living-room AC
-| * 3edb867 (HEAD -> living-room-light-automation) automate living-room light
-| * 51f3204 define automation-rules schema
-| * 70865e0 define living-room-light trait on-off
+* a8b86fb (main) define automation-rules schema
+* cb7ab96 define traits for devices
+| * b3c4ae2 (HEAD -> living-room-light-automation) automate living-room light
+| * 86da7e5 define automation-rules schema
+| * 452ba87 install living-room ambient-light sensor
+| * a548017 install living-room presence sensor
+| * 28774ef define living-room-light trait on-off
 |/
-* b2a2383 install living-room ambient-light sensor
-* 0301603 install living-room presence sensor
-* 0e8a75e install living-room light
-* 8db8515 define devices schema
-* 95060db register living room
-* bbcecc8 define rooms schema
-* 9315fb1 write README
-* dbc3611 configure Git
+* c699a3f install living-room light
+* bef4d8a define devices schema
+* 8a94fa8 register living room
+* 545c8f9 define rooms schema
+* c18376c write README
+* 6d77dca configure Git
 ```
 _Note_: The branch `living-room-light-automation` is checked out, thus the `HEAD` is at `3edb867`.
 
 ### Target Git History
 ```console
 $ git log --oneline --graph --decorate --all
-* 9e28e3b (HEAD -> living-room-light-automation) automate living-room light
-* 3c69fc3 define living-room-light trait on-off
-* f30d539 (main) define automation-rules schema
-* 97070dc install living-room balcony-door sensor
-* 2461e1b install living-room thermostat sensor
-* 25dc6e3 install living-room AC
-* b2a2383 install living-room ambient-light sensor
-* 0301603 install living-room presence sensor
-* 0e8a75e install living-room light
-* 8db8515 define devices schema
-* 95060db register living room
-* bbcecc8 define rooms schema
-* 9315fb1 write README
-* dbc3611 configure Git
+* 7e2bcae (HEAD -> living-room-light-automation) automate living-room light
+* 10c3f4c install living-room ambient-light sensor
+* 163faa5 install living-room presence sensor
+* 821b0ab define living-room-light trait on-off
+* a8b86fb (main) define automation-rules schema
+* cb7ab96 define traits for devices
+* c699a3f install living-room light
+* bef4d8a define devices schema
+* 8a94fa8 register living room
+* 545c8f9 define rooms schema
+* c18376c write README
+* 6d77dca configure Git
 ```
-_Note_: Since we rebased the branch `living-room-light-automation` onto `main`, all the branch commit hashes have changed.
+_Note_: Notice what happened with commits `"define living-room-light trait on-off"` and `"define automation-rules schema"` on branch `living-room-light-automation` after the rebase.
+Further, note that all commits on branch `living-room-light-automation` have new commit hashes now.
 
 ## Reflect & Review
 
